@@ -1,0 +1,45 @@
+# markdownlint config — conservative ruleset
+# 외부 PR 진입 장벽을 낮추기 위해 형식적 규범 위반 룰은 끔.
+# 명백한 오류 (broken link / empty link / bare URL 등) 만 강제.
+
+# Default: 모두 활성화 후 아래에서 끔
+default: true
+
+# 라인 길이 — 한국어 글은 영문보다 폭이 넓어 80자 cap 이 비현실적
+MD013: false
+
+# Inline HTML — README 의 Hero 섹션 / 주석 처리 등에 필요
+MD033: false
+
+# 첫 줄이 H1 일 필요 — 일부 파일 (frontmatter 가 있는 SKILL.md 등) 은 예외
+MD041: false
+
+# Emphasis as heading — `**bold**` 만으로 끝나는 짧은 줄을 일부 예제에서 사용
+MD036: false
+
+# Punctuation in heading — "12 Categories Detected (with Before/After Examples)"
+# 같은 자연스러운 헤딩에 콜론·괄호 허용
+MD026: false
+
+# Multiple top-level headings in same doc — frontmatter 사용 파일에서 가끔 발생
+MD025: false
+
+# Bare URL — references 섹션의 직접 링크 허용
+MD034: false
+
+# Heading style consistency — atx (#) 만 강제
+MD003:
+  style: atx
+
+# List indent — 2 spaces
+MD007:
+  indent: 2
+
+# Trailing newline 필수
+MD047: true
+
+# 빈 링크 (broken) 는 무조건 잡는다
+MD042: true
+
+# Broken reference link
+MD052: true

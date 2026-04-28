@@ -1,0 +1,35 @@
+name: lint
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  markdown-lint:
+    name: markdownlint (warning only)
+    runs-on: ubuntu-latest
+    # 외부 PR 진입 장벽을 낮추기 위해 markdownlint 위반은 fail 시키지 않음.
+    # 위반은 GitHub Actions 로그에 표시되며, 기여자가 참고용으로 볼 수 있다.
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run markdownlint-cli2
+        uses: DavidAnson/markdownlint-cli2-action@v18
+        with:
+          globs: |
+            **/*.md
+            !node_modules/**
+            !**/.git/**
+          config: ".markdownlint.yml"
+
+  pattern-table-format:
+    name: pattern table format (must pass)
+    runs-on: ubuntu-latest
+    # 패턴 카탈로그 표 형식은 머지 위험이 가장 큰 영역이라 fail.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate pattern table columns
+        run: bash scripts/lint-patterns.sh
