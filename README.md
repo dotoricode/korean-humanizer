@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Patterns](https://img.shields.io/badge/patterns-100%2B-brightgreen.svg)](references/ko-ai-signals.md)
-[![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](#)
+[![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 [![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
 <!-- 데모 GIF: 사용자가 assets/demo.gif 를 푸시한 뒤 아래 줄의 주석을 해제하세요. 녹화 가이드 → assets/RECORDING.md -->
