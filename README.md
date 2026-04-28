@@ -69,7 +69,7 @@ git clone https://github.com/dotoricode/korean-humanizer ~/.claude/skills/korean
 > 시간 관리 얘기를 해보려고 한다. 시간 관리 안 되는 사람이 많다. 이 글에서 쓸 만한 방법 몇 개를 정리한다.
 
 → 패턴 카탈로그 적용 예시: [`examples/before-after.md`](examples/before-after.md)
-→ **실제 에이전트 raw 출력 vs skill 적용 비교** (4 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
+→ **실제 에이전트 raw 출력 vs skill 적용 비교** (6 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
 
 ---
 
@@ -105,11 +105,13 @@ korean-humanizer/
 ├── SKILL.md                   # Claude Code / Cowork 진입점
 ├── PROMPT.md                  # 일반 LLM 시스템 프롬프트
 ├── LICENSE                    # MIT
+├── CONTRIBUTING.md            # 기여 가이드
+├── .github/ISSUE_TEMPLATE/    # 패턴 추가 / 도메인 사례 / 버그 보고 템플릿
 ├── references/
 │   └── ko-ai-signals.md       # 100+ 패턴 카탈로그 (메인 IP)
 └── examples/
     ├── before-after.md        # 패턴 카탈로그 적용 사례 (3 도메인)
-    ├── agent-vs-skill.md      # 실제 에이전트 raw vs skill 적용 비교 (4 도메인)
+    ├── agent-vs-skill.md      # 실제 에이전트 raw vs skill 적용 비교 (6 도메인)
     └── personal-list.md       # 사용자 커스터마이징 템플릿
 ```
 
@@ -129,10 +131,9 @@ korean-humanizer/
 
 패턴 추가 PR / Issue 환영. 새 카테고리를 제안하거나, 기존 카테고리에 표 row를 추가하거나, 다른 도메인의 변환 사례를 보내주면 좋다.
 
-좋은 PR의 특징:
-- 패턴 1~5개를 같은 카테고리 안에 모아 추가
-- "왜 AI 티인지" 짧은 한 줄 설명
-- 가능하면 before/after 예시 한 쌍
+상세 가이드와 PR 체크리스트는 [`CONTRIBUTING.md`](CONTRIBUTING.md) 참고.
+
+Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [새 도메인 사례](.github/ISSUE_TEMPLATE/new_domain_case.md) / [버그 보고](.github/ISSUE_TEMPLATE/bug_report.md).
 
 ---
 
