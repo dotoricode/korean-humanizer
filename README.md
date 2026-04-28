@@ -68,7 +68,8 @@ git clone https://github.com/dotoricode/korean-humanizer ~/.claude/skills/korean
 
 > 시간 관리 얘기를 해보려고 한다. 시간 관리 안 되는 사람이 많다. 이 글에서 쓸 만한 방법 몇 개를 정리한다.
 
-→ 더 많은 사례: [`examples/before-after.md`](examples/before-after.md)
+→ 패턴 카탈로그 적용 예시: [`examples/before-after.md`](examples/before-after.md)
+→ **실제 에이전트 raw 출력 vs skill 적용 비교** (4 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
 
 ---
 
@@ -107,7 +108,8 @@ korean-humanizer/
 ├── references/
 │   └── ko-ai-signals.md       # 100+ 패턴 카탈로그 (메인 IP)
 └── examples/
-    ├── before-after.md        # 3가지 도메인 변환 사례
+    ├── before-after.md        # 패턴 카탈로그 적용 사례 (3 도메인)
+    ├── agent-vs-skill.md      # 실제 에이전트 raw vs skill 적용 비교 (4 도메인)
     └── personal-list.md       # 사용자 커스터마이징 템플릿
 ```
 
