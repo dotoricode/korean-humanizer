@@ -45,7 +45,7 @@
 
 > **문제**: v0.x 는 "변할 수 있다" 신호. 사용자·contributor 가 의존하기 어렵다.
 >
-> **해결**: SemVer 약속 (12 카테고리 / SKILL 출력 포맷 / 정량 규칙 / PROMPT.md API freeze) + 베타 3-5 명 1-2 주 검증 + CHANGELOG / SECURITY / MIGRATION / 데모 GIF / README v1.0 hero.
+> **해결**: SemVer 약속 (12 카테고리 / SKILL 출력 포맷 / 정량 규칙 / PROMPT.md API freeze) + 베타 3-5 명 1-2 주 검증 + CHANGELOG / SECURITY / MIGRATION / README v1.0 hero.
 
 ---
 

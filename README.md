@@ -9,9 +9,6 @@
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 [![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
-<!-- 데모 GIF: 사용자가 assets/demo.gif 를 푸시한 뒤 아래 줄의 주석을 해제하세요. 녹화 가이드 → assets/RECORDING.md -->
-<!-- ![korean-humanizer 데모: raw → humanized 변환 (30초)](assets/demo.gif) -->
-
 ## What it does — 5초 요약
 
 | Before *(AI 원문)* | After *(humanized)* |
@@ -298,7 +295,6 @@ korean-humanizer/
 │   ├── lint-patterns.sh                       # 카탈로그 표 형식 + 빈도 컬럼 검증
 │   ├── lint-cross-file.sh                     # SKILL/PROMPT/카탈로그 정량 규칙·카테고리 sync 검증
 │   └── lint-examples.sh                       # 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위 검증
-├── assets/RECORDING.md                        # 30초 데모 GIF 녹화 가이드
 ├── references/
 │   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 (메인 IP, 빈도 컬럼 포함)
 └── examples/
