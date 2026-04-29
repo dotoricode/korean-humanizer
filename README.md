@@ -17,7 +17,7 @@
 | 지난 6개월간 **다양한** 프로젝트를 **통해** **많은 것을 배우고 성장할 수 있었던** **의미 있는** 시간이었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라고 **확신합니다**. 🙌 | 지난 6개월 동안 프로젝트 몇 개 하면서 많이 배웠어요. 다음에 또 써먹을 경험이라 좋았어요. |
 | 본 사항은 **다양한** 측면에서 **신중하게 고려되어야** 할 필요가 있을 것으로 **사료됩니다**. | 이 건은 좀 더 봐야 할 것 같아요. |
 
-**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 의미 불변으로 다듬는다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
+**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
 🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그 (메인 IP)](references/ko-ai-signals.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
@@ -115,6 +115,7 @@ humanizer 는 4 가지 안전장치를 지킨다:
 → 더 많은 단락 비교 + 변경 이유 + 12 카테고리 매핑: [`examples/wiki-humanized-comparison.md`](examples/wiki-humanized-comparison.md)
 → 패턴 카탈로그 적용 사례: [`examples/before-after.md`](examples/before-after.md)
 → **실제 에이전트 raw 출력 vs skill 적용 비교** (6 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
+→ **도메인별 사례** *(v0.7)*: [학술](examples/domain-academic.md) · [뉴스](examples/domain-news.md) · [채팅·DM](examples/domain-chat.md) · [제품 리뷰](examples/domain-review.md) · [B2B 메시지](examples/domain-b2b-message.md) — 도메인별 강한 카테고리·톤 디폴트·금지 변경 영역 정리. 도메인 우선순위 매트릭스 → [부록 E](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 
 ## Installation
 
@@ -163,9 +164,18 @@ system prompt 형 진입을 선호하면 [`PROMPT.md`](PROMPT.md) 를 `~/.codex/
 
 ### Cursor
 
-Cursor 는 *Rules* 또는 *시스템 프롬프트* 둘 중 하나로 진입한다.
+Cursor 는 *Skill*, *Rule*, *User Rules* 세 가지 진입점이 있다. **Skill 이 권장 경로** — `SKILL.md` + `references/` 구조를 그대로 보존하고 lazy-load 된다 (Claude Code 와 동일).
 
-**A. Project Rule (권장)** — 레포에 한 번만 두면 모든 대화에 적용.
+**A. Skill (권장)** — `~/.cursor/skills/` 에 그대로 clone.
+
+```bash
+mkdir -p ~/.cursor/skills
+git clone https://github.com/dotoricode/korean-humanizer.git ~/.cursor/skills/korean-humanizer
+```
+
+설치 후 `Cursor → Settings → Skills` 에서 `korean-humanizer` 가 등록되어 있는지 확인한다. agent 가 한국어 humanize 가 필요할 때 자동 호출하거나, 채팅에서 `/korean-humanizer` 로 수동 트리거할 수 있다.
+
+**B. Project Rule** — 특정 레포에서만 항상 적용하고 싶을 때.
 
 ```bash
 mkdir -p .cursor/rules
@@ -183,7 +193,7 @@ alwaysApply: false
 ---
 ```
 
-**B. User Rules** — 모든 프로젝트에 적용하고 싶을 때.
+**C. User Rules** — 모든 프로젝트에 항상 적용하고 싶을 때.
 
 `Cursor → Settings → Rules → User Rules` 에 [`PROMPT.md`](PROMPT.md) 전체 내용을 붙여 넣는다.
 
@@ -308,6 +318,11 @@ korean-humanizer/
     ├── agent-vs-skill.md                      # 실제 에이전트 raw vs skill 적용 비교 (6 도메인)
     ├── long-form.md                           # 장문 회고 블로그 (52문장) 적용 사례 — 20% cap 시연
     ├── wiki-humanized-comparison.md           # 위키 raw ↔ humanized 단락별 상세 비교
+    ├── domain-academic.md                     # 학술 초록 사례 — 격식·번역체·수동태, 인용·수치 strict (v0.7)
+    ├── domain-news.md                         # 뉴스 단신 사례 — 인용문 글자 단위 동일, 보도 정형 보존 (v0.7)
+    ├── domain-chat.md                         # 카톡·DM 사례 — ~해요체 strict, 이모지 0-1 개 룰 (v0.7)
+    ├── domain-review.md                       # 제품 리뷰 사례 — 별점·구매일 strict, 솔직 톤 보존 (v0.7)
+    ├── domain-b2b-message.md                  # B2B 메시지 사례 — ad-hoc 격식, 이중 존경 완화 (v0.7)
     └── personal-list.md                       # 사용자 커스터마이징 템플릿
 ```
 
@@ -334,6 +349,7 @@ Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [
 
 ## Version History
 
+- **0.7.0** *(S2 — Domain coverage v2)* — 7 도메인 → 12 도메인 확장. 5 신규 도메인 사례 (`examples/domain-academic.md` / `domain-news.md` / `domain-chat.md` / `domain-review.md` / `domain-b2b-message.md`) — 각각 강한 카테고리 / 톤 디폴트 / 금지 변경 영역 / 한계 정리. 카탈로그 부록 E 신설 (`references/ko-ai-signals.md` 도메인별 카테고리 우선순위 매트릭스). README hero / 도메인 섹션 갱신. eval-harness 신규 도메인 fixture 모두 통과.
 - **0.6.0** *(S1 — Eval foundation)* — `scripts/eval-harness.py` (4 metric: 수정비율 / 단락cap / 길이 / ~다체 보존) + 20 fixture (`eval/fixtures/`) + `eval/scorecard.md` (auto-gen) + 5 번째 CI hard-fail job. 회귀 4 종 (M1 cap 초과 / M2 단락 4곳 / M3 30 % 팽창 / M4 발화체 ~다체 도입) 모두 catch. threshold = 0.20 (long-form 17.3 % reference 와 calibration). `eval/README.md` fixture 형식 가이드.
 - **0.5.0** — 자동 검증 layer 3 종 추가 (`scripts/lint-cross-file.sh` SKILL/PROMPT/카탈로그 정량규칙·카테고리 sync, `scripts/lint-examples.sh` "주요 변경 5개" 룰 + 카테고리 범위), 카탈로그 9 패턴 표에 빈도 컬럼 추가 (대표 high / 나머지 med), 장문 회고 블로그 사례 (`examples/long-form.md`, 52문장·17.3 %), README Troubleshooting 5 항목, lint CI 4 jobs (1 warning + 3 hard-fail).
 - **0.4.0** — README 최상단 hero (5초 요약 + Before/After 표) 추가, 구조 재정렬 (Overview/Categories/Full Example → Installation 위로), Wiki 배지 / 빠른 링크 / 데모 GIF placeholder, lint CI (markdownlint warning + 표 형식 검증 fail), `assets/RECORDING.md` 데모 녹화 가이드

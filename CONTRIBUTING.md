@@ -57,6 +57,7 @@ PR을 올리기 전에 아래를 확인해주세요:
   - [ ] `bash scripts/eval-harness.sh` ✓ — fixture 4 metric (수정비율 / 단락cap / 길이 / ~다체)
   - [ ] markdownlint warning 은 무시해도 OK
 - [ ] 새 fixture 를 더할 때 — `eval/fixtures/<domain>-NN-<name>.md` 형식 + frontmatter 채움. 가이드: [`eval/README.md`](eval/README.md)
+- [ ] **새 도메인 사례 (`examples/domain-*.md`)**: 메타데이터 (도메인 / 강한 카테고리 / 톤 디폴트 / 톤 보존 / 금지 변경) + Raw + Humanized + 변경 (≤ 5) + 보존 + 개선 포인트 + 한계 + 도메인 적용 가이드 모두 채움. `references/ko-ai-signals.md` 부록 E 의 도메인 우선순위 표에도 row 추가.
 
 ## 좋은 PR의 특징
 

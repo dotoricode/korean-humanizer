@@ -153,12 +153,12 @@
 
 ## Acceptance criteria
 
-- [ ] 5 신규 도메인 사례 추가 (각 1 raw + humanized + 변경 표)
-- [ ] 카탈로그 부록 E 신설 (12 도메인 cat 우선순위)
-- [ ] README hero / File Structure 갱신
-- [ ] 5 신규 fixtures 모두 eval-harness 통과
-- [ ] 모든 lint 4 종 + eval-harness 통과
-- [ ] v0.7 GitHub release tag
+- [x] 5 신규 도메인 사례 추가 (각 1 raw + humanized + 변경 표 + 한계)
+- [x] 카탈로그 부록 E 신설 (12 도메인 cat 우선순위)
+- [x] README hero / File Structure 갱신
+- [x] 5 신규 fixtures 모두 eval-harness 통과 (S1 에서 추가된 fixture 가 cover)
+- [x] 모든 lint 4 종 + eval-harness 통과
+- [ ] v0.7 GitHub release tag (사용자 작업)
 
 ---
 
