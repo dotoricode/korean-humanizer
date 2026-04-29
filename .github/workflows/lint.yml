@@ -33,3 +33,25 @@ jobs:
 
       - name: Validate pattern table columns
         run: bash scripts/lint-patterns.sh
+
+  cross-file-sync:
+    name: cross-file sync (must pass)
+    runs-on: ubuntu-latest
+    # SKILL.md / PROMPT.md / references/ko-ai-signals.md 의 정량 규칙(20% / 3곳)
+    # 과 12 카테고리 키워드가 세 파일에서 sync 됐는지. 한 파일만 바뀌면 fail.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate quantitative rules and category sync
+        run: bash scripts/lint-cross-file.sh
+
+  examples-integrity:
+    name: examples integrity (must pass)
+    runs-on: ubuntu-latest
+    # examples/ 가 SKILL 출력 포맷 룰("주요 변경 최대 5개") 과 카테고리 범위(1~12)
+    # 를 따르는지. 예시 콘텐츠 PR 의 안전망.
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate examples format and category range
+        run: bash scripts/lint-examples.sh

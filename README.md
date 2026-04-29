@@ -249,6 +249,30 @@ alwaysApply: false
 
 세 방식 모두 동일하게 카탈로그 *앞에서* 적용된다 — 사용자 톤이 항상 우선이다.
 
+## Troubleshooting
+
+humanizer 가 기대와 다르게 동작할 때 가장 자주 마주치는 5 가지.
+
+### 결과가 내 스타일과 다를 때
+
+humanizer 의 디폴트는 12 카테고리 카탈로그 — 일반적인 한국어 LLM 톤 기준이다. 본인 톤과 어긋나는 부분이 반복되면 **Personal List 캘리브레이션** 으로 카탈로그보다 먼저 적용되는 사용자 우선 룰을 두 줄 정도 깔아두는 게 가장 빠르다. 위 [Personal List 캘리브레이션](#personal-list-캘리브레이션) 의 세 가지 방식 중 하나를 쓰면 된다.
+
+### 변경이 너무 적을 때
+
+전체 문장 수의 20 % cap 과 단락당 3 곳 룰을 지키느라 의도적으로 가볍게 손대는 것이다 — "AI 티" 가 옅은 글이거나, 룰 안에서 더 손댈 곳이 없다는 뜻일 가능성이 높다. 그래도 부족하면 **"좀 더 강하게 다듬어줘"** 또는 **"단락 단위로 다시 봐줘"** 라고 명시하면 logical paragraph 해석으로 한 단락당 3 곳 룰을 좀 더 헐겁게 운용한다.
+
+### 변경이 너무 많을 때 / 의미가 흐려질 때
+
+20 % cap 을 넘었을 가능성이 있다 — 짧은 글에서 과교정으로 잘 빠진다. **"보수적으로 다듬어줘"** 또는 **"꼭 필요한 곳만 손대줘"** 라고 명시하면 문단당 1-2 곳, 전체 10 % 수준으로 약하게 적용한다. 의미가 바뀐 부분이 보이면 그 문장만 "원문으로 되돌려줘" 라고 하면 된다.
+
+### YouTube / 팟캐스트 인트로인데 ~다체 글말체로 바뀐다
+
+발화체 도메인은 **~다체 글말체 사용 금지** 가 카탈로그 #9-A 룰이지만, 도메인 정보 없이 입력하면 humanizer 가 글말체로 분류할 수 있다. 입력 앞에 **"이거 유튜브 인트로 스크립트야"** / **"팟캐스트 대본"** / **"라이브 인사말"** 같이 한 줄 명시해 두면 ~합니다체 / ~해요체로 strict 보존한다. `examples/agent-vs-skill.md` 사례 5 가 이 케이스의 정답.
+
+### 영어 / 한영 혼용 텍스트일 때
+
+humanizer 는 한국어 전용이라 영어 부분은 손대지 않는다. 한영 혼용 글은 한국어 부분만 다듬고 영어는 그대로 둔다. 영어 humanize 가 필요하면 [`blader/humanizer`](https://github.com/blader/humanizer) / [`jalaalrd/anti-ai-slop-writing`](https://github.com/jalaalrd/anti-ai-slop-writing) 같은 영어 전용 도구를 함께 쓴다.
+
 ## When Not to Apply
 
 - 영어 / 일본어 / 중국어 등 한국어가 아닌 텍스트
@@ -268,15 +292,19 @@ korean-humanizer/
 ├── CONTRIBUTING.md                            # 기여 가이드
 ├── korean-humanizer-research.md               # 연구 근거 / feature schema / 평가 루브릭 / 윤리 (raw)
 ├── korean-humanizer-research-humanized.md     # 위 위키를 humanizer 로 다듬은 결과 (시연용)
-├── .github/workflows/lint.yml                 # markdownlint(warning) + 패턴 표 형식 검증(fail)
+├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 검증(fail)
 ├── .github/ISSUE_TEMPLATE/                    # 패턴 추가 / 도메인 사례 / 버그 보고 템플릿
-├── scripts/lint-patterns.sh                   # 카테고리 표 형식 검증 (PR 안전망)
+├── scripts/
+│   ├── lint-patterns.sh                       # 카탈로그 표 형식 + 빈도 컬럼 검증
+│   ├── lint-cross-file.sh                     # SKILL/PROMPT/카탈로그 정량 규칙·카테고리 sync 검증
+│   └── lint-examples.sh                       # 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위 검증
 ├── assets/RECORDING.md                        # 30초 데모 GIF 녹화 가이드
 ├── references/
-│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 (메인 IP)
+│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 (메인 IP, 빈도 컬럼 포함)
 └── examples/
     ├── before-after.md                        # 패턴 카탈로그 적용 사례 (3 도메인)
     ├── agent-vs-skill.md                      # 실제 에이전트 raw vs skill 적용 비교 (6 도메인)
+    ├── long-form.md                           # 장문 회고 블로그 (52문장) 적용 사례 — 20% cap 시연
     ├── wiki-humanized-comparison.md           # 위키 raw ↔ humanized 단락별 상세 비교
     └── personal-list.md                       # 사용자 커스터마이징 템플릿
 ```
