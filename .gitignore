@@ -9,3 +9,7 @@
 
 # OS
 Thumbs.db
+
+# Python (eval-harness)
+__pycache__/
+*.pyc

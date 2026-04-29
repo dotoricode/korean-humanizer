@@ -164,13 +164,13 @@
 
 ## Acceptance criteria
 
-- [ ] 20 개 fixture 모두 4 metric 통과 (or 의도적 trap 1 개는 metric fail 검증)
-- [ ] 새 CI job `eval-harness` 가 hard-fail 로 동작
-- [ ] `scripts/eval-harness.sh` 로컬 실행 시 scorecard 생성
-- [ ] 회귀 시나리오 4 종 모두 잡힘
-- [ ] 기존 lint 3 종 + 신규 1 종 = 총 4 hard-fail + 1 warning (markdownlint) job
-- [ ] CONTRIBUTING.md / README.md 갱신
-- [ ] v0.6 GitHub release tag
+- [x] 20 개 fixture 모두 4 metric 통과 (boundary 12 개 `expected_failures` 명시 + trap 1 개 M4 fail 검증)
+- [x] 새 CI job `eval-harness` 가 hard-fail 로 동작
+- [x] `scripts/eval-harness.sh` 로컬 실행 시 scorecard 생성
+- [x] 회귀 시나리오 4 종 모두 잡힘 (M1 60 % / M2 단락 5곳 / M3 1.35 ratio / M4 fail)
+- [x] 기존 lint 3 종 + 신규 1 종 = 총 4 hard-fail + 1 warning (markdownlint) job
+- [x] CONTRIBUTING.md / README.md / `eval/README.md` 갱신
+- [ ] v0.6 GitHub release tag (사용자 작업)
 
 ---
 

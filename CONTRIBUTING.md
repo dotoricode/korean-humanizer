@@ -50,11 +50,13 @@ PR을 올리기 전에 아래를 확인해주세요:
 - [ ] 정량 수치(자수, 압축률 등)에는 추정치 단서(±오차)가 있는가?
 - [ ] CTR / 시간 정밀 같은 데이터 없는 주장이 들어가지 않았는가? (구조적 사실로만)
 - [ ] 새 도메인 비교 사례라면, raw 출력은 humanizer 룰을 의식하지 않고 평소대로 생성된 것인가?
-- [ ] **로컬 lint 통과 (3 종)**:
+- [ ] **로컬 lint / eval 통과 (4 종)**:
   - [ ] `bash scripts/lint-patterns.sh` ✓ — 카탈로그 표 형식 + 빈도 컬럼
   - [ ] `bash scripts/lint-cross-file.sh` ✓ — SKILL/PROMPT/카탈로그 정량 규칙·카테고리 sync
   - [ ] `bash scripts/lint-examples.sh` ✓ — 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위
+  - [ ] `bash scripts/eval-harness.sh` ✓ — fixture 4 metric (수정비율 / 단락cap / 길이 / ~다체)
   - [ ] markdownlint warning 은 무시해도 OK
+- [ ] 새 fixture 를 더할 때 — `eval/fixtures/<domain>-NN-<name>.md` 형식 + frontmatter 채움. 가이드: [`eval/README.md`](eval/README.md)
 
 ## 좋은 PR의 특징
 

@@ -55,3 +55,27 @@ jobs:
 
       - name: Validate examples format and category range
         run: bash scripts/lint-examples.sh
+
+  eval-harness:
+    name: eval harness (must pass)
+    runs-on: ubuntu-latest
+    # eval/fixtures/*.md 가 SKILL 의 정량 룰(20% cap / 단락 3곳 / 길이 비율 /
+    # 발화체 ~다체 보존) 을 지키는지 4 metric 으로 검증. 회귀 (예: 누가 fixture
+    # 를 더 공격적으로 humanize 하도록 수정) 가 발생하면 hard-fail.
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run eval harness
+        run: bash scripts/eval-harness.sh
+
+      - name: Upload scorecard
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-scorecard
+          path: eval/scorecard.md
+          if-no-files-found: warn

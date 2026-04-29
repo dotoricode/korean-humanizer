@@ -289,12 +289,18 @@ korean-humanizer/
 ├── CONTRIBUTING.md                            # 기여 가이드
 ├── korean-humanizer-research.md               # 연구 근거 / feature schema / 평가 루브릭 / 윤리 (raw)
 ├── korean-humanizer-research-humanized.md     # 위 위키를 humanizer 로 다듬은 결과 (시연용)
-├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 검증(fail)
+├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 / eval-harness 검증(fail)
 ├── .github/ISSUE_TEMPLATE/                    # 패턴 추가 / 도메인 사례 / 버그 보고 템플릿
 ├── scripts/
 │   ├── lint-patterns.sh                       # 카탈로그 표 형식 + 빈도 컬럼 검증
 │   ├── lint-cross-file.sh                     # SKILL/PROMPT/카탈로그 정량 규칙·카테고리 sync 검증
-│   └── lint-examples.sh                       # 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위 검증
+│   ├── lint-examples.sh                       # 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위 검증
+│   ├── eval-harness.sh                        # eval-harness wrapper (strict CI 모드)
+│   └── eval-harness.py                        # 4 metric (수정비율 / 단락cap / 길이 / ~다체) 자동 검증
+├── eval/
+│   ├── README.md                              # eval-harness 사용법 + fixture 형식 가이드
+│   ├── fixtures/                              # raw/humanized 쌍 20 개 (도메인 12 종 + edge / trap)
+│   └── scorecard.md                           # CI 가 매 머지마다 갱신하는 fixture 별 metric 표 (auto-gen)
 ├── references/
 │   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 (메인 IP, 빈도 컬럼 포함)
 └── examples/
@@ -328,6 +334,8 @@ Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [
 
 ## Version History
 
+- **0.6.0** *(S1 — Eval foundation)* — `scripts/eval-harness.py` (4 metric: 수정비율 / 단락cap / 길이 / ~다체 보존) + 20 fixture (`eval/fixtures/`) + `eval/scorecard.md` (auto-gen) + 5 번째 CI hard-fail job. 회귀 4 종 (M1 cap 초과 / M2 단락 4곳 / M3 30 % 팽창 / M4 발화체 ~다체 도입) 모두 catch. threshold = 0.20 (long-form 17.3 % reference 와 calibration). `eval/README.md` fixture 형식 가이드.
+- **0.5.0** — 자동 검증 layer 3 종 추가 (`scripts/lint-cross-file.sh` SKILL/PROMPT/카탈로그 정량규칙·카테고리 sync, `scripts/lint-examples.sh` "주요 변경 5개" 룰 + 카테고리 범위), 카탈로그 9 패턴 표에 빈도 컬럼 추가 (대표 high / 나머지 med), 장문 회고 블로그 사례 (`examples/long-form.md`, 52문장·17.3 %), README Troubleshooting 5 항목, lint CI 4 jobs (1 warning + 3 hard-fail).
 - **0.4.0** — README 최상단 hero (5초 요약 + Before/After 표) 추가, 구조 재정렬 (Overview/Categories/Full Example → Installation 위로), Wiki 배지 / 빠른 링크 / 데모 GIF placeholder, lint CI (markdownlint warning + 표 형식 검증 fail), `assets/RECORDING.md` 데모 녹화 가이드
 - **0.3.1** — Full Example 을 위키 발췌(raw vs humanized) 비교로 교체, 위키 humanized 본 추가(`korean-humanizer-research-humanized.md`), 단락별 상세 비교 문서(`examples/wiki-humanized-comparison.md`) 추가
 - **0.3.0** — OpenCode / Codex / Cursor 설치 가이드 분리, personal list 인라인 한 줄 입력 지원, Full Example 확장 (5문단), 연구 근거 문서(`korean-humanizer-research.md`) 추가, `references/ko-ai-signals.md` 에 KatFish/XDAC 정량 근거·feature schema·평가 루브릭 부록 추가
