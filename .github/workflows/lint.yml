@@ -67,7 +67,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.x"
+          python-version: "3.12"
 
       - name: Run eval harness
         run: bash scripts/eval-harness.sh

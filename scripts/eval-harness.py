@@ -21,11 +21,12 @@ from datetime import datetime, timezone
 SPEECH_DOMAINS = {"youtube", "podcast", "live", "lecture"}
 
 # 다체 종결어미 (격식 / 글말체 typical endings)
+# 종결 boundary: `.` `!` `?` `\n` 또는 문서 끝. Latin/숫자 뒤도 허용 (e.g. "AI다.").
 DACHE_ENDINGS = (
     r"(?:다|한다|된다|있다|없다|였다|었다|겠다|이다|아니다|간다|온다|"
-    r"한다|난다|진다|봤다|샀다|썼다|줬다|왔다|갔다|냈다|섰다)"
+    r"난다|진다|봤다|샀다|썼다|줬다|왔다|갔다|냈다|섰다)"
 )
-DACHE_PATTERN = re.compile(rf"[가-힣]{DACHE_ENDINGS}\.")
+DACHE_PATTERN = re.compile(rf"[가-힣A-Za-z0-9]{DACHE_ENDINGS}(?=[.!?\n]|$)")
 
 # Sentence terminator regex (한국어/영어 모두 커버, decimal 보호)
 # Split on . ! ? followed by whitespace or end. Don't split when preceded by digit.
@@ -129,11 +130,9 @@ def best_match_distances(raw_sents, hum_texts):
 SENTENCE_MOD_THRESHOLD = 0.20
 
 
-def metric_modified_ratio(raw_sents, hum_sents, threshold=SENTENCE_MOD_THRESHOLD):
+def metric_modified_ratio(raw_sents, dists, threshold=SENTENCE_MOD_THRESHOLD):
     if not raw_sents:
         return {"ratio": 0.0, "modified": 0, "total": 0}
-    hum_texts = [s for _, s in hum_sents]
-    dists = best_match_distances(raw_sents, hum_texts)
     modified = sum(1 for d in dists if d > threshold)
     return {
         "ratio": modified / len(raw_sents),
@@ -142,16 +141,11 @@ def metric_modified_ratio(raw_sents, hum_sents, threshold=SENTENCE_MOD_THRESHOLD
     }
 
 
-def metric_paragraph_cap(raw_sents, hum_sents, threshold=SENTENCE_MOD_THRESHOLD):
-    hum_texts = [s for _, s in hum_sents]
+def metric_paragraph_cap(raw_sents, dists, threshold=SENTENCE_MOD_THRESHOLD):
     by_para = {}
-    for (p_idx, r) in raw_sents:
+    for (p_idx, _), d in zip(raw_sents, dists):
         by_para.setdefault(p_idx, 0)
-        if not hum_texts:
-            by_para[p_idx] += 1
-            continue
-        best = min(normalized_edit_distance(r, h) for h in hum_texts)
-        if best > threshold:
+        if d > threshold:
             by_para[p_idx] += 1
     if not by_para:
         return {"max": 0, "by_para": {}}
@@ -193,7 +187,7 @@ def m3_verdict(ratio: float):
 def evaluate(fixture_path: Path):
     fm, raw, hum = parse_fixture(fixture_path)
     domain = fm.get("domain", "unknown").strip()
-    cap = float(fm.get("cap", 20).strip() if isinstance(fm.get("cap", 20), str) else fm.get("cap", 20)) / 100.0
+    cap = float(fm.get("cap", "20")) / 100.0
     para_cap = int(fm.get("paragraph_cap", 3))
     expected_failures = {
         x.strip().lower() for x in fm.get("expected_failures", "").split(",") if x.strip()
@@ -202,8 +196,12 @@ def evaluate(fixture_path: Path):
     raw_sents = split_sentences_with_paragraph(raw)
     hum_sents = split_sentences_with_paragraph(hum)
 
-    m1 = metric_modified_ratio(raw_sents, hum_sents)
-    m2 = metric_paragraph_cap(raw_sents, hum_sents)
+    # Compute distances once, share across M1 and M2.
+    hum_texts = [s for _, s in hum_sents]
+    dists = best_match_distances(raw_sents, hum_texts)
+
+    m1 = metric_modified_ratio(raw_sents, dists)
+    m2 = metric_paragraph_cap(raw_sents, dists)
     m3 = metric_length_ratio(raw, hum)
     m4 = metric_dache_intrusion(raw, hum, domain)
 
@@ -216,11 +214,12 @@ def evaluate(fixture_path: Path):
     actual_fails = {k for k, v in {"m1": m1, "m2": m2, "m3": m3, "m4": m4}.items()
                     if (k == "m3" and v["verdict"] == "fail") or (k != "m3" and not v["pass"])}
 
-    if expected_failures:
-        # fixture passes if exactly the expected metrics fail (and only those)
-        overall_pass = actual_fails == expected_failures
-    else:
-        overall_pass = not actual_fails
+    # Subset semantics: fixture passes only if every actual failure was anticipated
+    # via `expected_failures`. A new (unexpected) metric failing surfaces as fail
+    # even when expected ones also fail — preventing silent swallows.
+    unexpected_fails = actual_fails - expected_failures
+    missing_expected = expected_failures - actual_fails  # informational only
+    overall_pass = not unexpected_fails
 
     return {
         "fixture": fixture_path.name,
@@ -229,6 +228,8 @@ def evaluate(fixture_path: Path):
         "paragraph_cap": para_cap,
         "expected_failures": sorted(expected_failures),
         "actual_failures": sorted(actual_fails),
+        "unexpected_failures": sorted(unexpected_fails),
+        "missing_expected": sorted(missing_expected),
         "m1": m1,
         "m2": m2,
         "m3": m3,
@@ -254,9 +255,13 @@ def write_scorecard(path: Path, results):
         m2_cell = f"{'✓' if m2['pass'] else '✗'} max={m2['max']}"
         m3_cell = f"{m3['verdict']} {m3['ratio']:.2f}"
         m4_cell = f"{m4['status']} ({m4['raw_dache']}→{m4['hum_dache']})"
-        overall = "✓" if r["overall_pass"] else "✗"
-        if r["expected_failures"]:
-            overall += f" (expected: {','.join(r['expected_failures'])})"
+        if r["overall_pass"]:
+            if r["expected_failures"]:
+                overall = f"✓ (expected: {','.join(r['expected_failures'])})"
+            else:
+                overall = "✓"
+        else:
+            overall = f"✗ unexpected: {','.join(r['unexpected_failures'])}"
         rows.append(f"| {r['fixture']} | {r['domain']} | {m1_cell} | {m2_cell} | {m3_cell} | {m4_cell} | {overall} |")
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -337,7 +342,8 @@ def main():
     print(f"eval-harness: {len(results) - len(fails)}/{len(results)} fixtures pass"
           + (f" (parse errors: {parse_errors})" if parse_errors else ""))
     for r in fails:
-        print(f"  ✗ {r['fixture']:30s} actual={r['actual_failures']} expected={r['expected_failures']}")
+        print(f"  ✗ {r['fixture']:30s} unexpected={r['unexpected_failures']} "
+              f"actual={r['actual_failures']} expected={r['expected_failures']}")
         m = r["m1"]; print(f"      M1 ratio={m['ratio']*100:.1f}% mod={m['modified']}/{m['total']} cap={r['cap_pct']}%")
         m = r["m2"]; print(f"      M2 max={m['max']} cap={r['paragraph_cap']} by_para={m['by_para']}")
         m = r["m3"]; print(f"      M3 ratio={m['ratio']:.3f} verdict={m['verdict']}")

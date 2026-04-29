@@ -2,13 +2,13 @@
 
 # Eval scorecard
 
-> Generated: 2026-04-29 07:10 UTC
-> Source: `eval/fixtures/*.md` (20 fixtures)
+> Generated: 2026-04-29 07:17 UTC
+> Source: `eval/fixtures/*.md` (24 fixtures)
 
 ## Summary
 
-- Total fixtures: **20**
-- Pass: **20** (100.0%)
+- Total fixtures: **24**
+- Pass: **24** (100.0%)
 - Fail: **0**
 
 ## Per-fixture results
@@ -20,20 +20,24 @@
 | blog-01-time-management.md | blog | ✗ 100.0% (5/5) | ✗ max=5 | pass 0.61 | n/a (0→0) | ✓ (expected: m1,m2) |
 | blog-02-quarterly-retro.md | blog | ✓ 17.8% (8/45) | ✓ max=2 | pass 0.92 | n/a (0→0) | ✓ |
 | blog-03-remote-work.md | blog | ✗ 100.0% (6/6) | ✗ max=6 | pass 0.59 | n/a (0→0) | ✓ (expected: m1,m2) |
+| blog-04-side-project.md | blog | ✓ 6.7% (1/15) | ✓ max=1 | pass 0.95 | n/a (0→0) | ✓ |
 | chat-01-kakao-biz.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | pass 0.74 | n/a (0→0) | ✓ (expected: m1) |
 | chat-02-dm-reply.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | pass 0.66 | n/a (0→0) | ✓ (expected: m1) |
 | edge-short-01-one-sentence.md | marketing | ✗ 100.0% (1/1) | ✓ max=1 | pass 0.78 | n/a (0→0) | ✓ (expected: m1) |
 | edge-short-02-untouched.md | marketing | ✓ 0.0% (0/2) | ✓ max=0 | pass 1.00 | n/a (0→0) | ✓ |
 | email-01-delay-apology.md | email | ✗ 66.7% (6/9) | ✗ max=6 | pass 0.72 | n/a (0→0) | ✓ (expected: m1,m2) |
 | email-02-mtg-reschedule.md | email | ✗ 57.1% (4/7) | ✗ max=4 | pass 0.76 | n/a (0→0) | ✓ (expected: m1,m2) |
+| email-03-vendor-followup.md | email | ✓ 10.0% (1/10) | ✓ max=1 | pass 0.92 | n/a (0→0) | ✓ |
 | linkedin-01-series-a.md | linkedin | ✗ 100.0% (7/7) | ✗ max=7 | pass 0.69 | n/a (0→0) | ✓ (expected: m1,m2) |
+| linkedin-02-product-update.md | linkedin | ✓ 14.3% (1/7) | ✓ max=1 | pass 0.92 | n/a (0→0) | ✓ |
 | marketing-01-headphones.md | marketing | ✗ 100.0% (6/6) | ✗ max=6 | pass 0.59 | n/a (0→0) | ✓ (expected: m1,m2) |
 | marketing-02-launch.md | marketing | ✗ 100.0% (4/4) | ✗ max=4 | pass 0.66 | n/a (0→0) | ✓ (expected: m1,m2) |
+| marketing-03-feature-page.md | marketing | ✓ 0.0% (0/9) | ✓ max=0 | pass 0.91 | n/a (0→0) | ✓ |
 | news-01-tech-coverage.md | news | ✓ 20.0% (1/5) | ✓ max=1 | pass 0.96 | n/a (0→0) | ✓ |
 | newsletter-01-startup-seed.md | newsletter | ✗ 83.3% (5/6) | ✗ max=5 | pass 0.72 | n/a (0→0) | ✓ (expected: m1,m2) |
 | review-01-product.md | review | ✗ 83.3% (5/6) | ✗ max=5 | pass 0.82 | n/a (0→0) | ✓ (expected: m1,m2) |
 | wiki-01-korean-research.md | wiki | ✗ 42.9% (3/7) | ✓ max=3 | pass 0.88 | n/a (0→0) | ✓ (expected: m1) |
-| youtube-01-time-mgmt.md | youtube | ✗ 83.3% (5/6) | ✗ max=5 | pass 0.52 | pass (1→0) | ✓ (expected: m1,m2) |
+| youtube-01-time-mgmt.md | youtube | ✗ 83.3% (5/6) | ✗ max=5 | pass 0.52 | pass (2→0) | ✓ (expected: m1,m2) |
 | youtube-02-trap-dache.md | youtube | ✓ 0.0% (0/6) | ✓ max=0 | pass 0.97 | fail (0→3) | ✓ (expected: m4) |
 
 ## Legend
