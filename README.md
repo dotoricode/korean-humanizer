@@ -5,7 +5,10 @@
 > *A tiny skill that strips "AI smell" from Korean text — works in Claude Code, Claude.ai (Cowork), OpenCode, Codex, ChatGPT, Cursor, Gemini, and any LLM.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Patterns](https://img.shields.io/badge/patterns-100%2B-brightgreen.svg)](references/ko-ai-signals.md)
+[![Status](https://img.shields.io/badge/status-v1.0--rc-orange.svg)](docs/STABILITY-PROMISE.md)
+[![Patterns](https://img.shields.io/badge/patterns-137%2B-brightgreen.svg)](references/ko-ai-signals.md)
+[![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
+[![Modes](https://img.shields.io/badge/customization-4_modes-brightgreen.svg)](#personal-list--brand-voice-캘리브레이션)
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 [![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
@@ -359,17 +362,25 @@ Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [
 - "왜 AI 티인지" 짧은 한 줄 설명
 - 가능하면 before / after 예시 한 쌍
 
+## Stability
+
+v1.0 부터 SemVer freeze 약속:
+
+- **12 카테고리** / **SKILL 출력 포맷** / **정량 룰 (20 % cap, 단락 3 곳, 발화체 ~다체 금지)** / **카탈로그 4 컬럼 헤더** / **Brand voice 7 핵심 필드** / **Personal list Mode A/B/C/D** = 1.x 동안 freeze.
+- **카탈로그 패턴 행 추가** / **새 도메인** / **빈도 재라벨링** / **새 옵션 metric** = minor (1.x.0).
+- 자세한 freeze 영역: [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md).
+- v0.x → v1.0 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md).
+- 보안 이슈 보고: [`SECURITY.md`](SECURITY.md).
+
 ## Version History
 
-- **0.8.0** *(S3 — Brand voice + Catalog v2)* — **Breaking change**: 카탈로그의 9 패턴 표가 4 컬럼 (`나쁨 / 자연스러움 / 빈도 / 적용 도메인`) 으로 확장. 도메인 코드 표준 부록 F 신설 (12 도메인 + `all` / `informal` / `formal` shorthand). lint-patterns.sh v2 가 4 컬럼 + 도메인 코드 valid 검증. **4 번째 customization mode (Brand voice profile)** 추가 — frontmatter (preserve / ban / prefer / ending_default / emoji_policy / length_bias) + 자유 형식 톤 가이드. 템플릿 + 케이스 스터디 2 개 (`examples/brand-voice-template.md` / `brand-voice-toss-style.md` / `brand-voice-essayist.md`). 적용 순서: brand voice → personal list → 카탈로그. eval-harness 5 번째 metric M5 (brand preserve coverage) 추가 — 옵션, fixture frontmatter `brand_voice:` 있을 때만 작동. lint-cross-file 이 4 번째 mode + 부록 F sync 검증. `eval/frequency-data/` 스캐폴딩 — 후속 sub-PR 에서 90 LLM 샘플 기반 빈도 재라벨링. 마이그레이션 가이드: [`roadmap/S3-migration-notes.md`](roadmap/S3-migration-notes.md). 25 fixture 모두 pass.
-- **0.7.0** *(S2 — Domain coverage v2)* — 7 도메인 → 12 도메인 확장. 5 신규 도메인 사례 (`examples/domain-academic.md` / `domain-news.md` / `domain-chat.md` / `domain-review.md` / `domain-b2b-message.md`) — 각각 강한 카테고리 / 톤 디폴트 / 금지 변경 영역 / 한계 정리. 카탈로그 부록 E 신설 (`references/ko-ai-signals.md` 도메인별 카테고리 우선순위 매트릭스). README hero / 도메인 섹션 갱신. eval-harness 신규 도메인 fixture 모두 통과.
-- **0.6.0** *(S1 — Eval foundation)* — `scripts/eval-harness.py` (4 metric: 수정비율 / 단락cap / 길이 / ~다체 보존) + 20 fixture (`eval/fixtures/`) + `eval/scorecard.md` (auto-gen) + 5 번째 CI hard-fail job. 회귀 4 종 (M1 cap 초과 / M2 단락 4곳 / M3 30 % 팽창 / M4 발화체 ~다체 도입) 모두 catch. threshold = 0.20 (long-form 17.3 % reference 와 calibration). `eval/README.md` fixture 형식 가이드.
-- **0.5.0** — 자동 검증 layer 3 종 추가 (`scripts/lint-cross-file.sh` SKILL/PROMPT/카탈로그 정량규칙·카테고리 sync, `scripts/lint-examples.sh` "주요 변경 5개" 룰 + 카테고리 범위), 카탈로그 9 패턴 표에 빈도 컬럼 추가 (대표 high / 나머지 med), 장문 회고 블로그 사례 (`examples/long-form.md`, 52문장·17.3 %), README Troubleshooting 5 항목, lint CI 4 jobs (1 warning + 3 hard-fail).
-- **0.4.0** — README 최상단 hero (5초 요약 + Before/After 표) 추가, 구조 재정렬 (Overview/Categories/Full Example → Installation 위로), Wiki 배지 / 빠른 링크 / 데모 GIF placeholder, lint CI (markdownlint warning + 표 형식 검증 fail), `assets/RECORDING.md` 데모 녹화 가이드
-- **0.3.1** — Full Example 을 위키 발췌(raw vs humanized) 비교로 교체, 위키 humanized 본 추가(`korean-humanizer-research-humanized.md`), 단락별 상세 비교 문서(`examples/wiki-humanized-comparison.md`) 추가
-- **0.3.0** — OpenCode / Codex / Cursor 설치 가이드 분리, personal list 인라인 한 줄 입력 지원, Full Example 확장 (5문단), 연구 근거 문서(`korean-humanizer-research.md`) 추가, `references/ko-ai-signals.md` 에 KatFish/XDAC 정량 근거·feature schema·평가 루브릭 부록 추가
-- **0.2.0** — 에이전트 raw 출력 vs skill 적용 비교 자료 추가 (`examples/agent-vs-skill.md`, 6 도메인 정량·정성 비교)
-- **0.1.0** — 초기 공개. 12 카테고리 / 100+ 패턴 카탈로그, SKILL.md, PROMPT.md, before-after / personal-list 예제
+전체 history 는 [`CHANGELOG.md`](CHANGELOG.md). 요약:
+
+- **1.0.0-rc** *(S4 — Stabilization, 진행 중)* — 베타 운영 + 안정화 약속 + CHANGELOG / SECURITY / MIGRATION 통합. v1.0 GA 전 RC 검증.
+- **0.8.0** *(S3 — Brand voice + Catalog v2, 2026-04-30)* — 4 번째 mode (Brand voice profile), 카탈로그 v2 (4 컬럼: 나쁨 / 자연스러움 / 빈도 / 적용 도메인), 부록 F 도메인 코드 표준, eval M5, lint v2.
+- **0.7.0** *(S2 — Domain coverage v2, 2026-04-29)* — 7 → 12 도메인 확장, 5 신규 도메인 사례, 카탈로그 부록 E.
+- **0.6.0** *(S1 — Eval foundation, 2026-04-29)* — eval-harness 4 metric, 20 fixture, scorecard auto-gen, 5 번째 CI job.
+- **0.5.0 이하** — 자동 검증 layer / Personal list 인라인 / 연구 근거 부록 / 에이전트 비교 / 초기 카탈로그. → [CHANGELOG](CHANGELOG.md)
 
 ## License
 
