@@ -25,7 +25,7 @@ description: 한국어로 작성된 AI 생성 텍스트에서 "AI 티"가 나는
 - **과교정 방지.** 한 문단에 **3곳 이상** 건드리지 않는다. **전체 문장 수의 20%** 이상은 수정하지 않는다(예: 20문장 글이면 최대 4문장만 손댄다). 긴 글일수록 더 가볍게 터치.
 - **자연스러움 > 완벽함.** 살짝 덜 매끄러운 게 더 사람답다. 과도한 세련미는 오히려 AI 티.
 - **종결어미 톤 보존 (한국어 humanize 핵심).** Raw의 종결어미(~합니다체 / ~해요체 / ~다체 / 반말)와 도메인 디폴트를 함께 본다. 발화체 도메인(YouTube / 팟캐스트 / 강의 인사말)에서는 **~다체 글말체 사용 금지**. 격식 글·캐주얼·발화체는 raw 어미를 strict 보존, 글말체 도메인(블로그/에세이/마케팅)만 ~다체 자유. 한 글에 어미가 섞이면 raw 우세 어미로 통일. 상세는 `references/ko-ai-signals.md` #9-A.
-- **개인화 우선.** 사용자의 금지어 / 선호어 목록(`examples/personal-list.md`)이 있으면 카탈로그보다 **먼저** 적용한다.
+- **개인화 우선.** 사용자의 금지어 / 선호어 목록(`examples/personal-list.md`)이 있으면 카탈로그보다 **먼저** 적용한다. **Brand voice profile** (방식 D, `examples/brand-voice-*.md`) 이 있으면 그보다도 더 우선.
 
 ## 워크플로우
 
@@ -78,9 +78,11 @@ description: 한국어로 작성된 AI 생성 텍스트에서 "AI 티"가 나는
 - 사용자가 "전체 diff로 보여줘"라고 하면 모든 변경점을 상세히 나열한다. 기본은 compact.
 - 같은 사용자와의 **첫 번째 응답에 한해** 마지막에 한 줄 안내를 붙인다 — `*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*` 두 번째 응답부터는 생략(고정 멘트 자체가 AI 티가 됨).
 
-## 사용자 커스터마이징 (Personal List)
+## 사용자 커스터마이징 (Personal List + Brand Voice)
 
-humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어 / 유지어 목록을 활용한다. **세 가지 입력 방식**을 지원하며, 어느 쪽이든 카탈로그보다 **먼저** 적용한다.
+humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어 / 유지어 목록을 활용한다. **네 가지 입력 방식**을 지원하며, 어느 쪽이든 카탈로그보다 **먼저** 적용한다.
+
+> **방식 A/B/C 는 그때그때 즉석 입력**, **방식 D 는 영구 brand voice profile**. D 가 가장 강하고, 같은 단어가 여러 룰에 걸리면 윗줄이 이긴다 (D > A/B/C > 카탈로그).
 
 ### 방식 A. 인라인 한 줄 (가장 빠름)
 
@@ -121,17 +123,40 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 - 유지: (자동 치환에서 제외할 단어)
 ```
 
+### 방식 D. Brand voice profile (영구 / 가장 우선)
+
+매번 같은 *브랜드 톤* / *작가 톤* 으로 다듬고 싶으면 brand voice 프로필을 등록한다. Mode A/B/C 가 단어 리스트 위주라면, Brand voice 는 **frontmatter (preserve / ban / prefer / ending_default / emoji_policy / length_bias) + 자유 형식 톤 가이드** 로 더 풍부한 톤을 잡는다.
+
+- 템플릿: [`examples/brand-voice-template.md`](examples/brand-voice-template.md)
+- 케이스 스터디: [`examples/brand-voice-toss-style.md`](examples/brand-voice-toss-style.md) (짧고 직설), [`examples/brand-voice-essayist.md`](examples/brand-voice-essayist.md) (길고 사변)
+
+```
+/korean-humanizer brand=examples/brand-voice-toss-style.md
+
+[다듬을 텍스트]
+```
+
+또는 자연어로:
+
+> Toss 풍 brand voice 로 다듬어줘:
+> [텍스트]
+
+같은 세션에선 한 brand voice 만 활성화. 두 개 필요하면 별도 세션.
+
 ### 환경별 관리
 
-- **Claude Code / OpenCode / Codex**: 세 방식 모두 사용 가능. 매 세션 인라인 한 줄을 권장하고, 영구화는 SKILL.md / `examples/personal-list.md` 편집.
-- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 SKILL.md 다운로드 → 편집 → 재업로드.
-- **ChatGPT / Cursor / Gemini**: `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정.
+- **Claude Code / OpenCode / Codex**: 네 방식 모두 사용 가능. 매 세션 인라인 한 줄 (방식 A) 권장, 영구화는 SKILL.md / `examples/personal-list.md` 편집 (방식 C), brand voice 는 `examples/brand-voice-<name>.md` 저장 후 호출 시 path 명시 (방식 D).
+- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 SKILL.md 다운로드 → 편집 → 재업로드. Brand voice 파일도 첨부 가능.
+- **ChatGPT / Cursor / Gemini**: `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정. Brand voice 는 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어붙이면 된다.
 
 ### 적용 순서
 
-1. **personal list (방식 A/B/C 어느 것이든)** — 사용자 톤 우선.
-2. 12 카테고리 카탈로그.
-3. 정량 한도(문단 3곳 / 문장 20%) 적용 후 출력.
+1. **Brand voice (방식 D)** — 영구 brand 톤. 가장 우선.
+2. **Personal list (방식 A/B/C)** — 즉석 / 영구 사용자 리스트.
+3. **12 카테고리 카탈로그** — 도메인-가중치 매트릭스 (`references/ko-ai-signals.md`).
+4. 정량 한도(문단 3곳 / 문장 20%) 적용 후 출력.
+
+같은 단어가 여러 룰에 걸리면 윗줄이 이긴다. 예: brand voice 의 `preserve: ["딥다이브"]` 가 카탈로그의 일반 치환을 막는다.
 
 ## 다른 skill / 도구와의 연계
 
@@ -150,9 +175,11 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 
 ## 레퍼런스
 
-- `references/ko-ai-signals.md` — 12 카테고리 / 100+ 패턴 카탈로그.
+- `references/ko-ai-signals.md` — 12 카테고리 / 100+ 패턴 카탈로그 (v0.8: 4 컬럼 — 나쁨 / 자연스러움 / 빈도 / 적용 도메인).
 - `examples/before-after.md` — 실제 변환 사례.
-- `examples/personal-list.md` — 사용자 커스터마이징 템플릿.
+- `examples/personal-list.md` — 사용자 커스터마이징 템플릿 (방식 C).
+- `examples/brand-voice-template.md` — Brand voice 프로필 템플릿 (방식 D).
+- `examples/brand-voice-toss-style.md` / `examples/brand-voice-essayist.md` — Brand voice 케이스 스터디.
 - 일반 LLM 사용자: `PROMPT.md` 시스템 프롬프트 형태로도 제공.
 
 ---

@@ -17,7 +17,7 @@
 | 지난 6개월간 **다양한** 프로젝트를 **통해** **많은 것을 배우고 성장할 수 있었던** **의미 있는** 시간이었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라고 **확신합니다**. 🙌 | 지난 6개월 동안 프로젝트 몇 개 하면서 많이 배웠어요. 다음에 또 써먹을 경험이라 좋았어요. |
 | 본 사항은 **다양한** 측면에서 **신중하게 고려되어야** 할 필요가 있을 것으로 **사료됩니다**. | 이 건은 좀 더 봐야 할 것 같아요. |
 
-**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
+**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v0.8 부터** 4 번째 mode (`brand voice profile`) 로 *짧고 직설 / 길고 사변* 같은 본인 톤을 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
 🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그 (메인 IP)](references/ko-ai-signals.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
@@ -227,9 +227,11 @@ alwaysApply: false
 
 `PROMPT.md` 를 시스템 프롬프트(또는 Cursor Rule)에 붙여 넣은 뒤 한국어 텍스트만 입력하면 된다. 별도 명령어 없이 바로 humanize 된다.
 
-### Personal List 캘리브레이션
+### Personal List + Brand Voice 캘리브레이션
 
-자주 쓰는 금지어 / 선호어 / 유지어를 알려 주면 humanizer 가 카탈로그 패턴보다 **먼저** 적용한다. 세 가지 방식 중 편한 것을 쓰면 된다.
+자주 쓰는 금지어 / 선호어 / 유지어를 알려 주면 humanizer 가 카탈로그 패턴보다 **먼저** 적용한다. **네 가지 방식** 중 편한 것을 쓰면 된다 — 단어 리스트 위주의 1-3 (Personal list) 과 brand 톤 전체를 frontmatter 로 잡는 4 (Brand voice profile).
+
+> **적용 순서**: 4 (Brand voice) → 1-3 (Personal list) → 12 카테고리 카탈로그. 같은 단어가 여러 룰에 걸리면 윗줄이 이긴다.
 
 **1. 인라인 한 줄 (가장 빠름)** — 파일 없이 한 줄로 끝낸다.
 
@@ -254,7 +256,13 @@ alwaysApply: false
 
 [`examples/personal-list.md`](examples/personal-list.md) 를 편집하거나, `SKILL.md` 하단의 `## My personal list` 섹션을 채운다.
 
-세 방식 모두 동일하게 카탈로그 *앞에서* 적용된다 — 사용자 톤이 항상 우선이다.
+**4. Brand voice profile (가장 강한 영구 톤)** *(v0.8 신규)* — 단어 리스트 위주가 아니라 **brand 톤 전체** (preserve / ban / prefer / ending_default / emoji_policy / length_bias) 를 frontmatter 로 정의하고 본문에 자유 형식 톤 가이드를 적는다.
+
+- 템플릿 / 케이스 스터디: [`examples/brand-voice-template.md`](examples/brand-voice-template.md), [`examples/brand-voice-toss-style.md`](examples/brand-voice-toss-style.md) (짧고 직설), [`examples/brand-voice-essayist.md`](examples/brand-voice-essayist.md) (길고 사변).
+- 호출: `/korean-humanizer brand=examples/brand-voice-toss-style.md` 또는 자연어로 "Toss 풍 brand voice 로 다듬어줘".
+- ChatGPT / Cursor / Gemini 환경: `PROMPT.md` 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어 붙인다.
+
+네 방식 모두 카탈로그 *앞에서* 적용된다 — 사용자 / 브랜드 톤이 항상 우선이다.
 
 ## Troubleshooting
 
@@ -302,17 +310,18 @@ korean-humanizer/
 ├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 / eval-harness 검증(fail)
 ├── .github/ISSUE_TEMPLATE/                    # 패턴 추가 / 도메인 사례 / 버그 보고 템플릿
 ├── scripts/
-│   ├── lint-patterns.sh                       # 카탈로그 표 형식 + 빈도 컬럼 검증
-│   ├── lint-cross-file.sh                     # SKILL/PROMPT/카탈로그 정량 규칙·카테고리 sync 검증
+│   ├── lint-patterns.sh                       # 카탈로그 표 형식 + 빈도 + 적용 도메인 컬럼 검증 (v2)
+│   ├── lint-cross-file.sh                     # SKILL/PROMPT/카탈로그 정량 규칙·카테고리·brand voice sync 검증
 │   ├── lint-examples.sh                       # 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위 검증
 │   ├── eval-harness.sh                        # eval-harness wrapper (strict CI 모드)
-│   └── eval-harness.py                        # 4 metric (수정비율 / 단락cap / 길이 / ~다체) 자동 검증
+│   └── eval-harness.py                        # 5 metric (수정비율 / 단락cap / 길이 / ~다체 / brand preserve) 자동 검증
 ├── eval/
 │   ├── README.md                              # eval-harness 사용법 + fixture 형식 가이드
-│   ├── fixtures/                              # raw/humanized 쌍 20 개 (도메인 12 종 + edge / trap)
+│   ├── fixtures/                              # raw/humanized 쌍 25 개 (도메인 12 종 + edge / trap + brand voice)
+│   ├── frequency-data/                        # v0.8.1 빈도 재라벨링용 LLM 출력 보관소 (스캐폴딩)
 │   └── scorecard.md                           # CI 가 매 머지마다 갱신하는 fixture 별 metric 표 (auto-gen)
 ├── references/
-│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 (메인 IP, 빈도 컬럼 포함)
+│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 v2 (4 컬럼: 나쁨/자연스러움/빈도/적용 도메인)
 └── examples/
     ├── before-after.md                        # 패턴 카탈로그 적용 사례 (3 도메인)
     ├── agent-vs-skill.md                      # 실제 에이전트 raw vs skill 적용 비교 (6 도메인)
@@ -323,6 +332,9 @@ korean-humanizer/
     ├── domain-chat.md                         # 카톡·DM 사례 — ~해요체 strict, 이모지 0-1 개 룰 (v0.7)
     ├── domain-review.md                       # 제품 리뷰 사례 — 별점·구매일 strict, 솔직 톤 보존 (v0.7)
     ├── domain-b2b-message.md                  # B2B 메시지 사례 — ad-hoc 격식, 이중 존경 완화 (v0.7)
+    ├── brand-voice-template.md                # Brand voice profile 템플릿 — 4 번째 mode 입력값 (v0.8)
+    ├── brand-voice-toss-style.md              # Brand voice 케이스 — 짧고 직설 (가상 핀테크) (v0.8)
+    ├── brand-voice-essayist.md                # Brand voice 케이스 — 길고 사변 (가상 에세이스트) (v0.8)
     └── personal-list.md                       # 사용자 커스터마이징 템플릿
 ```
 
@@ -349,6 +361,7 @@ Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [
 
 ## Version History
 
+- **0.8.0** *(S3 — Brand voice + Catalog v2)* — **Breaking change**: 카탈로그의 9 패턴 표가 4 컬럼 (`나쁨 / 자연스러움 / 빈도 / 적용 도메인`) 으로 확장. 도메인 코드 표준 부록 F 신설 (12 도메인 + `all` / `informal` / `formal` shorthand). lint-patterns.sh v2 가 4 컬럼 + 도메인 코드 valid 검증. **4 번째 customization mode (Brand voice profile)** 추가 — frontmatter (preserve / ban / prefer / ending_default / emoji_policy / length_bias) + 자유 형식 톤 가이드. 템플릿 + 케이스 스터디 2 개 (`examples/brand-voice-template.md` / `brand-voice-toss-style.md` / `brand-voice-essayist.md`). 적용 순서: brand voice → personal list → 카탈로그. eval-harness 5 번째 metric M5 (brand preserve coverage) 추가 — 옵션, fixture frontmatter `brand_voice:` 있을 때만 작동. lint-cross-file 이 4 번째 mode + 부록 F sync 검증. `eval/frequency-data/` 스캐폴딩 — 후속 sub-PR 에서 90 LLM 샘플 기반 빈도 재라벨링. 마이그레이션 가이드: [`roadmap/S3-migration-notes.md`](roadmap/S3-migration-notes.md). 25 fixture 모두 pass.
 - **0.7.0** *(S2 — Domain coverage v2)* — 7 도메인 → 12 도메인 확장. 5 신규 도메인 사례 (`examples/domain-academic.md` / `domain-news.md` / `domain-chat.md` / `domain-review.md` / `domain-b2b-message.md`) — 각각 강한 카테고리 / 톤 디폴트 / 금지 변경 영역 / 한계 정리. 카탈로그 부록 E 신설 (`references/ko-ai-signals.md` 도메인별 카테고리 우선순위 매트릭스). README hero / 도메인 섹션 갱신. eval-harness 신규 도메인 fixture 모두 통과.
 - **0.6.0** *(S1 — Eval foundation)* — `scripts/eval-harness.py` (4 metric: 수정비율 / 단락cap / 길이 / ~다체 보존) + 20 fixture (`eval/fixtures/`) + `eval/scorecard.md` (auto-gen) + 5 번째 CI hard-fail job. 회귀 4 종 (M1 cap 초과 / M2 단락 4곳 / M3 30 % 팽창 / M4 발화체 ~다체 도입) 모두 catch. threshold = 0.20 (long-form 17.3 % reference 와 calibration). `eval/README.md` fixture 형식 가이드.
 - **0.5.0** — 자동 검증 layer 3 종 추가 (`scripts/lint-cross-file.sh` SKILL/PROMPT/카탈로그 정량규칙·카테고리 sync, `scripts/lint-examples.sh` "주요 변경 5개" 룰 + 카테고리 범위), 카탈로그 9 패턴 표에 빈도 컬럼 추가 (대표 high / 나머지 med), 장문 회고 블로그 사례 (`examples/long-form.md`, 52문장·17.3 %), README Troubleshooting 5 항목, lint CI 4 jobs (1 warning + 3 hard-fail).

@@ -10,6 +10,7 @@
 | **M2** 단락 cap | 단락 별 최대 modified-sentence count | ≤ `paragraph_cap` (기본 3) |
 | **M3** 길이 비율 | `len(humanized) / len(raw)` | 0.5 ~ 1.05 (warn: 0.30~0.5 / 1.05~1.20, fail: <0.30 또는 >1.20) |
 | **M4** 톤 보존 | 발화체 도메인에서 raw 에 없던 ~다체가 humanized 에 도입되면 fail | speech 도메인에서만 활성, 그 외 n/a |
+| **M5** brand preserve *(v0.8)* | brand voice 의 `preserve` 단어가 humanized 에 모두 살아있어야 pass | `brand_voice:` frontmatter 있을 때만 활성, 그 외 n/a |
 
 > **modified-sentence**: raw sentence 와 humanized 후보들 중 *최소* normalized edit distance 가 0.15 초과면 modified.
 
@@ -42,7 +43,8 @@ notes: 짧은 코멘트 (선택)
 | `domain` | ✓ | 12 도메인 중 하나 (`blog` `marketing` `email` `linkedin` `youtube` `newsletter` `wiki` `academic` `news` `chat` `review` `b2b-message`) |
 | `cap` | | 수정 비율 임계 (% 단위, 기본 20) |
 | `paragraph_cap` | | 단락 cap (기본 3) |
-| `expected_failures` | | 의도적으로 실패해야 할 metric 목록 (예: `m4` — trap fixture) |
+| `expected_failures` | | 의도적으로 실패해야 할 metric 목록 (예: `m4` — trap fixture). 콤마 구분 (`m1, m3`). |
+| `brand_voice` | | brand voice profile 파일 path (옵션, v0.8). 있으면 M5 활성 — preserve 단어가 humanized 에 모두 살아있는지 검증. 예: `examples/brand-voice-toss-style.md`. |
 | `notes` | | fixture 가 검증하는 시나리오 한 줄 |
 
 ### Speech 도메인 (M4 활성)

@@ -89,11 +89,41 @@ for file in "${FILES[@]}"; do
   fi
 done
 
+# 4. Brand voice (방식 D / 형식 D) sync — SKILL 과 PROMPT 양쪽에 모두 등장해야 함
+if ! grep -qF "방식 D" SKILL.md; then
+  echo "FAIL: Brand voice 키워드 '방식 D' 가 SKILL.md 에 없습니다 — 4 번째 mode (Brand voice profile) sync 가 깨졌습니다."
+  errors=$((errors + 1))
+fi
+if ! grep -qF "형식 D" PROMPT.md; then
+  echo "FAIL: Brand voice 키워드 '형식 D' 가 PROMPT.md 에 없습니다 — 4 번째 mode (Brand voice profile) sync 가 깨졌습니다."
+  errors=$((errors + 1))
+fi
+
+# 5. Brand voice 템플릿·케이스 스터디 파일 존재 확인
+BRAND_FILES=(
+  "examples/brand-voice-template.md"
+  "examples/brand-voice-toss-style.md"
+  "examples/brand-voice-essayist.md"
+)
+
+for bf in "${BRAND_FILES[@]}"; do
+  if [[ ! -f "$bf" ]]; then
+    echo "FAIL: Brand voice 파일 '$bf' 가 없습니다 — SKILL/PROMPT 의 4 번째 mode 가 가리키는 레퍼런스가 빠졌습니다."
+    errors=$((errors + 1))
+  fi
+done
+
+# 6. 도메인 코드 부록 F sync — 카탈로그에 부록 F 가 있어야 함 (v0.8 카탈로그 v2 의 lint 의존)
+if ! grep -qF "부록 F. 도메인 코드 표준" "references/ko-ai-signals.md"; then
+  echo "FAIL: 카탈로그에 '부록 F. 도메인 코드 표준' 이 없습니다 — lint-patterns.sh v2 가 이 부록을 valid 도메인 셋의 single source of truth 로 합니다."
+  errors=$((errors + 1))
+fi
+
 if [[ $errors -gt 0 ]]; then
   echo ""
   echo "Cross-file sync 검증 실패: $errors 건."
-  echo "SKILL.md / PROMPT.md / references/ko-ai-signals.md 세 파일의 정량 규칙·카테고리 구조 sync 를 확인하세요."
+  echo "SKILL.md / PROMPT.md / references/ko-ai-signals.md 세 파일의 정량 규칙·카테고리·4 번째 mode (Brand voice) sync 를 확인하세요."
   exit 1
 fi
 
-echo "✓ Cross-file sync 검증 통과 — SKILL/PROMPT/카탈로그의 정량 규칙(20%/3곳) 과 12 카테고리 키워드가 모두 일치."
+echo "✓ Cross-file sync 검증 통과 — SKILL/PROMPT/카탈로그의 정량 규칙(20%/3곳) · 12 카테고리 키워드 · 4 번째 mode (Brand voice) · 부록 F 가 모두 일치."

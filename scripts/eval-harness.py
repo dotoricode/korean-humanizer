@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
-"""Eval harness — measures 4 heuristic metrics over eval/fixtures/*.md.
+"""Eval harness — measures heuristic metrics over eval/fixtures/*.md.
 
 Metrics:
   M1: modified-sentence ratio  (cap, default 0.20)
   M2: per-paragraph modified-sentence cap  (paragraph_cap, default 3)
   M3: char-length ratio  (humanized / raw)
   M4: 다체 intrusion in speech domains
+  M5: brand voice preserve coverage (optional — runs only when fixture
+      declares `brand_voice: <path>` in frontmatter; v0.8 카탈로그 v2)
 
 stdlib only (Python 3.8+).
 """
@@ -174,6 +176,67 @@ def metric_dache_intrusion(raw_text: str, hum_text: str, domain: str):
     return {"status": status, "raw_dache": raw_count, "hum_dache": hum_count}
 
 
+# ---- Brand voice (M5) --------------------------------------------------------
+
+# Minimal YAML-list parser for the `preserve:` block in brand voice files.
+# Matches `preserve:` then collects subsequent `  - "..."` / `  - ...` lines
+# until the next top-level key (line starting with non-whitespace + `:`).
+def parse_brand_voice_preserve(path: Path) -> list:
+    text = path.read_text(encoding="utf-8")
+    fm_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.DOTALL)
+    if not fm_match:
+        return []
+
+    preserve: list = []
+    in_preserve = False
+    for line in fm_match.group(1).splitlines():
+        if re.match(r"^preserve:\s*$", line):
+            in_preserve = True
+            continue
+        if in_preserve:
+            m = re.match(r"^\s+-\s+(.+?)\s*$", line)
+            if m:
+                v = m.group(1).strip()
+                if (v.startswith('"') and v.endswith('"')) or (
+                    v.startswith("'") and v.endswith("'")
+                ):
+                    v = v[1:-1]
+                preserve.append(v)
+            elif re.match(r"^[A-Za-z_][\w-]*:", line):
+                in_preserve = False
+    return preserve
+
+
+def metric_brand_preserve(hum_text: str, brand_voice_path):
+    if not brand_voice_path:
+        return {"status": "n/a", "preserved": [], "missing": [], "brand": None}
+
+    bv_path = Path(brand_voice_path)
+    if not bv_path.is_file():
+        return {
+            "status": "fail",
+            "preserved": [],
+            "missing": [],
+            "brand": str(bv_path),
+            "error": f"brand voice file not found: {bv_path}",
+        }
+
+    preserve_words = parse_brand_voice_preserve(bv_path)
+    if not preserve_words:
+        # brand voice declared but no preserve list — n/a (not a failure)
+        return {"status": "n/a", "preserved": [], "missing": [], "brand": str(bv_path)}
+
+    missing = [w for w in preserve_words if w not in hum_text]
+    preserved = [w for w in preserve_words if w in hum_text]
+    status = "pass" if not missing else "fail"
+    return {
+        "status": status,
+        "preserved": preserved,
+        "missing": missing,
+        "brand": str(bv_path),
+    }
+
+
 # ---- Verdict -----------------------------------------------------------------
 
 def m3_verdict(ratio: float):
@@ -192,6 +255,7 @@ def evaluate(fixture_path: Path):
     expected_failures = {
         x.strip().lower() for x in fm.get("expected_failures", "").split(",") if x.strip()
     }
+    brand_voice_path = fm.get("brand_voice", "").strip() or None
 
     raw_sents = split_sentences_with_paragraph(raw)
     hum_sents = split_sentences_with_paragraph(hum)
@@ -204,14 +268,16 @@ def evaluate(fixture_path: Path):
     m2 = metric_paragraph_cap(raw_sents, dists)
     m3 = metric_length_ratio(raw, hum)
     m4 = metric_dache_intrusion(raw, hum, domain)
+    m5 = metric_brand_preserve(hum, brand_voice_path)
 
     m1["pass"] = m1["ratio"] <= cap
     m2["pass"] = m2["max"] <= para_cap
     m3["verdict"] = m3_verdict(m3["ratio"])
     m3["pass"] = m3["verdict"] in ("pass", "warn")
     m4["pass"] = m4["status"] in ("pass", "n/a")
+    m5["pass"] = m5["status"] in ("pass", "n/a")
 
-    actual_fails = {k for k, v in {"m1": m1, "m2": m2, "m3": m3, "m4": m4}.items()
+    actual_fails = {k for k, v in {"m1": m1, "m2": m2, "m3": m3, "m4": m4, "m5": m5}.items()
                     if (k == "m3" and v["verdict"] == "fail") or (k != "m3" and not v["pass"])}
 
     # Subset semantics: fixture passes only if every actual failure was anticipated
@@ -226,6 +292,7 @@ def evaluate(fixture_path: Path):
         "domain": domain,
         "cap_pct": int(cap * 100),
         "paragraph_cap": para_cap,
+        "brand_voice": brand_voice_path,
         "expected_failures": sorted(expected_failures),
         "actual_failures": sorted(actual_fails),
         "unexpected_failures": sorted(unexpected_fails),
@@ -234,6 +301,7 @@ def evaluate(fixture_path: Path):
         "m2": m2,
         "m3": m3,
         "m4": m4,
+        "m5": m5,
         "overall_pass": overall_pass,
     }
 
@@ -251,10 +319,17 @@ def write_scorecard(path: Path, results):
         m2 = r["m2"]
         m3 = r["m3"]
         m4 = r["m4"]
+        m5 = r["m5"]
         m1_cell = f"{'✓' if m1['pass'] else '✗'} {m1['ratio']*100:.1f}% ({m1['modified']}/{m1['total']})"
         m2_cell = f"{'✓' if m2['pass'] else '✗'} max={m2['max']}"
         m3_cell = f"{m3['verdict']} {m3['ratio']:.2f}"
         m4_cell = f"{m4['status']} ({m4['raw_dache']}→{m4['hum_dache']})"
+        if m5["status"] == "n/a":
+            m5_cell = "n/a"
+        else:
+            covered = len(m5["preserved"])
+            total_words = covered + len(m5["missing"])
+            m5_cell = f"{m5['status']} ({covered}/{total_words})"
         if r["overall_pass"]:
             if r["expected_failures"]:
                 overall = f"✓ (expected: {','.join(r['expected_failures'])})"
@@ -262,7 +337,10 @@ def write_scorecard(path: Path, results):
                 overall = "✓"
         else:
             overall = f"✗ unexpected: {','.join(r['unexpected_failures'])}"
-        rows.append(f"| {r['fixture']} | {r['domain']} | {m1_cell} | {m2_cell} | {m3_cell} | {m4_cell} | {overall} |")
+        rows.append(
+            f"| {r['fixture']} | {r['domain']} | {m1_cell} | {m2_cell} | "
+            f"{m3_cell} | {m4_cell} | {m5_cell} | {overall} |"
+        )
 
     timestamp = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -281,8 +359,8 @@ def write_scorecard(path: Path, results):
 
 ## Per-fixture results
 
-| Fixture | Domain | M1 (mod ratio) | M2 (para cap) | M3 (length) | M4 (다체) | Overall |
-|---|---|---|---|---|---|---|
+| Fixture | Domain | M1 (mod ratio) | M2 (para cap) | M3 (length) | M4 (다체) | M5 (brand) | Overall |
+|---|---|---|---|---|---|---|---|
 {chr(10).join(rows)}
 
 ## Legend
@@ -291,6 +369,7 @@ def write_scorecard(path: Path, results):
 - **M2**: max modified sentences in any paragraph. ✓ = within `paragraph_cap` (default 3).
 - **M3**: char-length ratio (humanized / raw). `pass` 0.5–1.05, `warn` 0.30–0.5 or 1.05–1.20, `fail` <0.30 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
+- **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
 - Overall ✗ marked `(expected: m4)` etc. for trap fixtures — not an actual regression.
 """
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -348,6 +427,7 @@ def main():
         m = r["m2"]; print(f"      M2 max={m['max']} cap={r['paragraph_cap']} by_para={m['by_para']}")
         m = r["m3"]; print(f"      M3 ratio={m['ratio']:.3f} verdict={m['verdict']}")
         m = r["m4"]; print(f"      M4 status={m['status']} raw_다체={m['raw_dache']} hum_다체={m['hum_dache']}")
+        m = r["m5"]; print(f"      M5 status={m['status']} brand={m.get('brand')} preserved={m['preserved']} missing={m['missing']}")
 
     if args.strict and (fails or parse_errors):
         sys.exit(1)

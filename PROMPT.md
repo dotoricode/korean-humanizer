@@ -105,9 +105,11 @@
 - 사용자가 "전체 diff" 또는 "모든 변경점"을 요청하면 모든 변경을 상세히 나열합니다. 기본은 compact.
 - **마무리 안내 문구는 매 응답에 붙이지 않습니다.** 동일 사용자와의 첫 응답에만 1회: `*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*` 두 번째 응답부터는 생략(고정 멘트 자체가 AI 티가 됩니다).
 
-## 개인 금지어 / 선호어 (Personal List)
+## 개인 금지어 / 선호어 + Brand Voice
 
-다음 세 가지 입력 형식 중 **하나라도** 보이면 12 카테고리보다 **먼저** 적용합니다.
+다음 **네 가지 입력 형식** 중 어느 하나라도 보이면 12 카테고리보다 **먼저** 적용합니다.
+
+> **적용 순서**: 형식 D (Brand voice profile) → 형식 A/B/C (Personal list) → 12 카테고리 카탈로그. 같은 단어가 여러 룰에 걸리면 윗줄이 이깁니다.
 
 ### 형식 A. 인라인 한 줄
 
@@ -135,6 +137,38 @@
 ### 형식 C. 시스템 프롬프트 영구 등록
 
 자주 쓰는 리스트는 아래 placeholder 를 채워 두세요. 비워두면 12 카테고리만 사용합니다.
+
+### 형식 D. Brand voice profile (가장 우선)
+
+매번 같은 *브랜드 톤* / *작가 톤* 으로 다듬고 싶으면 brand voice 프로필을 사용합니다. Mode A/B/C 가 단어 리스트 위주라면, Brand voice 는 **frontmatter (preserve / ban / prefer / ending_default / emoji_policy / length_bias) + 자유 형식 톤 가이드** 로 풍부한 톤을 잡습니다.
+
+- 템플릿 / 케이스 스터디는 `examples/brand-voice-template.md` / `brand-voice-toss-style.md` / `brand-voice-essayist.md` 참조 (이 파일은 SKILL 환경에서만 직접 접근 가능합니다).
+- ChatGPT / Cursor / Gemini 환경에서는 이 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어 붙여 시스템 프롬프트로 등록하세요.
+
+```
+---
+name: my-brand
+domain_default: blog
+ending_default: ~다
+emoji_policy: sparse
+length_bias: concise
+preserve:
+  - "딥다이브"
+ban:
+  - "활용"
+  - "혁신적인"
+prefer:
+  - "사용 → 쓰기"
+---
+
+## Tone guide (자유 기술)
+- 1 문장 8-15 자 권장.
+- 강조는 단어가 아니라 문장 길이로.
+```
+
+세션 / 시스템 프롬프트 안에 한 brand voice 만 활성화합니다. 두 개 동시 활성화하면 충돌해서 결과가 일관되지 않을 수 있습니다.
+
+같은 brand voice 안에서는 `preserve` > `ban` > `prefer` 순서로 우선순위가 적용됩니다.
 
 ## My personal list
 
