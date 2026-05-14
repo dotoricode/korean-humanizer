@@ -6,7 +6,7 @@
 
 [English](README.md) · [한국어](README.ko.md)
 
-![korean-humanizer preview](assets/social-card.svg)
+![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## 30 秒试用
 

@@ -12,7 +12,7 @@
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 
-![korean-humanizer preview](assets/social-card.svg)
+![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## Try It in 30 Seconds
 

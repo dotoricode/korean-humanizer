@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title desc">
+  <title id="title">korean-humanizer translation preview</title>
+  <desc id="desc">English to Korean translation compared with the same translation after korean-humanizer, based on eval/fixtures/email-03-vendor-followup.md.</desc>
+  <rect width="1280" height="640" fill="#111827"/>
+  <rect x="64" y="64" width="1152" height="512" rx="28" fill="#f8fafc"/>
+
+  <text x="104" y="126" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="42" font-weight="800" fill="#111827">korean-humanizer</text>
+  <text x="104" y="170" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="24" fill="#475569">English → Korean translation, then Korean-specific humanizing</text>
+
+  <rect x="104" y="206" width="1072" height="66" rx="16" fill="#e0f2fe"/>
+  <text x="132" y="248" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="23" fill="#0f172a">Source: “Thank you for your cooperation. I’m writing to confirm the items discussed in our last meeting.”</text>
+
+  <rect x="104" y="308" width="500" height="172" rx="18" fill="#fee2e2"/>
+  <text x="132" y="350" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="23" font-weight="700" fill="#991b1b">Korean translation only</text>
+  <text x="132" y="392" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="28" fill="#111827">진심으로 감사드립니다.</text>
+  <text x="132" y="430" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="28" fill="#111827">논의되었던 사항에 대해</text>
+  <text x="132" y="468" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="28" fill="#111827">추가적으로 확인을 드리고자</text>
+
+  <path d="M628 394h64" stroke="#111827" stroke-width="12" stroke-linecap="round"/>
+  <path d="M676 370l28 24-28 24" fill="none" stroke="#111827" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="724" y="308" width="452" height="172" rx="18" fill="#dcfce7"/>
+  <text x="752" y="350" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="23" font-weight="700" fill="#166534">+ korean-humanizer</text>
+  <text x="752" y="392" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="30" fill="#111827">감사드립니다.</text>
+  <text x="752" y="432" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="30" fill="#111827">논의된 사항에 대해</text>
+  <text x="752" y="472" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="30" fill="#111827">추가로 확인을 드리고자</text>
+
+  <text x="104" y="532" font-family="Inter, Pretendard, Apple SD Gothic Neo, sans-serif" font-size="21" fill="#475569">Humanized from eval/fixtures/email-03-vendor-followup.md · Codex / Claude Code</text>
+</svg>

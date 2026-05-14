@@ -14,7 +14,7 @@
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 [![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
-![korean-humanizer preview](assets/social-card.svg)
+![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## Try It in 30 Seconds
 
@@ -334,7 +334,7 @@ korean-humanizer/
 ├── LICENSE                                    # MIT
 ├── CONTRIBUTING.md                            # 기여 가이드
 ├── assets/
-│   └── social-card.svg                        # GitHub social preview / README visual
+│   └── translation-humanizer-card.svg         # GitHub social preview / README visual
 ├── korean-humanizer-research.md               # 연구 근거 / feature schema / 평가 루브릭 / 윤리 (raw)
 ├── korean-humanizer-research-humanized.md     # 위 위키를 humanizer 로 다듬은 결과 (시연용)
 ├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 / eval-harness 검증(fail)
