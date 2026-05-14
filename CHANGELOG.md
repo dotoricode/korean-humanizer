@@ -14,6 +14,8 @@ S4 베타 운영 / 피드백 반영 작업 진행 중. v1.0.0-rc → v1.0.0 GA �
 - `docs/LAUNCH.md` — v1.0 공개 / 커뮤니티 공유용 한국어·영어 문구.
 - `docs/GITHUB-TOPICS.md` — GitHub topic 추천 목록.
 - `assets/social-card.svg` — README / GitHub social preview 용 정적 이미지.
+- README 번역 정책 정리 — `README.md` 를 영어 메인으로 전환, 기존 한국어판은 `README.ko.md` 로 보존, 중국어 간결판 `README.zh-CN.md` 추가.
+- AI 도구 포지셔닝을 Codex / Claude Code 중심으로 정리하고, 기타 LLM 은 portable prompt 호환으로 낮춰 표기.
 
 ---
 

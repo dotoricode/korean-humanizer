@@ -4,7 +4,7 @@
 
 ## One-liner
 
-한국어 AI 생성 텍스트에서 번역체, 과한 격식, "활용/극대화/이러한" 같은 AI 티를 걷어내는 한국어 전용 humanizer skill / prompt.
+한국어 AI 생성 텍스트에서 번역체, 과한 격식, "활용/극대화/이러한" 같은 AI 티를 걷어내는 Codex / Claude Code 용 한국어 전용 humanizer skill.
 
 ## Short Post — Korean
 
@@ -16,15 +16,15 @@
 
 - 12 카테고리 / 100+ 한국어 AI 티 패턴
 - 블로그, 이메일, LinkedIn, YouTube, 뉴스레터, 학술, 뉴스, 채팅, 리뷰, B2B 메시지 등 12 도메인
-- Claude Code / OpenCode / Codex skill
-- ChatGPT / Cursor / Gemini 에 붙여 넣는 system prompt
+- Codex / Claude Code skill
+- 다른 LLM 환경에서도 쓸 수 있는 portable system prompt
 - 의미 보존, 20% cap, 문단 3곳 룰, 발화체 ~다체 금지
 
 Repo: https://github.com/dotoricode/korean-humanizer
 
 ## Short Post — English
 
-I built `korean-humanizer`, a Korean-specific AI writing humanizer.
+I built `korean-humanizer`, a Korean-specific AI writing humanizer for Codex and Claude Code.
 
 English AI-writing tells do not map cleanly to Korean. Korean LLM text has its own patterns: translation-ese, stiff honorifics, overused words like `활용` / `극대화`, excessive `이러한` / `해당`, and register mismatches around sentence endings.
 
@@ -33,15 +33,15 @@ This repo packages:
 - 12 categories of Korean AI-writing tells
 - 100+ Korean-specific patterns
 - 12 writing domains
-- a Claude Code / OpenCode / Codex skill
-- a portable system prompt for ChatGPT / Cursor / Gemini
+- a Codex / Claude Code skill
+- a portable system prompt for other LLM environments
 - eval fixtures for meaning-preserving, low-touch edits
 
 Repo: https://github.com/dotoricode/korean-humanizer
 
 ## README Pitch
 
-If you write Korean with LLMs, this is a practical last-pass editor: paste the generated Korean, keep the meaning, remove the tells.
+If you write Korean with Codex or Claude Code, this is a practical last-pass editor: keep the meaning, remove the Korean AI-writing tells.
 
 ## Places To Share
 
@@ -49,9 +49,9 @@ If you write Korean with LLMs, this is a practical last-pass editor: paste the g
 - X / Threads
 - LinkedIn
 - Korean writing / creator communities
-- Cursor / Claude Code / OpenCode communities
+- Codex / Claude Code communities
 - Korean NLP / LLM communities
 
 ## Suggested Topics
 
-`ai-detection`, `ai-writing`, `chatgpt`, `claude`, `claude-code`, `claude-skill`, `cursor`, `cursor-rules`, `humanizer`, `korean`, `korean-language`, `korean-nlp`, `korean-writing`, `llm`, `opencode`, `prompt`, `prompt-engineering`, `style-transfer`, `writing-tools`
+`ai-detection`, `ai-writing`, `codex`, `claude`, `claude-code`, `claude-skill`, `humanizer`, `korean`, `korean-language`, `korean-nlp`, `korean-writing`, `llm`, `prompt`, `prompt-engineering`, `style-transfer`, `writing-tools`
