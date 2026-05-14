@@ -43,7 +43,7 @@ notes: 짧은 코멘트 (선택)
 | `domain` | ✓ | 12 도메인 중 하나 (`blog` `marketing` `email` `linkedin` `youtube` `newsletter` `wiki` `academic` `news` `chat` `review` `b2b-message`) |
 | `cap` | | 수정 비율 임계 (% 단위, 기본 20) |
 | `paragraph_cap` | | 단락 cap (기본 3) |
-| `expected_failures` | | 의도적으로 실패해야 할 metric 목록 (예: `m4` — trap fixture). 콤마 구분 (`m1, m3`). |
+| `expected_failures` | | 의도적으로 실패해야 할 metric 목록 (예: `m4` — trap fixture). 콤마 구분 (`m1, m3`). 일반 품질 fixture 에는 쓰지 않는다. |
 | `brand_voice` | | brand voice profile 파일 path (옵션, v0.8). 있으면 M5 활성 — preserve 단어가 humanized 에 모두 살아있는지 검증. 예: `examples/brand-voice-toss-style.md`. |
 | `notes` | | fixture 가 검증하는 시나리오 한 줄 |
 
@@ -64,10 +64,12 @@ bash scripts/eval-harness.sh
 
 `scripts/eval-harness.py --no-strict` 로 단순 리포트만 생성. fixture 수정 → 점수 변화 확인 워크플로우에 사용.
 
+Scorecard 의 `Clean pass` 는 실제 품질 통과, `Expected-failure pass` 는 trap / known-risk fixture 통과다. v1 안정화에서는 일반 품질 fixture 의 expected failure 를 줄이고, 남기는 항목은 파일명과 `notes` 에 trap 목적을 명시한다.
+
 ## Fixture 큐레이션 가이드
 
 - 같은 도메인 fixture 가 너무 몰리지 않게 — 도메인 별 1-3 개.
 - raw 는 모델 평소 출력 그대로 (humanizer 의식 X).
 - humanized 는 SKILL 룰 안에서만 손댐 (통째로 새로 쓰지 않음).
 - 짧은 fixture (1-2 문장) 와 장문 fixture (40+ 문장) 모두 포함.
-- 톤 위반·과다 수정 등 의도적 trap 1-2 개 — `expected_failures` 명시.
+- 톤 위반·과다 수정 등 의도적 trap 1-2 개 — `expected_failures` 명시. 실제 예시 품질을 보여주는 fixture 에는 expected failure 를 붙이지 않는다.

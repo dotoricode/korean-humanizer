@@ -6,6 +6,15 @@
 
 S4 베타 운영 / 피드백 반영 작업 진행 중. v1.0.0-rc → v1.0.0 GA 예정.
 
+### Added
+
+- README 첫 화면에 30초 체험 섹션 + 정적 preview card 추가.
+- `PROMPT.short.md` — ChatGPT / Claude / Cursor / Gemini 에 바로 붙여 넣는 짧은 system prompt.
+- `CHEATSHEET.md` — 한국어 AI 티 30개 빠른 표 + 도메인별 기본 방향.
+- `docs/LAUNCH.md` — v1.0 공개 / 커뮤니티 공유용 한국어·영어 문구.
+- `docs/GITHUB-TOPICS.md` — GitHub topic 추천 목록.
+- `assets/social-card.svg` — README / GitHub social preview 용 정적 이미지.
+
 ---
 
 ## [0.8.0] — 2026-04-30

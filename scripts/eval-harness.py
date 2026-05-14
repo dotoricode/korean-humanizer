@@ -312,6 +312,10 @@ def write_scorecard(path: Path, results):
     total = len(results)
     passed = sum(1 for r in results if r["overall_pass"])
     failed = total - passed
+    clean_passed = sum(1 for r in results if r["overall_pass"] and not r["actual_failures"])
+    expected_passed = sum(1 for r in results if r["overall_pass"] and r["actual_failures"])
+    expected_metrics = sum(len(r["actual_failures"]) for r in results if r["overall_pass"] and r["actual_failures"])
+    stale_expected = sum(len(r["missing_expected"]) for r in results)
 
     rows = []
     for r in results:
@@ -354,8 +358,10 @@ def write_scorecard(path: Path, results):
 ## Summary
 
 - Total fixtures: **{total}**
-- Pass: **{passed}** ({passed/total*100:.1f}%)
-- Fail: **{failed}**
+- Clean pass: **{clean_passed}** ({clean_passed/total*100:.1f}%)
+- Expected-failure pass: **{expected_passed}** fixtures / **{expected_metrics}** metric failures
+- Unexpected fail: **{failed}**
+- Declared expected failures that no longer fail: **{stale_expected}**
 
 ## Per-fixture results
 
@@ -370,7 +376,7 @@ def write_scorecard(path: Path, results):
 - **M3**: char-length ratio (humanized / raw). `pass` 0.5–1.05, `warn` 0.30–0.5 or 1.05–1.20, `fail` <0.30 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
 - **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
-- Overall ✗ marked `(expected: m4)` etc. for trap fixtures — not an actual regression.
+- Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.
 """
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")

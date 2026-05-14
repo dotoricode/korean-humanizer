@@ -12,6 +12,27 @@
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
 [![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
+![korean-humanizer preview](assets/social-card.svg)
+
+## Try It in 30 Seconds
+
+설치 없이 바로 써보고 싶으면 [`PROMPT.short.md`](PROMPT.short.md)를 ChatGPT / Claude / Cursor / Gemini 의 system prompt 또는 첫 메시지에 붙여 넣는다. 더 엄격한 전체 버전은 [`PROMPT.md`](PROMPT.md).
+
+```text
+이거 AI 티 빼줘:
+
+🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고,
+이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
+```
+
+결과:
+
+```text
+이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 더 좋게 만들 수 있어요.
+```
+
+Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) · [`CHEATSHEET.md`](CHEATSHEET.md) · [`SKILL.md`](SKILL.md) · [`references/ko-ai-signals.md`](references/ko-ai-signals.md)
+
 ## What it does — 5초 요약
 
 | Before *(AI 원문)* | After *(humanized)* |
@@ -22,7 +43,7 @@
 
 **한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v0.8 부터** 4 번째 mode (`brand voice profile`) 로 *짧고 직설 / 길고 사변* 같은 본인 톤을 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
-🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그 (메인 IP)](references/ko-ai-signals.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
+🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그](references/ko-ai-signals.md) · ⚡ [30개 치트시트](CHEATSHEET.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
 ## Overview
 
@@ -202,7 +223,7 @@ alwaysApply: false
 
 ### ChatGPT / Gemini / 기타 LLM
 
-[`PROMPT.md`](PROMPT.md) 전체를 시스템 프롬프트(또는 첫 메시지)에 붙여 넣고, 다듬을 한국어 텍스트를 입력하면 된다.
+빠른 체험은 [`PROMPT.short.md`](PROMPT.short.md), 실제 사용은 [`PROMPT.md`](PROMPT.md) 전체를 시스템 프롬프트(또는 첫 메시지)에 붙여 넣고, 다듬을 한국어 텍스트를 입력하면 된다.
 
 ## Usage
 
@@ -228,7 +249,7 @@ alwaysApply: false
 
 ### Claude.ai / ChatGPT / Cursor / Gemini
 
-`PROMPT.md` 를 시스템 프롬프트(또는 Cursor Rule)에 붙여 넣은 뒤 한국어 텍스트만 입력하면 된다. 별도 명령어 없이 바로 humanize 된다.
+빠른 체험은 `PROMPT.short.md`, 실제 사용은 `PROMPT.md` 를 시스템 프롬프트(또는 Cursor Rule)에 붙여 넣은 뒤 한국어 텍스트만 입력하면 된다. 별도 명령어 없이 바로 humanize 된다.
 
 ### Personal List + Brand Voice 캘리브레이션
 
@@ -273,7 +294,7 @@ humanizer 가 기대와 다르게 동작할 때 가장 자주 마주치는 5 가
 
 ### 결과가 내 스타일과 다를 때
 
-humanizer 의 디폴트는 12 카테고리 카탈로그 — 일반적인 한국어 LLM 톤 기준이다. 본인 톤과 어긋나는 부분이 반복되면 **Personal List 캘리브레이션** 으로 카탈로그보다 먼저 적용되는 사용자 우선 룰을 두 줄 정도 깔아두는 게 가장 빠르다. 위 [Personal List 캘리브레이션](#personal-list-캘리브레이션) 의 세 가지 방식 중 하나를 쓰면 된다.
+humanizer 의 디폴트는 12 카테고리 카탈로그 — 일반적인 한국어 LLM 톤 기준이다. 본인 톤과 어긋나는 부분이 반복되면 **Personal List + Brand Voice 캘리브레이션** 으로 카탈로그보다 먼저 적용되는 사용자 우선 룰을 두 줄 정도 깔아두는 게 가장 빠르다. 위 [Personal List + Brand Voice 캘리브레이션](#personal-list--brand-voice-캘리브레이션) 의 네 가지 방식 중 하나를 쓰면 된다.
 
 ### 변경이 너무 적을 때
 
@@ -306,8 +327,12 @@ korean-humanizer/
 ├── README.md                                  # 이 파일
 ├── SKILL.md                                   # Claude Code / Cowork / OpenCode / Codex 진입점
 ├── PROMPT.md                                  # 일반 LLM 시스템 프롬프트 / Cursor Rule
+├── PROMPT.short.md                            # 30초 체험용 짧은 system prompt
+├── CHEATSHEET.md                              # 한국어 AI 티 30개 빠른 표
 ├── LICENSE                                    # MIT
 ├── CONTRIBUTING.md                            # 기여 가이드
+├── assets/
+│   └── social-card.svg                        # GitHub social preview / README visual
 ├── korean-humanizer-research.md               # 연구 근거 / feature schema / 평가 루브릭 / 윤리 (raw)
 ├── korean-humanizer-research-humanized.md     # 위 위키를 humanizer 로 다듬은 결과 (시연용)
 ├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 / eval-harness 검증(fail)
@@ -325,6 +350,9 @@ korean-humanizer/
 │   └── scorecard.md                           # CI 가 매 머지마다 갱신하는 fixture 별 metric 표 (auto-gen)
 ├── references/
 │   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 v2 (4 컬럼: 나쁨/자연스러움/빈도/적용 도메인)
+├── docs/
+│   ├── LAUNCH.md                              # v1.0 공개 / 커뮤니티 공유용 짧은 문구
+│   └── GITHUB-TOPICS.md                       # GitHub topic 추천 목록
 └── examples/
     ├── before-after.md                        # 패턴 카탈로그 적용 사례 (3 도메인)
     ├── agent-vs-skill.md                      # 실제 에이전트 raw vs skill 적용 비교 (6 도메인)
@@ -344,6 +372,7 @@ korean-humanizer/
 ## References
 
 - [`references/ko-ai-signals.md`](references/ko-ai-signals.md) — 12 카테고리 / 100+ 한국어 AI 패턴 카탈로그 (메인 IP)
+- [`CHEATSHEET.md`](CHEATSHEET.md) — 한국어 AI 티 30개 빠른 표
 - [`korean-humanizer-research.md`](korean-humanizer-research.md) · [Wiki](https://github.com/dotoricode/korean-humanizer/wiki) — KatFish/XDAC 등 한국어 탐지 연구 정리, feature schema, 평가 루브릭, 윤리 가이드
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — 영어 패턴 1차 소스 (영감)
 - [`blader/humanizer`](https://github.com/blader/humanizer) — 영어 humanizer skill (구조 참고)

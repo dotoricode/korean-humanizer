@@ -3,8 +3,8 @@ domain: marketing
 cap: 30
 paragraph_cap: 3
 brand_voice: examples/brand-voice-toss-style.md
-expected_failures: m1, m3
-notes: Brand voice (Toss 풍 핀테크) 적용 fixture — length_bias=concise 라 압축률 0.40 부근 → m3 warn 또는 fail. 1 문단 마케팅 카피 → m1 도 cap 초과 expected. M5 preserve (쉽게/빠르게/간편하게) 가 humanized 에 살아있는지 검증.
+expected_failures: m1
+notes: Brand voice (Toss 풍 핀테크) 적용 fixture — length_bias=concise 라 압축률 warn 까지는 허용. 1 문단 마케팅 카피 → m1 은 cap 초과 expected. M5 preserve (쉽게/빠르게/간편하게) 가 humanized 에 살아있는지 검증.
 ---
 
 ## Raw

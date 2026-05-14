@@ -2,14 +2,16 @@
 
 # Eval scorecard
 
-> Generated: 2026-04-30 05:21 UTC
+> Generated: 2026-05-14 08:51 UTC
 > Source: `eval/fixtures/*.md` (25 fixtures)
 
 ## Summary
 
 - Total fixtures: **25**
-- Pass: **25** (100.0%)
-- Fail: **0**
+- Clean pass: **9** (36.0%)
+- Expected-failure pass: **16** fixtures / **26** metric failures
+- Unexpected fail: **0**
+- Declared expected failures that no longer fail: **0**
 
 ## Per-fixture results
 
@@ -21,7 +23,7 @@
 | blog-02-quarterly-retro.md | blog | ✓ 17.8% (8/45) | ✓ max=2 | pass 0.92 | n/a (0→0) | n/a | ✓ |
 | blog-03-remote-work.md | blog | ✗ 100.0% (6/6) | ✗ max=6 | pass 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
 | blog-04-side-project.md | blog | ✓ 6.7% (1/15) | ✓ max=1 | pass 0.95 | n/a (0→0) | n/a | ✓ |
-| brand-voice-01-toss-style-marketing.md | marketing | ✗ 100.0% (3/3) | ✓ max=3 | warn 0.34 | n/a (0→0) | pass (4/4) | ✓ (expected: m1,m3) |
+| brand-voice-01-toss-style-marketing.md | marketing | ✗ 100.0% (3/3) | ✓ max=3 | warn 0.34 | n/a (0→0) | pass (4/4) | ✓ (expected: m1) |
 | chat-01-kakao-biz.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | pass 0.74 | n/a (0→0) | n/a | ✓ (expected: m1) |
 | chat-02-dm-reply.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | pass 0.66 | n/a (0→0) | n/a | ✓ (expected: m1) |
 | edge-short-01-one-sentence.md | marketing | ✗ 100.0% (1/1) | ✓ max=1 | pass 0.78 | n/a (0→0) | n/a | ✓ (expected: m1) |
@@ -48,4 +50,4 @@
 - **M3**: char-length ratio (humanized / raw). `pass` 0.5–1.05, `warn` 0.30–0.5 or 1.05–1.20, `fail` <0.30 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
 - **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
-- Overall ✗ marked `(expected: m4)` etc. for trap fixtures — not an actual regression.
+- Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.
