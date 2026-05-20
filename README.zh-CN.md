@@ -78,6 +78,16 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/ko
 - 保留韩语语气和敬语等级。
 - YouTube / 播客 / 讲稿等口语文本不能改成书面 `~다` 体。
 
+## Services using korean-humanizer
+
+由 Socialistic/Tinkerland 运营的第三方 community demo。这不是本仓库的官方服务。
+由于这个 demo 在本仓库之外运行，用户输入的内容会由 Socialistic/Tinkerland 处理。
+
+[![Try writing-dotoricode-korean-humanizer-5d759b on Socialistic][socialistic-demo-badge]][socialistic-demo-link]
+
 ## 许可证
 
 MIT。
+
+[socialistic-demo-badge]: https://socialistic.ai/api/embed/writing-dotoricode-korean-humanizer-5d759b
+[socialistic-demo-link]: https://socialistic.ai/zh/skill/writing-dotoricode-korean-humanizer-5d759b?utm_source=github&utm_medium=readme&utm_campaign=20260520-writing-koc-creators&utm_content=badge
