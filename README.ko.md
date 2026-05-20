@@ -413,6 +413,13 @@ v1.0 부터 SemVer freeze 약속:
 - **0.6.0** *(S1 — Eval foundation, 2026-04-29)* — eval-harness 4 metric, 20 fixture, scorecard auto-gen, 5 번째 CI job.
 - **0.5.0 이하** — 자동 검증 layer / Personal list 인라인 / 연구 근거 부록 / 에이전트 비교 / 초기 카탈로그. → [CHANGELOG](CHANGELOG.md)
 
+## Services using korean-humanizer
+
+Socialistic/Tinkerland 가 운영하는 제3자 community demo. 이 저장소의 공식 서비스는 아니다.
+이 데모는 이 저장소 밖에서 실행되므로, 사용자가 입력한 내용은 Socialistic/Tinkerland 쪽에서 처리된다.
+
+[![Try writing-dotoricode-korean-humanizer-5d759b on Socialistic][socialistic-demo-badge]][socialistic-demo-link]
+
 ## License
 
 MIT — 마음대로 사용, 수정, 배포, 상업 이용 가능. 표기 의무 외엔 제한 없음.
@@ -420,3 +427,6 @@ MIT — 마음대로 사용, 수정, 배포, 상업 이용 가능. 표기 의무
 ---
 
 *Authored by [dotoricode](https://github.com/dotoricode) · MIT License*
+
+[socialistic-demo-badge]: https://socialistic.ai/api/embed/writing-dotoricode-korean-humanizer-5d759b
+[socialistic-demo-link]: https://socialistic.ai/ko/skill/writing-dotoricode-korean-humanizer-5d759b?utm_source=github&utm_medium=readme&utm_campaign=20260520-writing-koc-creators&utm_content=badge

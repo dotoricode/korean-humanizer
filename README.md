@@ -205,6 +205,16 @@ Start with [`CONTRIBUTING.md`](CONTRIBUTING.md), then open an issue or PR:
 - [`docs/LAUNCH.md`](docs/LAUNCH.md): copy for public release posts
 - [`docs/GITHUB-TOPICS.md`](docs/GITHUB-TOPICS.md): recommended GitHub topics
 
+## Services using korean-humanizer
+
+Third-party community demo operated by Socialistic/Tinkerland. This is not an official service of this repository.
+Because the demo runs outside this repository, text entered by users is processed by Socialistic/Tinkerland.
+
+[![Try writing-dotoricode-korean-humanizer-5d759b on Socialistic][socialistic-demo-badge]][socialistic-demo-link]
+
 ## License
 
 MIT. Use it, fork it, adapt it.
+
+[socialistic-demo-badge]: https://socialistic.ai/api/embed/writing-dotoricode-korean-humanizer-5d759b
+[socialistic-demo-link]: https://socialistic.ai/en/skill/writing-dotoricode-korean-humanizer-5d759b?utm_source=github&utm_medium=readme&utm_campaign=20260520-writing-koc-creators&utm_content=badge
