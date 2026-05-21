@@ -2,9 +2,7 @@
 
 > 모든 변경은 [Keep a Changelog](https://keepachangelog.com/) 형식, 버전은 [SemVer](https://semver.org/) 규칙. v1.0 부터 freeze 영역은 [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) 참조.
 
-## [Unreleased]
-
-S4 베타 운영 / 피드백 반영 작업 진행 중. v1.0.0-rc → v1.0.0 GA 예정.
+## [1.0.0] — 2026-05-21
 
 ### Added
 
@@ -16,6 +14,23 @@ S4 베타 운영 / 피드백 반영 작업 진행 중. v1.0.0-rc → v1.0.0 GA �
 - `assets/translation-humanizer-card.svg` — README / GitHub social preview 용 정적 이미지.
 - README 번역 정책 정리 — `README.md` 를 영어 메인으로 전환, 기존 한국어판은 `README.ko.md` 로 보존, 중국어 간결판 `README.zh-CN.md` 추가.
 - AI 도구 포지셔닝을 Codex / Claude Code 중심으로 정리하고, 기타 LLM 은 portable prompt 호환으로 낮춰 표기.
+- GitHub Issue / PR 도메인 지원 추가 (SKILL.md 사용 대상 명시, 감사 표현 가이드 카탈로그 추가).
+- 워크플로우 1.5단계 신설 — 도메인 번호 선택지 확인 + 블로그/SNS/뉴스레터 참고 글(세션 범위 Brand voice) 요청.
+- 발화체 도메인(YouTube/팟캐스트/강의) 종결어미 이중 잠금 — 2단계 사전 지시 + 5단계 사후 체크.
+- 조건부 문장 병합 허용 — 의미 중복 인접 문장, 짧아지는 방향만.
+- 보존 대상 명시 — 존칭 수식어("보내주신"), 주격 조사("은/는"), 대조 연결어("다만"), 격식 이메일 주어 대명사("저희").
+- 카탈로그 패턴 추가: `일정상` → `일정이 생겨 / 일정 때문에` (chat, email 도메인).
+- `docs/STABILITY-PROMISE.md` — v1.0 freeze 영역 SemVer 정책 명문화.
+- `docs/MIGRATION-0.x-to-1.0.md` — v0.5 → v1.0 호환성 가이드.
+
+### Changed
+
+- CHANGELOG `[Unreleased]` → `[1.0.0]` 확정.
+
+### Migration
+
+- 일반 사용자: `git pull` 만으로 완료. 영향 없음.
+- 외부 fork 사용자: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md) 참조.
 
 ---
 
