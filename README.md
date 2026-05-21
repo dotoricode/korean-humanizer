@@ -1,6 +1,6 @@
 # korean-humanizer
 
-> Strips "AI smell" from Korean text — without changing what it says.
+> Korean AI output has a recognizable tell. This removes it.
 
 [한국어](README.ko.md) · [中文](README.zh-CN.md)
 
@@ -9,15 +9,17 @@
 [![Patterns](https://img.shields.io/badge/patterns-137%2B-brightgreen.svg)](references/ko-ai-signals.md)
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 
+Korean text from LLMs tends to leak: stiff formalism, empty intensifiers, filler connectives that don't exist in natural speech. Readers notice. `korean-humanizer` strips those patterns — without touching the meaning.
+
 ---
 
-| Before | After |
-|---|---|
-| 이번 프로젝트를 통해 **다양한** 기술적 도전을 경험하고 성장할 수 있었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라 **확신합니다**. 🚀 | 이번 프로젝트에서 많이 배웠습니다. 앞으로도 도움이 될 것 같습니다. |
-| 안녕하세요. **다름이 아니오라** 미팅 일정과 **관련하여** 말씀드리고자 연락드립니다. **부득이한 사정으로 인해** 일정 변경이 **불가피한 상황이 발생하여** 양해를 구하고자 합니다. | 안녕하세요. 미팅 일정 때문에 연락드립니다. 일정이 겹쳐서 변경이 필요할 것 같아요. |
-| 🚀 **혁신적인** 솔루션을 **활용하여** **다양한** 비즈니스 **가치를 극대화**하고, **이러한 접근을 통해** 사용자 경험을 **한층 더 고도화**할 수 있습니다. ✨ | 이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 개선할 수 있습니다. |
+| | Before | After |
+|---|---|---|
+| LinkedIn | 이번 프로젝트를 통해 **다양한** 기술적 도전을 경험하고 성장할 수 있었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라 **확신합니다**. 🚀 | 이번 프로젝트에서 많이 배웠습니다. 앞으로도 도움이 될 것 같습니다. |
+| Email | 안녕하세요. **다름이 아니오라** 미팅 일정과 **관련하여** 말씀드리고자 연락드립니다. **부득이한 사정으로 인해** 일정 변경이 **불가피한 상황이 발생하여** 양해를 구하고자 합니다. | 안녕하세요. 미팅 일정 때문에 연락드립니다. 일정이 겹쳐서 변경이 필요할 것 같아요. |
+| Marketing | 🚀 **혁신적인** 솔루션을 **활용하여** **다양한** 비즈니스 **가치를 극대화**하고, **이러한 접근을 통해** 사용자 경험을 **한층 더 고도화**할 수 있습니다. ✨ | 이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 개선할 수 있습니다. |
 
-**Bold** = AI tell. Removed or replaced in After.
+**Bold** = AI tell. Stripped or rewritten in After. → [Try it in 30 seconds](#install)
 
 ---
 
