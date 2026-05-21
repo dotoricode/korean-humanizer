@@ -1,0 +1,92 @@
+[
+  {
+    "name": "code-change",
+    "kind": "built-in",
+    "context": "small",
+    "use_when": "Add, change, or refactor code with a clear scope.",
+    "asks": [
+      "What is the target?",
+      "What should not change?"
+    ],
+    "checks": [
+      "Related files only",
+      "Tests or clear reason not run",
+      "Diff evidence"
+    ]
+  },
+  {
+    "name": "bug-fix",
+    "kind": "built-in",
+    "context": "small",
+    "use_when": "Something is broken and needs a minimal fix.",
+    "asks": [
+      "How can it be reproduced?",
+      "Expected vs actual?"
+    ],
+    "checks": [
+      "Reproduced or reason stated",
+      "Root cause identified",
+      "Regression checked"
+    ]
+  },
+  {
+    "name": "research",
+    "kind": "built-in",
+    "context": "small",
+    "use_when": "Compare options, read docs, or collect grounded facts.",
+    "asks": [
+      "What decision should this support?",
+      "What sources matter?"
+    ],
+    "checks": [
+      "Public sources linked",
+      "Facts separated from guesses",
+      "Next action stated"
+    ]
+  },
+  {
+    "name": "review",
+    "kind": "built-in",
+    "context": "small",
+    "use_when": "Review changes, risks, or a PR/diff.",
+    "asks": [
+      "What is the base?",
+      "What risks matter most?"
+    ],
+    "checks": [
+      "Changed files inspected",
+      "Findings actionable",
+      "No unsupported claims"
+    ]
+  },
+  {
+    "name": "docs",
+    "kind": "built-in",
+    "context": "tiny",
+    "use_when": "Write or improve README, guides, PRDs, or user-facing docs.",
+    "asks": [
+      "Who is the reader?",
+      "What should they do next?"
+    ],
+    "checks": [
+      "Audience clear",
+      "Examples included if useful",
+      "Plain language"
+    ]
+  },
+  {
+    "name": "ship",
+    "kind": "built-in",
+    "context": "small",
+    "use_when": "Prepare a PR, release, deployment, or public handoff.",
+    "asks": [
+      "What is shipping?",
+      "What rollback or risk matters?"
+    ],
+    "checks": [
+      "Checks passed",
+      "Known risks stated",
+      "Handoff is clear"
+    ]
+  }
+]

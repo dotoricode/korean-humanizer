@@ -13,3 +13,9 @@ Thumbs.db
 # Python (eval-harness)
 __pycache__/
 *.pyc
+
+# Tink runtime state
+.tiny/current/
+.tiny/runs/
+.tiny/cache/
+.tiny/memory/

@@ -1,0 +1,6 @@
+{
+  "name": "tiny-harness-suggestion",
+  "description": "Optional Claude Code hook template. Use only after /tiny:setup approval. It should suggest harnesses, not auto-apply them.",
+  "event": "UserPromptSubmit",
+  "behavior": "Read the user prompt, inspect .tiny/harnesses/index.json, suggest 1-4 harnesses, and ask for approval before continuing."
+}

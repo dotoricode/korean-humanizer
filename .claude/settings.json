@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if [ -f .tiny/harnesses/index.json ]; then echo '[tiny] Available harnesses:'; python3 -c \"import json; h=json.load(open('.tiny/harnesses/index.json')); [print(f'  - {e[\\\"name\\\"]}: {e[\\\"use_when\\\"]}') for e in h]\"; echo 'Run /tiny:use to load relevant harnesses before starting.'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}

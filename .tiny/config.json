@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "context_mode": "compact",
+  "max_harnesses_per_task": 4,
+  "prefer_existing_harnesses": true,
+  "read_runs_by_default": false,
+  "save_new_harnesses_after_approval": true,
+  "max_harness_lines": 100,
+  "tone": "calm",
+  "humor": "off"
+}
