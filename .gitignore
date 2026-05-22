@@ -14,8 +14,9 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Tink runtime state
-.tiny/current/
-.tiny/runs/
-.tiny/cache/
-.tiny/memory/
+# Local tooling (not project artifacts)
+.tink/
+.serena/
+.claude/
+korean-humanizer-research*.md
+
