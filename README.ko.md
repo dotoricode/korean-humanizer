@@ -7,7 +7,8 @@
 [English](README.md) · [中文](README.zh-CN.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/status-v1.0--rc-orange.svg)](docs/STABILITY-PROMISE.md)
+[![Version](https://img.shields.io/badge/version-v1.0.1-brightgreen.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)](docs/STABILITY-PROMISE.md)
 [![Patterns](https://img.shields.io/badge/patterns-137%2B-brightgreen.svg)](references/ko-ai-signals.md)
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 [![Modes](https://img.shields.io/badge/customization-4_modes-brightgreen.svg)](#personal-list--brand-voice-캘리브레이션)
@@ -30,7 +31,7 @@
 결과:
 
 ```text
-이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 더 좋게 만들 수 있어요.
+이 솔루션으로 여러 비즈니스 가치를 더 크게 만들고, 사용자 경험도 한 단계 개선할 수 있어요.
 ```
 
 Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) · [`CHEATSHEET.md`](CHEATSHEET.md) · [`SKILL.md`](SKILL.md) · [`references/ko-ai-signals.md`](references/ko-ai-signals.md)
@@ -39,11 +40,11 @@ Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) ·
 
 | Before *(AI 원문)* | After *(humanized)* |
 |---|---|
-| 🚀 **혁신적인** 솔루션을 **활용하여** **다양한** 비즈니스 **가치를 극대화**하고, **이러한 접근을 통해** 사용자 경험을 **한층 더** **고도화**할 수 있습니다. ✨ | 이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 더 좋게 만들 수 있어요. |
-| 지난 6개월간 **다양한** 프로젝트를 **통해** **많은 것을 배우고 성장할 수 있었던** **의미 있는** 시간이었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라고 **확신합니다**. 🙌 | 지난 6개월 동안 프로젝트 몇 개 하면서 많이 배웠어요. 다음에 또 써먹을 경험이라 좋았어요. |
-| 본 사항은 **다양한** 측면에서 **신중하게 고려되어야** 할 필요가 있을 것으로 **사료됩니다**. | 이 건은 좀 더 봐야 할 것 같아요. |
+| 🚀 **혁신적인** 솔루션을 **활용하여** **다양한** 비즈니스 **가치를 극대화**하고, **이러한 접근을 통해** 사용자 경험을 **한층 더** **고도화**할 수 있습니다. ✨ | 이 솔루션으로 여러 비즈니스 가치를 더 크게 만들고, 사용자 경험도 한 단계 개선할 수 있어요. |
+| 지난 6개월간 **다양한** 프로젝트를 **통해** **많은 것을 배우고 성장할 수 있었던** **의미 있는** 시간이었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라고 **확신합니다**. 🙌 | 지난 6개월 동안 여러 프로젝트를 하며 많이 배우고 성장할 수 있었습니다. 이 경험은 앞으로의 커리어에도 소중한 자산이 될 것 같습니다. |
+| 본 사항은 **다양한** 측면에서 **신중하게 고려되어야** 할 필요가 있을 것으로 **사료됩니다**. | 이 사항은 여러 측면에서 신중하게 검토할 필요가 있어 보입니다. |
 
-**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v0.8 부터** 4 번째 mode (`brand voice profile`) 로 *짧고 직설 / 길고 사변* 같은 본인 톤을 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
+**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v1.0.1 부터는 humanizer 가 요약기가 아니라는 점을 더 강하게 고정해, 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.** Brand voice profile 로 *짧고 직설 / 길고 사변* 같은 본인 톤도 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
 🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그](references/ko-ai-signals.md) · ⚡ [30개 치트시트](CHEATSHEET.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
@@ -55,12 +56,13 @@ Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) ·
 
 > "AI 가 쓴 한국어는 읽으면 티가 난다. humanizer 는 그 티를 걷어낸다 — **의미는 그대로 두고 표현만**."
 
-humanizer 는 4 가지 안전장치를 지킨다:
+humanizer 는 5 가지 안전장치를 지킨다:
 
 1. **의미 불변** — 팩트 / 숫자 / 고유명사 / 인용문 / 링크는 절대 바꾸지 않는다.
-2. **20% cap** — 전체 문장 수의 20% 이상 수정하지 않는다.
-3. **문단 3곳 룰** — 한 문단에 3 곳 이상 건드리지 않는다.
-4. **자연스러움 > 완벽함** — 살짝 덜 매끄러운 게 더 사람답다. 과도한 세련미는 오히려 AI 티.
+2. **요약 금지** — 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.
+3. **20% cap** — 전체 문장 수의 20% 이상 수정하지 않는다.
+4. **문단 3곳 룰** — 한 문단에 3 곳 이상 건드리지 않는다.
+5. **자연스러움 > 완벽함** — 살짝 덜 매끄러운 게 더 사람답다. 과도한 세련미는 오히려 AI 티.
 
 ## 12 Categories Detected (with Before/After Examples)
 
@@ -80,14 +82,14 @@ humanizer 는 4 가지 안전장치를 지킨다:
 | 3 | **번역체 / 과격식** (Translation-ese) | "~에 있어서 / ~을 통해 / ~에 의해 / ~함에 있어" | "~에서 / ~로 / ~가 / ~할 때" |
 | 4 | **"것이다 / 이러한 / 해당" 과다** | "사실 ~인 것이다 / 이러한 이유로 / 해당 시스템은" | "사실 ~다 / 이 때문에 / 그 시스템은" |
 | 6 | **수동태 / 모호한 주어** | "고려되어야 합니다 / 활용되어 왔다 / 평가되고 있다" | "고려해야 한다 / 자주 쓰였다 / (누가) 평가한다" |
-| 7 | **불필요한 연결어** (Filler Connectives) | "또한 / 뿐만 아니라 / 따라서 / 결론적으로" | (대부분 삭제. 새 문장으로 시작) |
-| 12 | **AI 고빈도 어휘** (Korean LLM Tells) | "활용 / 극대화 / 시사한다 / 도모 / 모색 / ~의 일환으로" | "사용 / 가장 크게 / 보여준다 / 챙기기 / 찾기 / (삭제)" |
+| 7 | **불필요한 연결어** (Filler Connectives) | "또한 / 뿐만 아니라 / 따라서 / 결론적으로" | 반복되면 줄이고, 논리 역할이 있으면 보존 |
+| 12 | **AI 고빈도 어휘** (Korean LLM Tells) | "활용 / 극대화 / 시사한다 / 도모 / 모색 / ~의 일환으로" | "사용 / 가장 크게 / 보여준다 / 챙기기 / 찾기 / 문맥상 짧게 치환" |
 
 ### Style Patterns
 
 | # | Pattern | Before | After |
 |---|---------|--------|-------|
-| 5 | **판에 박힌 개시 / 마무리** | "안녕하세요! 오늘은 ~에 대해 알아보겠습니다 ... 도움이 되셨길 바랍니다!" | (바로 본론, 그냥 끝) |
+| 5 | **판에 박힌 개시 / 마무리** | "안녕하세요! 오늘은 ~에 대해 알아보겠습니다 ... 도움이 되셨길 바랍니다!" | 역할 없는 장식만 축소, 인사 / 감사 / CTA 는 보존 |
 | 8 | **과도한 3항 나열** (Forced Triplets) | "빠르고 정확하며 효율적입니다. 간단하고 명확하며 실용적입니다." | "빠르고 정확하다. 쓰기도 어렵지 않다." |
 | 10 | **이모지 / 이모티콘 남발** | "🚀 **시작하기** 💡 **핵심 포인트** ✨ **결론** 👏" | (헤더당 0~1 개. 의미 있는 자리에만) |
 
@@ -123,9 +125,9 @@ humanizer 는 4 가지 안전장치를 지킨다:
 
 - "운영하는 / 존재하지만" → "만든 / 있지만" (#3 번역체·과격식)
 - "분산되어 있다" → "흩어져 있다" (#6 수동태) · "그대로 이식해서는 잘 작동하지 않는다고 보여 준다" → "그대로 가져다 쓰면 잘 안 된다고 본다" (서술형 회복 + 단언)
-- "동시에 / 따라서 / 뿐만 아니라 / 또한" 류 연결어 절제, 첫 줄 군더더기 제거 (#7)
+- "동시에 / 따라서 / 뿐만 아니라 / 또한" 류 연결어는 반복될 때만 줄이고, 논리 흐름이 필요한 곳은 보존 (#7)
 - "다음과 같다 / ~여야 한다 / 적용해야 한다 / 보아야 한다" 격식 명령형 → "다 / 본다 / 쓴다" 단언형 (#11 hedging + #4 것이다)
-- "매우 높은 탐지 성능을 보고했다" 의 "매우" 삭제 (#1 강조어), "이러한" 류 모두 제거 (#4)
+- "매우 높은 탐지 성능을 보고했다" 의 "매우"를 한 단계 약화 (#1 강조어), "이러한" 류는 문맥에 맞게 "이" / "그"로 치환 (#4)
 
 **정량 비교**
 
@@ -179,11 +181,12 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.config/opencode/
 
 ### Codex (OpenAI Codex CLI)
 
-Codex CLI 의 skills 디렉토리에 그대로 clone 한다.
+Codex CLI 는 설치 스크립트를 쓴다. 활성 `$CODEX_SKILLS_DIR` 와 legacy `~/.codex/skills` 경로를 함께 링크하므로, `~/.codex/skills` 만 직접 만지는 것보다 안전하다.
 
 ```bash
-mkdir -p ~/.codex/skills
-git clone https://github.com/dotoricode/korean-humanizer.git ~/.codex/skills/korean-humanizer
+git clone https://github.com/dotoricode/korean-humanizer.git
+cd korean-humanizer
+bash scripts/install-codex-skill.sh
 ```
 
 system prompt 형 진입을 선호하면 [`PROMPT.md`](PROMPT.md) 를 `~/.codex/AGENTS.md` 또는 프로젝트 루트의 `AGENTS.md` 끝에 append 해도 된다.
@@ -282,7 +285,7 @@ alwaysApply: false
 
 [`examples/personal-list.md`](examples/personal-list.md) 를 편집하거나, `SKILL.md` 하단의 `## My personal list` 섹션을 채운다.
 
-**4. Brand voice profile (가장 강한 영구 톤)** *(v0.8 신규)* — 단어 리스트 위주가 아니라 **brand 톤 전체** (preserve / ban / prefer / ending_default / emoji_policy / length_bias) 를 frontmatter 로 정의하고 본문에 자유 형식 톤 가이드를 적는다.
+**4. Brand voice profile (가장 강한 영구 톤)** — 단어 리스트 위주가 아니라 **brand 톤 전체** (preserve / ban / prefer / ending_default / emoji_policy / length_bias) 를 frontmatter 로 정의하고 본문에 자유 형식 톤 가이드를 적는다.
 
 - 템플릿 / 케이스 스터디: [`examples/brand-voice-template.md`](examples/brand-voice-template.md), [`examples/brand-voice-toss-style.md`](examples/brand-voice-toss-style.md) (짧고 직설), [`examples/brand-voice-essayist.md`](examples/brand-voice-essayist.md) (길고 사변).
 - 호출: `/korean-humanizer brand=examples/brand-voice-toss-style.md` 또는 자연어로 "Toss 풍 brand voice 로 다듬어줘".
@@ -304,7 +307,7 @@ humanizer 의 디폴트는 12 카테고리 카탈로그 — 일반적인 한국�
 
 ### 변경이 너무 많을 때 / 의미가 흐려질 때
 
-20 % cap 을 넘었을 가능성이 있다 — 짧은 글에서 과교정으로 잘 빠진다. **"보수적으로 다듬어줘"** 또는 **"꼭 필요한 곳만 손대줘"** 라고 명시하면 문단당 1-2 곳, 전체 10 % 수준으로 약하게 적용한다. 의미가 바뀐 부분이 보이면 그 문장만 "원문으로 되돌려줘" 라고 하면 된다.
+20 % cap 을 넘었거나 원문 대비 90 % 미만으로 줄었을 가능성이 있다 — 짧은 글에서 과교정으로 잘 빠진다. **"보수적으로 다듬어줘"** 또는 **"꼭 필요한 곳만 손대줘"** 라고 명시하면 문단당 1-2 곳, 전체 10 % 수준으로 약하게 적용한다. 의미가 바뀐 부분이 보이면 그 문장만 "원문으로 되돌려줘" 라고 하면 된다.
 
 ### YouTube / 팟캐스트 인트로인데 ~다체 글말체로 바뀐다
 
@@ -336,7 +339,7 @@ korean-humanizer/
 ├── assets/
 │   └── translation-humanizer-card.svg         # GitHub social preview / README visual
 ├── korean-humanizer-research.md               # 연구 근거 / feature schema / 평가 루브릭 / 윤리 (raw)
-├── korean-humanizer-research-humanized.md     # 위 위키를 humanizer 로 다듬은 결과 (시연용)
+├── korean-humanizer-research-humanized.md     # 위 문서를 humanizer 로 다듬은 결과 (시연용)
 ├── .github/workflows/lint.yml                 # markdownlint(warning) + 표 형식 / 크로스파일 / 예시 / eval-harness 검증(fail)
 ├── .github/ISSUE_TEMPLATE/                    # 패턴 추가 / 도메인 사례 / 버그 보고 템플릿
 ├── scripts/
@@ -348,7 +351,7 @@ korean-humanizer/
 ├── eval/
 │   ├── README.md                              # eval-harness 사용법 + fixture 형식 가이드
 │   ├── fixtures/                              # raw/humanized 쌍 25 개 (도메인 12 종 + edge / trap + brand voice)
-│   ├── frequency-data/                        # v0.8.1 빈도 재라벨링용 LLM 출력 보관소 (스캐폴딩)
+│   ├── frequency-data/                        # 1.x 빈도 재라벨링용 LLM 출력 보관소 (스캐폴딩)
 │   └── scorecard.md                           # CI 가 매 머지마다 갱신하는 fixture 별 metric 표 (auto-gen)
 ├── references/
 │   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 v2 (4 컬럼: 나쁨/자연스러움/빈도/적용 도메인)
@@ -397,7 +400,7 @@ Issue 템플릿: [패턴 추가](.github/ISSUE_TEMPLATE/pattern_addition.md) / [
 
 v1.0 부터 SemVer freeze 약속:
 
-- **12 카테고리** / **SKILL 출력 포맷** / **정량 룰 (20 % cap, 단락 3 곳, 발화체 ~다체 금지)** / **카탈로그 4 컬럼 헤더** / **Brand voice 7 핵심 필드** / **Personal list Mode A/B/C/D** = 1.x 동안 freeze.
+- **12 카테고리** / **SKILL 출력 포맷** / **정량 룰 (20 % cap, 단락 3 곳, 90 % 길이 floor, 발화체 ~다체 금지)** / **카탈로그 4 컬럼 헤더** / **Brand voice 7 핵심 필드** / **Personal list Mode A/B/C/D** = 1.x 동안 freeze.
 - **카탈로그 패턴 행 추가** / **새 도메인** / **빈도 재라벨링** / **새 옵션 metric** = minor (1.x.0).
 - 자세한 freeze 영역: [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md).
 - v0.x → v1.0 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md).
@@ -407,7 +410,8 @@ v1.0 부터 SemVer freeze 약속:
 
 전체 history 는 [`CHANGELOG.md`](CHANGELOG.md). 요약:
 
-- **1.0.0-rc** *(S4 — Stabilization, 진행 중)* — 베타 운영 + 안정화 약속 + CHANGELOG / SECURITY / MIGRATION 통합. v1.0 GA 전 RC 검증.
+- **1.0.1** *(2026-06-02)* — 과압축 방지 패치. "humanizer 는 요약기가 아니다" 원칙, 원문 대비 90 % 길이 floor, 삭제보다 치환 우선, README 예시 최신화.
+- **1.0.0** *(S4 — Stabilization, 2026-05-21)* — 안정화 약속 + CHANGELOG / SECURITY / MIGRATION 통합. 첫 stable release.
 - **0.8.0** *(S3 — Brand voice + Catalog v2, 2026-04-30)* — 4 번째 mode (Brand voice profile), 카탈로그 v2 (4 컬럼: 나쁨 / 자연스러움 / 빈도 / 적용 도메인), 부록 F 도메인 코드 표준, eval M5, lint v2.
 - **0.7.0** *(S2 — Domain coverage v2, 2026-04-29)* — 7 → 12 도메인 확장, 5 신규 도메인 사례, 카탈로그 부록 E.
 - **0.6.0** *(S1 — Eval foundation, 2026-04-29)* — eval-harness 4 metric, 20 fixture, scorecard auto-gen, 5 번째 CI job.

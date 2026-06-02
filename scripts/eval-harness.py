@@ -4,7 +4,7 @@
 Metrics:
   M1: modified-sentence ratio  (cap, default 0.20)
   M2: per-paragraph modified-sentence cap  (paragraph_cap, default 3)
-  M3: char-length ratio  (humanized / raw)
+  M3: char-length ratio  (humanized / raw, pass >= 0.90 unless fixture expects failure)
   M4: 다체 intrusion in speech domains
   M5: brand voice preserve coverage (optional — runs only when fixture
       declares `brand_voice: <path>` in frontmatter; v0.8 카탈로그 v2)
@@ -240,9 +240,9 @@ def metric_brand_preserve(hum_text: str, brand_voice_path):
 # ---- Verdict -----------------------------------------------------------------
 
 def m3_verdict(ratio: float):
-    if 0.5 <= ratio <= 1.05:
+    if 0.90 <= ratio <= 1.05:
         return "pass"
-    if (1.05 < ratio <= 1.20) or (0.30 <= ratio < 0.5):
+    if (1.05 < ratio <= 1.20) or (0.50 <= ratio < 0.90):
         return "warn"
     return "fail"
 
@@ -373,7 +373,7 @@ def write_scorecard(path: Path, results):
 
 - **M1**: modified sentence count / total raw sentences. ✓ = within `cap` (default 20%).
 - **M2**: max modified sentences in any paragraph. ✓ = within `paragraph_cap` (default 3).
-- **M3**: char-length ratio (humanized / raw). `pass` 0.5–1.05, `warn` 0.30–0.5 or 1.05–1.20, `fail` <0.30 or >1.20.
+- **M3**: char-length ratio (humanized / raw). `pass` 0.90–1.05, `warn` 0.50–0.90 or 1.05–1.20, `fail` <0.50 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
 - **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
 - Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.

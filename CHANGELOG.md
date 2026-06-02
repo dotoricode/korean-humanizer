@@ -2,6 +2,25 @@
 
 > 모든 변경은 [Keep a Changelog](https://keepachangelog.com/) 형식, 버전은 [SemVer](https://semver.org/) 규칙. v1.0 부터 freeze 영역은 [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) 참조.
 
+## [1.0.1] — 2026-06-02
+
+### Changed
+
+- `SKILL.md` / `PROMPT.md` / `PROMPT.short.md` / `references/ko-ai-signals.md` 에 "humanizer 는 요약기가 아니다" 원칙을 명시.
+- 사용자가 "짧게"를 요청하지 않은 경우 결과를 원문 대비 90% 미만으로 줄이지 않는 길이 floor 추가.
+- 문장 / 문단 통째 삭제보다 약화 / 치환을 우선하도록 개시·마무리·연결어·3항 나열 가이드를 조정.
+- README 예시를 과압축 사례에서 정보량 보존형 예시로 교체.
+- Codex 설치 안내를 `scripts/install-codex-skill.sh` 기준으로 최신화.
+
+### Fixed
+
+- README.ko 의 `v1.0-rc` 상태 배지를 stable `v1.0.1` 표기로 수정.
+- `CHEATSHEET.md` 의 "삭제" 중심 표현을 최신 치환 중심 규칙에 맞게 수정.
+
+### Validation
+
+- `scripts/lint-cross-file.sh` 가 90% 길이 floor 동기화도 검사하도록 갱신.
+
 ## [1.0.0] — 2026-05-21
 
 ### Added
@@ -42,7 +61,7 @@
 - 템플릿 + 케이스 스터디: `examples/brand-voice-template.md`, `examples/brand-voice-toss-style.md` (가상 핀테크, concise / ~해요체), `examples/brand-voice-essayist.md` (가상 에세이스트, verbose / ~다체).
 - 카탈로그 부록 F (도메인 코드 표준) — 12 개별 도메인 + shorthand (`all` / `informal` = chat,review / `formal` = email,b2b-message,academic) + 컬럼 값 작성 룰 + 신규 도메인 추가 절차.
 - eval-harness M5 (brand voice preserve coverage) — 옵션 metric, fixture frontmatter `brand_voice:` 있을 때만 활성. preserve 단어가 humanized 에 모두 살아있는지 검증.
-- `eval/frequency-data/` 스캐폴딩 — 90 LLM 샘플 (3 모델 × 6 도메인 × 5 prompt) 기반 빈도 재라벨링 방법론. 실 데이터 수집은 v0.8.1+ sub-PR 트랙 분리.
+- `eval/frequency-data/` 스캐폴딩 — 90 LLM 샘플 (3 모델 × 6 도메인 × 5 prompt) 기반 빈도 재라벨링 방법론. 실 데이터 수집은 1.x sub-PR 트랙 분리.
 - `roadmap/S3-migration-notes.md` — v0.7 → v0.8 호환성 매트릭스 + sed 스니펫 + v1.0 freeze 약속 관계.
 
 ### Changed

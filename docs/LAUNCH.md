@@ -1,6 +1,6 @@
 # Launch Notes
 
-> v1.0 공개 / 커뮤니티 공유 때 바로 쓸 수 있는 짧은 설명문.
+> v1.x 공개 / 커뮤니티 공유 때 바로 쓸 수 있는 짧은 설명문.
 
 ## One-liner
 
@@ -18,7 +18,7 @@
 - 블로그, 이메일, LinkedIn, YouTube, 뉴스레터, 학술, 뉴스, 채팅, 리뷰, B2B 메시지 등 12 도메인
 - Codex / Claude Code skill
 - 다른 LLM 환경에서도 쓸 수 있는 portable system prompt
-- 의미 보존, 20% cap, 문단 3곳 룰, 발화체 ~다체 금지
+- 의미 보존, 요약 금지, 90% 길이 floor, 20% cap, 문단 3곳 룰, 발화체 ~다체 금지
 
 Repo: https://github.com/dotoricode/korean-humanizer
 
@@ -35,7 +35,7 @@ This repo packages:
 - 12 writing domains
 - a Codex / Claude Code skill
 - a portable system prompt for other LLM environments
-- eval fixtures for meaning-preserving, low-touch edits
+- eval fixtures for meaning-preserving, low-touch edits, with an explicit anti-summarization guardrail
 
 Repo: https://github.com/dotoricode/korean-humanizer
 

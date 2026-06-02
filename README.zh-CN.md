@@ -6,6 +6,9 @@
 
 [English](README.md) · [한국어](README.ko.md)
 
+[![Version](https://img.shields.io/badge/version-v1.0.1-brightgreen.svg)](CHANGELOG.md)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)](docs/STABILITY-PROMISE.md)
+
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## 30 秒试用
@@ -22,7 +25,7 @@ Humanize this Korean text:
 输出示例：
 
 ```text
-이 방식으로 비즈니스 가치를 키우고, 사용자 경험도 더 좋게 만들 수 있어요.
+이 솔루션으로 여러 비즈니스 가치를 더 크게 만들고, 사용자 경험도 한 단계 개선할 수 있어요.
 ```
 
 ## 为什么需要韩语专用 humanizer
@@ -43,8 +46,9 @@ Humanize this Korean text:
 ### Codex
 
 ```bash
-mkdir -p ~/.codex/skills
-git clone https://github.com/dotoricode/korean-humanizer.git ~/.codex/skills/korean-humanizer
+git clone https://github.com/dotoricode/korean-humanizer.git
+cd korean-humanizer
+bash scripts/install-codex-skill.sh
 ```
 
 ### Claude Code
@@ -73,6 +77,8 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/ko
 ## 核心规则
 
 - 保留事实、数字、专有名词、引用、链接。
+- 不做摘要；除非用户明确要求缩短，否则输出长度不低于原文的 90%。
+- 不整句、整段删除；优先弱化或替换 AI 痕迹。
 - 不重写全文，只修改高置信度 AI 痕迹。
 - 最多修改 20% 的句子，每段最多 3 处。
 - 保留韩语语气和敬语等级。

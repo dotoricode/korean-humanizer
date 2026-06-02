@@ -1,6 +1,6 @@
 # Roadmap — korean-humanizer
 
-> v0.5 (현재) → **v1.0.0** 까지 4 sprint 로 가는 길.
+> v0.5 → **v1.0.0** 까지의 4 sprint 기록과 v1.x 후속 후보.
 >
 > 한국어 전용. [다국어 확장은 영구 out-of-scope](roadmap/S3-brand-voice-catalog-v2.md#out-of-scope).
 
@@ -72,7 +72,7 @@ S1 (eval) ──┬──> S2 (도메인) ──> S3 (brand + catalog v2) ──
 | S3 | 없음 (가상 brand 케이스) | 중간 (137 행 재라벨링 시간) |
 | S4 | **베타 사용자 3-5 명 모집** | **높음** |
 
-S4 가 가장 큰 변수. 모집 더디면 **v1.0.0-rc** 분리 출시 후 1.0.1 에서 베타 피드백 반영.
+S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 패치 또는 1.x 마이너로 분리한다.
 
 ---
 

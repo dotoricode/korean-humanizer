@@ -8,7 +8,7 @@
 |---|---|---|
 | **M1** 수정 비율 | modified-sentence count / raw-sentence count | ≤ `cap` (기본 0.20) |
 | **M2** 단락 cap | 단락 별 최대 modified-sentence count | ≤ `paragraph_cap` (기본 3) |
-| **M3** 길이 비율 | `len(humanized) / len(raw)` | 0.5 ~ 1.05 (warn: 0.30~0.5 / 1.05~1.20, fail: <0.30 또는 >1.20) |
+| **M3** 길이 비율 | `len(humanized) / len(raw)` | 0.90 ~ 1.05 (warn: 0.50~0.90 / 1.05~1.20, fail: <0.50 또는 >1.20) |
 | **M4** 톤 보존 | 발화체 도메인에서 raw 에 없던 ~다체가 humanized 에 도입되면 fail | speech 도메인에서만 활성, 그 외 n/a |
 | **M5** brand preserve *(v0.8)* | brand voice 의 `preserve` 단어가 humanized 에 모두 살아있어야 pass | `brand_voice:` frontmatter 있을 때만 활성, 그 외 n/a |
 

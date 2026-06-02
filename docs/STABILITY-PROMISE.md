@@ -7,7 +7,7 @@
 ## TL;DR
 
 - **1.x.x** 동안 깨지지 않는 surface (아래 §Freeze 영역) 에 의존해도 OK.
-- **카테고리 / 출력 포맷 / 정량 룰 / 카탈로그 표 헤더 / Brand voice 핵심 필드** = freeze.
+- **카테고리 / 출력 포맷 / 정량 룰 / 정보량 보존 / 카탈로그 표 헤더 / Brand voice 핵심 필드** = freeze.
 - **카탈로그 패턴 행 / 도메인 추가 / 자연스러움 컬럼 개선 / 빈도·도메인 재라벨링** = minor (1.x.0).
 - **lint / CI 인프라 / 오탈자** = patch (1.0.x).
 - **위 freeze 영역 변경** = major (2.0.0).
@@ -48,10 +48,11 @@
 |---|---|
 | 한 문단 수정 cap | **3 곳** |
 | 전체 문장 수정 cap | **20 %** |
+| 출력 길이 floor | 사용자가 "짧게"를 요청하지 않았다면 **원문 대비 90 % 이상** |
 | 발화체 도메인 ~다체 글말체 | **금지** |
 | Personal list 적용 순서 | brand voice → personal list → 카탈로그 |
 
-이 4 개 정량 룰은 SKILL.md / PROMPT.md / 카탈로그 / lint-cross-file.sh 모두에 같은 표현. 1.x 유지. 변경 시 major bump.
+이 정량 룰은 SKILL.md / PROMPT.md / 카탈로그 / lint-cross-file.sh 모두에 같은 표현. 1.x 유지. 변경 시 major bump.
 
 ### 4. PROMPT.md API
 
@@ -131,6 +132,7 @@ freeze 영역을 깨지 않으면서 다음은 minor 에서 추가 / 개선:
 ## Patch (1.0.x) 허용 변경
 
 - ✓ 오탈자 / 문법 수정.
+- ✓ 의미 보존을 강화하는 과압축 방지 가드레일 추가 / 문서 동기화.
 - ✓ lint 룰 미세 조정 (false positive / negative 수정).
 - ✓ CI 인프라 변경 (workflow 업데이트, runner 버전 등).
 - ✓ Test fixture 안정화 (의도되지 않은 flake 해결).

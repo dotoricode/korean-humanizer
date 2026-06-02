@@ -4,7 +4,7 @@ cap: 30
 paragraph_cap: 3
 brand_voice: examples/brand-voice-toss-style.md
 expected_failures: m1
-notes: Brand voice (Toss 풍 핀테크) 적용 fixture — length_bias=concise 라 압축률 warn 까지는 허용. 1 문단 마케팅 카피 → m1 은 cap 초과 expected. M5 preserve (쉽게/빠르게/간편하게) 가 humanized 에 살아있는지 검증.
+notes: Brand voice (Toss 풍 핀테크) 적용 fixture — length_bias=concise 여도 정보량은 보존한다. 1 문단 마케팅 카피 → m1 은 cap 초과 expected. M5 preserve (쉽게/빠르게/간편하게/한 번에) 가 humanized 에 살아있는지 검증.
 ---
 
 ## Raw
@@ -13,4 +13,4 @@ notes: Brand voice (Toss 풍 핀테크) 적용 fixture — length_bias=concise �
 
 ## Humanized
 
-새로 나온 송금이에요. 쉽게, 빠르게, 한 번에 보내요. 간편하게 처리돼요. 더 궁금한 건 채팅으로 알려줘요.
+오늘 소개하는 새 송금 서비스예요. 여러 기능을 덜 복잡하게 묶어, 쓰는 사람이 쉽게 이용할 수 있게 설계했어요. 빠르게 송금하고 한 번에 간편하게 처리할 수 있어요. 금융 활동을 더 넓게 챙기는 데 도움이 되도록 만들었고, 궁금한 점은 고객 센터로 연락 주세요.
