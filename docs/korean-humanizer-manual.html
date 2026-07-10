@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="ko" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>korean-humanizer 사용 매뉴얼</title>
+<style>
+:root {
+  --dp-bg: #171713;
+  --dp-bg-deep: #11110f;
+  --dp-surface: #20201c;
+  --dp-surface-2: #292922;
+  --dp-hover: rgba(250, 250, 247, 0.075);
+  --dp-border: rgba(230, 229, 224, 0.14);
+  --dp-border-strong: rgba(230, 229, 224, 0.22);
+  --dp-text: #efeee8;
+  --dp-text-strong: #fafaf7;
+  --dp-muted: #c7c3ba;
+  --dp-faint: #a09c92;
+  --dp-accent: #f54e00;
+  --dp-accent-soft: rgba(245, 78, 0, 0.16);
+  --dp-accent-active: #d04200;
+  --dp-radius: 8px;
+  --dp-mono: "SF Mono", Menlo, Monaco, Consolas, monospace;
+  --dp-sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--dp-bg);
+  color: var(--dp-text);
+  font-family: var(--dp-sans);
+  scroll-behavior: smooth;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+nav.toc {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  overflow-y: auto;
+  padding: 28px 18px;
+  background: var(--dp-surface);
+  border-right: 1px solid var(--dp-border);
+}
+
+nav.toc .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 0 6px;
+}
+
+nav.toc .brand .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--dp-accent);
+  box-shadow: 0 0 0 3px var(--dp-accent-soft);
+}
+
+nav.toc .brand span {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+  color: var(--dp-text-strong);
+}
+
+nav.toc .version {
+  padding: 0 6px 18px;
+  font-size: 11px;
+  color: var(--dp-faint);
+  font-family: var(--dp-mono);
+}
+
+nav.toc a {
+  display: block;
+  padding: 8px 10px;
+  margin: 2px 0;
+  border-radius: var(--dp-radius);
+  color: var(--dp-muted);
+  text-decoration: none;
+  font-size: 13.5px;
+  border: 1px solid transparent;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+nav.toc a:hover {
+  background: var(--dp-hover);
+  color: var(--dp-text);
+}
+
+nav.toc a.active {
+  background: var(--dp-accent-soft);
+  color: var(--dp-text-strong);
+  border-color: rgba(245, 78, 0, 0.35);
+}
+
+nav.toc .section-label {
+  margin: 18px 0 6px;
+  padding: 0 10px;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dp-faint);
+}
+
+main {
+  padding: 56px 64px 120px;
+  max-width: 900px;
+}
+
+header.hero {
+  margin-bottom: 56px;
+}
+
+header.hero .kicker {
+  display: inline-block;
+  font-size: 11.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dp-accent);
+  background: var(--dp-accent-soft);
+  border: 1px solid rgba(245, 78, 0, 0.3);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 18px;
+}
+
+header.hero h1 {
+  font-size: 40px;
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: var(--dp-text-strong);
+  letter-spacing: -0.01em;
+}
+
+header.hero p {
+  font-size: 16px;
+  color: var(--dp-muted);
+  max-width: 620px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+section {
+  padding-top: 72px;
+  margin-top: -20px;
+  border-top: 1px solid var(--dp-border);
+}
+
+section:first-of-type {
+  border-top: none;
+}
+
+section .index {
+  font-family: var(--dp-mono);
+  font-size: 12px;
+  color: var(--dp-faint);
+  letter-spacing: 0.06em;
+  margin-bottom: 10px;
+}
+
+section h2 {
+  font-size: 26px;
+  margin: 0 0 12px;
+  color: var(--dp-text-strong);
+}
+
+section .lede {
+  color: var(--dp-muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 680px;
+  margin: 0 0 24px;
+}
+
+ul.feature-points {
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+  max-width: 680px;
+}
+
+ul.feature-points li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 14px;
+  color: var(--dp-text);
+  line-height: 1.55;
+}
+
+ul.feature-points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--dp-accent);
+}
+
+code {
+  font-family: var(--dp-mono);
+  background: var(--dp-surface-2);
+  border: 1px solid var(--dp-border);
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 13px;
+  color: #ffd7bd;
+}
+
+pre.code-block {
+  margin: 0 0 28px;
+  padding: 20px 22px;
+  background: var(--dp-bg-deep);
+  border: 1px solid var(--dp-border-strong);
+  border-radius: 10px;
+  overflow-x: auto;
+  max-width: 680px;
+}
+
+pre.code-block code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--dp-muted);
+  font-size: 12.5px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+table.dp-table {
+  width: 100%;
+  max-width: 680px;
+  border-collapse: collapse;
+  margin: 0 0 28px;
+  font-size: 13.5px;
+}
+
+table.dp-table th,
+table.dp-table td {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--dp-border);
+}
+
+table.dp-table th {
+  color: var(--dp-faint);
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+table.dp-table td {
+  color: var(--dp-text);
+}
+
+table.dp-table tr:last-child td {
+  border-bottom: none;
+}
+
+footer.end {
+  margin-top: 90px;
+  padding-top: 28px;
+  border-top: 1px solid var(--dp-border);
+  color: var(--dp-faint);
+  font-size: 12.5px;
+}
+
+@media (max-width: 860px) {
+  body { grid-template-columns: 1fr; }
+  nav.toc { position: relative; height: auto; }
+  main { padding: 40px 20px 80px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <div class="brand"><span class="dot"></span><span>korean-humanizer</span></div>
+  <div class="version">v1.0.x · 사용 매뉴얼</div>
+
+  <div class="section-label">시작하기</div>
+  <a href="#overview" data-target="overview">개요</a>
+  <a href="#install" data-target="install">설치와 빠른 시작</a>
+  <a href="#workflow" data-target="workflow">기본 작업 흐름</a>
+
+  <div class="section-label">Humanize 작업</div>
+  <a href="#modes" data-target="modes">작업 모드</a>
+  <a href="#domains" data-target="domains">도메인과 톤</a>
+  <a href="#advanced" data-target="advanced">Advanced Passes</a>
+
+  <div class="section-label">커스터마이징</div>
+  <a href="#personal" data-target="personal">Personal List</a>
+  <a href="#brand" data-target="brand">Brand Voice</a>
+  <a href="#voice-dna" data-target="voice-dna">Voice DNA</a>
+
+  <div class="section-label">검증과 안전</div>
+  <a href="#eval" data-target="eval">평가와 회귀 확인</a>
+  <a href="#safety" data-target="safety">안전 규칙</a>
+  <a href="#files" data-target="files">파일 지도</a>
+</nav>
+
+<main>
+  <header class="hero">
+    <span class="kicker">User Manual</span>
+    <h1>한국어 AI 티를 줄이는 사용 매뉴얼</h1>
+    <p>korean-humanizer는 한국어 AI 생성 텍스트의 번역체, 과한 격식, 반복 연결어, 빈말, 톤 불일치를 줄이는 Codex/Claude Code skill 및 범용 system prompt입니다. 핵심 원칙은 간단합니다. 의미는 그대로 두고 표현만 고칩니다.</p>
+  </header>
+
+  <section id="overview">
+    <div class="index">01</div>
+    <h2>개요</h2>
+    <p class="lede">이 도구는 글을 새로 쓰는 생성기가 아니라, 이미 있는 한국어 텍스트를 공개 가능한 수준으로 다듬는 편집 레이어입니다. 사실, 숫자, 고유명사, 인용문, 링크는 그대로 둡니다.</p>
+    <ul class="feature-points">
+      <li>12 카테고리 / 100개 이상의 한국어 AI 티 패턴을 도메인별로 적용합니다.</li>
+      <li>블로그, 마케팅, 이메일, LinkedIn, YouTube, 뉴스레터, 위키, 학술, 뉴스, 채팅, 리뷰, B2B 메시지를 지원합니다.</li>
+      <li>사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않습니다.</li>
+      <li>전체 문장 수의 20% 이상 수정하지 않고, 한 문단에서는 3곳 이하만 손댑니다.</li>
+    </ul>
+  </section>
+
+  <section id="install">
+    <div class="index">02</div>
+    <h2>설치와 빠른 시작</h2>
+    <p class="lede">Codex에서는 install script로 현재 repo를 active skills 디렉터리에 링크합니다. 다른 LLM에서는 <code>PROMPT.short.md</code> 또는 <code>PROMPT.md</code>를 system prompt로 붙여 넣으면 됩니다.</p>
+    <pre class="code-block"><code># Codex
+git clone https://github.com/dotoricode/korean-humanizer.git
+cd korean-humanizer
+bash scripts/install-codex-skill.sh
+
+# 빠른 사용 예
+이거 AI 티 빼줘:
+[한국어 텍스트]</code></pre>
+    <ul class="feature-points">
+      <li>설치 동작을 바꾼 뒤에는 <code>bash scripts/check-codex-skill.sh</code>로 링크 상태를 확인합니다.</li>
+      <li>수동으로 <code>~/.codex/skills</code>에 복사하지 않습니다. 이 repo는 install script를 기준으로 관리합니다.</li>
+    </ul>
+  </section>
+
+  <section id="workflow">
+    <div class="index">03</div>
+    <h2>기본 작업 흐름</h2>
+    <p class="lede">작업은 입력 확인, 도메인 확인, 보존 영역 표시, 카탈로그 적용, 과교정 검토 순서로 진행합니다. 짧은 글일수록 더 적게 고치고, 긴 글은 문단별로 high-confidence 패턴만 손댑니다.</p>
+    <table class="dp-table">
+      <thead>
+        <tr><th>단계</th><th>하는 일</th><th>주의</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>입력 확인</td><td>한국어 여부와 요청 목적 확인</td><td>영어, 법률, 코드 문서는 기본 제외</td></tr>
+        <tr><td>도메인 확인</td><td>이메일, 블로그, YouTube 등 분류</td><td>raw 종결어미를 우선 보존</td></tr>
+        <tr><td>보존 영역</td><td>팩트, 숫자, 링크, 인용문 표시</td><td>절대 바꾸지 않음</td></tr>
+        <tr><td>패턴 적용</td><td>12 카테고리와 advanced pass 적용</td><td>삭제보다 약화/치환 우선</td></tr>
+        <tr><td>최종 검토</td><td>20% cap, 문단 3곳, 90% 길이 확인</td><td>초과하면 작은 변경부터 되돌림</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="modes">
+    <div class="index">04</div>
+    <h2>작업 모드</h2>
+    <p class="lede">기본은 <code>rewrite</code>입니다. 사용자가 직접 판단하고 싶거나 원문을 바로 고치기 위험한 상황에서는 detect 또는 audit 모드가 더 적합합니다.</p>
+    <table class="dp-table">
+      <thead>
+        <tr><th>모드</th><th>출력</th><th>사용 상황</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>rewrite</td><td>다듬어진 전체 텍스트</td><td>일반 humanize 요청</td></tr>
+        <tr><td>detect</td><td>AI 티 후보와 이유</td><td>게시된 글, 타인의 글, 인용문 많은 글</td></tr>
+        <tr><td>audit</td><td>줄별 문제와 개선안</td><td>사용자가 직접 고치고 싶을 때</td></tr>
+        <tr><td>edit-plan</td><td>파일 수정 계획</td><td>긴 문서나 여러 파일 대상</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="domains">
+    <div class="index">05</div>
+    <h2>도메인과 톤</h2>
+    <p class="lede">같은 표현도 도메인마다 다르게 봅니다. 학술/뉴스/이메일은 필요한 격식을 보존하고, 채팅/리뷰/YouTube는 말투와 감정 강도를 과하게 정리하지 않습니다.</p>
+    <ul class="feature-points">
+      <li>발화체 도메인에서는 raw가 <code>~해요체</code>나 <code>~합니다체</code>라면 <code>~다체</code> 글말체로 바꾸지 않습니다.</li>
+      <li>이메일의 인사, 감사, CTA는 장식이 아니라 기능이면 보존합니다.</li>
+      <li>학술/뉴스의 정형 표현은 AI 티가 아니라 장르 관습일 수 있습니다.</li>
+      <li>마케팅/LinkedIn은 hook이 중요하지만, 본문이 약속하지 않는 자극적인 첫 문장은 만들지 않습니다.</li>
+    </ul>
+  </section>
+
+  <section id="advanced">
+    <div class="index">06</div>
+    <h2>Advanced Passes</h2>
+    <p class="lede">기본 12 카테고리 위에 선택적으로 얹는 보수적 점검입니다. 외부 writing skill의 장점을 흡수했지만, korean-humanizer에서는 새 글 생성이 아니라 최소 수정 필터로만 작동합니다.</p>
+    <table class="dp-table">
+      <thead>
+        <tr><th>Pass</th><th>잡는 문제</th><th>제한</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Voice DNA</td><td>사용자의 문장 습관과 멀어짐</td><td>사용자가 준 샘플 안에서만 적용</td></tr>
+        <tr><td>Hook / 첫 문장</td><td>주제가 늦게 나오거나 opener가 흐림</td><td>첫 1-2문장만, 클릭베이트 금지</td></tr>
+        <tr><td>Story / 흐름</td><td>그리고/또한/그다음 나열</td><td>원문 안의 관계만 드러냄</td></tr>
+        <tr><td>Dumbify</td><td>긴 중첩절, 어려운 한자어, 추상 명사</td><td>생각을 단순화하지 않음</td></tr>
+        <tr><td>Anti-AI final</td><td>hollow contrast, 과장, generic authority</td><td>없는 숫자/사건/경험 생성 금지</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="personal">
+    <div class="index">07</div>
+    <h2>Personal List</h2>
+    <p class="lede">금지어, 선호어, 유지어는 카탈로그보다 먼저 적용됩니다. 매번 같은 취향이 있으면 인라인으로 넘기거나 <code>examples/personal-list.md</code>에 정리합니다.</p>
+    <pre class="code-block"><code>금지=활용, 매우, 다양한;
+선호=유용하다→쓸만하다, 사실상→실제로;
+유지=딥다이브
+
+[다듬을 텍스트]</code></pre>
+    <ul class="feature-points">
+      <li><code>preserve</code> 또는 유지어는 자동 치환보다 강합니다.</li>
+      <li>선호어는 단방향 매핑입니다. <code>A→B</code>가 보이면 A를 B로 바꿉니다.</li>
+      <li>자연어로 "활용은 쓰기로 바꿔줘"라고 말해도 같은 세션 안에서 적용합니다.</li>
+    </ul>
+  </section>
+
+  <section id="brand">
+    <div class="index">08</div>
+    <h2>Brand Voice</h2>
+    <p class="lede">팀이나 제품 톤을 반복해서 써야 하면 brand voice profile을 사용합니다. frontmatter의 preserve, ban, prefer와 본문 톤 가이드가 카탈로그보다 먼저 적용됩니다.</p>
+    <pre class="code-block"><code>/korean-humanizer brand=examples/brand-voice-toss-style.md
+
+[다듬을 텍스트]</code></pre>
+    <table class="dp-table">
+      <thead>
+        <tr><th>필드</th><th>역할</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>domain_default</td><td>도메인 미지정 시 기본 도메인</td></tr>
+        <tr><td>ending_default</td><td>기본 종결어미. raw와 충돌하면 도메인 규칙 확인</td></tr>
+        <tr><td>emoji_policy</td><td>none, sparse, liberal</td></tr>
+        <tr><td>length_bias</td><td>concise, neutral, verbose</td></tr>
+        <tr><td>preserve / ban / prefer</td><td>보존, 금지, 선호 치환</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="voice-dna">
+    <div class="index">09</div>
+    <h2>Voice DNA</h2>
+    <p class="lede">Voice DNA는 특정 개인의 실제 글 샘플에서 문장 길이, 호흡, 시작/전환/마무리 습관, anti-voice를 추출하는 세션 범위 profile입니다. 내용을 요약하지 않고 "어떻게 쓰는지"만 봅니다.</p>
+    <ul class="feature-points">
+      <li>최근 글 10-20개, 영상 transcript, 뉴스레터 원문이 좋은 입력입니다.</li>
+      <li>샘플에 없는 표현을 추천하지 않습니다.</li>
+      <li>원문에 없는 사실, 경험, 수치, 감정은 voice를 맞추기 위해서도 만들지 않습니다.</li>
+      <li>템플릿은 <code>examples/voice-dna-template.md</code>, 추출 가이드는 <code>examples/voice-dna-extraction.md</code>에 있습니다.</li>
+    </ul>
+  </section>
+
+  <section id="eval">
+    <div class="index">10</div>
+    <h2>평가와 회귀 확인</h2>
+    <p class="lede">eval harness는 humanized 결과가 정량 규칙을 지키는지 확인합니다. 현재 기본 지표는 수정 비율, 문단 cap, 길이 비율, 발화체 다체 침입, brand preserve 보존입니다.</p>
+    <pre class="code-block"><code>bash scripts/check-codex-skill.sh
+bash scripts/eval-harness.sh
+bash scripts/lint-patterns.sh
+bash scripts/lint-cross-file.sh
+bash scripts/lint-examples.sh
+git diff --check</code></pre>
+    <ul class="feature-points">
+      <li><code>eval/scorecard.md</code>는 자동 생성됩니다.</li>
+      <li>일반 품질 fixture에는 expected failure를 붙이지 않는 것이 원칙입니다.</li>
+      <li>M6-M9 후보는 첫 문장 delay, AI tell residue, voice DNA coverage, reading load입니다.</li>
+    </ul>
+  </section>
+
+  <section id="safety">
+    <div class="index">11</div>
+    <h2>안전 규칙</h2>
+    <p class="lede">korean-humanizer는 탐지 회피나 사칭 도구가 아닙니다. 공개 글을 자연스럽게 다듬는 편집 보조 도구이며, 신뢰를 깨는 사용을 지원하지 않습니다.</p>
+    <ul class="feature-points">
+      <li>타인의 voice를 무단으로 모방하거나 사칭하지 않습니다.</li>
+      <li>없는 경험담, 성과 수치, 출처, 인용을 만들지 않습니다.</li>
+      <li>법률, 의료, 보안, 재무 텍스트는 비격식 변환이나 생략을 기본 금지합니다.</li>
+      <li>AI 탐지 우회를 목적으로 한 사용을 권장하지 않습니다.</li>
+    </ul>
+  </section>
+
+  <section id="files">
+    <div class="index">12</div>
+    <h2>파일 지도</h2>
+    <p class="lede">사용 목적에 따라 봐야 할 파일이 다릅니다. 사용자는 prompt와 examples를, maintainer는 references, eval, scripts를 함께 봅니다.</p>
+    <table class="dp-table">
+      <thead>
+        <tr><th>파일</th><th>역할</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>SKILL.md</td><td>Codex / Claude Code skill 동작 정의</td></tr>
+        <tr><td>PROMPT.md</td><td>ChatGPT, Cursor, Gemini 등에 넣는 전체 system prompt</td></tr>
+        <tr><td>PROMPT.short.md</td><td>빠른 사용용 짧은 prompt</td></tr>
+        <tr><td>references/ko-ai-signals.md</td><td>12 카테고리와 advanced pass 레퍼런스</td></tr>
+        <tr><td>examples/</td><td>before/after, brand voice, voice DNA 사례</td></tr>
+        <tr><td>eval/</td><td>fixture, scorecard, 회귀 평가 문서</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <footer class="end">korean-humanizer manual · docs/korean-humanizer-manual.html</footer>
+</main>
+
+<script>
+  const links = Array.from(document.querySelectorAll('nav.toc a'));
+  const sections = links.map(l => document.getElementById(l.dataset.target)).filter(Boolean);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = links.find(l => l.dataset.target === entry.target.id);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+</script>
+
+</body>
+</html>

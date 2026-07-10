@@ -14,6 +14,19 @@
 
 > **modified-sentence**: raw sentence 와 humanized 후보들 중 *최소* normalized edit distance 가 0.15 초과면 modified.
 
+## v1.x metric 후보
+
+Advanced humanize pipeline 은 아직 휴리스틱 문서/fixture 중심으로 검증한다. 다음 metric 은 v1.x 에서 별도 구현 후보로 둔다.
+
+| Metric | 목적 | 초안 판정 |
+|---|---|---|
+| **M6** 첫 문장 delay | 첫 문장에 주제 명사구가 너무 늦게 나오는지 확인 | domain 이 `linkedin` `newsletter` `youtube` `marketing` 일 때만 warn |
+| **M7** AI tell residue | `references/ko-ai-signals.md` high-frequency 표현이 humanized 에 남았는지 확인 | brand preserve / quoted text 는 제외 |
+| **M8** voice DNA coverage | voice DNA 의 ban / prefer / anti-voice 가 지켜졌는지 확인 | `voice_dna:` frontmatter 있을 때만 활성 |
+| **M9** reading load | 긴 문장, 중첩절, 어려운 한자어 후보를 warn | domain 별 threshold 분리 |
+
+새 metric 을 구현하기 전까지는 advanced pass fixture 도 M1-M5 를 반드시 통과해야 한다. hook / story / dumbify 를 이유로 20% cap 과 90% 길이 보존을 깨면 실패로 본다.
+
 ## Fixture 형식
 
 `eval/fixtures/<domain>-<num>.md`:
@@ -73,3 +86,12 @@ Scorecard 의 `Clean pass` 는 실제 품질 통과, `Expected-failure pass` 는
 - humanized 는 SKILL 룰 안에서만 손댐 (통째로 새로 쓰지 않음).
 - 짧은 fixture (1-2 문장) 와 장문 fixture (40+ 문장) 모두 포함.
 - 톤 위반·과다 수정 등 의도적 trap 1-2 개 — `expected_failures` 명시. 실제 예시 품질을 보여주는 fixture 에는 expected failure 를 붙이지 않는다.
+
+## Expected-failure cleanup
+
+현재 scorecard 에는 legacy 교육용 예시에서 온 `expected_failures` 가 많다. v1.x cleanup 목표:
+
+1. trap 목적 fixture 만 `expected_failures` 를 유지한다.
+2. 일반 품질 fixture 는 20% cap / 문단 cap / 길이 비율을 통과하도록 humanized 를 다시 작성한다.
+3. `examples/before-after.md` 의 강한 교육용 rewrite 는 eval fixture 와 분리한다.
+4. clean pass 비율을 80% 이상으로 올린 뒤 새 metric 을 켠다.

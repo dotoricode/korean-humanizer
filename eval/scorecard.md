@@ -2,13 +2,13 @@
 
 # Eval scorecard
 
-> Generated: 2026-06-02 02:10 UTC
-> Source: `eval/fixtures/*.md` (25 fixtures)
+> Generated: 2026-07-10 06:31 UTC
+> Source: `eval/fixtures/*.md` (27 fixtures)
 
 ## Summary
 
-- Total fixtures: **25**
-- Clean pass: **9** (36.0%)
+- Total fixtures: **27**
+- Clean pass: **11** (40.7%)
 - Expected-failure pass: **16** fixtures / **26** metric failures
 - Unexpected fail: **0**
 - Declared expected failures that no longer fail: **0**
@@ -23,6 +23,7 @@
 | blog-02-quarterly-retro.md | blog | ✓ 17.8% (8/45) | ✓ max=2 | pass 0.92 | n/a (0→0) | n/a | ✓ |
 | blog-03-remote-work.md | blog | ✗ 100.0% (6/6) | ✗ max=6 | warn 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
 | blog-04-side-project.md | blog | ✓ 6.7% (1/15) | ✓ max=1 | pass 0.95 | n/a (0→0) | n/a | ✓ |
+| blog-05-readability-advanced.md | blog | ✓ 11.1% (1/9) | ✓ max=1 | pass 1.01 | n/a (0→0) | n/a | ✓ |
 | brand-voice-01-toss-style-marketing.md | marketing | ✗ 100.0% (3/3) | ✓ max=3 | warn 0.81 | n/a (0→0) | pass (4/4) | ✓ (expected: m1) |
 | chat-01-kakao-biz.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | warn 0.74 | n/a (0→0) | n/a | ✓ (expected: m1) |
 | chat-02-dm-reply.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | warn 0.66 | n/a (0→0) | n/a | ✓ (expected: m1) |
@@ -33,6 +34,7 @@
 | email-03-vendor-followup.md | email | ✓ 10.0% (1/10) | ✓ max=1 | pass 0.92 | n/a (0→0) | n/a | ✓ |
 | linkedin-01-series-a.md | linkedin | ✗ 100.0% (7/7) | ✗ max=7 | warn 0.69 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
 | linkedin-02-product-update.md | linkedin | ✓ 14.3% (1/7) | ✓ max=1 | pass 0.92 | n/a (0→0) | n/a | ✓ |
+| linkedin-03-hook-advanced.md | linkedin | ✓ 12.5% (1/8) | ✓ max=1 | pass 0.95 | n/a (0→0) | n/a | ✓ |
 | marketing-01-headphones.md | marketing | ✗ 100.0% (6/6) | ✗ max=6 | warn 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
 | marketing-02-launch.md | marketing | ✗ 100.0% (4/4) | ✗ max=4 | warn 0.66 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
 | marketing-03-feature-page.md | marketing | ✓ 0.0% (0/9) | ✓ max=0 | pass 0.91 | n/a (0→0) | n/a | ✓ |

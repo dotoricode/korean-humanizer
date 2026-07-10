@@ -30,6 +30,27 @@ description: 한국어로 작성된 AI 생성 텍스트에서 "AI 티"가 나는
 - **종결어미 톤 보존 (한국어 humanize 핵심).** Raw의 종결어미(~합니다체 / ~해요체 / ~다체 / 반말)와 도메인 디폴트를 함께 본다. 발화체 도메인(YouTube / 팟캐스트 / 강의 인사말)에서는 **~다체 글말체 사용 금지**. 격식 글·캐주얼·발화체는 raw 어미를 strict 보존, 글말체 도메인(블로그/에세이/마케팅)만 ~다체 자유. 한 글에 어미가 섞이면 raw 우세 어미로 통일. 상세는 `references/ko-ai-signals.md` #9-A.
 - **개인화 우선.** 사용자의 금지어 / 선호어 목록(`examples/personal-list.md`)이 있으면 카탈로그보다 **먼저** 적용한다. **Brand voice profile** (방식 D, `examples/brand-voice-*.md`) 이 있으면 그보다도 더 우선.
 
+## 작업 모드
+
+요청 문맥에 따라 아래 모드 중 하나로 작동한다. 사용자가 모드를 명시하지 않으면 `rewrite` 가 기본이다.
+
+- `rewrite`: 기본 모드. 원문 전체를 반환하되 high-confidence AI 티만 최소 수정한다.
+- `detect`: 고치지 않고 AI 티 후보와 이유만 짚는다. 게시된 글, 타인의 글, 인용문이 많아 직접 수정이 위험할 때 사용한다.
+- `audit`: detect 결과에 줄별 개선안을 붙인다. 사용자가 직접 고칠 수 있게 "어디를 왜 바꿀지"를 보여준다.
+- `edit-plan`: 파일 직접 수정 대신 패치 계획만 낸다. 긴 문서나 여러 파일을 대상으로 할 때 사용한다.
+
+## Advanced humanize pipeline
+
+기본 카탈로그 치환 전에 다음 5-pass 를 가볍게 돈다. 모든 pass 는 **의미 보존 / 20% 수정 cap / 원문 90% 길이 보존**보다 약하다.
+
+1. **Voice DNA / Brand voice pass**: 사용자가 준 brand voice, personal list, 참고 글, voice DNA profile 을 먼저 읽는다. 문장 길이, 종결어미, 반복 표현, 금지어, "절대 안 쓸 말"을 우선 적용한다.
+2. **Hook / 첫 문장 pass**: LinkedIn, X, 뉴스레터, YouTube, 마케팅 카피처럼 첫 문장이 중요한 도메인에서만 적용한다. 첫 문장의 주제가 늦게 나오거나, 추상적이거나, 독자와 무관하거나, 궁금증이 없을 때 **첫 1-2문장만** 다듬는다. 클릭베이트나 없는 약속은 만들지 않는다.
+3. **Story / 흐름 pass**: YouTube, 블로그, 뉴스레터, LinkedIn 긴 글처럼 본문 흐름이 중요한 도메인에서만 적용한다. "그리고 / 또한 / 그다음"으로 정보만 쌓는 구간을 원문 안의 원인·대조·결과 관계가 보이게 약하게 정리한다. 새 사건, 새 수치, 새 감정은 만들지 않는다.
+4. **Dumbify / 읽기 부담 pass**: 어려운 한자어, 긴 중첩절, 추상 명사를 쉬운 말로 낮춘다. 생각을 단순화하지 않고 읽는 부담만 낮춘다. 전문 독자가 공유하는 용어는 보존한다.
+5. **Anti-AI final pass**: 구체성 없는 과장, hollow contrast("X가 아니라 Y"인데 Y가 비어 있는 경우), 빌린 권위, 지나친 3항 병렬, 기계적인 마무리를 마지막으로 점검한다.
+
+**충돌 우선순위**: 정확성 > 의미 보존 > 정보량 보존 > raw/brand voice > 읽기 쉬움 > hook/story > 스타일. hook 이 강해져도 본문이 약속을 못 지키면 원문 쪽으로 되돌린다.
+
 ## 워크플로우
 
 ### 1단계. 입력 확인
@@ -86,8 +107,9 @@ description: 한국어로 작성된 AI 생성 텍스트에서 "AI 티"가 나는
 
 GitHub Issue / 외부 제안 답변에서는 `references/ko-ai-signals.md`의 "외부 기여 / 제안 답변에서의 감사 표현"을 함께 본다. 특히 제3자 demo / hosted service / SaaS 제안은 상대 의도를 단정하지 말고, community demo 제안인지 별도 SaaS 링크 제안인지 먼저 확인한다. 결과물이나 도움에 대해 "반갑습니다"를 남발하지 않고, "기쁩니다 / 고맙습니다 / 감사합니다"를 맥락에 맞게 쓴다.
 
-### 4단계. High-confidence 스캔 및 치환
+### 4단계. Advanced pass + High-confidence 스캔 및 치환
 
+- 위 `Advanced humanize pipeline` 을 도메인에 맞는 강도로 먼저 적용한다. 짧은 이메일 / DM / 기술 문서는 hook/story pass 를 건너뛴다.
 - 각 카테고리 표를 따라 패턴 매칭하되, 도메인과 raw 톤에 맞는 **high-confidence AI 티**만 고친다.
 - 매칭되는 표현은 우측 "자연스러움" 컬럼으로 치환한다. 단, 학술 / 뉴스 / 이메일처럼 격식이 필요한 도메인은 딱딱함 전체가 아니라 **불필요한 격식**만 줄인다.
 - 채팅 / 리뷰 / YouTube 는 너무 매끈하게 만들지 않는다. raw 의 말투, 생략, 감정 강도는 보존한다.
@@ -207,6 +229,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
   - 업데이트 지시 예: "최종 출력 전 korean-humanizer skill을 실행해서 AI 티 제거"
 - **fact-checker와 함께**: 외부 공개 전 권장 순서 → (1) 생성 → (2) fact-checker → (3) korean-humanizer.
 - **prompt-master와 비교**: prompt-master는 *프롬프트*를 다듬고, humanizer는 *생성된 결과물*을 다듬는다.
+- **hook / storytelling / viral writing skill 과 함께**: 먼저 생성형 skill 이 구조와 초안을 만들고, korean-humanizer 는 마지막에 **한국어 톤 / AI 티 / 보존 규칙**만 점검한다. korean-humanizer 가 없는 경험담이나 성과 수치를 새로 만들면 안 된다.
 
 ## 트리거하지 않는 경우
 
@@ -223,6 +246,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 - `examples/personal-list.md` — 사용자 커스터마이징 템플릿 (방식 C).
 - `examples/brand-voice-template.md` — Brand voice 프로필 템플릿 (방식 D).
 - `examples/brand-voice-toss-style.md` / `examples/brand-voice-essayist.md` — Brand voice 케이스 스터디.
+- `examples/voice-dna-template.md` / `examples/voice-dna-extraction.md` — 글 샘플에서 개인 말투를 추출해 세션 범위 profile 로 쓰는 방법.
 - 일반 LLM 사용자: `PROMPT.md` 시스템 프롬프트 형태로도 제공.
 
 ---

@@ -41,6 +41,8 @@ Humanize this Korean text:
 
 `korean-humanizer` 不是英文规则的翻译版，而是围绕韩语本身的写作信号设计的。
 
+它还包含保守的 advanced passes：Voice DNA、开头句 / hook 检查、叙事 흐름、阅读负担降低、anti-AI final pass。这些 pass 只用于微调已有韩语文本，不会凭空添加事实、经历、数字或新的承诺。
+
 ## 主要用途
 
 ### Codex
@@ -72,6 +74,7 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/ko
 - [`PROMPT.short.md`](PROMPT.short.md): 快速试用版 prompt
 - [`CHEATSHEET.md`](CHEATSHEET.md): 30 个常见韩语 AI 写作痕迹
 - [`references/ko-ai-signals.md`](references/ko-ai-signals.md): 12 类 / 100+ 韩语模式目录
+- [`examples/voice-dna-template.md`](examples/voice-dna-template.md): 从用户样本文本中提取个人写作习惯的模板
 - [`eval/scorecard.md`](eval/scorecard.md): 自动评估结果
 
 ## 核心规则

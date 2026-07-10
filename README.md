@@ -12,6 +12,8 @@
 
 Korean text from LLMs tends to leak: stiff formalism, empty intensifiers, filler connectives that don't exist in natural speech. Readers notice. `korean-humanizer` strips those patterns — without touching the meaning.
 
+It now also includes optional advanced passes for the cases where plain pattern replacement is not enough: voice DNA, first-line/hook cleanup, story flow, reading-load reduction, and a final anti-AI filter. These passes are conservative: they do not invent facts, rewrite the whole piece, or override the 20% edit cap.
+
 ---
 
 ```diff
@@ -28,7 +30,7 @@ Korean text from LLMs tends to leak: stiff formalism, empty intensifiers, filler
 + 이 솔루션으로 여러 비즈니스 가치를 더 크게 만들고, 사용자 경험도 한 단계 개선할 수 있습니다.
 ```
 
-→ [Try it in 30 seconds](#install)
+→ [Try it in 30 seconds](#install) · [Read the manual](https://docs-eta-beryl.vercel.app/korean-humanizer-manual.html)
 
 ---
 
@@ -86,6 +88,20 @@ Ban words, set preferences, or define a brand voice — all applied before the c
 ```
 
 For a persistent tone profile, see [`examples/brand-voice-template.md`](examples/brand-voice-template.md).
+
+For a personal writing fingerprint built from your own samples, see [`examples/voice-dna-template.md`](examples/voice-dna-template.md) and [`examples/voice-dna-extraction.md`](examples/voice-dna-extraction.md).
+
+## Advanced Passes
+
+The stable surface is still the 12 Korean AI-tell categories. Advanced passes sit on top as optional, conservative checks:
+
+| Pass | What it fixes | Guardrail |
+|---|---|---|
+| Voice DNA | Output drifts away from the user's own sentence shapes and anti-voice | Never imitates a third party without user-provided samples |
+| Hook / first line | Topic arrives late or opener is vague | First 1-2 sentences only; no clickbait |
+| Story flow | Body reads like "and then / also / additionally" stacking | Uses only relationships already present in the draft |
+| Dumbify | Dense clauses, abstract nouns, avoidable jargon | Lowers reading load, not the idea |
+| Anti-AI final | Hollow contrast, inflated claims, generic authority | Specificity without invented numbers or events |
 
 ---
 

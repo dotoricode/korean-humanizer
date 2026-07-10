@@ -89,6 +89,10 @@ S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 
 - **LLM-as-judge eval** — 정성 자연스러움 / 의미 보존 자동 평가
 - **Batch / API mode** — 다수 텍스트 일괄 humanize
 - **Brand voice 자동 추출** — 사용자 글 샘플에서 brand voice profile 자동 생성
+- **Voice DNA profile** — 10-20개 사용자 글 / transcript 에서 문장 길이, hook, CTA, anti-voice 를 추출해 세션 범위 profile 로 적용
+- **Advanced humanize passes** — hook / story flow / dumbify / anti-AI final pass 를 12 카테고리 위의 optional layer 로 운영
+- **Expected-failure cleanup** — eval scorecard 의 legacy expected failure 를 trap fixture 와 품질 fixture 로 분리하고 clean pass 80% 이상으로 정리
+- **Eval M6-M9** — 첫 문장 delay, AI tell residue, voice DNA coverage, reading load metric 후보
 - **사용자 만족도 정량 측정** — A/B test, NPS 등
 - **X·Threads / 강의 소개 도메인** — S2 에서 미룬 도메인
 - **카테고리 #13+ 후보** — 실 사용 데이터로 새 패턴 군 발견 시 (major bump 동반)

@@ -455,6 +455,62 @@ S2 의 이 표 (부록 E) 는 **직관 기반 v1** 이었다. v0.8 (S3) 부터�
 
 새 도메인 추가는 1.x minor bump 가 자연스럽고, 카테고리 #13 추가는 major bump 동반 (v1.0 → v2.0).
 
+## 부록 G. Advanced pass 신호 (1.x optional)
+
+v1.0 의 12 카테고리는 stable surface 로 유지한다. 아래 항목은 카테고리 #13+ 가 아니라 **선택적 고급 pass** 이며, SKILL.md 의 `Advanced humanize pipeline` 에서만 사용한다.
+
+공통 원칙:
+
+- 이 pass 는 새 글을 만드는 기능이 아니다. 기존 원문을 더 자연스럽게 읽히게 하는 최소 수정 기준이다.
+- 팩트 / 숫자 / 경험담 / 성과 / 감정은 새로 만들지 않는다.
+- hook 이 강해져도 본문이 약속을 못 지키면 hook 을 약하게 되돌린다.
+- 짧은 이메일 / DM / 기술 문서 / 법률 문서에서는 hook/story pass 를 건너뛰는 것이 기본이다.
+
+### G-1. 읽기 부담 (Dumbify)
+
+| 신호 | 수정 방향 | 적용 도메인 | 주의 |
+|---|---|---|---|
+| 한 문장에 중첩절 2 개 이상 | 한 호흡에 읽히게 분리 | blog, newsletter, youtube, b2b-message | 문장 수 증가가 의미 추가가 되지 않게 |
+| 어려운 한자어 + 쉬운 대체어가 명확함 | 쉬운 말로 치환 | all | 학술 / 뉴스 정형어는 보존 |
+| 추상 명사 연쇄 | 원문 안의 구체 대상명으로 되돌림 | marketing, linkedin, blog | 없는 예시 / 숫자 생성 금지 |
+| 정의가 길고 예시가 없음 | 원문에 있는 예시를 앞으로 이동 | blog, youtube | 예시가 없으면 추가하지 않음 |
+
+### G-2. 첫 문장 / Hook
+
+| 신호 | 수정 방향 | 적용 도메인 | 주의 |
+|---|---|---|---|
+| 주제가 첫 문장 뒤에 늦게 나옴 | 첫 명사구에 주제 배치 | linkedin, newsletter, youtube, marketing | 인사 역할이 있는 이메일은 제외 |
+| "오늘은 / 이번에는 / 알아보겠습니다" 로만 시작 | 바로 주제나 문제로 시작 | blog, youtube | 발화체 어미는 raw 보존 |
+| 독자와 무관한 자기소개로 시작 | 독자가 겪는 상황을 원문 안에서 끌어옴 | linkedin, marketing | I-frame founder story 는 예외 |
+| 대비가 없어서 밋밋함 | 원문에 있는 A/B 차이를 선명하게 | linkedin, newsletter | 클릭베이트 / 과장 금지 |
+
+### G-3. Story / 흐름
+
+| 신호 | 수정 방향 | 적용 도메인 | 주의 |
+|---|---|---|---|
+| "그리고 / 또한 / 그다음" 으로만 이어짐 | 원문 안의 원인·대조·결과를 드러냄 | blog, youtube, newsletter | 새 사건 만들지 않음 |
+| 마지막 문장이 generic CTA | 원문 핵심을 짧게 다시 붙임 | linkedin, newsletter, youtube | CTA 가 필요한 이메일은 보존 |
+| 모든 문장 길이가 비슷함 | 1-2문장만 길이 리듬 조정 | blog, youtube, linkedin | 일부러 단문인 brand voice 는 보존 |
+| 사례가 나열만 되고 관점이 없음 | 원문에 이미 있는 관점 문장을 앞으로 이동 | blog, newsletter | 관점 창작 금지 |
+
+### G-4. Hollow contrast / 가짜 통찰
+
+| 신호 | 수정 방향 | 적용 도메인 | 주의 |
+|---|---|---|---|
+| "X가 아니라 Y" 인데 Y가 추상어 | Y를 직접 주장으로 바꾸거나 약화 | all | Y가 구체 메커니즘이면 보존 |
+| "진짜 문제는 / 핵심은" 뒤가 빈말 | 원문 안의 실제 문제명으로 치환 | marketing, linkedin, b2b-message | 없는 원인 생성 금지 |
+| "생각보다 / 사실은" 으로 권위만 부여 | 부사를 빼고 바로 말함 | all | 반전이 실제로 있으면 보존 |
+| "대부분은 모르지만" 식 과장 | 범위를 낮추거나 삭제 | linkedin, marketing | 근거 있는 수치가 있으면 보존 |
+
+### G-5. Voice drift
+
+| 신호 | 수정 방향 | 적용 도메인 | 주의 |
+|---|---|---|---|
+| 참고 글보다 문장이 지나치게 길거나 짧음 | 세션 voice 평균에 가깝게 조정 | blog, newsletter, linkedin | 20% cap 안에서만 |
+| brand voice 의 금지어 / anti-voice 출현 | 해당 표현만 치환 | all | preserve 단어가 우선 |
+| raw 는 ~해요체인데 결과가 ~다체 | raw 우세 어미로 되돌림 | youtube, chat, email | 발화체는 특히 strict |
+| 이모지 / 느낌표가 profile 과 다름 | profile 정책에 맞춤 | marketing, linkedin, chat | raw 의 의도된 감정은 보존 |
+
 ## 부록 D. 윤리·한계
 
 - 이 카탈로그는 **편집 보조 / 연구용 분석** 목적이지, 사람 글을 자동으로 "AI 가 썼다" 고 판정하는 도구가 아니다.
