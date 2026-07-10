@@ -44,7 +44,7 @@ Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) ·
 | 지난 6개월간 **다양한** 프로젝트를 **통해** **많은 것을 배우고 성장할 수 있었던** **의미 있는** 시간이었습니다. **이러한** 경험은 앞으로의 커리어에 **있어서** **매우 소중한** 자산이 될 것이라고 **확신합니다**. 🙌 | 지난 6개월 동안 여러 프로젝트를 하며 많이 배우고 성장할 수 있었습니다. 이 경험은 앞으로의 커리어에도 소중한 자산이 될 것 같습니다. |
 | 본 사항은 **다양한** 측면에서 **신중하게 고려되어야** 할 필요가 있을 것으로 **사료됩니다**. | 이 사항은 여러 측면에서 신중하게 검토할 필요가 있어 보입니다. |
 
-**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v1.0.1 부터는 humanizer 가 요약기가 아니라는 점을 더 강하게 고정해, 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.** Brand voice profile 로 *짧고 직설 / 길고 사변* 같은 본인 톤도 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
+**한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v1.0.1 부터는 humanizer 가 요약기가 아니라는 점을 더 강하게 고정해, 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.** Brand voice profile 과 Voice DNA 로 *짧고 직설 / 길고 사변 / 특정 개인의 문장 습관* 같은 톤도 우선 적용할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
 🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그](references/ko-ai-signals.md) · ⚡ [30개 치트시트](CHEATSHEET.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
@@ -63,6 +63,20 @@ humanizer 는 5 가지 안전장치를 지킨다:
 3. **20% cap** — 전체 문장 수의 20% 이상 수정하지 않는다.
 4. **문단 3곳 룰** — 한 문단에 3 곳 이상 건드리지 않는다.
 5. **자연스러움 > 완벽함** — 살짝 덜 매끄러운 게 더 사람답다. 과도한 세련미는 오히려 AI 티.
+
+## Advanced Passes
+
+기본은 여전히 12 카테고리 카탈로그다. 여기에 선택적 고급 pass 를 얹어 첫 문장, 흐름, 읽기 부담, voice drift 를 더 잘 잡는다.
+
+| Pass | 잡는 문제 | 안전장치 |
+|---|---|---|
+| Voice DNA | 사용자의 실제 문장 습관과 멀어짐 | 사용자가 준 샘플 안에서만 적용 |
+| Hook / 첫 문장 | 주제가 늦게 나오거나 opener 가 흐림 | 첫 1-2문장만, 클릭베이트 금지 |
+| Story / 흐름 | "그리고 / 또한 / 그다음" 식 나열 | 원문 안의 관계만 드러냄 |
+| Dumbify / 읽기 부담 | 긴 중첩절, 어려운 한자어, 추상 명사 | 생각을 단순화하지 않음 |
+| Anti-AI final | hollow contrast, 과장, generic authority | 없는 숫자 / 사건 / 경험 생성 금지 |
+
+Voice DNA 템플릿: [`examples/voice-dna-template.md`](examples/voice-dna-template.md) · 추출 가이드: [`examples/voice-dna-extraction.md`](examples/voice-dna-extraction.md)
 
 ## 12 Categories Detected (with Before/After Examples)
 
