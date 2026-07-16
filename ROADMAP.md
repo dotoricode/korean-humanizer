@@ -1,6 +1,6 @@
 # Roadmap — korean-humanizer
 
-> v0.5 → **v1.0.0** 까지의 4 sprint 기록과 v1.x 후속 후보.
+> 저장소에 기록된 v0.5 → **v1.0.0** 의 4 sprint 버전 이정표와 v1.x 후속 후보.
 >
 > 한국어 전용. [다국어 확장은 영구 out-of-scope](roadmap/S3-brand-voice-catalog-v2.md#out-of-scope).
 
@@ -8,12 +8,12 @@
 
 ## 한눈에 보기
 
-| Sprint | Version | 기간 | 테마 | 상세 |
+| Sprint | 저장소 버전 이정표 | 계획 기간 | 테마 | 상세 |
 |---|---|---|---|---|
 | **S1** | v0.5 → v0.6 | 2 주 | Eval foundation — 휴리스틱 자동 검증 | [S1-eval-foundation.md](roadmap/S1-eval-foundation.md) |
 | **S2** | v0.6 → v0.7 | 2 주 | Domain v2 — 5 신규 도메인 | [S2-domain-coverage-v2.md](roadmap/S2-domain-coverage-v2.md) |
-| **S3** | v0.7 → v0.8 | 3 주 | Brand voice + Catalog v2 | [S3-brand-voice-catalog-v2.md](roadmap/S3-brand-voice-catalog-v2.md) |
-| **S4** | v0.8 → **v1.0.0** | 3 주 | Stabilization + 베타 + Polish | [S4-v1.0.0-stabilization.md](roadmap/S4-v1.0.0-stabilization.md) |
+| **S3** | v0.7 → v0.8 | 3 주 | Brand voice + Catalog v2 스키마·휴리스틱 | [S3-brand-voice-catalog-v2.md](roadmap/S3-brand-voice-catalog-v2.md) |
+| **S4** | v0.8 → **v1.0.0** | 3 주 | Stabilization + Polish | [S4-v1.0.0-stabilization.md](roadmap/S4-v1.0.0-stabilization.md) |
 
 **총 10 주** (공격적) / **14 주** (현실적, +1 주 buffer per sprint).
 
@@ -39,7 +39,7 @@
 >
 > **문제 2**: "활용" 같은 패턴이 마케팅·학술에서 다른 가중치인데 카탈로그가 동일 처리.
 >
-> **해결**: Personal list 4 번째 mode (brand voice profile) + 카탈로그 4 컬럼 확장 (`나쁨 / 자연스러움 / 빈도 / 적용 도메인`) + 빈도 데이터 기반 재라벨링.
+> **해결 (저장소 포함)**: Personal list 4 번째 mode (brand voice profile) + 카탈로그 4 컬럼 (`나쁨 / 자연스러움 / 빈도 / 적용 도메인`) 스키마와 휴리스틱 빈도 라벨. raw 샘플 수집과 데이터 기반 빈도 재라벨링은 1.x 유지보수 트랙으로 명시적으로 미룬다.
 
 ### S4 — v1.0.0 Stabilization
 
@@ -69,10 +69,10 @@ S1 (eval) ──┬──> S2 (도메인) ──> S3 (brand + catalog v2) ──
 |---|---|---|
 | S1 | 없음 | 낮음 |
 | S2 | 없음 | 낮음 |
-| S3 | 없음 (가상 brand 케이스) | 중간 (137 행 재라벨링 시간) |
-| S4 | **베타 사용자 3-5 명 모집** | **높음** |
+| S3 | raw 샘플 수집·데이터 기반 재라벨링은 1.x 로 연기 | 낮음 (저장소 스키마·휴리스틱은 반영됨) |
+| S4 | 베타 운영은 외부/수동 증거 필요 | 높음 |
 
-S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 패치 또는 1.x 마이너로 분리한다.
+S4 v1.0.0 과 날짜는 저장소에 기록된 안정화 버전 이정표다. 태그·GitHub Release·베타 운영의 완료 증거를 뜻하지 않으며, 이후 작업은 1.0.x 패치 또는 1.x 마이너 트랙으로 분리한다.
 
 ---
 
@@ -95,15 +95,17 @@ S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 
 
 ---
 
-## 진행 상태
+## 저장소 기록 상태
 
-| Sprint | Status | Date |
+| Sprint | 저장소 상태 | 버전 이정표 날짜 |
 |---|---|---|
-| v0.5 (이전 sprint) | ✓ 완료 | 2026-04-29 |
-| **S1 v0.6** | ✓ 완료 | 2026-04-29 |
-| **S2 v0.7** | ✓ 완료 | 2026-04-29 |
-| **S3 v0.8** | ✓ 완료 | 2026-04-30 |
-| **S4 v1.0.0** | ✓ 완료 | 2026-05-21 |
+| v0.5 (이전 sprint) | ✓ 저장소 기록 | 2026-04-29 |
+| **S1 v0.6** | ✓ 저장소 기록 | 2026-04-29 |
+| **S2 v0.7** | ✓ 저장소 기록 | 2026-04-29 |
+| **S3 v0.8** | ✓ 저장소 기록 | 2026-04-30 |
+| **S4 v1.0.0** | ✓ 저장소 기록 | 2026-05-21 |
+
+이 표는 저장소 문서의 버전 이정표만 나타낸다. 원격 태그·Release·베타 운영의 증거는 별도 외부/수동 확인 대상이다.
 
 ---
 

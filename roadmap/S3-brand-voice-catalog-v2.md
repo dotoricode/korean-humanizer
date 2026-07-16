@@ -1,6 +1,6 @@
-# Sprint 3 — v0.8 Brand Voice + Catalog v2
+# Sprint 3 — v0.8 Brand Voice + Catalog v2 (historical plan)
 
-> Personal list 의 4 번째 mode (brand voice profile) 도입 + 카탈로그를 도메인-가중치 기반 4 컬럼으로 재구성. v1.0 직전의 가장 큰 깊이 점프.
+> 이 문서는 당시의 계획 기록이다. 저장소에 포함된 것은 brand voice·카탈로그 v2 스키마와 휴리스틱 빈도 라벨이며, raw 샘플 수집과 데이터 기반 재라벨링은 완료 주장하지 않는다.
 
 | 항목 | 값 |
 |---|---|
@@ -10,6 +10,11 @@
 | 외부 의존 | 없음 (가상 brand 케이스만) |
 | 위험도 | **중간** (137 행 재라벨링 + brand voice 디자인 실수 위험) |
 | 다음 sprint | S4 v1.0 안정화 — 이번 sprint 의 카탈로그 v2 가 freeze 대상 |
+## 현재 claim disposition
+
+- **저장소 포함**: Brand voice 템플릿·가상 사례·4 번째 mode, 카탈로그 4 컬럼 스키마·도메인 코드·검증, 그리고 기존 휴리스틱 빈도 라벨.
+- **명시적 연기**: raw LLM 샘플 수집, 빈도 계수 도구, 데이터 기반 137 패턴 재라벨링은 1.x 유지보수 트랙.
+- **외부/수동 확인 필요**: v0.8 원격 태그·GitHub Release·공지의 게시 여부. 이 계획 문서는 그 증거가 아니다.
 
 ---
 
@@ -31,7 +36,9 @@ humanizer 가 사용자 *브랜드 톤* 을 선반영할 수 있게 한다. 현�
 
 ---
 
-## Deliverables
+## Historical deliverables
+
+이 절은 당시 산출물 계획이다. 위의 claim disposition 이 저장소 포함·연기·외부 확인의 현재 구분이다.
 
 ### Part 1 — Brand Voice
 
@@ -154,7 +161,9 @@ prefer:
 - 도메인 컬럼 값이 valid 도메인 코드인지 (`all`, `informal`, `formal`, 또는 콤마-구분 known 도메인)
 - 도메인 코드 unknown 시 fail + 가능한 후보 출력
 
-#### 2D. 빈도 재라벨링 — 데이터 기반 (3d, 가장 무거움)
+#### 2D. 빈도 재라벨링 — 데이터 기반 (historical plan; 1.x 로 명시적 연기)
+
+아래는 후속 1.x 유지보수 트랙의 방법론이다. raw 샘플 수집·출현률 측정·데이터 기반 라벨 갱신은 이 저장소 버전 이정표에서 완료된 것으로 주장하지 않는다.
 
 - **데이터 수집** (1.5d):
   - Claude / GPT / Gemini 각 30 prompts (블로그 / 마케팅 / 이메일 / LinkedIn / 뉴스레터 도메인 6 개씩)
@@ -165,9 +174,9 @@ prefer:
   - 출현률 = 출현 sample 수 / 90
   - high: 출현률 ≥ 30 %, med: 5-30 %, low: < 5 %
 - **재라벨링** (0.5d):
-  - 현재 "high" 약 30 개 → 데이터로 검증, 변동 PR 으로 명시
+  - 현재 휴리스틱 라벨을 데이터로 검토하고, 변동은 별도 PR 에 명시
   - 새 "low" 발견 시 카탈로그에 명시
-- 데이터 raw 는 `eval/frequency-data/` 에 보관 (재현용, gitignore 안 함)
+- 데이터 raw 는 `eval/frequency-data/` 에 보관 예정 (재현용, gitignore 안 함)
 
 #### 2E. SKILL/PROMPT 4 번째 mode 통합 (1d)
 
@@ -189,7 +198,7 @@ prefer:
 
 - README 갱신: brand voice mode 소개, 카탈로그 v2 변경 한 줄 알림
 - CONTRIBUTING.md 갱신: 4 번째 컬럼 (도메인) 분류 가이드
-- v0.8 GitHub release notes (breaking change 명시: 카탈로그 표 4 컬럼)
+- v0.8 GitHub release notes (breaking change 명시) — 외부/수동 확인 필요; 이 문서는 게시를 주장하지 않음
 - ROADMAP.md S3 status 갱신
 
 ---

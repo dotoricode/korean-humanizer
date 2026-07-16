@@ -1,6 +1,6 @@
 # 베타 모집 — v1.0 안정화 검증
 
-> 보관 문서. v1.0 stable 은 2026-05-21 에 출시됐고, 이 문서는 v1.0 이전 모집 글 + 운영 체크리스트 기록으로 남긴다.
+> **체크인된 모집 템플릿**: 아래 채널별 문안과 체크리스트는 모집·운영 계획입니다. 게시, 신청, confirmed 사용자, 베타 운영, v1.0 출시를 증명하지 않습니다.
 
 ---
 
@@ -244,4 +244,4 @@ docs/beta-guide.md — 사용 가이드
 
 이 문서 자체에 대한 PR 도 환영 — 더 좋은 모집 표현 / 채널 / 보상 구조 제안.
 
-신청 GitHub Issue 템플릿: [`.github/ISSUE_TEMPLATE/beta_signup.md`](../.github/ISSUE_TEMPLATE/beta_signup.md) (S4 작업 중 추가 예정).
+신청 GitHub Issue 템플릿: [`.github/ISSUE_TEMPLATE/beta_signup.md`](../.github/ISSUE_TEMPLATE/beta_signup.md) (저장소에 체크인된 신청 템플릿).

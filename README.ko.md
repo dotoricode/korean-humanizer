@@ -13,7 +13,6 @@
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 [![Modes](https://img.shields.io/badge/customization-4_modes-brightgreen.svg)](#personal-list--brand-voice-캘리브레이션)
 [![Korean](https://img.shields.io/badge/lang-Korean-red.svg)](references/ko-ai-signals.md)
-[![Wiki](https://img.shields.io/badge/wiki-research-purple.svg)](https://github.com/dotoricode/korean-humanizer/wiki)
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -46,13 +45,13 @@ Quick links: [`PROMPT.short.md`](PROMPT.short.md) · [`PROMPT.md`](PROMPT.md) ·
 
 **한국어 LLM 출력의 12 카테고리 / 100+ AI 티 패턴**을 12 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키·학술·뉴스·채팅·리뷰·B2B 메시지) 에 걸쳐 의미 불변으로 다듬는다. **v1.0.1 부터는 humanizer 가 요약기가 아니라는 점을 더 강하게 고정해, 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.** Brand voice profile 로 *짧고 직설 / 길고 사변* 같은 본인 톤도 영구 등록할 수 있다 (Claude Code · Claude.ai · OpenCode · Codex · Cursor · ChatGPT · Gemini 호환).
 
-🔗 [Wiki (연구 / 평가 / 윤리)](https://github.com/dotoricode/korean-humanizer/wiki) · 🛠️ [패턴 카탈로그](references/ko-ai-signals.md) · ⚡ [30개 치트시트](CHEATSHEET.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
+🛠️ [패턴 카탈로그](references/ko-ai-signals.md) · ⚡ [30개 치트시트](CHEATSHEET.md) · 💬 [Issues](https://github.com/dotoricode/korean-humanizer/issues/new/choose) · 📑 [전체 비교 사례](#full-example)
 
 ## Overview
 
 영어용 humanizer skill (`blader/humanizer`, `jalaalrd/anti-ai-slop-writing` 등)은 많지만, **한국어 전용 humanizer 는 비어 있었다.** 한국어에는 영어와 다른 AI tell 이 있다 — 번역체("~에 있어서"), 격식체 남용("~인 것이다"), "이러한 / 해당" 과다, AI 고빈도 어휘("활용 / 극대화 / 시사한다") 같은 것들. 최근 한국어 탐지 연구(KatFish, XDAC) 도 쉼표 과다 / 명사 편중 / 종결어미 단조로움 / 낮은 어휘 다양성을 한국어 전용 신호로 짚는다.
 
-이 레포는 그 빈자리를 채우는 **12 카테고리 / 100+ 한국어 AI 패턴 카탈로그**와 그걸 적용하는 작은 skill / system prompt 를 묶었다. 연구 근거와 평가 루브릭은 [`korean-humanizer-research.md`](korean-humanizer-research.md) 와 [Wiki](https://github.com/dotoricode/korean-humanizer/wiki) 에 정리되어 있다.
+이 레포는 그 빈자리를 채우는 **12 카테고리 / 100+ 한국어 AI 패턴 카탈로그**와 그걸 적용하는 작은 skill / system prompt 를 묶었다. 연구 근거와 평가 루브릭은 [`korean-humanizer-research.md`](korean-humanizer-research.md) 에 정리되어 있다.
 
 > "AI 가 쓴 한국어는 읽으면 티가 난다. humanizer 는 그 티를 걷어낸다 — **의미는 그대로 두고 표현만**."
 
@@ -378,7 +377,7 @@ korean-humanizer/
 
 - [`references/ko-ai-signals.md`](references/ko-ai-signals.md) — 12 카테고리 / 100+ 한국어 AI 패턴 카탈로그 (메인 IP)
 - [`CHEATSHEET.md`](CHEATSHEET.md) — 한국어 AI 티 30개 빠른 표
-- [`korean-humanizer-research.md`](korean-humanizer-research.md) · [Wiki](https://github.com/dotoricode/korean-humanizer/wiki) — KatFish/XDAC 등 한국어 탐지 연구 정리, feature schema, 평가 루브릭, 윤리 가이드
+- [`korean-humanizer-research.md`](korean-humanizer-research.md) — KatFish/XDAC 등 한국어 탐지 연구 정리, feature schema, 평가 루브릭, 윤리 가이드
 - [Wikipedia: Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing) — 영어 패턴 1차 소스 (영감)
 - [`blader/humanizer`](https://github.com/blader/humanizer) — 영어 humanizer skill (구조 참고)
 - [`jalaalrd/anti-ai-slop-writing`](https://github.com/jalaalrd/anti-ai-slop-writing) — 영어 anti-slop 가이드
@@ -411,7 +410,7 @@ v1.0 부터 SemVer freeze 약속:
 전체 history 는 [`CHANGELOG.md`](CHANGELOG.md). 요약:
 
 - **1.0.1** *(2026-06-02)* — 과압축 방지 패치. "humanizer 는 요약기가 아니다" 원칙, 원문 대비 90 % 길이 floor, 삭제보다 치환 우선, README 예시 최신화.
-- **1.0.0** *(S4 — Stabilization, 2026-05-21)* — 안정화 약속 + CHANGELOG / SECURITY / MIGRATION 통합. 첫 stable release.
+- **1.0.0** *(S4 — Stabilization, 2026-05-21)* — 안정화 약속 + CHANGELOG / SECURITY / MIGRATION 통합. 저장소에 기록된 첫 stable 버전 이정표이며, 원격 태그·GitHub Release 게시 증거를 뜻하지 않는다.
 - **0.8.0** *(S3 — Brand voice + Catalog v2, 2026-04-30)* — 4 번째 mode (Brand voice profile), 카탈로그 v2 (4 컬럼: 나쁨 / 자연스러움 / 빈도 / 적용 도메인), 부록 F 도메인 코드 표준, eval M5, lint v2.
 - **0.7.0** *(S2 — Domain coverage v2, 2026-04-29)* — 7 → 12 도메인 확장, 5 신규 도메인 사례, 카탈로그 부록 E.
 - **0.6.0** *(S1 — Eval foundation, 2026-04-29)* — eval-harness 4 metric, 20 fixture, scorecard auto-gen, 5 번째 CI job.
