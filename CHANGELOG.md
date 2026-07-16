@@ -2,6 +2,12 @@
 
 > 모든 변경은 [Keep a Changelog](https://keepachangelog.com/) 형식, 버전은 [SemVer](https://semver.org/) 규칙. v1.0 부터 freeze 영역은 [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) 참조.
 
+## [Unreleased]
+
+### Fixed
+
+- Windows Store `python3` alias failure now falls back only to a proven runnable Python interpreter.
+
 ## [1.0.1] — 2026-06-02
 
 ### Changed

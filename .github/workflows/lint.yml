@@ -79,3 +79,120 @@ jobs:
           name: eval-scorecard
           path: eval/scorecard.md
           if-no-files-found: warn
+  eval-harness-windows:
+    name: eval harness (Windows)
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Prove eval harness interpreter selection
+        shell: bash
+        run: |
+          set -euo pipefail
+          REAL_PYTHON=$(command -v python)
+          test -n "$REAL_PYTHON"
+          REAL_VERSION=$("$REAL_PYTHON" -c 'import sys; assert sys.version_info >= (3, 8); print("%d.%d.%d" % sys.version_info[:3])')
+          export REAL_PYTHON REAL_VERSION
+          SHIM_ROOT="$PWD/.gjc-python-shim"
+          trap 'rm -rf "$SHIM_ROOT"' EXIT
+          mkdir -p "$SHIM_ROOT/bin" "$SHIM_ROOT/space dir"
+          PROBE='import sys; print("GJC_PYTHON_OK|%d.%d.%d" % sys.version_info[:3]); raise SystemExit(0 if sys.version_info >= (3, 8) else 1)'
+
+          make_shim() {
+            local path=$1 candidate=$2 body=$3
+            cat > "$path" <<EOF
+          #!/usr/bin/env bash
+          record() {
+            printf 'candidate=%s\nargc=%d\n' '$candidate' "\$#" >> "\$PYTHON_SHIM_LOG"
+            local a
+            for a in "\$@"; do printf 'arg=%q\n' "\$a" >> "\$PYTHON_SHIM_LOG"; done
+          }
+          $body
+          EOF
+            chmod +x "$path"
+          }
+          expect_record() {
+            local file=$1 candidate=$2
+            shift 2
+            { printf 'candidate=%s\nargc=%d\n' "$candidate" "$#"; local a; for a in "$@"; do printf 'arg=%q\n' "$a"; done; } >> "$file"
+          }
+          expect_err() {
+            local file=$1
+            shift
+            printf '%s\n' "$@" > "$file"
+          }
+
+          make_shim "$SHIM_ROOT/bin/python3" python3 'record "$@"; exit 127'
+          make_shim "$SHIM_ROOT/bin/python" python 'record "$@"; exec "$REAL_PYTHON" "$@"'
+          make_shim "$SHIM_ROOT/bin/py" py 'record "$@"; test "$1" = -3; shift; exec "$REAL_PYTHON" "$@"'
+          make_shim "$SHIM_ROOT/space dir/python shim" space 'record "$@"; exec "$REAL_PYTHON" "$@"'
+          make_shim "$SHIM_ROOT/bin/true-like" true-like 'record "$@"; exit 0'
+          make_shim "$SHIM_ROOT/bin/old-python" old-python 'record "$@"; printf "GJC_PYTHON_OK|3.7.99\n"; exit 1'
+          make_shim "$SHIM_ROOT/bin/extra-stdout" extra-stdout 'record "$@"; printf "GJC_PYTHON_OK|3.12.0\nextra\n"; exit 0'
+          make_shim "$SHIM_ROOT/bin/probe-stderr" probe-stderr 'record "$@"; printf "GJC_PYTHON_OK|3.12.0\n"; printf "noise\n" >&2'
+          make_shim "$SHIM_ROOT/bin/probe-stderr-no-newline" probe-stderr-no-newline 'record "$@"; printf "GJC_PYTHON_OK|3.12.0\n"; printf "noise" >&2'
+
+          : > "$SHIM_ROOT/unset.log"; : > "$SHIM_ROOT/unset.expected"
+          env -u PYTHON PYTHON_SHIM_LOG="$SHIM_ROOT/unset.log" PATH="$SHIM_ROOT/bin:$PATH" bash scripts/eval-harness.sh 2> "$SHIM_ROOT/unset.err"
+          expect_record "$SHIM_ROOT/unset.expected" python3 -c "$PROBE"
+          expect_record "$SHIM_ROOT/unset.expected" python -c "$PROBE"
+          expect_record "$SHIM_ROOT/unset.expected" python scripts/eval-harness.py --strict
+          cmp "$SHIM_ROOT/unset.expected" "$SHIM_ROOT/unset.log"
+          expect_err "$SHIM_ROOT/unset.err.expected" 'eval-harness: candidate=python3 rejected: probe exit=127' "eval-harness: selected candidate=python version=$REAL_VERSION"
+          cmp "$SHIM_ROOT/unset.err.expected" "$SHIM_ROOT/unset.err"
+
+          : > "$SHIM_ROOT/empty.log"; : > "$SHIM_ROOT/empty.expected"
+          PYTHON='' PYTHON_SHIM_LOG="$SHIM_ROOT/empty.log" PATH="$SHIM_ROOT/bin:$PATH" bash scripts/eval-harness.sh --no-strict 2> "$SHIM_ROOT/empty.err"
+          expect_record "$SHIM_ROOT/empty.expected" python3 -c "$PROBE"
+          expect_record "$SHIM_ROOT/empty.expected" python -c "$PROBE"
+          expect_record "$SHIM_ROOT/empty.expected" python scripts/eval-harness.py
+          cmp "$SHIM_ROOT/empty.expected" "$SHIM_ROOT/empty.log"
+          expect_err "$SHIM_ROOT/empty.err.expected" 'eval-harness: candidate=python3 rejected: probe exit=127' "eval-harness: selected candidate=python version=$REAL_VERSION"
+          cmp "$SHIM_ROOT/empty.err.expected" "$SHIM_ROOT/empty.err"
+
+          : > "$SHIM_ROOT/py.log"; : > "$SHIM_ROOT/py.expected"
+          PYTHON='py -3' PYTHON_SHIM_LOG="$SHIM_ROOT/py.log" PATH="$SHIM_ROOT/bin:$PATH" bash scripts/eval-harness.sh 2> "$SHIM_ROOT/py.err"
+          expect_record "$SHIM_ROOT/py.expected" py -3 -c "$PROBE"
+          expect_record "$SHIM_ROOT/py.expected" py -3 scripts/eval-harness.py --strict
+          cmp "$SHIM_ROOT/py.expected" "$SHIM_ROOT/py.log"
+          expect_err "$SHIM_ROOT/py.err.expected" "eval-harness: selected candidate=py -3 version=$REAL_VERSION"
+          cmp "$SHIM_ROOT/py.err.expected" "$SHIM_ROOT/py.err"
+
+          : > "$SHIM_ROOT/space.log"; : > "$SHIM_ROOT/space.expected"
+          PYTHON="$SHIM_ROOT/space dir/python shim" PYTHON_SHIM_LOG="$SHIM_ROOT/space.log" bash scripts/eval-harness.sh 2> "$SHIM_ROOT/space.err"
+          expect_record "$SHIM_ROOT/space.expected" space -c "$PROBE"
+          expect_record "$SHIM_ROOT/space.expected" space scripts/eval-harness.py --strict
+          cmp "$SHIM_ROOT/space.expected" "$SHIM_ROOT/space.log"
+          expect_err "$SHIM_ROOT/space.err.expected" "eval-harness: selected candidate=$SHIM_ROOT/space dir/python shim version=$REAL_VERSION"
+          cmp "$SHIM_ROOT/space.err.expected" "$SHIM_ROOT/space.err"
+
+          negative_case() {
+            local label=$1 executable=$2 reason=$3
+            : > "$SHIM_ROOT/$label.log"; : > "$SHIM_ROOT/$label.expected"
+            if PYTHON="$executable" PYTHON_SHIM_LOG="$SHIM_ROOT/$label.log" PATH="$SHIM_ROOT/bin:$PATH" bash scripts/eval-harness.sh --no-strict 2> "$SHIM_ROOT/$label.err"; then exit 1; fi
+            expect_record "$SHIM_ROOT/$label.expected" "$label" -c "$PROBE"
+            cmp "$SHIM_ROOT/$label.expected" "$SHIM_ROOT/$label.log"
+            expect_err "$SHIM_ROOT/$label.err.expected" "eval-harness: PYTHON override candidate=$executable rejected: $reason; set PYTHON to an executable pathname or unset it"
+            cmp "$SHIM_ROOT/$label.err.expected" "$SHIM_ROOT/$label.err"
+          }
+          negative_case true-like "$SHIM_ROOT/bin/true-like" 'missing or invalid Python sentinel'
+          negative_case old-python "$SHIM_ROOT/bin/old-python" 'Python 3.7.99 is below 3.8'
+          negative_case extra-stdout "$SHIM_ROOT/bin/extra-stdout" 'missing or invalid Python sentinel'
+          negative_case probe-stderr "$SHIM_ROOT/bin/probe-stderr" 'probe wrote stderr'
+          negative_case probe-stderr-no-newline "$SHIM_ROOT/bin/probe-stderr-no-newline" 'probe wrote stderr'
+          negative_case python3 python3 'probe exit=127'
+
+          make_shim "$SHIM_ROOT/bin/python" python 'record "$@"; exit 126'
+          : > "$SHIM_ROOT/fallback-py.log"; : > "$SHIM_ROOT/fallback-py.expected"
+          env -u PYTHON PYTHON_SHIM_LOG="$SHIM_ROOT/fallback-py.log" PATH="$SHIM_ROOT/bin:$PATH" bash scripts/eval-harness.sh --no-strict 2> "$SHIM_ROOT/fallback-py.err"
+          expect_record "$SHIM_ROOT/fallback-py.expected" python3 -c "$PROBE"
+          expect_record "$SHIM_ROOT/fallback-py.expected" python -c "$PROBE"
+          expect_record "$SHIM_ROOT/fallback-py.expected" py -3 -c "$PROBE"
+          expect_record "$SHIM_ROOT/fallback-py.expected" py -3 scripts/eval-harness.py
+          cmp "$SHIM_ROOT/fallback-py.expected" "$SHIM_ROOT/fallback-py.log"
+          expect_err "$SHIM_ROOT/fallback-py.err.expected" 'eval-harness: candidate=python3 rejected: probe exit=127' 'eval-harness: candidate=python rejected: probe exit=126' "eval-harness: selected candidate=py -3 version=$REAL_VERSION"
+          cmp "$SHIM_ROOT/fallback-py.err.expected" "$SHIM_ROOT/fallback-py.err"

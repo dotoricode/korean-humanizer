@@ -53,18 +53,32 @@ notes: 짧은 코멘트 (선택)
 
 ## 실행
 
+항상 wrapper 로 실행한다. wrapper 는 실행 가능한 Python 3.8+만 선택한 뒤 harness 를 호출한다.
+
 ```bash
 bash scripts/eval-harness.sh
-# = python3 scripts/eval-harness.py --strict
+# strict 검증 (기본값)
+
+bash scripts/eval-harness.sh --no-strict
+# 로컬 점수 확인
 ```
 
-`eval/scorecard.md` 가 자동 생성됨. CI 는 `--strict` 로 fail 일 때 exit 1.
+`eval/scorecard.md` 가 자동 생성됨. CI 는 strict 모드에서 fail 이면 exit 1.
 
-## 회귀 시나리오 (개발용)
+### Python 선택과 override
 
-`scripts/eval-harness.py --no-strict` 로 단순 리포트만 생성. fixture 수정 → 점수 변화 확인 워크플로우에 사용.
+`PYTHON` 이 비어 있거나 설정되지 않으면 wrapper 는 순서대로 `python3`, `python`, `py -3`를 검사한다. Windows Store `python3` alias 처럼 PATH 에 있지만 실행할 수 없는 후보는 거부하고 다음 후보로 진행한다.
 
-Scorecard 의 `Clean pass` 는 실제 품질 통과, `Expected-failure pass` 는 trap / known-risk fixture 통과다. v1 안정화에서는 일반 품질 fixture 의 expected failure 를 줄이고, 남기는 항목은 파일명과 `notes` 에 trap 목적을 명시한다.
+비어 있지 않은 `PYTHON` 은 fallback 하지 않는다. 정확히 `PYTHON='py -3'`만 `py`와 `-3`의 두 argv 요소로 해석한다. 그 밖의 값은 공백을 포함해 하나의 실행 파일 pathname 이다.
+
+```bash
+PYTHON='py -3' bash scripts/eval-harness.sh
+PYTHON='/path with spaces/python' bash scripts/eval-harness.sh
+```
+
+flags, quoting, command line, shell syntax은 지원하지 않으며 parsing/eval하지 않는다.
+
+각 후보는 Python 3.8+ sentinel, exit 0, stderr 없음만 통과한다. 기본 선택은 `eval-harness: candidate=... rejected: ...`와 `eval-harness: selected candidate=... version=...`를 순서대로 stderr에 출력한다. 명시 override 실패는 fallback 없이 `eval-harness: PYTHON override candidate=... rejected: ...; set PYTHON to an executable pathname or unset it`를 출력한다. 거부 이유는 probe exit, invalid sentinel, Python 3.8 미만, probe stderr 중 하나다.
 
 ## Fixture 큐레이션 가이드
 
