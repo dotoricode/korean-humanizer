@@ -2,6 +2,36 @@
 
 > 모든 변경은 [Keep a Changelog](https://keepachangelog.com/) 형식, 버전은 [SemVer](https://semver.org/) 규칙. v1.0 부터 freeze 영역은 [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) 참조.
 
+## [Unreleased] — 2.0.0 준비
+
+### Breaking changes
+
+- 기본 출력은 교정 본문만 제공하고 첫 응답의 되돌리기·재수정 안내를 생략합니다.
+- 개인 설정은 `personal=파일경로`로 명시한 파일만 사용합니다.
+- 카탈로그 표 헤더를 `검토할 표현` / `치환 후보`로 변경합니다.
+- 수정 문장 한도를 `max(1, floor(문장 수 × 0.20))`로 명시합니다.
+- 명확한 용도는 바로 처리하며 참고 글은 선택 사항으로 둡니다.
+- 기존 1.x 약속을 보존하고 [마이그레이션 준비 안내](docs/MIGRATION-1.x-to-2.x.md)를 추가했습니다. 태그·릴리스는 아직 없습니다.
+
+### Fixed
+
+- 설치 경로 재실행 시 자기 참조 링크, ripgrep 없는 검사 실패를 수정했습니다.
+- 길이 하한·보존어·부정 테스트·빈 fixture·CLI 경로와 옵션 검사를 보완했습니다.
+- 원문에 없는 정보를 추가하던 실행 참조 예시를 교체하고 지침 우선순위를 통일했습니다.
+- Markdown 코드 블록 앞뒤 빈 줄 경고를 해결했습니다.
+
+### Documentation
+
+- README를 설치·사용·현재 예시 중심으로 정리하고 [문서 안내](docs/README.md)를 추가했습니다.
+- 과거 베타·완료 개발 계획·비교 사례를 `docs/archive/`에 보관했습니다.
+- 빈 피드백 scaffold·중복 장문 연구 교정본·적용 완료 Topics 메모를 제거하고 용어를 `AGENTS.md`에 통합했습니다.
+- 연구 배경·빈도 측정 계획·QA·홍보 기록은 목적별 디렉토리로 옮겼습니다.
+
+### Validation
+
+- 회귀 검사 15개, 고정 입력·출력 fixture 25개를 확인했습니다. 모델 품질 성공률을 뜻하지 않습니다.
+- 검사 범위·한계와 작은 실행 사례는 [QA 기록](docs/reviews/2026-10-01-qa.md)에 남겼습니다.
+
 ## [1.0.1] — 2026-06-02
 
 ### Changed
@@ -49,7 +79,7 @@
 ### Migration
 
 - 일반 사용자: `git pull` 만으로 완료. 영향 없음.
-- 외부 fork 사용자: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md) 참조.
+- 외부 fork 사용자: [`docs/MIGRATION-0.x-to-1.0.md`](docs/archive/migrations/MIGRATION-0.x-to-1.0.md) 참조.
 
 ---
 
@@ -74,7 +104,7 @@
 
 ### Migration
 
-- 외부 fork 사용자: [`roadmap/S3-migration-notes.md`](roadmap/S3-migration-notes.md) — 표 헤더 4 컬럼 + 도메인 코드 부여 절차.
+- 외부 fork 사용자: [`roadmap/S3-migration-notes.md`](docs/archive/roadmap/S3-migration-notes.md) — 표 헤더 4 컬럼 + 도메인 코드 부여 절차.
 - 일반 사용자 (SKILL.md / PROMPT.md 사용): clone / pull 만 — 영향 없음.
 
 ---
@@ -177,5 +207,5 @@
 ## 비교 / 관련 링크
 
 - v1.0 freeze 영역 정의: [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md)
-- v0.x → v1.0 전체 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md)
+- v0.x → v1.0 전체 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/archive/migrations/MIGRATION-0.x-to-1.0.md)
 - 4 sprint 로드맵: [`ROADMAP.md`](ROADMAP.md)

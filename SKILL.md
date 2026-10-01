@@ -194,7 +194,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 ## 레퍼런스
 
 - `references/ko-ai-signals.md` — 12 카테고리 / 100+ 패턴 카탈로그 (4 컬럼 — 검토할 표현 / 치환 후보 / 빈도 / 적용 도메인).
-- `examples/before-after.md` — 실제 변환 사례.
+- `examples/before-after.md` — 보수적으로 수동 편집한 예시. 모델 실행 기록은 아님.
 - `examples/personal-list.md` — 사용자 커스터마이징 템플릿 (방식 C).
 - `examples/brand-voice-template.md` — Brand voice 프로필 템플릿 (방식 D).
 - `examples/brand-voice-toss-style.md` / `examples/brand-voice-essayist.md` — Brand voice 케이스 스터디.

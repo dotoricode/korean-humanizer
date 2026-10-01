@@ -1,9 +1,11 @@
 # 위키 Raw ↔ Humanized 단락별 비교
 
-> 기존 비교 자료입니다. 현재 수정 한도·90% 길이 보존을 충족한 결과로 보장하지 않습니다. 정확한 모델 실행 기록과 재검증이 필요한 사례입니다.
-> [`korean-humanizer-research.md`](../korean-humanizer-research.md) (raw) → [`korean-humanizer-research-humanized.md`](../korean-humanizer-research-humanized.md) 변환 과정의 단락별 상세 비교.
+> 과거 개발·베타 기록입니다. 현재 사용법은 [문서 안내](../../README.md)를 참고하세요. 예전 규칙·수치·예시는 현재 동작의 보증이 아닙니다.
 >
-> README 의 [Full Example](../README.md#full-example) 은 Executive Summary 두 단락만 짧게 보여 준다. 이 문서는 같은 변환 작업에서 **다른 섹션 4~5 곳을 더 깊게** 살펴 본다 — 어떤 카테고리가 어디에 적용되었는지, 어디서 humanizer 가 *덜* 손대야 했는지, 표 / 코드 / 사실 정보가 어떻게 보존되었는지를 정리한다.
+> 기존 비교 자료입니다. 현재 수정 한도·90% 길이 보존을 충족한 결과로 보장하지 않습니다. 정확한 모델 실행 기록과 재검증이 필요한 사례입니다.
+> [`korean-humanizer-research.md`](../../research/background.md) (raw) → [`korean-humanizer-research-humanized.md`](https://github.com/dotoricode/korean-humanizer/blob/b9eb15db0bd7c365ec5781d308db3a0787360c22/korean-humanizer-research-humanized.md) 변환 과정의 단락별 상세 비교.
+>
+> 당시 한국어 README의 [Full Example](https://github.com/dotoricode/korean-humanizer/blob/b9eb15db0bd7c365ec5781d308db3a0787360c22/README.ko.md#full-example) 은 Executive Summary 두 단락만 짧게 보여 준다. 이 문서는 같은 변환 작업에서 **다른 섹션 4~5 곳을 더 깊게** 살펴 본다 — 어떤 카테고리가 어디에 적용되었는지, 어디서 humanizer 가 *덜* 손대야 했는지, 표 / 코드 / 사실 정보가 어떻게 보존되었는지를 정리한다.
 
 ## 메타데이터
 
@@ -193,10 +195,10 @@ curl -L https://raw.githubusercontent.com/dotoricode/korean-humanizer/main/korea
 [raw.md 내용 붙여넣기]
 ```
 
-또는 ChatGPT / Cursor / Gemini 에서 [`PROMPT.md`](../PROMPT.md) 를 시스템 프롬프트로 등록하고 같은 지시를 주면 된다.
+또는 ChatGPT / Cursor / Gemini 에서 [`PROMPT.md`](../../../PROMPT.md) 를 시스템 프롬프트로 등록하고 같은 지시를 주면 된다.
 
 같은 12 카테고리 룰을 따르므로 결과는 다소 다른 어휘 선택이 있을 수 있지만 **방향성은 동일** 해야 한다.
 
 ---
 
-*이 비교 문서 자체는 humanize 적용 후 자체 리뷰를 한 결과다. 사실 / 인용 / 숫자가 raw 본과 일치하는지는 위 표로 확인했고, 적용 카테고리 매핑은 [`references/ko-ai-signals.md`](../references/ko-ai-signals.md) 를 따른다.*
+*이 비교 문서 자체는 humanize 적용 후 자체 리뷰를 한 결과다. 사실 / 인용 / 숫자가 raw 본과 일치하는지는 위 표로 확인했고, 적용 카테고리 매핑은 [`references/ko-ai-signals.md`](../../../references/ko-ai-signals.md) 를 따른다.*

@@ -110,5 +110,5 @@ humanizer 의 핵심 약속은 **의미 불변**. 다음은 의미 변경 → �
 ## 참고
 
 - [Stability Promise](docs/STABILITY-PROMISE.md) — v1.0 freeze 영역
-- [Migration guide](docs/MIGRATION-0.x-to-1.0.md) — 보안 영향 있는 변경 사항
+- [Migration guide](docs/archive/migrations/MIGRATION-0.x-to-1.0.md) — 보안 영향 있는 변경 사항
 - [Contributing](CONTRIBUTING.md) — PR 보안 체크리스트

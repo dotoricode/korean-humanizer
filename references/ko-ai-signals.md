@@ -303,7 +303,7 @@ humanize 결과는 **raw의 종결어미 톤을 도메인 디폴트와 함께 �
 
 ## 부록 A. 연구 근거 (Research Findings)
 
-이 카탈로그는 단순 관찰뿐 아니라 한국어 AI 탐지 연구의 정량 보고치와도 결이 맞다. 핵심 수치만 요약한다 — 전체 근거 / 평가 프로토콜 / 윤리 한계는 별도 위키 문서 [`korean-humanizer-research.md`](../korean-humanizer-research.md) 참조.
+관련 한국어 AI 탐지 연구를 배경 자료로 요약합니다. 각 치환 후보의 발생 빈도나 이 스킬의 편집 효과를 검증한 결과는 아닙니다. 출처·평가 프로토콜·한계는 [연구 배경 초안](../docs/research/background.md)을 참고하고 원 출처를 확인하세요.
 
 ### A.1 KatFish — 쉼표 사용 패턴 (인간 vs LLM)
 
@@ -362,7 +362,7 @@ humanizer 는 *편집기*지만, 같은 신호를 *탐지/평가*에도 쓸 수 
 
 ## 부록 C. 사람 평가용 한국어 루브릭 (LREAD 기반)
 
-humanize 결과를 사람이 평가할 때 쓰는 5점 루브릭. README 의 Full Example, `examples/agent-vs-skill.md` 의 정성 평가가 이 축을 따른다.
+humanize 결과를 사람이 평가할 때 쓰는 5점 루브릭. [수동 편집 예시](../examples/before-after.md), [과거 비교 사례](../docs/archive/examples/agent-vs-skill.md) 의 정성 평가가 이 축을 따른다.
 
 | 축 | 1점 | 5점 |
 |---|---|---|

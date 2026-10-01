@@ -1,122 +1,30 @@
-# Roadmap — korean-humanizer
+# 출시 준비와 다음 작업
 
-> v0.5 → **v1.0.0** 까지의 4 sprint 기록과 v1.x 후속 후보.
->
-> 한국어 전용. [다국어 확장은 영구 out-of-scope](roadmap/S3-brand-voice-catalog-v2.md#out-of-scope).
+현재 작업은 미출시 **2.0 후보**입니다. 과거 v0.5 → v1.0 개발 계획은 [보관 문서](docs/archive/roadmap/README.md)에 있습니다. 한국어 전용 스킬을 유지합니다.
 
----
+## 우선순위
 
-## 한눈에 보기
-
-| Sprint | Version | 기간 | 테마 | 상세 |
-|---|---|---|---|---|
-| **S1** | v0.5 → v0.6 | 2 주 | Eval foundation — 휴리스틱 자동 검증 | [S1-eval-foundation.md](roadmap/S1-eval-foundation.md) |
-| **S2** | v0.6 → v0.7 | 2 주 | Domain v2 — 5 신규 도메인 | [S2-domain-coverage-v2.md](roadmap/S2-domain-coverage-v2.md) |
-| **S3** | v0.7 → v0.8 | 3 주 | Brand voice + Catalog v2 | [S3-brand-voice-catalog-v2.md](roadmap/S3-brand-voice-catalog-v2.md) |
-| **S4** | v0.8 → **v1.0.0** | 3 주 | Stabilization + 베타 + Polish | [S4-v1.0.0-stabilization.md](roadmap/S4-v1.0.0-stabilization.md) |
-
-**총 10 주** (공격적) / **14 주** (현실적, +1 주 buffer per sprint).
-
----
-
-## 각 sprint 가 풀어내는 문제
-
-### S1 — Eval Foundation
-
-> **문제**: 현재 lint 3 종은 *형식* 만 본다. examples 가 실제로 20 % cap·3 곳 룰을 지키는지 자동 검증이 없다.
->
-> **해결**: 휴리스틱 4 metric (20 % cap / 단락 3 곳 / 길이 압축률 / 종결어미 톤) + 20 fixture + scorecard + CI 5 번째 job.
-
-### S2 — Domain Coverage v2
-
-> **문제**: 7 도메인 (블로그·마케팅·이메일·LinkedIn·YouTube·뉴스레터·위키) 만 cover. 한국 사용자가 자주 쓰는 학술·뉴스·채팅·리뷰·B2B 메시지 사례 없음.
->
-> **해결**: 5 신규 도메인 사례 + 카탈로그 부록 E (도메인별 카테고리 우선순위).
-
-### S3 — Brand Voice + Catalog v2
-
-> **문제 1**: humanize 결과가 평범한 한국어 톤만. 사용자 *브랜드 톤* (Toss 풍·작가 X 톤) 으로 다듬을 길 없음.
->
-> **문제 2**: "활용" 같은 패턴이 마케팅·학술에서 다른 가중치인데 카탈로그가 동일 처리.
->
-> **해결**: Personal list 4 번째 mode (brand voice profile) + 카탈로그 4 컬럼 확장 (`나쁨 / 자연스러움 / 빈도 / 적용 도메인`) + 빈도 데이터 기반 재라벨링.
-
-### S4 — v1.0.0 Stabilization
-
-> **문제**: v0.x 는 "변할 수 있다" 신호. 사용자·contributor 가 의존하기 어렵다.
->
-> **해결**: SemVer 약속 (12 카테고리 / SKILL 출력 포맷 / 정량 규칙 / PROMPT.md API freeze) + 베타 3-5 명 1-2 주 검증 + CHANGELOG / SECURITY / MIGRATION / README v1.0 hero.
-
----
-
-## 의존성 그래프
-
-```
-S1 (eval) ──┬──> S2 (도메인) ──> S3 (brand + catalog v2) ──> S4 (v1.0)
-            └─────────────────────────────────────────────────^
-                       (S1 의 fixture 가 S4 까지 계속 grow)
-```
-
-- S1 의 eval-harness 는 S2-S4 모든 신규 examples 가 통과해야 함.
-- S2 의 도메인 셋은 S3 카탈로그 v2 의 도메인 컬럼 값을 결정.
-- S3 의 카탈로그 v2 / brand voice 는 S4 의 freeze 약속 대상.
-
----
-
-## 외부 의존도
-
-| Sprint | 외부 의존 | Blocker 위험 |
+| 순서 | 작업 | 완료 기준 |
 |---|---|---|
-| S1 | 없음 | 낮음 |
-| S2 | 없음 | 낮음 |
-| S3 | 없음 (가상 brand 케이스) | 중간 (137 행 재라벨링 시간) |
-| S4 | **베타 사용자 3-5 명 모집** | **높음** |
+| 1 | 규칙·예시·문서 정리 | 보존·수정 한도·출력·개인 설정 일치, 현재 안내와 과거 기록 분리 |
+| 2 | 실제 출력 검증 | 사용 모델·입력·출력·날짜 기록, 숫자·날짜·링크·인용·조건·말투 비교 |
+| 3 | 최소 배포 ZIP | 필요한 파일만 포함, 압축 해제 후 참조 파일 접근 확인 |
+| 4 | 설치 검증 | Codex·Claude Code 각각 새 설치부터 첫 실행까지 확인 |
+| 5 | 무료 Agensi 입점 준비 | MIT 적용 조건 확인, GitHub로 이어지는 소개·사용 안내 준비 |
+| 6 | 피드백 반영 | 실제 사용 결과와 유입을 확인한 뒤 유료 사례 팩 필요성 판단 |
 
-S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 패치 또는 1.x 마이너로 분리한다.
+1번의 코드·규칙 보완 근거는 [QA 기록](docs/reviews/2026-10-01-qa.md)에 있습니다. 문서 정리는 이 PR에서 진행합니다. 나머지 작업을 완료했다고 소개하지 않습니다.
 
----
+## 출시 조건
 
-## 의도적으로 안 함 (영구 out-of-scope)
+출력 형식과 개인 설정의 호환성 변경은 [2.0 마이그레이션 안내](docs/MIGRATION-1.x-to-2.x.md)로 준비합니다. 기존 [1.x 약속](docs/STABILITY-PROMISE.md)을 지우거나 패치 변경으로 처리하지 않습니다. 태그·릴리스와 Agensi 게시 여부는 별도로 결정합니다.
 
-- **다국어 확장** (일본어·중국어 등). 한국어 전용 유지.
-- 다른 언어용 humanizer 가 필요하면 별도 레포로.
-- 카탈로그 / 디렉토리 구조의 다언어 일반화도 안 함.
+목표가 GitHub Star 유입이므로 본체 무료 입점을 우선 검토합니다. 유료 팩은 이메일·SNS·뉴스레터처럼 실제 입력부터 설정·완성 예시·검수까지 시간을 줄여 주는 사례가 확보된 뒤 판단합니다.
 
-## v1.0 이후 후속 후보 (1.x 마이너)
+## 후속 후보
 
-이번 로드맵 스프린트에서 *의도적으로 뺀* 항목 — v1.0 release 후 별도 트랙으로 검토:
+- [빈도 측정](docs/plans/frequency-evaluation.md): 원문 샘플 수집과 재현 가능한 라벨 근거
+- 실제 모델 평가: 회귀 검사와 분리해 자연스러움·의미 보존을 확인
+- Brand voice 추출 사례: 설정 생성부터 새 글에 적용하기까지 검증
 
-- **LLM-as-judge eval** — 정성 자연스러움 / 의미 보존 자동 평가
-- **Batch / API mode** — 다수 텍스트 일괄 humanize
-- **Brand voice 자동 추출** — 사용자 글 샘플에서 brand voice profile 자동 생성
-- **사용자 만족도 정량 측정** — A/B test, NPS 등
-- **X·Threads / 강의 소개 도메인** — S2 에서 미룬 도메인
-- **카테고리 #13+ 후보** — 실 사용 데이터로 새 패턴 군 발견 시 (major bump 동반)
-
----
-
-## 진행 상태
-
-| Sprint | Status | Date |
-|---|---|---|
-| v0.5 (이전 sprint) | ✓ 완료 | 2026-04-29 |
-| **S1 v0.6** | ✓ 완료 | 2026-04-29 |
-| **S2 v0.7** | ✓ 완료 | 2026-04-29 |
-| **S3 v0.8** | ✓ 완료 | 2026-04-30 |
-| **S4 v1.0.0** | ✓ 완료 | 2026-05-21 |
-
----
-
-## 참고
-
-- 각 sprint 상세는 [`roadmap/`](roadmap/) 디렉토리.
-- v0.5 까지의 history: [README Version History](README.md#version-history).
-- 현재 안정화 정책 (v1.0 부터 적용): [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) — S4 에서 작성.
-
----
-
-## 이 ROADMAP 사용법
-
-- **사용자**: 어느 sprint 에 어떤 기능이 들어오는지 미리 파악. v1.0 freeze 영역 확인.
-- **Contributor**: 어느 sprint 에 자기 PR 이 적합한지 확인. PR 본문에 `Closes ROADMAP S2 task 4` 같이 link.
-- **Maintainer**: 매 sprint 시작 시 해당 sprint 상세 문서 열고, task 별 in-progress / completed 표시. ROADMAP.md 의 status 표 갱신.
+웹앱·API·다국어 확장은 이번 출시 준비 범위에 포함하지 않습니다.
