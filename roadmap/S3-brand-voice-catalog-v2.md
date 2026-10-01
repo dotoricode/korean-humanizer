@@ -131,10 +131,12 @@ prefer:
 - **결정 3**: 어느 행이 specific 도메인을 받고, 어느 행이 "all" 인가
   - **결정**: 카테고리 #1 (강조어) 처럼 보편 패턴은 "all". 카테고리 #11 (hedging) 처럼 도메인별 차이 큰 패턴은 specific.
 - 도메인 코드 (부록 F 표준):
+
   ```
   all = blog, marketing, email, linkedin, youtube, newsletter, wiki,
         academic, news, chat, review, b2b-message
   ```
+
   shorthand: `informal = chat,review`, `formal = email,b2b-message,academic`
 
 #### 2B. 카탈로그 v2 마이그레이션 — 137 행 4 컬럼화 (3d)

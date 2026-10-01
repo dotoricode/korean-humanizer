@@ -47,6 +47,7 @@
 
 - **결정**: fixture 는 markdown (raw + humanized 두 블록 포함). JSON 보다 사람이 읽기 쉽고, examples/ 와 호환.
 - 형식 (`eval/fixtures/<domain>-<num>.md`):
+
   ```markdown
   ---
   domain: blog | marketing | email | linkedin | youtube | newsletter | wiki | academic | news | chat | review | b2b-message
@@ -58,6 +59,7 @@
   ## Humanized
   [다듬어진 텍스트]
   ```
+
 - 추출기: `scripts/extract-fixtures.sh examples/before-after.md` → `eval/fixtures/blog-1.md` 등.
 - 기존 4 개 examples 의 형식 통일 (Before/After ↔ Raw/Humanized 정규화).
 
@@ -113,6 +115,7 @@
 ### 7. Scorecard 생성기 (1d)
 
 - `eval/scorecard.md` 자동 생성:
+
   ```markdown
   # Eval Scorecard (auto-generated)
   > Generated: <timestamp>
@@ -124,11 +127,13 @@
   | Fixture | Domain | M1 (20%) | M2 (3곳) | M3 (length) | M4 (tone) | Overall |
   ...
   ```
+
 - CI artifact 로 업로드.
 
 ### 8. CI 통합 (0.5d)
 
 - `.github/workflows/lint.yml` 에 5 번째 job 추가:
+
   ```yaml
   eval-harness:
     name: eval harness (must pass)
@@ -143,6 +148,7 @@
           name: eval-scorecard
           path: eval/scorecard.md
   ```
+
 - README CI 섹션 갱신 (5 jobs 명시).
 
 ### 9. 회귀 테스트 (0.5d)
