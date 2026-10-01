@@ -76,9 +76,9 @@ Then ask naturally — `이거 AI 티 빼줘:` followed by your Korean text.
 ## Editing rules
 
 - Preserve facts, numbers, names, links, quotations, conditions and sentence endings.
-- Edit at most `max(1, floor(sentence count × 0.20))` sentences and 3 places per paragraph.
-- Keep at least 90% of the original length unless shortening is requested.
-- Return the edited body by default; explain changes when asked.
+- Rewrite awkward wording throughout the text; editing is not capped by a fixed count or percentage.
+- Preserve information, conditions and certainty. Remove redundant wording without restoring it just to meet a length target.
+- Use the main-branch format: `Humanized`, `주요 변경 (최대 5개)`, and the first-response revision notice.
 
 These are instructions, not a guarantee of model compliance. Fixed-fixture checks are regression checks, not a model quality success rate. See the [evaluation guide](eval/README.md).
 

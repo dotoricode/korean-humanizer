@@ -19,9 +19,9 @@
 
 `references/ko-ai-signals.md` 의 12 카테고리 라벨이 모든 examples / SKILL / PROMPT의 source. examples에서 카테고리 라벨을 인용할 때는 카탈로그와 1:1로 맞아야 합니다(과거에 "보다"를 번역체로, "선사"를 AI 고빈도로 잘못 라벨한 사례 있음 — 카탈로그에 없는 라벨은 새 패턴 PR로 먼저 추가).
 
-### 2. 정량 한도는 SKILL ↔ PROMPT ↔ 카탈로그 3곳에서 일치
+### 2. 교정 기준과 출력 형식은 세 실행 지침에서 일치
 
-"한 문단 3곳" / "전체 문장 수의 20%" 룰은 세 파일에 같은 표현으로 들어 있습니다. 한 곳만 바꾸면 drift가 생깁니다 — 룰 변경 PR은 세 파일 동시에 수정해야 합니다.
+수정량을 고정 비율로 제한하지 않고, 정보·말투 보존과 자연스러움으로 검수합니다. 기본 출력은 `Humanized`·`주요 변경 (최대 5개)`입니다. `SKILL.md`·`PROMPT.md`·카탈로그를 함께 수정하고 짧은 프롬프트도 맞추세요.
 
 ### 3. 의미 불변이 최우선
 
@@ -81,9 +81,9 @@ PR을 올리기 전에 아래를 확인해주세요:
 - [ ] 새 도메인 비교 사례라면, raw 출력은 humanizer 룰을 의식하지 않고 평소대로 생성된 것인가?
 - [ ] **로컬 lint / eval 통과 (4 종)**:
   - [ ] `bash scripts/lint-patterns.sh` ✓ — 카탈로그 표 형식 + 빈도 + 적용 도메인 컬럼 + 도메인 코드 valid (v2)
-  - [ ] `bash scripts/lint-cross-file.sh` ✓ — SKILL/PROMPT/카탈로그 정량 규칙·카테고리·brand voice (4 번째 mode)·부록 F sync
+  - [ ] `bash scripts/lint-cross-file.sh` ✓ — SKILL/PROMPT/카탈로그 교정 기준·출력 형식·카테고리·brand voice (4 번째 mode)·부록 F sync
   - [ ] `bash scripts/lint-examples.sh` ✓ — 예시 "주요 변경 (최대 5개)" 룰 + 카테고리 범위
-  - [ ] `bash scripts/eval-harness.sh` ✓ — fixture 5 metric (M1 수정비율 / M2 단락cap / M3 길이 / M4 ~다체 / M5 brand preserve — M5 는 옵션)
+  - [ ] `bash scripts/eval-harness.sh` ✓ — 과거 보수적 편집 fixture 5 metric (M1 수정비율 / M2 단락cap / M3 길이 / M4 ~다체 / M5 brand preserve — M5 는 옵션)
   - [ ] Markdown 경고를 해결하고 CI와 같은 markdownlint-cli2 v0.15.0 검사 통과
 - [ ] 새 fixture 를 더할 때 — `eval/fixtures/<domain>-NN-<name>.md` 형식 + frontmatter 채움. brand voice 사례는 `brand_voice: examples/brand-voice-<name>.md` 추가. 가이드: [`eval/README.md`](eval/README.md)
 - [ ] **새 도메인 사례 (`examples/domain-*.md`)**: 메타데이터 (도메인 / 강한 카테고리 / 톤 디폴트 / 톤 보존 / 금지 변경) + Raw + Humanized + 변경 (≤ 5) + 보존 + 개선 포인트 + 한계 + 도메인 적용 가이드 모두 채움. `references/ko-ai-signals.md` 부록 E 의 도메인 우선순위 표에도 row 추가, 부록 F 도메인 코드 표에도 행 추가, lint-patterns.sh 의 valid 도메인 셋 갱신.
