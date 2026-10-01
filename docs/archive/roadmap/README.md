@@ -111,7 +111,7 @@ S4 는 2026-05-21 에 v1.0.0 stable 로 완료됐다. 이후 피드백은 1.0.x 
 
 ## 참고
 
-- 각 sprint 상세는 [`roadmap/`](../../../roadmap) 디렉토리.
+- 각 sprint 상세는 [`docs/archive/roadmap/`](./) 디렉토리.
 - v0.5 까지의 history: [README Version History](../../../CHANGELOG.md).
 - 현재 안정화 정책 (v1.0 부터 적용): [`docs/STABILITY-PROMISE.md`](../../STABILITY-PROMISE.md) — S4 에서 작성.
 
