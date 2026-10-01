@@ -18,6 +18,11 @@ install_link() {
 
   mkdir -p "$skills_dir"
 
+  if [[ -d "$target" ]] && [[ "$(cd "$target" && pwd -P)" == "$(cd "$REPO_ROOT" && pwd -P)" ]]; then
+    echo "kept existing install at $target"
+    return
+  fi
+
   if [[ -L "$target" ]]; then
     rm "$target"
   elif [[ -e "$target" ]]; then

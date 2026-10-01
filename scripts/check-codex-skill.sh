@@ -21,7 +21,7 @@ repo_resolved="$(cd "$REPO_ROOT" && pwd -P)"
 
 [[ "$resolved" == "$repo_resolved" ]] || fail "$ACTIVE_LINK resolves to $resolved, expected $repo_resolved"
 
-if ! sed -n '1,8p' "$ACTIVE_LINK/SKILL.md" | rg -q '^name: korean-humanizer$'; then
+if ! sed -n '1,8p' "$ACTIVE_LINK/SKILL.md" | grep -q '^name: korean-humanizer$'; then
   fail "$ACTIVE_LINK/SKILL.md frontmatter is missing name: korean-humanizer"
 fi
 

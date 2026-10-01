@@ -2,8 +2,8 @@
 domain: marketing
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 6문장 마케팅 카피 — 거품/강조어 정리로 sentence-level 거의 전체 손댐. boundary.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 6문장 마케팅 카피 — 거품/강조어 정리로 sentence-level 거의 전체 손댐. boundary.
 ---
 
 ## Raw

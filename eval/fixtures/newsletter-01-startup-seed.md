@@ -2,8 +2,8 @@
 domain: newsletter
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 5문장 뉴스레터 오프닝 — 광고 톤 정리. boundary.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 5문장 뉴스레터 오프닝 — 광고 톤 정리. boundary.
 ---
 
 ## Raw

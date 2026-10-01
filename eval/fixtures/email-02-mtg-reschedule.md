@@ -2,8 +2,8 @@
 domain: email
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 7문장 이메일 — phrase 단위 정리 빈번. boundary.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 7문장 이메일 — phrase 단위 정리 빈번. boundary.
 ---
 
 ## Raw

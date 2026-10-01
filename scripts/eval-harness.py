@@ -2,9 +2,9 @@
 """Eval harness — measures heuristic metrics over eval/fixtures/*.md.
 
 Metrics:
-  M1: modified-sentence ratio  (cap, default 0.20)
+  M1: approximate modified-sentence ratio (cap 0.20; always allow at most one sentence)
   M2: per-paragraph modified-sentence cap  (paragraph_cap, default 3)
-  M3: char-length ratio  (humanized / raw, pass >= 0.90 unless fixture expects failure)
+  M3: char-length ratio (0.90-1.05 pass, >1.05-1.20 warn; otherwise fail)
   M4: 다체 intrusion in speech domains
   M5: brand voice preserve coverage (optional — runs only when fixture
       declares `brand_voice: <path>` in frontmatter; v0.8 카탈로그 v2)
@@ -14,13 +14,15 @@ stdlib only (Python 3.8+).
 
 import argparse
 import re
+import shlex
 import sys
-import os
 from pathlib import Path
 from datetime import datetime, timezone
 
 
 SPEECH_DOMAINS = {"youtube", "podcast", "live", "lecture"}
+REPO_ROOT = Path(__file__).resolve().parent.parent
+METRICS = {"m1", "m2", "m3", "m4", "m5"}
 
 # 다체 종결어미 (격식 / 글말체 typical endings)
 # 종결 boundary: `.` `!` `?` `\n` 또는 문서 끝. Latin/숫자 뒤도 허용 (e.g. "AI다.").
@@ -57,7 +59,10 @@ def parse_fixture(path: Path):
     hum_match = re.search(r"^##\s+Humanized\s*\n(.*?)(?=^##\s+|\Z)", body, re.DOTALL | re.MULTILINE)
     if not raw_match or not hum_match:
         raise ValueError(f"{path.name}: missing '## Raw' or '## Humanized' section")
-    return fm, raw_match.group(1).strip(), hum_match.group(1).strip()
+    raw, hum = raw_match.group(1).strip(), hum_match.group(1).strip()
+    if not raw or not hum:
+        raise ValueError(f"{path.name}: Raw and Humanized must both contain text")
+    return fm, raw, hum
 
 
 # ---- Sentence split ----------------------------------------------------------
@@ -185,11 +190,19 @@ def parse_brand_voice_preserve(path: Path) -> list:
     text = path.read_text(encoding="utf-8")
     fm_match = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.DOTALL)
     if not fm_match:
-        return []
+        raise ValueError(f"{path.name}: missing brand voice frontmatter")
 
     preserve: list = []
     in_preserve = False
     for line in fm_match.group(1).splitlines():
+        inline = re.match(r"^preserve:\s*(\[.*\])\s*(?:#.*)?$", line)
+        if inline:
+            # Only the documented string-list subset of YAML; no YAML dependency.
+            lexer = shlex.shlex(inline.group(1)[1:-1], posix=True)
+            lexer.whitespace = ","
+            lexer.whitespace_split = True
+            lexer.commenters = ""
+            return [word.strip() for word in lexer if word.strip()]
         if re.match(r"^preserve:\s*$", line):
             in_preserve = True
             continue
@@ -207,11 +220,13 @@ def parse_brand_voice_preserve(path: Path) -> list:
     return preserve
 
 
-def metric_brand_preserve(hum_text: str, brand_voice_path):
+def metric_brand_preserve(raw_text: str, hum_text: str, brand_voice_path):
     if not brand_voice_path:
         return {"status": "n/a", "preserved": [], "missing": [], "brand": None}
 
     bv_path = Path(brand_voice_path)
+    if not bv_path.is_absolute():
+        bv_path = REPO_ROOT / bv_path
     if not bv_path.is_file():
         return {
             "status": "fail",
@@ -226,8 +241,9 @@ def metric_brand_preserve(hum_text: str, brand_voice_path):
         # brand voice declared but no preserve list — n/a (not a failure)
         return {"status": "n/a", "preserved": [], "missing": [], "brand": str(bv_path)}
 
-    missing = [w for w in preserve_words if w not in hum_text]
-    preserved = [w for w in preserve_words if w in hum_text]
+    present_words = [w for w in preserve_words if w in raw_text]
+    missing = [w for w in present_words if hum_text.count(w) < raw_text.count(w)]
+    preserved = [w for w in present_words if w not in missing]
     status = "pass" if not missing else "fail"
     return {
         "status": status,
@@ -242,7 +258,7 @@ def metric_brand_preserve(hum_text: str, brand_voice_path):
 def m3_verdict(ratio: float):
     if 0.90 <= ratio <= 1.05:
         return "pass"
-    if (1.05 < ratio <= 1.20) or (0.50 <= ratio < 0.90):
+    if 1.05 < ratio <= 1.20:
         return "warn"
     return "fail"
 
@@ -255,6 +271,11 @@ def evaluate(fixture_path: Path):
     expected_failures = {
         x.strip().lower() for x in fm.get("expected_failures", "").split(",") if x.strip()
     }
+    required_failures = {
+        x.strip().lower() for x in fm.get("required_failures", "").split(",") if x.strip()
+    }
+    if not expected_failures <= METRICS or not required_failures <= expected_failures:
+        raise ValueError(f"{fixture_path.name}: invalid expected_failures / required_failures")
     brand_voice_path = fm.get("brand_voice", "").strip() or None
 
     raw_sents = split_sentences_with_paragraph(raw)
@@ -268,9 +289,9 @@ def evaluate(fixture_path: Path):
     m2 = metric_paragraph_cap(raw_sents, dists)
     m3 = metric_length_ratio(raw, hum)
     m4 = metric_dache_intrusion(raw, hum, domain)
-    m5 = metric_brand_preserve(hum, brand_voice_path)
+    m5 = metric_brand_preserve(raw, hum, brand_voice_path)
 
-    m1["pass"] = m1["ratio"] <= cap
+    m1["pass"] = m1["modified"] <= 1 or m1["ratio"] <= cap
     m2["pass"] = m2["max"] <= para_cap
     m3["verdict"] = m3_verdict(m3["ratio"])
     m3["pass"] = m3["verdict"] in ("pass", "warn")
@@ -285,7 +306,8 @@ def evaluate(fixture_path: Path):
     # even when expected ones also fail — preventing silent swallows.
     unexpected_fails = actual_fails - expected_failures
     missing_expected = expected_failures - actual_fails  # informational only
-    overall_pass = not unexpected_fails
+    missing_required = required_failures - actual_fails
+    overall_pass = not unexpected_fails and not missing_required
 
     return {
         "fixture": fixture_path.name,
@@ -294,9 +316,11 @@ def evaluate(fixture_path: Path):
         "paragraph_cap": para_cap,
         "brand_voice": brand_voice_path,
         "expected_failures": sorted(expected_failures),
+        "required_failures": sorted(required_failures),
         "actual_failures": sorted(actual_fails),
         "unexpected_failures": sorted(unexpected_fails),
         "missing_expected": sorted(missing_expected),
+        "missing_required": sorted(missing_required),
         "m1": m1,
         "m2": m2,
         "m3": m3,
@@ -340,7 +364,7 @@ def write_scorecard(path: Path, results):
             else:
                 overall = "✓"
         else:
-            overall = f"✗ unexpected: {','.join(r['unexpected_failures'])}"
+            overall = f"✗ unexpected: {','.join(r['unexpected_failures'])}; missing required: {','.join(r['missing_required'])}"
         rows.append(
             f"| {r['fixture']} | {r['domain']} | {m1_cell} | {m2_cell} | "
             f"{m3_cell} | {m4_cell} | {m5_cell} | {overall} |"
@@ -371,12 +395,14 @@ def write_scorecard(path: Path, results):
 
 ## Legend
 
-- **M1**: modified sentence count / total raw sentences. ✓ = within `cap` (default 20%).
+- **M1**: approximate modified sentence count / total raw sentences (edit distance >0.20). ✓ = within `cap` (default 20%) or at most one modified sentence. The sentence budget is max(1, floor(total sentences * cap)). Small edits may not be counted.
 - **M2**: max modified sentences in any paragraph. ✓ = within `paragraph_cap` (default 3).
-- **M3**: char-length ratio (humanized / raw). `pass` 0.90–1.05, `warn` 0.50–0.90 or 1.05–1.20, `fail` <0.50 or >1.20.
+- **M3**: char-length ratio (humanized / raw). `pass` 0.90–1.05, `warn` >1.05–1.20, `fail` <0.90 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
-- **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
+- **M5**: brand voice `preserve` coverage for words present in Raw, including occurrence counts. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`.
+- `required_failures` declares failures a trap must detect. Missing required failures fail the fixture, even when no unexpected failure occurred.
 - Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.
+- These fixed input/output checks do not run a model or establish semantic quality. M1/M2 are approximate; facts, sentence order, and overall tone need separate review.
 """
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")
@@ -386,8 +412,12 @@ def write_scorecard(path: Path, results):
 
 def main():
     parser = argparse.ArgumentParser(description="Eval harness for korean-humanizer fixtures.")
-    parser.add_argument("--fixtures-dir", default="eval/fixtures")
-    parser.add_argument("--scorecard", default="eval/scorecard.md")
+    parser.add_argument("--fixtures-dir", default=str(REPO_ROOT / "eval/fixtures"))
+    parser.add_argument("--scorecard", default=str(REPO_ROOT / "eval/scorecard.md"))
+    parser.add_argument(
+        "--no-strict", dest="strict", action="store_false",
+        help="report failures without a nonzero exit code (local debugging).",
+    )
     parser.add_argument(
         "--strict", action="store_true",
         help="exit 1 if any fixture fails (CI default).",
@@ -428,7 +458,8 @@ def main():
           + (f" (parse errors: {parse_errors})" if parse_errors else ""))
     for r in fails:
         print(f"  ✗ {r['fixture']:30s} unexpected={r['unexpected_failures']} "
-              f"actual={r['actual_failures']} expected={r['expected_failures']}")
+              f"actual={r['actual_failures']} expected={r['expected_failures']} "
+              f"missing required={r['missing_required']}")
         m = r["m1"]; print(f"      M1 ratio={m['ratio']*100:.1f}% mod={m['modified']}/{m['total']} cap={r['cap_pct']}%")
         m = r["m2"]; print(f"      M2 max={m['max']} cap={r['paragraph_cap']} by_para={m['by_para']}")
         m = r["m3"]; print(f"      M3 ratio={m['ratio']:.3f} verdict={m['verdict']}")

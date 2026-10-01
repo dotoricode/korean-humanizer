@@ -2,8 +2,8 @@
 domain: blog
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 블로그 인트로. before-after.md 사례 1 에서 추출. 짧은 단락이라 sentence-level 측정 시 cap 초과 — 짧은 단락 boundary 사례를 검증. expected_failures 로 명시.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 블로그 인트로. before-after.md 사례 1 에서 추출. 짧은 단락이라 sentence-level 측정 시 cap 초과 — 짧은 단락 boundary 사례를 검증. expected_failures 로 명시.
 ---
 
 ## Raw

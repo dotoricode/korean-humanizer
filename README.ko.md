@@ -60,8 +60,8 @@ humanizer 는 5 가지 안전장치를 지킨다:
 
 1. **의미 불변** — 팩트 / 숫자 / 고유명사 / 인용문 / 링크는 절대 바꾸지 않는다.
 2. **요약 금지** — 사용자가 "짧게"를 요청하지 않으면 원문 대비 90% 미만으로 줄이지 않는다.
-3. **20% cap** — 전체 문장 수의 20% 이상 수정하지 않는다.
-4. **문단 3곳 룰** — 한 문단에 3 곳 이상 건드리지 않는다.
+3. **20% cap** — 전체 문장 수의 20% 이내로만 수정하되 최소 1문장을 허용한다(`max(1, floor(문장 수 × 0.20))`). 짧은 글(1–3문장)은 문장당 1–2표현만 고친다.
+4. **문단 3곳 룰** — 한 문단에 최대 3곳만 고친다.
 5. **자연스러움 > 완벽함** — 살짝 덜 매끄러운 게 더 사람답다. 과도한 세련미는 오히려 AI 티.
 
 ## 12 Categories Detected (with Before/After Examples)
@@ -90,7 +90,7 @@ humanizer 는 5 가지 안전장치를 지킨다:
 | # | Pattern | Before | After |
 |---|---------|--------|-------|
 | 5 | **판에 박힌 개시 / 마무리** | "안녕하세요! 오늘은 ~에 대해 알아보겠습니다 ... 도움이 되셨길 바랍니다!" | 역할 없는 장식만 축소, 인사 / 감사 / CTA 는 보존 |
-| 8 | **과도한 3항 나열** (Forced Triplets) | "빠르고 정확하며 효율적입니다. 간단하고 명확하며 실용적입니다." | "빠르고 정확하다. 쓰기도 어렵지 않다." |
+| 8 | **과도한 3항 나열** (Forced Triplets) | "빠르고 정확하며 효율적입니다. 간단하고 명확하며 실용적입니다." | "빠르고 정확한 데다 효율적입니다. 간단하고 명확하면서 실용적입니다." |
 | 10 | **이모지 / 이모티콘 남발** | "🚀 **시작하기** 💡 **핵심 포인트** ✨ **결론** 👏" | (헤더당 0~1 개. 의미 있는 자리에만) |
 
 ### Communication Patterns
@@ -107,7 +107,7 @@ humanizer 는 5 가지 안전장치를 지킨다:
 
 ## Full Example
 
-이 레포의 연구 위키( [`korean-humanizer-research.md`](korean-humanizer-research.md) ) 자체가 좋은 시연 사례다. **"AI 티가 어떻게 보이는지 설명하는 문서"** 가 그 자체로 AI 티를 가지고 있었기 때문에, 같은 위키를 humanizer 로 다듬어 [`korean-humanizer-research-humanized.md`](korean-humanizer-research-humanized.md) 에 같이 올려두었다. 아래는 Executive Summary 첫 두 단락 발췌.
+이 레포의 연구 위키( [`korean-humanizer-research.md`](korean-humanizer-research.md) ) 자체가 좋은 시연 사례다. **"AI 티가 어떻게 보이는지 설명하는 문서"** 가 그 자체로 AI 티를 가지고 있었기 때문에, 같은 위키를 humanizer 로 다듬어 [`korean-humanizer-research-humanized.md`](korean-humanizer-research-humanized.md) 에 같이 올려두었다. 아래는 Executive Summary 첫 두 단락 발췌입니다. 기존 비교는 현재의 수정 한도·90% 길이 보존을 충족한 모델 실행 결과가 아니며, 패턴 설명을 위한 자료로만 참고합니다.
 
 **Before** *(raw — `korean-humanizer-research.md` Executive Summary)*
 
@@ -142,7 +142,7 @@ humanizer 는 5 가지 안전장치를 지킨다:
 
 → 더 많은 단락 비교 + 변경 이유 + 12 카테고리 매핑: [`examples/wiki-humanized-comparison.md`](examples/wiki-humanized-comparison.md)
 → 패턴 카탈로그 적용 사례: [`examples/before-after.md`](examples/before-after.md)
-→ **실제 에이전트 raw 출력 vs skill 적용 비교** (6 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
+→ **기존 에이전트 raw 출력 vs 편집 비교 (현재 규칙 충족 여부 미검증)** (6 도메인 / 정량·정성 분석): [`examples/agent-vs-skill.md`](examples/agent-vs-skill.md)
 → **도메인별 사례** *(v0.7)*: [학술](examples/domain-academic.md) · [뉴스](examples/domain-news.md) · [채팅·DM](examples/domain-chat.md) · [제품 리뷰](examples/domain-review.md) · [B2B 메시지](examples/domain-b2b-message.md) — 도메인별 강한 카테고리·톤 디폴트·금지 변경 영역 정리. 도메인 우선순위 매트릭스 → [부록 E](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 
 ## Installation
@@ -161,7 +161,7 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/ko
 ```bash
 mkdir -p ~/.claude/skills/korean-humanizer
 cp SKILL.md ~/.claude/skills/korean-humanizer/
-cp -r references ~/.claude/skills/korean-humanizer/
+cp -r references examples ~/.claude/skills/korean-humanizer/
 ```
 
 ### Claude.ai (Cowork) / Project
@@ -283,7 +283,7 @@ alwaysApply: false
 
 **3. 파일 (영구 저장이 필요할 때)** — Claude Code / OpenCode / Codex 환경에서 매번 같은 리스트를 쓸 때.
 
-[`examples/personal-list.md`](examples/personal-list.md) 를 편집하거나, `SKILL.md` 하단의 `## My personal list` 섹션을 채운다.
+[`examples/personal-list.md`](examples/personal-list.md)는 작성 예시다. 별도 파일을 만든 뒤 `personal=파일경로`로 지정하거나, `SKILL.md` 하단의 주석 밖 `## My personal list` 섹션을 채운다. 제공된 예시는 자동 적용되지 않는다.
 
 **4. Brand voice profile (가장 강한 영구 톤)** — 단어 리스트 위주가 아니라 **brand 톤 전체** (preserve / ban / prefer / ending_default / emoji_policy / length_bias) 를 frontmatter 로 정의하고 본문에 자유 형식 톤 가이드를 적는다.
 
@@ -303,7 +303,7 @@ humanizer 의 디폴트는 12 카테고리 카탈로그 — 일반적인 한국�
 
 ### 변경이 너무 적을 때
 
-전체 문장 수의 20 % cap 과 단락당 3 곳 룰을 지키느라 의도적으로 가볍게 손대는 것이다 — "AI 티" 가 옅은 글이거나, 룰 안에서 더 손댈 곳이 없다는 뜻일 가능성이 높다. 그래도 부족하면 **"좀 더 강하게 다듬어줘"** 또는 **"단락 단위로 다시 봐줘"** 라고 명시하면 logical paragraph 해석으로 한 단락당 3 곳 룰을 좀 더 헐겁게 운용한다.
+전체 문장 수의 20 % cap 과 단락당 3 곳 룰을 지키느라 의도적으로 가볍게 손대는 것이다 — "AI 티" 가 옅은 글이거나, 룰 안에서 더 손댈 곳이 없다는 뜻일 가능성이 높다. 더 손보고 싶으면 **"남은 표현도 다시 검토해줘"**라고 요청한다. 문단을 임의로 쪼개 수정 한도를 피하지 않으며, 매 응답에서 같은 보존 규칙을 적용한다.
 
 ### 변경이 너무 많을 때 / 의미가 흐려질 때
 
@@ -354,7 +354,7 @@ korean-humanizer/
 │   ├── frequency-data/                        # 1.x 빈도 재라벨링용 LLM 출력 보관소 (스캐폴딩)
 │   └── scorecard.md                           # CI 가 매 머지마다 갱신하는 fixture 별 metric 표 (auto-gen)
 ├── references/
-│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 v2 (4 컬럼: 나쁨/자연스러움/빈도/적용 도메인)
+│   └── ko-ai-signals.md                       # 12 카테고리 / 100+ 패턴 카탈로그 v2 (4 컬럼: 검토할 표현/치환 후보/빈도/적용 도메인)
 ├── docs/
 │   ├── LAUNCH.md                              # v1.0 공개 / 커뮤니티 공유용 짧은 문구
 │   └── GITHUB-TOPICS.md                       # GitHub topic 추천 목록

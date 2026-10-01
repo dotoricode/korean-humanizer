@@ -2,8 +2,8 @@
 domain: email
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 9문장 이메일 — 번역체 거품 정리로 약 67% 문장 손댐. boundary 케이스 (격식 메일은 한 문장 안에서 phrase 단위 정리가 빈번).
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 9문장 이메일 — 번역체 거품 정리로 약 67% 문장 손댐. boundary 케이스 (격식 메일은 한 문장 안에서 phrase 단위 정리가 빈번).
 ---
 
 ## Raw

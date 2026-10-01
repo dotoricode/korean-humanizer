@@ -1,0 +1,133 @@
+# 🔍 QA Team Review Report
+
+| Key | Value |
+|---|---|
+| **Branch** | `fix/skill-qa-and-editing-rules` |
+| **Base** | 최초: empty tree — main 전체 리뷰. 수정본: `7dff5b4` 대비 변경 |
+| **Commit** | 최신 공개 `v1.0.1`, `7dff5b48cc06fc4252d4766b802ecd61e62c50ad` |
+| **Files changed** | 최초 전체 리뷰 입력 90개. 최종 PR 범위는 GitHub diff 참고 |
+| **Scope** | 최신 버전 전체 90개 추적 파일을 empty tree와 비교. 미병합 PR #3 제외 |
+| **Agents deployed** | 🧑‍💻 generalist-a · 🕵️ generalist-b · 🔒 security · 🔄 reliability · 🔗 compatibility · 📊 data-integrity · ✏️ copy |
+| **Date** | 2026-10-01 |
+
+## 📋 Summary
+
+- 최신 버전의 설치·평가·스킬 지침·실행 참조 예시를 점검하고 재현 가능한 문제 수정
+- 수정 후 회귀 테스트 15개, 고정 평가 사례 25개, 필수 lint 3종 통과
+- 평가표의 일반 검사 통과 10개와 기존 실패 허용·부정 테스트 15개 구분. 모델 품질 성공률로 해석할 수 없음
+- 최초 리뷰 4개 완료 후, 수정본에서 누락된 전문 리뷰 3개와 generalist-b·reliability 재검토 완료. 모든 역할이 같은 최종 diff를 검토한 단일 실행은 아님
+
+### Key findings
+
+- 🟡 **독립 검토 일치**: 원문에 없는 Brand voice 보존어까지 요구해 정상 결과를 실패시키는 문제 확인 및 수정
+- 🟡 설치 경로 안에서 재설치할 때 자기 참조 링크가 만들어지는 문제 확인 및 수정
+- 🟡 90% 미만 축약을 통과시키는 검사와 필수 부정 테스트 탐지 누락 수정
+- 🟡 원문에 없는 시각·경험·앱 확인 경로를 추가하는 공식 예시 교체
+
+## 🏁 Verdict
+
+> 💬 **APPROVE WITH NITS — 실행된 독립 리뷰의 원본 판정**
+
+완료된 4개 리뷰가 모두 MEDIUM이므로 스킬의 위험도 집계 규칙에 따라 전체 MEDIUM으로 판정했습니다. 확인된 문제는 아래와 같이 수정하고 로컬에서 검증했습니다. 이후 generalist-b·reliability의 수정본 재검토에서 추가 발견한 두 문제를 수정하고 다시 확인받았습니다. compatibility·data-integrity·copy는 수정본에서 모두 NONE을 보고했습니다. 최초 전체 리뷰와 수정본 리뷰는 시점과 범위가 다르며, 이 결과만으로 입점 준비 완료를 선언하지 않습니다.
+
+## 👥 Agent summaries
+
+| Agent | Risk | Summary |
+|---|---|---|
+| 🧑‍💻 generalist-a | 🟡 MEDIUM | M5 정상 입력 오탐·inline 목록 검사 누락·효율성을 편의성으로 바꾸는 예시 확인 |
+| 🕵️ generalist-b | 🟡 MEDIUM | 길이 하한 누락·M5 오탐·ripgrep 없는 설치 실패·빈 fixture 통과 재현 |
+| 🔒 security | 🟡 MEDIUM | 실행 참조 예시의 사실 창작 확인. 실행 코드의 명령 삽입·외부 입력 송신 경로는 확인되지 않음 |
+| 🔄 reliability | 🟡 MEDIUM | 설치 경로 재실행 실패와 부정 테스트의 탐지 회귀를 CI가 놓치는 문제 재현 |
+
+### 수정본 후속 검토
+
+| Agent | 결과 | 범위 |
+|---|---|---|
+| 🕵️ generalist-b | ✅ 수정 확인 | 기존 4개 문제 해결. 새 custom cap 부동소수점 경계 오류 발견·수정 후 확인. 회귀 15개·fixture 25개 통과 |
+| 🔄 reliability | ✅ 수정 확인 | 설치·trap 문제 해결. 새 wrapper 상대 경로 오류 발견·수정 후 확인 |
+| 🔗 compatibility | ⚪ NONE | 설치·CLI·fixture·Brand voice·안내 계약. 회귀 15개·fixture 25개 통과 |
+| 📊 data-integrity | ⚪ NONE | 길이·preserve 횟수·trap 필수 탐지·설치 보존 |
+| ✏️ copy | ⚪ NONE | 수정 한도·출력·개인 설정·검증 주장·의미와 톤 안내 |
+
+### 최초 실행 제한과 후속 검토
+
+- 스킬이 요구한 최소 전문 검토자 4명 중 2명만 독립 리뷰 완료
+- 최초 `compatibility`, `data-integrity`, `copy`: **REVIEWER FAILED — agent thread limit reached**. 후속 실행에서 세 검토 모두 완료
+- root의 새 검토자 생성과 별도 coordinator의 중첩 생성도 같은 오류로 실패
+- persona claim 4개·미배정 persona 3개 확인. 완료 리뷰 4개와 실패 상태 3개를 구분해 기록
+- 최초 남은 설치 안내·평가 입출력·문구 불일치는 주 작업자가 직접 확인. 이후 수정본에서 누락된 전문 관점도 독립 검토 완료
+- Workflow 도구가 없어 직접 에이전트 도구 사용. 동시 실행은 환경 제한에 맞춰 분할했으며 캐시 절감은 측정하지 않음
+- 결과 내용은 외부 보조 AI 서비스에 전송하지 않고 로컬에서 비교
+
+## 📝 Findings
+
+위치는 원본 커밋 기준입니다. 주 작업자 추가 확인은 독립 검토자 합의와 구분했습니다.
+
+| # | Status | Priority | Finding | Location | Agents | Reasoning | Suggested fix |
+|---|---|---|---|---|---|---|---|
+| 1 | ✅ Fixed | 🟡 Medium | 원문에 없는 보존어 요구 | `scripts/eval-harness.py:229` | generalist-a, generalist-b — 독립 일치 | 무수정 정상 결과도 M5 실패 | Raw에 있던 단어·횟수만 검사 |
+| 2 | ✅ Fixed | 🟡 Medium | 설치 경로에서 자기 참조 링크 생성 | `scripts/install-codex-skill.sh:23` | reliability | 기존 저장소를 이동한 뒤 자신으로 연결해 접근 불가 | 물리 경로가 같으면 그대로 유지 |
+| 3 | ✅ Fixed | 🟡 Medium | 90% 미만 축약 통과 | `scripts/eval-harness.py:245` | generalist-b | 88.2% 결과도 strict 통과 | 0.90 미만을 M3 실패 처리 |
+| 4 | ✅ Fixed | 🟡 Medium | inline 보존어 검사 누락 | `scripts/eval-harness.py:193` | generalist-a | 문서의 inline 목록을 빈 목록으로 읽어 M5 생략 | 문서화한 문자열 목록 형식 지원 |
+| 5 | ✅ Fixed | 🟡 Medium | 부정 테스트 탐지 회귀 누락 | `scripts/eval-harness.py:287` | reliability | M4 탐지를 무력화해도 기존 25개 모두 통과 | trap의 `required_failures` 누락 시 실패 |
+| 6 | ✅ Fixed | 🟡 Medium | 미제공 사실을 공식 예시에 추가 | `examples/brand-voice-essayist.md:62`, `examples/brand-voice-toss-style.md:103` | security | 산책 시각·영수증 경험·앱 확인 경로 창작 | 원문 정보만 사용하는 수동 예시로 교체 |
+| 7 | ✅ Fixed | 🟡 Medium | 효율성을 편의성으로 치환 | `PROMPT.md:78`, `references/ko-ai-signals.md:182` | generalist-a | 서로 다른 제품 속성으로 의미 변경 | 효율성·명확성·실용성 유지 |
+| 8 | ✅ Fixed | 🟡 Medium | ripgrep 없는 설치 실패 | `scripts/check-codex-skill.sh:24` | generalist-b | 링크 생성 후 정상 frontmatter를 잘못된 것으로 표시 | 기본 제공 `grep` 사용 |
+| 9 | ✅ Fixed | 🟢 Low | 빈 fixture 정상 통과 | `scripts/eval-harness.py:59` | generalist-b | 내용이 없어도 clean pass | 공백뿐인 Raw·Humanized 거부 |
+| 10 | ✅ Fixed | 🟡 Medium | CLI 옵션·실행 위치 불일치 | `scripts/eval-harness.sh:24`, `scripts/eval-harness.py:389` | 주 작업자 | wrapper의 옵션 무시·다른 cwd에서 기본 경로 실패 | 옵션 전달·직접 `--no-strict` 지원·저장소 기준 기본 경로 |
+| 11 | ✅ Fixed | 🟡 Medium | 지침·브랜드 우선순위 충돌 | `SKILL.md:28`, `examples/brand-voice-template.md:89` | 주 작업자 | 3곳 경계 및 inline 금지어 우선순위가 문서마다 다름 | 최대 3곳 통일·보존 규칙 우선·충돌 예시 명시 |
+| 12 | ✅ Fixed | 🟢 Low | 설치 안내에서 examples 누락 | `README.ko.md:164` | 주 작업자 | 수동 설치 후 참조하는 개인 목록·Brand voice 파일 없음 | `references`와 `examples` 함께 복사 |
+| 13 | ✅ Fixed | 🟢 Low | CI Action SHA 고정 정책 불일치 | `.github/workflows/lint.yml:19` | security 관찰·주 작업자 | SECURITY의 SHA 고정 정책과 태그 참조 불일치. 실제 악용 확인 없음 | 기존 태그의 원격 SHA 고정·읽기 권한 명시 |
+| 14 | ✅ Fixed | 🟢 Low | 사용자에게 불필요한 확인 왕복 | `SKILL.md:43` | 주 작업자 | 명확한 용도에도 도메인·참고 글 응답 대기 | 명확하면 바로 처리·참고 글 선택 사항 |
+
+## 🧪 Validation
+
+| 검사 | 결과 | 확인 범위 |
+|---|---|---|
+| `python3 scripts/test-regressions.py` | ✅ 15/15 | M3 경계·짧은 글·M5 오탐/누락/횟수·trap 회귀·빈 입력·CLI·상대 경로·사용자 지정 cap 경계·격리 설치/재설치 |
+| `bash scripts/eval-harness.sh` | ✅ 25/25 | 일반 검사 통과 10개·허용된 기존 실패 및 trap 15개·예상 밖 실패 0개 |
+| `bash scripts/lint-patterns.sh` | ✅ Pass | 카탈로그 표·도메인 코드 형식 |
+| `bash scripts/lint-cross-file.sh` | ✅ Pass | 필수 수치·키워드·참조 파일 존재. 의미의 완전한 일치 검사는 아님 |
+| `bash scripts/lint-examples.sh` | ✅ Pass | 변경 목록 개수·카테고리 참조·제공 Brand voice 필드 |
+| 새 수동 예시 8쌍 | ✅ Pass | README 3쌍·Brand voice 5쌍의 길이 90% 이상·수정 문장 한도 확인 |
+| `git diff --check` | ✅ Pass | 변경의 공백 오류 |
+
+설치 테스트는 임시 복사본의 home 경로 참조만 격리하고 installer와 checker를 각각 실행했습니다. 실제 사용자 스킬 경로를 변경하지 않았습니다. 이후 실제 활성 Codex 설치 링크 검사도 통과했습니다. 새 문맥의 교정 요청 3개는 아래와 같이 실행했습니다. Claude Code 설치부터 첫 실행까지의 검증과 대규모 모델 품질 평가는 수행하지 않았습니다. 원격 CI 결과는 PR에서 확인합니다.
+
+### 기존 실패 사례 처리
+
+- 90% 하한을 적용한 직후 기존 25개 중 16개에서 길이 위반 드러남
+- 일반 B2B 사례·한 문장 사례는 보수적 수동 편집으로 수정
+- 나머지 기존 과교정 사례의 M3 실패를 명시하고 `notes`에 정상 예시가 아님을 표시
+- 길이 위반 결과를 합격으로 바꾼 것이 아님. 평가표에는 `fail`로 남으며 허용된 기존 실패로 별도 집계
+- 새 README·Brand voice 예시는 수동 편집임을 명시. 실제 모델 실행 결과로 소개하지 않음
+
+## 🛠️ 스킬 지침 추가 개선
+
+- 추정·가능성·경험 범위를 보존하도록 치환 후보 수정. 근거 없는 수치·기간 추가 방지
+- 수정 문장 한도는 `max(1, floor(원문 문장 수 × 0.20))`. 4문장 입력에도 최대 한 문장 허용
+- `personal=파일경로`로 지정한 개인 설정만 로드. 제공 예시 목록은 자동 적용하지 않음
+- 문맥상 자연스러운 단어는 유지하고, 기본 출력은 결과문만 제공. 변경 이유·diff는 요청 시 제공
+- 재리뷰 발견 사항: wrapper의 상대 경로 기준 및 사용자 지정 `cap: 58` 경계 오류 수정. 수정 전 실패·수정 후 통과하는 검사 추가
+
+### 새 문맥 실행 검사
+
+2026-10-01, 대화 이력을 전달하지 않은 별도 에이전트에 후보 스킬 경로와 요청만 전달했습니다. 기대 답안이나 의심 결함은 전달하지 않았습니다. 실행 모델의 정확한 식별자는 기록하지 못했으며, 이전 스킬과의 동일 조건 비교는 수행하지 않았습니다.
+
+| 입력 | 실제 출력 | 확인 결과 |
+|---|---|---|
+| 인공지능 기술은 빠르게 발전하고 있으며, 다양한 산업 분야에서 업무 효율성을 높이는 데 활용되고 있습니다. | 인공지능 기술은 빠르게 발전하고 있고, 다양한 산업 분야에서 업무 효율성을 높이는 데 쓰이고 있습니다. | 본문 한 문장, 두 표현 변경, 의미·격식 어미 유지 |
+| 이 기능은 다음 달에 출시될 수도 있습니다. 내부 검토는 아직 끝나지 않았습니다. 확인된 일정은 없습니다. 일정이 정해지면 안내드리겠습니다. | 원문 그대로 | 출시 가능성을 단정으로 바꾸지 않음 |
+| 오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다. | 원문 그대로 | 자연스러운 문장은 유지, 안내 문구 없음 |
+
+- ✅ 구조 검사: 임시 Python 환경에서 `skill-creator/scripts/quick_validate.py` 통과
+- ⚠️ 위 3개 사례는 작은 실행 검사이며 자연스러움의 성공률이나 품질 향상률을 측정한 것이 아님
+
+## ⏭️ Remaining work
+
+- ✅ **누락 전문 리뷰 3개 및 generalist-b·reliability 수정본 재검토** — 완료. security·generalist-a는 최초 버전 검토 결과이며 최종 diff 전체의 재판정은 아님
+- ⬜ **실제 모델 출력 검증** — 숫자·날짜·링크·고유명사·인용·조건·말투를 확인하고 모델·입력·출력·날짜 기록
+- ⬜ **평가 방식 후속 개선 판단** — M1/M2는 작은 치환·문장 재배치·정확한 표현 수를 놓칠 수 있음. 이번 수정에서 기존 휴리스틱의 의미를 바꾸지 않고 한계를 명시
+- ⬜ **배포 ZIP 및 Claude Code·Codex 첫 실행 검증** — 입점 준비 단계에서 수행
+- ⬜ **MIT 적용·GitHub 링크·무료 지급 계정 조건 확인** — Joeri에게 확인 후 무료 입점 진행
+- ✅ **브랜치·커밋·푸시·PR** — 사용자가 승인한 작업 범위. Agensi 등록은 후속 단계

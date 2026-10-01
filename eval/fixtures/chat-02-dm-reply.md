@@ -2,8 +2,8 @@
 domain: chat
 cap: 20
 paragraph_cap: 3
-expected_failures: m1
-notes: DM 답신 (S2 preview, 짧은 캐주얼 메시지). 짧은 boundary 케이스. M2 통과.
+expected_failures: m1,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. DM 답신 (S2 preview, 짧은 캐주얼 메시지). 짧은 boundary 케이스. M2 통과.
 ---
 
 ## Raw

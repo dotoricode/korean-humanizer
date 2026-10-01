@@ -44,6 +44,7 @@ QUANT_RULES=(
   "20%"
   "3곳"
   "90%"
+  "max(1, floor(원문 문장 수 × 0.20))"
 )
 
 errors=0
@@ -127,4 +128,4 @@ if [[ $errors -gt 0 ]]; then
   exit 1
 fi
 
-echo "✓ Cross-file sync 검증 통과 — SKILL/PROMPT/카탈로그의 정량 규칙(20%/3곳/90%) · 12 카테고리 키워드 · 4 번째 mode (Brand voice) · 부록 F 가 모두 일치."
+echo "✓ Cross-file sync 검사 통과 — SKILL/PROMPT/카탈로그의 필수 수치(20%/3곳/90%) · 12 카테고리 키워드 · Brand voice 참조 파일 · 부록 F 존재 확인."

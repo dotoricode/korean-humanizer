@@ -4,7 +4,7 @@
 # 검증 대상:
 #   - references/ko-ai-signals.md 안 모든 카테고리 표
 #   - 헤더 컬럼 수 vs 데이터 row 컬럼 수 일치
-#   - 표준 패턴 표 (헤더에 "나쁨" + "자연스러움" 포함) 는 반드시
+#   - 표준 패턴 표 (헤더에 "검토할 표현" + "치환 후보" 포함) 는 반드시
 #     "빈도" 컬럼 + "적용 도메인" 컬럼 모두 포함 (v0.8 카탈로그 v2)
 #   - "적용 도메인" 컬럼 값은 부록 F 의 valid 도메인 코드여야 함
 #     (all / informal / formal / 12 도메인 콤마 리스트, 혼용 가능)
@@ -125,21 +125,21 @@ BEGIN {
     header_pipes = pipe_count(trimmed)
     header_line = trimmed
 
-    # 표준 패턴 표 식별: 헤더에 "나쁨" 과 "자연스러움" 동시 포함
-    needs_freq = (index(header_line, "나쁨") > 0 && index(header_line, "자연스러움") > 0)
+    # 표준 패턴 표 식별: 헤더에 "검토할 표현" 과 "치환 후보" 동시 포함
+    needs_freq = (index(header_line, "검토할 표현") > 0 && index(header_line, "치환 후보") > 0)
     needs_domain = needs_freq
     domain_col_idx = 0
 
     if (needs_freq && index(header_line, "빈도") == 0) {
       printf "FAIL %s:%d 표준 패턴 표 헤더에 \"빈도\" 컬럼이 빠졌습니다.\n", FILENAME, NR
       printf "       header: %s\n", line
-      printf "       expected: | 나쁨 | 자연스러움 | 빈도 | 적용 도메인 |\n"
+      printf "       expected: | 검토할 표현 | 치환 후보 | 빈도 | 적용 도메인 |\n"
       errors++
     }
     if (needs_domain && index(header_line, "적용 도메인") == 0) {
       printf "FAIL %s:%d 표준 패턴 표 헤더에 \"적용 도메인\" 컬럼이 빠졌습니다 (v0.8 카탈로그 v2).\n", FILENAME, NR
       printf "       header: %s\n", line
-      printf "       expected: | 나쁨 | 자연스러움 | 빈도 | 적용 도메인 |\n"
+      printf "       expected: | 검토할 표현 | 치환 후보 | 빈도 | 적용 도메인 |\n"
       errors++
     }
 

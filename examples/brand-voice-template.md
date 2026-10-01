@@ -86,14 +86,14 @@ frontmatter 로 못 잡는 톤 디테일은 본문에 자유 형식으로 적는
 ### 호환성
 
 - **Personal list 와 공존**: brand voice 의 `preserve` / `ban` / `prefer` 가 personal list 와 충돌하면 brand voice 가 이긴다 (개인 > 즉석).
-- **Personal list 가 brand voice 를 덮어쓰는 경우**: 같은 세션 메시지에 `금지=...` 인라인이 보이면 그 단어에 한해 personal list 가 우선 (즉석 의도 반영).
+- **충돌 예시**: brand의 `preserve: ["딥다이브"]`와 인라인 `금지=딥다이브`가 겹치면 brand의 보존 규칙이 우선한다. 다른 처리를 원하면 brand 설정을 바꾸거나 해당 brand를 해제한다. 의미·팩트·발화체 어미·수정 한도는 두 설정보다 우선한다.
 - **다중 brand voice**: 한 세션에 동시 활성화는 1 개만. 두 개 필요하면 별도 세션.
 
 ### 검증
 
-- humanize 결과의 출력 마지막에 `brand: <name>` 한 줄이 보이면 정상 적용.
-- `preserve` 단어가 humanized 에 사라지면 fail — humanizer 가 알림 후 보정.
-- `ban` 단어가 humanized 에 남아있으면 fail — humanizer 가 알림 후 재시도.
+- 변경 이유를 요청해 주요 변경에서 설정이 반영됐는지 확인한다. 별도의 `brand:` 출력 줄은 필수가 아니다.
+- 원문에 있던 `preserve` 단어가 humanized에서 사라지면 fail — humanizer 가 알림 후 보정.
+- `ban` 단어는 보존 규칙·수정 한도 안에서 치환한다. 충돌 때문에 남긴 표현은 이유를 알린다.
 
 ---
 
