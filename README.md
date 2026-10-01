@@ -17,33 +17,57 @@ The catalog provides context-dependent editing candidates, not words to replace 
 
 ## Recorded model comparison
 
-README inputs were run once per model on 2026-10-01, in fresh conversations with the same skill and catalog injected and `medium` effort selected. Outputs below are unchanged. This tests the supplied instructions; it does not test automatic skill discovery or establish a model ranking.
+The final revised instructions were run on 2026-10-01 with the same inputs, skill and catalog directly injected into fresh conversations. Both CLIs selected `medium` effort. The diff blocks use the original inputs and actual response bodies without manual rewriting; full responses retain the main-branch headings, change list and first-response notice.
 
 ### Linkedin
 
-| Version | Text |
-|---|---|
-| Original | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
-| Claude Code + Opus 5.5 | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이런 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
-| Codex CLI + GPT-6 Astra | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이번 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
+**Claude Code + Opus 5.5**
+
+```diff
+- 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
++ 이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에서 소중한 자산이 될 거라고 확신합니다. 🚀
+```
+
+**Codex CLI + GPT-6 Astra**
+
+```diff
+- 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
++ 이번 프로젝트에서 여러 기술적 도전을 경험하며 성장할 수 있었습니다. 이 경험이 앞으로의 커리어에 소중한 자산이 될 거라 확신합니다. 🚀
+```
 
 ### Email
 
-| Version | Text |
-|---|---|
-| Original | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다. |
-| Claude Code + Opus 5.5 | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 일정을 변경할 수밖에 없게 되어 양해를 구하고자 합니다. |
-| Codex CLI + GPT-6 Astra | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정을 변경해야 하는 상황이라 양해를 구하고자 합니다. |
+**Claude Code + Opus 5.5**
+
+```diff
+- 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.
++ 안녕하세요. 미팅 일정 관련해 연락드립니다. 부득이한 사정으로 일정을 변경해야 하는 상황이 되어 양해를 구하고자 합니다.
+```
+
+**Codex CLI + GPT-6 Astra**
+
+```diff
+- 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.
++ 안녕하세요. 미팅 일정을 변경해야 해서 연락드립니다. 부득이한 사정으로 일정을 바꾸게 되어 양해 부탁드립니다.
+```
 
 ### Marketing
 
-| Version | Text |
-|---|---|
-| Original | 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨ |
-| Claude Code + Opus 5.5 | 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이 방식으로 사용자 경험을 더 고도화할 수 있습니다. ✨ |
-| Codex CLI + GPT-6 Astra | 🚀 혁신적인 솔루션을 사용하여 다양한 비즈니스 가치를 극대화하고, 이런 접근으로 사용자 경험을 한층 더 고도화할 수 있습니다. ✨ |
+**Claude Code + Opus 5.5**
 
-[Run conditions, measurements and reproducibility](eval/model-comparison.md) · [Raw records](eval/model-runs/readme-2026-10-01.json) · [Manual examples](examples/before-after.md)
+```diff
+- 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
++ 🚀 이 솔루션으로 여러 비즈니스 가치를 최대한 키우고, 사용자 경험도 한 단계 더 끌어올릴 수 있습니다.
+```
+
+**Codex CLI + GPT-6 Astra**
+
+```diff
+- 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
++ 이 솔루션으로 여러 비즈니스 가치를 최대한 높이고, 사용자 경험을 더 개선할 수 있습니다.
+```
+
+[Run conditions, full responses and checks](eval/model-comparison.md) · [Raw records](eval/model-runs/readme-natural-2026-10-01.json) · [Earlier conservative run](eval/model-comparison-conservative-2026-10-01.md)
 
 ---
 

@@ -9,7 +9,7 @@
 | 스킬 지침 | [SKILL.md](../SKILL.md) |
 | 설치 없이 사용 | [짧은 프롬프트](../PROMPT.short.md), [전체 프롬프트](../PROMPT.md) |
 | 표현별 후보 | [패턴 카탈로그](../references/ko-ai-signals.md), [빠른 참고표](../CHEATSHEET.md) |
-| 첫 편집 예시 | [수동 편집 3쌍](../examples/before-after.md) |
+| 첫 편집 예시 | [실제 모델 출력 비교](../eval/model-comparison.md), [과거 수동 편집 3쌍](../examples/before-after.md) |
 | 개인 설정 | [개인 목록 양식](../examples/personal-list.md) |
 | 브랜드 설정 | [Brand voice 양식](../examples/brand-voice-template.md), [격식 낮은 제품 안내](../examples/brand-voice-toss-style.md), [에세이](../examples/brand-voice-essayist.md) |
 | 도메인 참고 | [학술](../examples/domain-academic.md), [뉴스](../examples/domain-news.md), [채팅](../examples/domain-chat.md), [리뷰](../examples/domain-review.md), [B2B](../examples/domain-b2b-message.md), [GitHub Issue](../examples/domain-github-issue.md) |
