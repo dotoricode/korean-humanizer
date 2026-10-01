@@ -2,8 +2,8 @@
 domain: youtube
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: YouTube 인트로 (5문장). 발화체 톤 보존 — ~해요체. M4 톤 보존은 pass 인데 sentence-level 거의 전체 손댐 → m1/m2 boundary.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. YouTube 인트로 (5문장). 발화체 톤 보존 — ~해요체. M4 톤 보존은 pass 인데 sentence-level 거의 전체 손댐 → m1/m2 boundary.
 ---
 
 ## Raw

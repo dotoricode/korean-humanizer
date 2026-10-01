@@ -3,7 +3,7 @@
 # 사일런트 드리프트(한 파일만 바뀌고 나머지가 안 바뀜) 방지.
 #
 # 검증 항목:
-#   1. 정량 규칙(20%, 3곳, 90%) 이 세 파일에 모두 등장하는지
+#   1. 교정 기준과 기본 출력 형식 이 세 파일에 모두 등장하는지
 #   2. 12 카테고리 키워드가 세 파일에 모두 등장하는지
 #   3. 카테고리 #13 이상이 추가되지 않았는지 (12 + 합의된 확장만 허용)
 #
@@ -38,12 +38,12 @@ CATEGORIES=(
   "고빈도"        # 12. AI vocab
 )
 
-# 정량 규칙 — 세 파일 모두에 등장해야 함.
-# 한 파일에서만 바뀌면 lint fail (예: SKILL 만 25% 로 바뀌고 PROMPT/카탈로그는 20% 인 경우).
-QUANT_RULES=(
-  "20%"
-  "3곳"
-  "90%"
+# 공통 교정 기준과 기본 출력 형식 — 세 실행 지침이 같은 계약을 사용하는지 확인.
+POLICY_RULES=(
+  "수정량은 고정 비율로 제한하지 않는다."
+  "문자 수 비율은 검토 지표"
+  "## Humanized"
+  "## 주요 변경 (최대 5개)"
 )
 
 errors=0
@@ -60,11 +60,11 @@ if [[ $errors -gt 0 ]]; then
   exit 1
 fi
 
-# 1. 정량 규칙 sync
-for rule in "${QUANT_RULES[@]}"; do
+# 1. 교정 기준·출력 형식 sync
+for rule in "${POLICY_RULES[@]}"; do
   for file in "${FILES[@]}"; do
     if ! grep -qF "$rule" "$file"; then
-      echo "FAIL: 정량 규칙 '$rule' 가 $file 에 없습니다 — 다른 두 파일과 sync 가 깨졌습니다."
+      echo "FAIL: 교정 기준 '$rule' 가 $file 에 없습니다 — 다른 두 파일과 sync 가 깨졌습니다."
       errors=$((errors + 1))
     fi
   done
@@ -127,4 +127,4 @@ if [[ $errors -gt 0 ]]; then
   exit 1
 fi
 
-echo "✓ Cross-file sync 검증 통과 — SKILL/PROMPT/카탈로그의 정량 규칙(20%/3곳/90%) · 12 카테고리 키워드 · 4 번째 mode (Brand voice) · 부록 F 가 모두 일치."
+echo "✓ Cross-file sync 검사 통과 — SKILL/PROMPT/카탈로그의 교정 기준·기본 출력 형식 · 12 카테고리 키워드 · Brand voice 참조 파일 · 부록 F 존재 확인."

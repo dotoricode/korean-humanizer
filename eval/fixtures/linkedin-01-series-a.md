@@ -2,8 +2,8 @@
 domain: linkedin
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 짧은 LinkedIn 포스트 (6문장) — 인사·강조어 대거 정리로 sentence-level 거의 전체 손댐. boundary 케이스.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 짧은 LinkedIn 포스트 (6문장) — 인사·강조어 대거 정리로 sentence-level 거의 전체 손댐. boundary 케이스.
 ---
 
 ## Raw

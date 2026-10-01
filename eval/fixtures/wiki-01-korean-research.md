@@ -2,8 +2,8 @@
 domain: wiki
 cap: 20
 paragraph_cap: 3
-expected_failures: m1
-notes: 학술 위키 7문장 단락 (한국어 AI 탐지). wiki-humanized-comparison.md 사례 1. M1 = 42.9% (cap 초과), M2 = 3 (cap=3 통과).
+expected_failures: m1,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 학술 위키 7문장 단락 (한국어 AI 탐지). wiki-humanized-comparison.md 사례 1. M1 = 42.9% (cap 초과), M2 = 3 (cap=3 통과).
 ---
 
 ## Raw

@@ -1,5 +1,7 @@
 # Migration Guide — v0.x → v1.0
 
+> 과거 개발·베타 기록입니다. 현재 사용법은 [문서 안내](../../README.md)를 참고하세요. 예전 규칙·수치·예시는 현재 동작의 보증이 아닙니다.
+>
 > v0.5 부터 v1.0 까지 4 sprint 동안 누적된 변경 사항을 단일 문서로 통합. 어떤 사용자가 어떤 작업을 해야 하는지 영향 매트릭스 + step-by-step.
 
 ---
@@ -124,7 +126,7 @@ sed -i.bak -E '/^\|.*\|.*\|.*\|.*\|$/!{ /^\|.*\| (high|med|low) \|$/s/$/ all |/ 
 #### 외부 영향
 
 - **모든 사용자**: 0 (freeze 의 의미).
-- 1.x 동안 minor / patch 룰: [`docs/STABILITY-PROMISE.md`](STABILITY-PROMISE.md).
+- 1.x 동안 minor / patch 룰: [`docs/STABILITY-PROMISE.md`](../../STABILITY-PROMISE.md).
 
 ---
 
@@ -138,7 +140,7 @@ v1.0 이후 minor / patch / major 의 의미:
 | **1.x.0** (minor) | 카탈로그 패턴 행 추가 / 자연스러움 개선 / 빈도 재라벨링 / 새 도메인 추가 / 새 옵션 metric / 새 examples / brand voice 보조 필드 추가 | 0 (freeze 영역 안 깨짐) |
 | **2.0** (major) | freeze 영역 변경 (카테고리 #13 / 정량 룰 cap / 카탈로그 컬럼 변경 등) | 마이그레이션 가이드 동봉, 12 개월 N-1 보안 패치 지원 |
 
-자세한 freeze 영역: [`docs/STABILITY-PROMISE.md`](STABILITY-PROMISE.md).
+자세한 freeze 영역: [`docs/STABILITY-PROMISE.md`](../../STABILITY-PROMISE.md).
 
 ---
 
@@ -178,4 +180,4 @@ A. ✓. Mode A / B / C 입력 형식 (`금지=...; 선호=A→B; 유지=...` / �
 
 - 마이그레이션이 막히면 [GitHub Issue](https://github.com/dotoricode/korean-humanizer/issues/new) 에 `[migration]` prefix 로.
 - 외부 fork 가 카탈로그 v2 마이그레이션을 자동화한 스크립트가 있다면 PR 환영 (`scripts/migrate-catalog-v2.sh` 같은 자리).
-- 보안 영향 있는 마이그레이션 이슈는 [SECURITY.md](../SECURITY.md) 절차로 비공개 보고.
+- 보안 영향 있는 마이그레이션 이슈는 [SECURITY.md](../../../SECURITY.md) 절차로 비공개 보고.

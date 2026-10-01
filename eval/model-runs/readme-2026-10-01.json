@@ -1,0 +1,112 @@
+{
+  "date": "2026-10-01",
+  "source": {
+    "commit": "4c5a02fb428eac7ff14f62a81881a3cd1c0f8652",
+    "skill_sha256": "38bc379d9f55b8f891fe124308e8aa09e2620a98cf8e7b308304805f4a0ee6d2",
+    "catalog_sha256": "a164cfb18d1190ac12aa3df91813dcc23ea7155f6417317ee3214019a4d78bec"
+  },
+  "mode": "identical user prompt with full SKILL.md and catalog injected; no automatic skill discovery; no tools",
+  "effort": "medium on both CLIs (not equivalent compute budgets)",
+  "cli_versions": {
+    "claude": "2.1.286",
+    "codex": "0.159.3"
+  },
+  "request_template": "아래는 korean-humanizer 스킬 지침과 참조 카탈로그입니다. 이를 적용해 마지막 사용자 요청을 처리하세요. 파일·도구·다른 스킬은 사용하지 마세요. 아래 지침에 따라 교정한 본문만 응답하세요.\n\n<skill>\n{skill}\n</skill>\n\n<catalog>\n{catalog}\n</catalog>\n\n<request>\n이거 AI 티 빼줘. 도메인={domain}:\n{input}\n</request>\n",
+  "runs_per_case_per_model": 1,
+  "cases": [
+    {
+      "id": "linkedin",
+      "domain": "linkedin",
+      "input": "이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+      "runs": [
+        {
+          "client": "claude",
+          "model_requested": "claude-opus-5-5",
+          "model_reported": [
+            "claude-opus-5-5"
+          ],
+          "started_utc": "2026-10-01T05:17:22.435454+00:00",
+          "output": "이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이런 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+          "input_chars": 89,
+          "output_chars": 85,
+          "length_ratio": 0.9550561797752809,
+          "prompt_sha256": "e4d7d1846ce7a3d0dfd451b196e80fef534ef4000ad19bf8fa387b662b5ade07"
+        },
+        {
+          "client": "codex",
+          "model_requested": "gpt-6-astra",
+          "model_reported": null,
+          "started_utc": "2026-10-01T05:17:22.435461+00:00",
+          "output": "이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이번 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+          "input_chars": 89,
+          "output_chars": 85,
+          "length_ratio": 0.9550561797752809,
+          "prompt_sha256": "e4d7d1846ce7a3d0dfd451b196e80fef534ef4000ad19bf8fa387b662b5ade07"
+        }
+      ]
+    },
+    {
+      "id": "email",
+      "domain": "email",
+      "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "runs": [
+        {
+          "client": "claude",
+          "model_requested": "claude-opus-5-5",
+          "model_reported": [
+            "claude-opus-5-5"
+          ],
+          "started_utc": "2026-10-01T05:18:02.114996+00:00",
+          "output": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 일정을 변경할 수밖에 없게 되어 양해를 구하고자 합니다.",
+          "input_chars": 90,
+          "output_chars": 84,
+          "length_ratio": 0.9333333333333333,
+          "prompt_sha256": "eac8dd21dad5330c7d361e994fbe48ee42efebf330317246a9282dcbe7bdd5c5"
+        },
+        {
+          "client": "codex",
+          "model_requested": "gpt-6-astra",
+          "model_reported": null,
+          "started_utc": "2026-10-01T05:18:02.115018+00:00",
+          "output": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정을 변경해야 하는 상황이라 양해를 구하고자 합니다.",
+          "input_chars": 90,
+          "output_chars": 86,
+          "length_ratio": 0.9555555555555556,
+          "prompt_sha256": "eac8dd21dad5330c7d361e994fbe48ee42efebf330317246a9282dcbe7bdd5c5"
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "domain": "marketing",
+      "input": "🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+      "runs": [
+        {
+          "client": "claude",
+          "model_requested": "claude-opus-5-5",
+          "model_reported": [
+            "claude-opus-5-5"
+          ],
+          "started_utc": "2026-10-01T05:18:20.506171+00:00",
+          "output": "🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이 방식으로 사용자 경험을 더 고도화할 수 있습니다. ✨",
+          "input_chars": 75,
+          "output_chars": 68,
+          "length_ratio": 0.9066666666666666,
+          "prompt_sha256": "4c80a4e8b11be6aa2f0fafc543e7e082d2a1cbb64feb05ba175f61c9b2a09522"
+        },
+        {
+          "client": "codex",
+          "model_requested": "gpt-6-astra",
+          "model_reported": null,
+          "started_utc": "2026-10-01T05:18:12.410868+00:00",
+          "output": "🚀 혁신적인 솔루션을 사용하여 다양한 비즈니스 가치를 극대화하고, 이런 접근으로 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+          "input_chars": 75,
+          "output_chars": 72,
+          "length_ratio": 0.96,
+          "prompt_sha256": "4c80a4e8b11be6aa2f0fafc543e7e082d2a1cbb64feb05ba175f61c9b2a09522"
+        }
+      ]
+    }
+  ],
+  "readme_inputs_sha256": "96e76dfea2ae629332be0b151d8bb58bb21260dfe3ac47384cc7034998219541"
+}

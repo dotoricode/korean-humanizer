@@ -3,6 +3,7 @@ domain: youtube
 cap: 20
 paragraph_cap: 3
 expected_failures: m4
+required_failures: m4
 notes: TRAP fixture — 발화체 (~해요체 raw) 에 ~다체 글말체를 잘못 도입한 경우. M4 가 잡아내야 함. 카탈로그 #9 발화체 종결어미 보존 룰 위반.
 ---
 

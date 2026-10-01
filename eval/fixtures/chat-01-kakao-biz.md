@@ -2,8 +2,8 @@
 domain: chat
 cap: 20
 paragraph_cap: 3
-expected_failures: m1
-notes: 카카오톡 비즈니스 메시지 (S2 preview). 짧은 메시지라 sentence-level cap 의 boundary — 채팅은 짧은 본질상 cap 측정이 의미 약함. M2 (단락 3곳) 은 통과.
+expected_failures: m1,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 카카오톡 비즈니스 메시지 (S2 preview). 짧은 메시지라 sentence-level cap 의 boundary — 채팅은 짧은 본질상 cap 측정이 의미 약함. M2 (단락 3곳) 은 통과.
 ---
 
 ## Raw

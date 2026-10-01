@@ -1,5 +1,7 @@
 # Sprint 3 — v0.8 Brand Voice + Catalog v2
 
+> 과거 개발·베타 기록입니다. 현재 사용법은 [문서 안내](../../README.md)를 참고하세요. 예전 규칙·수치·예시는 현재 동작의 보증이 아닙니다.
+>
 > Personal list 의 4 번째 mode (brand voice profile) 도입 + 카탈로그를 도메인-가중치 기반 4 컬럼으로 재구성. v1.0 직전의 가장 큰 깊이 점프.
 
 | 항목 | 값 |
@@ -131,10 +133,12 @@ prefer:
 - **결정 3**: 어느 행이 specific 도메인을 받고, 어느 행이 "all" 인가
   - **결정**: 카테고리 #1 (강조어) 처럼 보편 패턴은 "all". 카테고리 #11 (hedging) 처럼 도메인별 차이 큰 패턴은 specific.
 - 도메인 코드 (부록 F 표준):
+
   ```
   all = blog, marketing, email, linkedin, youtube, newsletter, wiki,
         academic, news, chat, review, b2b-message
   ```
+
   shorthand: `informal = chat,review`, `formal = email,b2b-message,academic`
 
 #### 2B. 카탈로그 v2 마이그레이션 — 137 행 4 컬럼화 (3d)

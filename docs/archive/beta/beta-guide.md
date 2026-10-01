@@ -1,5 +1,7 @@
 # Beta 사용 가이드
 
+> 과거 개발·베타 기록입니다. 현재 사용법은 [문서 안내](../../README.md)를 참고하세요. 예전 규칙·수치·예시는 현재 동작의 보증이 아닙니다.
+>
 > 보관 문서. v1.0 stable 은 2026-05-21 에 출시됐고, 이 문서는 v1.0 이전 베타 운영 기록으로 남긴다.
 
 ---
@@ -166,7 +168,7 @@ A. **Personal list (Mode A) 인라인 한 줄로 충분**합니다. Brand voice 
 
 ### Q. 베타 기간이 끝나면 어떻게 되나요?
 
-A. 그대로 계속 사용. v1.0 release 후에도 minor / patch 자동 적용 (`git pull` / 새 PROMPT.md 갱신). v1.0 부터 freeze 영역 ([`docs/STABILITY-PROMISE.md`](STABILITY-PROMISE.md)) 약속됩니다.
+A. 그대로 계속 사용. v1.0 release 후에도 minor / patch 자동 적용 (`git pull` / 새 PROMPT.md 갱신). v1.0 부터 freeze 영역 ([`docs/STABILITY-PROMISE.md`](../../STABILITY-PROMISE.md)) 약속됩니다.
 
 ### Q. 폼 응답이 너무 부담돼요.
 

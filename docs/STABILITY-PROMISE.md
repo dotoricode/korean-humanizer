@@ -1,5 +1,7 @@
 # Stability Promise (v1.0+)
 
+> **적용 범위: 출시된 1.x 버전.** 아래 약속은 기존 출시본에 유지됩니다. 현재 PR의 호환성 변경은 [미출시 2.0 마이그레이션 준비](MIGRATION-1.x-to-2.x.md)에서 다룹니다. 2.0이 출시됐다는 뜻은 아닙니다.
+>
 > `korean-humanizer` 1.0 부터 [SemVer](https://semver.org/) 를 따른다. 사용자 / contributor 가 룰이 갑자기 바뀌는 걱정 없이 의존할 수 있도록, 어떤 영역이 freeze 되고 어떤 영역이 minor / patch 로 바뀔 수 있는지 명문화한다.
 
 ---
@@ -199,6 +201,6 @@ Major bump 시 의무:
 ## 참고
 
 - [CHANGELOG](../CHANGELOG.md) — 모든 버전 history
-- [Migration 0.x → 1.0](MIGRATION-0.x-to-1.0.md) — v1.0 진입 시 변경 사항
+- [Migration 0.x → 1.0](archive/migrations/MIGRATION-0.x-to-1.0.md) — v1.0 진입 시 변경 사항
 - [Security Policy](../SECURITY.md) — 보안 이슈 보고
 - [Roadmap](../ROADMAP.md) — sprint 단위 계획

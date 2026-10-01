@@ -2,8 +2,8 @@
 domain: marketing
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 4문장 마케팅 카피 — 짧은 글 boundary (4문장 짜리는 1문장만 손대도 25% 로 cap 초과).
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 4문장 마케팅 카피 — 짧은 글 boundary (4문장 짜리는 1문장만 손대도 25% 로 cap 초과).
 ---
 
 ## Raw

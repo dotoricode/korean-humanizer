@@ -2,8 +2,8 @@
 domain: blog
 cap: 20
 paragraph_cap: 3
-expected_failures: m1, m2
-notes: 짧은 블로그 인트로 (5문장) — 거의 모든 문장이 sentence-level 로 손대어져 cap 초과. 짧은 content 의 boundary 케이스. 20% cap 은 long-form 에서 의미 있고 short 에서는 "0-1 문장만 손대도록" 제약이 매우 빡빡함을 documenting.
+expected_failures: m1,m2,m3
+notes: 기존 과교정 사례 — 현재 규칙의 정상 품질 예시가 아님. 짧은 블로그 인트로 (5문장) — 거의 모든 문장이 sentence-level 로 손대어져 cap 초과. 짧은 content 의 boundary 케이스. 20% cap 은 long-form 에서 의미 있고 short 에서는 "0-1 문장만 손대도록" 제약이 매우 빡빡함을 documenting.
 ---
 
 ## Raw

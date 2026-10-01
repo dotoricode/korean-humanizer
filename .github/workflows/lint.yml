@@ -5,6 +5,9 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   markdown-lint:
     name: markdownlint (warning only)
@@ -13,10 +16,10 @@ jobs:
     # 위반은 GitHub Actions 로그에 표시되며, 기여자가 참고용으로 볼 수 있다.
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Run markdownlint-cli2
-        uses: DavidAnson/markdownlint-cli2-action@v18
+        uses: DavidAnson/markdownlint-cli2-action@eb5ca3ab411449c66620fe7f1b3c9e10547144b0 # v18
         with:
           globs: |
             **/*.md
@@ -29,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     # 패턴 카탈로그 표 형식은 머지 위험이 가장 큰 영역이라 fail.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Validate pattern table columns
         run: bash scripts/lint-patterns.sh
@@ -40,7 +43,7 @@ jobs:
     # SKILL.md / PROMPT.md / references/ko-ai-signals.md 의 정량 규칙(20% / 3곳)
     # 과 12 카테고리 키워드가 세 파일에서 sync 됐는지. 한 파일만 바뀌면 fail.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Validate quantitative rules and category sync
         run: bash scripts/lint-cross-file.sh
@@ -51,7 +54,7 @@ jobs:
     # examples/ 가 SKILL 출력 포맷 룰("주요 변경 최대 5개") 과 카테고리 범위(1~12)
     # 를 따르는지. 예시 콘텐츠 PR 의 안전망.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
       - name: Validate examples format and category range
         run: bash scripts/lint-examples.sh
@@ -59,22 +62,24 @@ jobs:
   eval-harness:
     name: eval harness (must pass)
     runs-on: ubuntu-latest
-    # eval/fixtures/*.md 가 SKILL 의 정량 룰(20% cap / 단락 3곳 / 길이 비율 /
-    # 발화체 ~다체 보존) 을 지키는지 4 metric 으로 검증. 회귀 (예: 누가 fixture
-    # 를 더 공격적으로 humanize 하도록 수정) 가 발생하면 hard-fail.
+    # 고정 Raw/Humanized 쌍의 M1-M5 회귀 검사. 예상 밖 실패와 trap의 필수 탐지
+    # 누락은 fail. 모델의 자연스러움·의미 보존 성공률을 측정하지 않음.
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
         with:
           python-version: "3.12"
+
+      - name: Run regression checks
+        run: python3 scripts/test-regressions.py
 
       - name: Run eval harness
         run: bash scripts/eval-harness.sh
 
       - name: Upload scorecard
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: eval-scorecard
           path: eval/scorecard.md

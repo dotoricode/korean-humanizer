@@ -2,6 +2,48 @@
 
 > 모든 변경은 [Keep a Changelog](https://keepachangelog.com/) 형식, 버전은 [SemVer](https://semver.org/) 규칙. v1.0 부터 freeze 영역은 [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md) 참조.
 
+## [Unreleased] — 2.0.0 준비
+
+### Breaking changes
+
+- 교정 범위를 고정 비율·표현 수로 제한하지 않고, 정보·조건·말투 보존과 자연스러움으로 검수합니다.
+- 개인 설정은 `personal=파일경로`로 명시한 파일만 사용합니다.
+- 카탈로그 표 헤더를 `검토할 표현` / `치환 후보`로 변경합니다.
+- 기본 교정의 20%·문단 3곳·짧은 글 1–2표현·길이 90% 제한을 제거합니다. 기존 평가 fixture는 과거 계약의 회귀 검사로 구분합니다.
+- 명확한 용도는 바로 처리하며 참고 글은 선택 사항으로 둡니다.
+- 기존 1.x 약속을 보존하고 [마이그레이션 준비 안내](docs/MIGRATION-1.x-to-2.x.md)를 추가했습니다. 태그·릴리스는 아직 없습니다.
+
+### Fixed
+
+- 실제 스킬 호출에서도 참조 파일을 읽고 기본 응답 형식을 지키도록 지침 순서와 완료 조건을 보완했습니다.
+- 변경 설명의 근거, 문장 흐름, 확신과 평가 강도의 보존을 스킬 내부 최종 검토에 명시했습니다.
+
+- 이모지는 개수 대신 역할로 판단하며, 문장 간 같은 사건·요청의 반복을 마지막 검토에서 정리합니다.
+
+- 설치 경로 재실행 시 자기 참조 링크, ripgrep 없는 검사 실패를 수정했습니다.
+- 길이 하한·보존어·부정 테스트·빈 fixture·CLI 경로와 옵션 검사를 보완했습니다.
+- 원문에 없는 정보를 추가하던 실행 참조 예시를 교체하고 지침 우선순위를 통일했습니다.
+- Markdown 코드 블록 앞뒤 빈 줄 경고를 해결했습니다.
+
+### Documentation
+
+- 기본 표시를 main의 `Humanized`·`주요 변경 (최대 5개)`·첫 응답 안내로 복원합니다.
+
+- README를 설치·사용·현재 예시 중심으로 정리하고 [문서 안내](docs/README.md)를 추가했습니다.
+- 과거 베타·완료 개발 계획·비교 사례를 `docs/archive/`에 보관했습니다.
+- 빈 피드백 scaffold·중복 장문 연구 교정본·적용 완료 Topics 메모를 제거하고 용어를 `AGENTS.md`에 통합했습니다.
+- 연구 배경·빈도 측정 계획·QA·홍보 기록은 목적별 디렉토리로 옮겼습니다.
+
+### Validation
+
+- 입력 12개를 두 CLI에서 스킬 이름으로 직접 호출했습니다. 최종 기록은 최신 지침의 6응답과 직전 지침의 18응답으로 구분하며, 원본·해시·실패 이력은 [실행 기록](eval/native-skill-2026-10-01.md)에 남겼습니다. 응답 후 재교정은 하지 않았습니다.
+
+- 이모지·문장 흐름 보완 후 입력 8개를 두 모델에서 실행한 실제 응답 16개를 [별도 기록](eval/emoji-and-flow-2026-10-01.md)했습니다.
+
+- 최종 지침으로 README 원문 3개와 보존 입력 2개를 Opus 5.5·Astra에서 실행한 결과 10개와 [조건·한계](eval/model-comparison.md)를 기록했습니다. 스킬·카탈로그를 직접 전달한 실행이며 설치 검증이나 모델 순위 평가가 아닙니다.
+- 회귀 검사 15개, 고정 입력·출력 fixture 25개를 확인했습니다. 모델 품질 성공률을 뜻하지 않습니다.
+- 검사 범위·한계와 작은 실행 사례는 [QA 기록](docs/reviews/2026-10-01-qa.md)에 남겼습니다.
+
 ## [1.0.1] — 2026-06-02
 
 ### Changed
@@ -49,7 +91,7 @@
 ### Migration
 
 - 일반 사용자: `git pull` 만으로 완료. 영향 없음.
-- 외부 fork 사용자: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md) 참조.
+- 외부 fork 사용자: [`docs/MIGRATION-0.x-to-1.0.md`](docs/archive/migrations/MIGRATION-0.x-to-1.0.md) 참조.
 
 ---
 
@@ -74,7 +116,7 @@
 
 ### Migration
 
-- 외부 fork 사용자: [`roadmap/S3-migration-notes.md`](roadmap/S3-migration-notes.md) — 표 헤더 4 컬럼 + 도메인 코드 부여 절차.
+- 외부 fork 사용자: [`roadmap/S3-migration-notes.md`](docs/archive/roadmap/S3-migration-notes.md) — 표 헤더 4 컬럼 + 도메인 코드 부여 절차.
 - 일반 사용자 (SKILL.md / PROMPT.md 사용): clone / pull 만 — 영향 없음.
 
 ---
@@ -177,5 +219,5 @@
 ## 비교 / 관련 링크
 
 - v1.0 freeze 영역 정의: [`docs/STABILITY-PROMISE.md`](docs/STABILITY-PROMISE.md)
-- v0.x → v1.0 전체 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/MIGRATION-0.x-to-1.0.md)
+- v0.x → v1.0 전체 마이그레이션: [`docs/MIGRATION-0.x-to-1.0.md`](docs/archive/migrations/MIGRATION-0.x-to-1.0.md)
 - 4 sprint 로드맵: [`ROADMAP.md`](ROADMAP.md)

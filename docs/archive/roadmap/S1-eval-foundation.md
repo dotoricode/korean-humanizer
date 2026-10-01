@@ -1,5 +1,7 @@
 # Sprint 1 — v0.6 Eval Foundation
 
+> 과거 개발·베타 기록입니다. 현재 사용법은 [문서 안내](../../README.md)를 참고하세요. 예전 규칙·수치·예시는 현재 동작의 보증이 아닙니다.
+>
 > 자동 검증 layer 를 *형식* 에서 *내용* 으로 확장. 휴리스틱 기반, LLM 호출 없음, CI 무료.
 
 | 항목 | 값 |
@@ -47,6 +49,7 @@
 
 - **결정**: fixture 는 markdown (raw + humanized 두 블록 포함). JSON 보다 사람이 읽기 쉽고, examples/ 와 호환.
 - 형식 (`eval/fixtures/<domain>-<num>.md`):
+
   ```markdown
   ---
   domain: blog | marketing | email | linkedin | youtube | newsletter | wiki | academic | news | chat | review | b2b-message
@@ -58,6 +61,7 @@
   ## Humanized
   [다듬어진 텍스트]
   ```
+
 - 추출기: `scripts/extract-fixtures.sh examples/before-after.md` → `eval/fixtures/blog-1.md` 등.
 - 기존 4 개 examples 의 형식 통일 (Before/After ↔ Raw/Humanized 정규화).
 
@@ -113,6 +117,7 @@
 ### 7. Scorecard 생성기 (1d)
 
 - `eval/scorecard.md` 자동 생성:
+
   ```markdown
   # Eval Scorecard (auto-generated)
   > Generated: <timestamp>
@@ -124,11 +129,13 @@
   | Fixture | Domain | M1 (20%) | M2 (3곳) | M3 (length) | M4 (tone) | Overall |
   ...
   ```
+
 - CI artifact 로 업로드.
 
 ### 8. CI 통합 (0.5d)
 
 - `.github/workflows/lint.yml` 에 5 번째 job 추가:
+
   ```yaml
   eval-harness:
     name: eval harness (must pass)
@@ -143,6 +150,7 @@
           name: eval-scorecard
           path: eval/scorecard.md
   ```
+
 - README CI 섹션 갱신 (5 jobs 명시).
 
 ### 9. 회귀 테스트 (0.5d)

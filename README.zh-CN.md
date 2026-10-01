@@ -6,8 +6,9 @@
 
 [English](README.md) · [한국어](README.ko.md)
 
-[![Version](https://img.shields.io/badge/version-v1.0.1-brightgreen.svg)](CHANGELOG.md)
-[![Status](https://img.shields.io/badge/status-stable-brightgreen.svg)](docs/STABILITY-PROMISE.md)
+[![Next release](https://img.shields.io/badge/next-2.0_unreleased-orange.svg)](docs/MIGRATION-1.x-to-2.x.md)
+
+最后发布的版本是 **v1.0.1**。本文说明**尚未发布的 2.0 准备变更**，请参阅 [1.x 兼容承诺](docs/STABILITY-PROMISE.md)和[迁移草案](docs/MIGRATION-1.x-to-2.x.md)。
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -22,11 +23,13 @@ Humanize this Korean text:
 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
 ```
 
-输出示例：
+实际调用 `$korean-humanizer` 的 Codex CLI + GPT-6 Astra 输出（2026-10-01，仅摘录正文，未在输出后重新编辑）：
 
 ```text
-이 솔루션으로 여러 비즈니스 가치를 더 크게 만들고, 사용자 경험도 한 단계 개선할 수 있어요.
+이 솔루션으로 여러 비즈니스 가치를 최대한 높이고, 사용자 경험도 더 개선할 수 있습니다.
 ```
+
+[完整响应与运行条件](eval/native-skill-2026-10-01.md)
 
 ## 为什么需要韩语专用 humanizer
 
@@ -35,7 +38,7 @@ Humanize this Korean text:
 - 翻译腔：`~에 있어서`, `~을 통해`, `~에 의해`
 - 过度正式：`~인 것이다`, `~라고 할 수 있습니다`
 - 指示词过多：`이러한`, `해당`
-- 韩语 LLM 高频词：`활용`, `극대화`, `시사한다`, `도모`, `모색`
+- 需要结合语境判断的词语：`활용`, `극대화`, `시사한다`, `도모`, `모색`
 - 敬语和句尾语气不一致
 - 口语脚本被改成书面 `~다` 风格
 
@@ -49,6 +52,7 @@ Humanize this Korean text:
 git clone https://github.com/dotoricode/korean-humanizer.git
 cd korean-humanizer
 bash scripts/install-codex-skill.sh
+bash scripts/check-codex-skill.sh
 ```
 
 ### Claude Code
@@ -57,6 +61,8 @@ bash scripts/install-codex-skill.sh
 mkdir -p ~/.claude/skills
 git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/korean-humanizer
 ```
+
+上述命令安装默认分支；候选变更见 [PR #5](https://github.com/dotoricode/korean-humanizer/pull/5)。在克隆目录运行 `git checkout v1.0.1` 可固定已发布版本。本次验证了 Codex 安装及少量运行案例，未验证 Claude Code 全新安装到首次使用的完整流程。
 
 然后直接请求：
 
@@ -72,17 +78,21 @@ git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/ko
 - [`PROMPT.short.md`](PROMPT.short.md): 快速试用版 prompt
 - [`CHEATSHEET.md`](CHEATSHEET.md): 30 个常见韩语 AI 写作痕迹
 - [`references/ko-ai-signals.md`](references/ko-ai-signals.md): 12 类 / 100+ 韩语模式目录
-- [`eval/scorecard.md`](eval/scorecard.md): 自动评估结果
+- [`eval/scorecard.md`](eval/scorecard.md): 固定输入与输出的回归检查结果，不是模型质量成功率
 
 ## 核心规则
 
 - 保留事实、数字、专有名词、引用、链接。
-- 不做摘要；除非用户明确要求缩短，否则输出长度不低于原文的 90%。
-- 不整句、整段删除；优先弱化或替换 AI 痕迹。
+- 保留核心信息、条件和确定程度；可删去重复和装饰表达，不设固定长度比例。
+- 必要时可重新组织句子，保持信息和逻辑关系。
 - 不重写全文，只修改高置信度 AI 痕迹。
-- 最多修改 20% 的句子，每段最多 3 处。
+- 不限制修改句数或比例，改善全文中生硬的表达。
 - 保留韩语语气和敬语等级。
 - YouTube / 播客 / 讲稿等口语文本不能改成书面 `~다` 体。
+
+默认使用与 main 相同的 `Humanized` 和 `주요 변경 (최대 5개)` 两部分，并在首次回复附上修改提示。仅需正文时请明确说明。用 `personal=文件路径` 指定个人配置；示例列表不会自动生效。已自然的表达保持不变。
+
+[文档索引](docs/README.md) · [手工示例](examples/before-after.md) · [评估方法与局限](eval/README.md)
 
 ## Services using korean-humanizer
 

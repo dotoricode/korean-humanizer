@@ -2,14 +2,14 @@
 
 # Eval scorecard
 
-> Generated: 2026-06-02 02:10 UTC
+> Generated: 2026-10-01 03:07 UTC
 > Source: `eval/fixtures/*.md` (25 fixtures)
 
 ## Summary
 
 - Total fixtures: **25**
-- Clean pass: **9** (36.0%)
-- Expected-failure pass: **16** fixtures / **26** metric failures
+- Clean pass: **10** (40.0%)
+- Expected-failure pass: **15** fixtures / **39** metric failures
 - Unexpected fail: **0**
 - Declared expected failures that no longer fail: **0**
 
@@ -18,36 +18,38 @@
 | Fixture | Domain | M1 (mod ratio) | M2 (para cap) | M3 (length) | M4 (다체) | M5 (brand) | Overall |
 |---|---|---|---|---|---|---|---|
 | academic-01-abstract.md | academic | ✓ 0.0% (0/5) | ✓ max=0 | pass 0.96 | n/a (0→0) | n/a | ✓ |
-| b2b-message-01-proposal.md | b2b-message | ✓ 16.7% (1/6) | ✓ max=1 | warn 0.87 | n/a (0→0) | n/a | ✓ |
-| blog-01-time-management.md | blog | ✗ 100.0% (5/5) | ✗ max=5 | warn 0.61 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
+| b2b-message-01-proposal.md | b2b-message | ✓ 16.7% (1/6) | ✓ max=1 | pass 0.95 | n/a (0→0) | n/a | ✓ |
+| blog-01-time-management.md | blog | ✗ 100.0% (5/5) | ✗ max=5 | fail 0.61 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
 | blog-02-quarterly-retro.md | blog | ✓ 17.8% (8/45) | ✓ max=2 | pass 0.92 | n/a (0→0) | n/a | ✓ |
-| blog-03-remote-work.md | blog | ✗ 100.0% (6/6) | ✗ max=6 | warn 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
+| blog-03-remote-work.md | blog | ✗ 100.0% (6/6) | ✗ max=6 | fail 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
 | blog-04-side-project.md | blog | ✓ 6.7% (1/15) | ✓ max=1 | pass 0.95 | n/a (0→0) | n/a | ✓ |
-| brand-voice-01-toss-style-marketing.md | marketing | ✗ 100.0% (3/3) | ✓ max=3 | warn 0.81 | n/a (0→0) | pass (4/4) | ✓ (expected: m1) |
-| chat-01-kakao-biz.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | warn 0.74 | n/a (0→0) | n/a | ✓ (expected: m1) |
-| chat-02-dm-reply.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | warn 0.66 | n/a (0→0) | n/a | ✓ (expected: m1) |
-| edge-short-01-one-sentence.md | marketing | ✗ 100.0% (1/1) | ✓ max=1 | warn 0.78 | n/a (0→0) | n/a | ✓ (expected: m1) |
+| brand-voice-01-toss-style-marketing.md | marketing | ✗ 100.0% (3/3) | ✓ max=3 | fail 0.81 | n/a (0→0) | pass (4/4) | ✓ (expected: m1,m3) |
+| chat-01-kakao-biz.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | fail 0.74 | n/a (0→0) | n/a | ✓ (expected: m1,m3) |
+| chat-02-dm-reply.md | chat | ✗ 60.0% (3/5) | ✓ max=3 | fail 0.66 | n/a (0→0) | n/a | ✓ (expected: m1,m3) |
+| edge-short-01-one-sentence.md | marketing | ✓ 0.0% (0/1) | ✓ max=0 | pass 0.97 | n/a (0→0) | n/a | ✓ |
 | edge-short-02-untouched.md | marketing | ✓ 0.0% (0/2) | ✓ max=0 | pass 1.00 | n/a (0→0) | n/a | ✓ |
-| email-01-delay-apology.md | email | ✗ 66.7% (6/9) | ✗ max=6 | warn 0.72 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
-| email-02-mtg-reschedule.md | email | ✗ 57.1% (4/7) | ✗ max=4 | warn 0.76 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
+| email-01-delay-apology.md | email | ✗ 66.7% (6/9) | ✗ max=6 | fail 0.72 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
+| email-02-mtg-reschedule.md | email | ✗ 57.1% (4/7) | ✗ max=4 | fail 0.76 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
 | email-03-vendor-followup.md | email | ✓ 10.0% (1/10) | ✓ max=1 | pass 0.92 | n/a (0→0) | n/a | ✓ |
-| linkedin-01-series-a.md | linkedin | ✗ 100.0% (7/7) | ✗ max=7 | warn 0.69 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
+| linkedin-01-series-a.md | linkedin | ✗ 100.0% (7/7) | ✗ max=7 | fail 0.69 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
 | linkedin-02-product-update.md | linkedin | ✓ 14.3% (1/7) | ✓ max=1 | pass 0.92 | n/a (0→0) | n/a | ✓ |
-| marketing-01-headphones.md | marketing | ✗ 100.0% (6/6) | ✗ max=6 | warn 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
-| marketing-02-launch.md | marketing | ✗ 100.0% (4/4) | ✗ max=4 | warn 0.66 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
+| marketing-01-headphones.md | marketing | ✗ 100.0% (6/6) | ✗ max=6 | fail 0.59 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
+| marketing-02-launch.md | marketing | ✗ 100.0% (4/4) | ✗ max=4 | fail 0.66 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
 | marketing-03-feature-page.md | marketing | ✓ 0.0% (0/9) | ✓ max=0 | pass 0.91 | n/a (0→0) | n/a | ✓ |
 | news-01-tech-coverage.md | news | ✓ 20.0% (1/5) | ✓ max=1 | pass 0.96 | n/a (0→0) | n/a | ✓ |
-| newsletter-01-startup-seed.md | newsletter | ✗ 83.3% (5/6) | ✗ max=5 | warn 0.72 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
-| review-01-product.md | review | ✗ 83.3% (5/6) | ✗ max=5 | warn 0.82 | n/a (0→0) | n/a | ✓ (expected: m1,m2) |
-| wiki-01-korean-research.md | wiki | ✗ 42.9% (3/7) | ✓ max=3 | warn 0.88 | n/a (0→0) | n/a | ✓ (expected: m1) |
-| youtube-01-time-mgmt.md | youtube | ✗ 83.3% (5/6) | ✗ max=5 | warn 0.52 | pass (2→0) | n/a | ✓ (expected: m1,m2) |
+| newsletter-01-startup-seed.md | newsletter | ✗ 83.3% (5/6) | ✗ max=5 | fail 0.72 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
+| review-01-product.md | review | ✗ 83.3% (5/6) | ✗ max=5 | fail 0.82 | n/a (0→0) | n/a | ✓ (expected: m1,m2,m3) |
+| wiki-01-korean-research.md | wiki | ✗ 42.9% (3/7) | ✓ max=3 | fail 0.88 | n/a (0→0) | n/a | ✓ (expected: m1,m3) |
+| youtube-01-time-mgmt.md | youtube | ✗ 83.3% (5/6) | ✗ max=5 | fail 0.52 | pass (2→0) | n/a | ✓ (expected: m1,m2,m3) |
 | youtube-02-trap-dache.md | youtube | ✓ 0.0% (0/6) | ✓ max=0 | pass 0.97 | fail (0→3) | n/a | ✓ (expected: m4) |
 
 ## Legend
 
-- **M1**: modified sentence count / total raw sentences. ✓ = within `cap` (default 20%).
+- **M1**: approximate modified sentence count / total raw sentences (edit distance >0.20). ✓ = within `cap` (default 20%) or at most one modified sentence. The sentence budget is max(1, floor(total sentences * cap)). Small edits may not be counted.
 - **M2**: max modified sentences in any paragraph. ✓ = within `paragraph_cap` (default 3).
-- **M3**: char-length ratio (humanized / raw). `pass` 0.90–1.05, `warn` 0.50–0.90 or 1.05–1.20, `fail` <0.50 or >1.20.
+- **M3**: char-length ratio (humanized / raw). `pass` 0.90–1.05, `warn` >1.05–1.20, `fail` <0.90 or >1.20.
 - **M4**: 다체 intrusion check. Active only for speech domains (youtube/podcast/live/lecture); else `n/a`.
-- **M5**: brand voice `preserve` coverage. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`. Format `pass (N/total)` = N preserved out of total preserve list.
+- **M5**: brand voice `preserve` coverage for words present in Raw, including occurrence counts. Active only when fixture frontmatter has `brand_voice: <path>`; else `n/a`.
+- `required_failures` declares failures a trap must detect. Missing required failures fail the fixture, even when no unexpected failure occurred.
 - Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.
+- These fixed input/output checks do not run a model or establish semantic quality. M1/M2 are approximate; facts, sentence order, and overall tone need separate review.
