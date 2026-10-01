@@ -15,23 +15,35 @@ The catalog provides context-dependent editing candidates, not words to replace 
 
 ---
 
-Conservative, manually edited examples; these are not recorded model runs.
+## Recorded model comparison
 
-```diff
-# LinkedIn
-- 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
-+ 이번 프로젝트에서 여러 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
+README inputs were run once per model on 2026-10-01, in fresh conversations with the same skill and catalog injected and `medium` effort selected. Outputs below are unchanged. This tests the supplied instructions; it does not test automatic skill discovery or establish a model ranking.
 
-# Email
-- 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.
-+ 안녕하세요. 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.
+### Linkedin
 
-# Marketing
-- 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
-+ 🚀 새로운 솔루션을 사용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
-```
+| Version | Text |
+|---|---|
+| Original | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
+| Claude Code + Opus 5.5 | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이런 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
+| Codex CLI + GPT-6 Astra | 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이번 경험은 앞으로의 커리어에서 매우 소중한 자산이 될 것이라 확신합니다. 🚀 |
 
-[More manual examples](examples/before-after.md) · [Small recorded execution checks](docs/reviews/2026-10-01-qa.md#새-문맥-실행-검사)
+### Email
+
+| Version | Text |
+|---|---|
+| Original | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다. |
+| Claude Code + Opus 5.5 | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 일정을 변경할 수밖에 없게 되어 양해를 구하고자 합니다. |
+| Codex CLI + GPT-6 Astra | 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정을 변경해야 하는 상황이라 양해를 구하고자 합니다. |
+
+### Marketing
+
+| Version | Text |
+|---|---|
+| Original | 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨ |
+| Claude Code + Opus 5.5 | 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이 방식으로 사용자 경험을 더 고도화할 수 있습니다. ✨ |
+| Codex CLI + GPT-6 Astra | 🚀 혁신적인 솔루션을 사용하여 다양한 비즈니스 가치를 극대화하고, 이런 접근으로 사용자 경험을 한층 더 고도화할 수 있습니다. ✨ |
+
+[Run conditions, measurements and reproducibility](eval/model-comparison.md) · [Raw records](eval/model-runs/readme-2026-10-01.json) · [Manual examples](examples/before-after.md)
 
 ---
 

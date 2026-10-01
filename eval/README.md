@@ -2,6 +2,8 @@
 
 > 저장된 Raw / Humanized 쌍의 회귀 검사입니다. 모델을 실행하지 않으며, 자연스러움이나 의미 보존의 성공률을 측정하지 않습니다.
 
+[README 예시의 Opus 5.5·Astra 실제 실행 비교](model-comparison.md)는 별도 기록입니다. 아래 고정 fixture 검사에 합산하지 않습니다.
+
 ## 무엇을 검사하나
 
 | Metric | 정의 | Pass 조건 |

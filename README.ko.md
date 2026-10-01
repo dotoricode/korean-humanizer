@@ -26,7 +26,7 @@
 인공지능 기술은 빠르게 발전하고 있고, 다양한 산업 분야에서 업무 효율성을 높이는 데 쓰이고 있습니다.
 ```
 
-[수동 편집 예시 3개](examples/before-after.md) · [실행 검사 기록](docs/reviews/2026-10-01-qa.md#새-문맥-실행-검사)
+[Opus 5.5·Astra 실제 결과 비교](eval/model-comparison.md) · [수동 편집 예시 3개](examples/before-after.md) · [실행 검사 기록](docs/reviews/2026-10-01-qa.md#새-문맥-실행-검사)
 
 ## 설치
 

@@ -22,6 +22,7 @@
 |---|---|
 | 기여 규칙 | [CONTRIBUTING](../CONTRIBUTING.md), [에이전트 지침](../AGENTS.md) |
 | 회귀 검사 | [평가 안내](../eval/README.md), [평가표](../eval/scorecard.md), `eval/fixtures/` |
+| 실제 모델 비교 | [README 예시: Opus 5.5·Astra](../eval/model-comparison.md) |
 | 이번 QA 근거 | [2026-10-01 QA 기록](reviews/2026-10-01-qa.md) |
 | 버전과 호환성 | [CHANGELOG](../CHANGELOG.md), [1.x 약속](STABILITY-PROMISE.md), [2.0 마이그레이션 준비](MIGRATION-1.x-to-2.x.md) |
 | 남은 출시 작업 | [ROADMAP](../ROADMAP.md) |
