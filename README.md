@@ -17,7 +17,7 @@ The catalog provides context-dependent editing candidates, not words to replace 
 
 ## Recorded model comparison
 
-The revised emoji-role and sentence-flow instructions were run on 2026-10-01 with the same inputs, skill and catalog directly injected into fresh conversations. Both CLIs selected `medium` effort. These diffs show actual response bodies without manual rewriting. Full responses retain the main-branch headings, change list and first-response notice.
+These are first final responses from native `/korean-humanizer` and `$korean-humanizer` calls on 2026-10-01. The request contains no injected skill/catalog text or answer hints. Outputs were not rewritten after the response; diff blocks extract only the response bodies. Both CLIs selected `medium` effort.
 
 ### Linkedin
 
@@ -25,14 +25,14 @@ The revised emoji-role and sentence-flow instructions were run on 2026-10-01 wit
 
 ```diff
 - 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
-+ 이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어를 쌓아가는 데 소중한 자산이 될 거라고 확신합니다.
++ 이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에서 소중한 자산이 될 거라고 확신합니다.
 ```
 
 **Codex CLI + GPT-6 Astra**
 
 ```diff
 - 이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀
-+ 이번 프로젝트에서 여러 기술적 도전을 경험하며 성장할 수 있었습니다. 이 경험이 앞으로의 커리어에 소중한 자산이 될 거라 확신합니다.
++ 이번 프로젝트에서 여러 기술적 과제를 마주하며 성장할 수 있었습니다. 이 경험이 앞으로 커리어를 쌓는 데도 큰 도움이 될 거라 확신합니다.
 ```
 
 ### Email
@@ -41,7 +41,7 @@ The revised emoji-role and sentence-flow instructions were run on 2026-10-01 wit
 
 ```diff
 - 안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.
-+ 안녕하세요. 미팅 일정 관련해 연락드립니다. 부득이한 사정으로 일정을 변경하게 되어 양해를 부탁드립니다.
++ 안녕하세요. 미팅 일정 건으로 연락드립니다. 부득이한 사정이 생겨 일정을 변경해야 합니다. 양해 부탁드립니다.
 ```
 
 **Codex CLI + GPT-6 Astra**
@@ -64,10 +64,10 @@ The revised emoji-role and sentence-flow instructions were run on 2026-10-01 wit
 
 ```diff
 - 🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨
-+ 이 솔루션으로 다양한 비즈니스 가치를 최대한 높이고 사용자 경험도 더 개선할 수 있습니다.
++ 이 솔루션으로 여러 비즈니스 가치를 최대한 높이고, 사용자 경험도 더 개선할 수 있습니다.
 ```
 
-[Current run conditions and checks](eval/emoji-and-flow-2026-10-01.md) · [Raw records](eval/model-runs/emoji-and-flow-2026-10-01.json) · [Earlier natural-rewrite run](eval/model-comparison.md)
+[Native calls, other examples and limitations](eval/native-skill-2026-10-01.md) · [Raw first responses and hashes](eval/model-runs/native-skill-2026-10-01.json) · [Earlier direct-injection run](eval/emoji-and-flow-2026-10-01.md)
 
 ---
 

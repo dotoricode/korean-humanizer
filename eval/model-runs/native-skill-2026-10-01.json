@@ -1,0 +1,1509 @@
+{
+  "date": "2026-10-01",
+  "mode": "Native /korean-humanizer or $korean-humanizer invocation; project skill symlinks to repository; no injected skill/catalog text; no postprocessing or second correction",
+  "cli_versions": {
+    "claude": "2.1.286",
+    "codex": "0.159.3"
+  },
+  "effort": "medium on both CLIs; not equivalent compute",
+  "variants": [
+    {
+      "variant": "baseline",
+      "source": {
+        "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+        "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+        "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+      },
+      "cases": [
+        {
+          "id": "linkedin",
+          "domain": "linkedin",
+          "input": "이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin:\n이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+              "request_sha256": "1e973fc04afc805cf66b1a2566ba01d8d165867464511cfe2c08e3ef4071ba2c",
+              "output": "## Humanized\n\n이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에 소중한 자산이 될 거라고 확신합니다.\n\n## 주요 변경 (최대 5개)\n- \"이번 프로젝트를 통해\" → \"이번 프로젝트에서\" (이유: '~를 통해' 번역체)\n- \"다양한 기술적 도전을 경험하고\" → \"여러 기술적 도전을 겪으며\" (이유: 공허한 형용사 '다양한', 명사+경험하다 구조 완화)\n- \"이러한 경험은 ... 커리어에 있어서\" → \"이 경험은 ... 커리어에\" (이유: '이러한' / '~에 있어서' 번역체)\n- \"매우 소중한\" → \"소중한\" (이유: 강조어 남발)\n- \"🚀\" 삭제 (이유: 성장 문장 끝에 붙는 상투적 이모지)\n\n*마음에 안 드는 변경이 있으면 알려주세요. 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "5f7bb8bdaf992f9f2bb3739d0fe65469d3826edd54c2395da515915669126ba1",
+              "body": "이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에 소중한 자산이 될 거라고 확신합니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": false
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin:\n이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+              "request_sha256": "963788e857baabe7fecf211089b640a0e5a249e3ab6effcdb1aa70f5ee60147b",
+              "output": "## Humanized\n\n이번 프로젝트에서 여러 기술적 어려움을 겪으며 성장할 수 있었습니다. 이 경험이 앞으로 커리어를 쌓는 데 큰 도움이 되리라 확신합니다.\n\n## 주요 변경 (최대 5개)\n\n- “다양한 기술적 도전을 경험하고” → “여러 기술적 어려움을 겪으며”: 평이한 표현으로 바꿨습니다.\n- “매우 소중한 자산” → “큰 도움”: 상투적인 표현을 줄이고 원문의 확신은 유지했습니다.\n- 🚀 삭제: 성장 문장 끝에 붙은 장식적 이모지를 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "570ed2110c92ce2aae807e32a04ad48dae1462d29fc623c58cf6d3a364d7a989",
+              "body": "이번 프로젝트에서 여러 기술적 어려움을 겪으며 성장할 수 있었습니다. 이 경험이 앞으로 커리어를 쌓는 데 큰 도움이 되리라 확신합니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "email",
+          "domain": "email",
+          "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+              "request_sha256": "d01dc61a5ee76b31fd5efbf6e4a6a686d3553e51fcd519f98daf7ceae974be65",
+              "output": "## Humanized\n\n안녕하세요. 미팅 일정 때문에 연락드립니다. 부득이한 사정으로 일정을 변경해야 하게 되어 양해를 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n- \"다름이 아니오라\" → 삭제 (이유: 판에 박힌 개시 문구)\n- \"미팅 일정과 관련하여 말씀드리고자 연락드립니다\" → \"미팅 일정 때문에 연락드립니다\" (이유: 과격식 / 번역체. 연락 목적은 남김)\n- \"부득이한 사정으로 인해 ~ 불가피한 상황이 발생하여\" → \"부득이한 사정으로 ~ 변경해야 하게 되어\" (이유: '부득이'와 '불가피'가 같은 뜻으로 겹침, '상황이 발생하여'는 명사형 군더더기)\n- \"양해를 구하고자 합니다\" → \"양해를 부탁드립니다\" (이유: 과격식 표현을 이메일에서 흔히 쓰는 말로 바꿈)\n- \"~합니다\" 존댓말 유지 (이유: 원문의 격식 이메일 톤 보존)\n\n*마음에 안 드는 변경이 있으면 알려주세요. 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "96fa6bca2755518f605143f5548f6e46732d683b22bb64a72cb4c3a701d8a7d6",
+              "body": "안녕하세요. 미팅 일정 때문에 연락드립니다. 부득이한 사정으로 일정을 변경해야 하게 되어 양해를 부탁드립니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": false
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+              "request_sha256": "e5b5bedac845f48e46f1ba8b1e7fd213e6f2b332187a2cb9f31f52b79b97e4a4",
+              "output": "## Humanized\n\n안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n\n- “다름이 아니오라”, “말씀드리고자”를 덜고 연락 목적을 바로 전했습니다.\n- “일정 변경이 불가피한 상황이 발생하여” → “일정을 변경해야 해서”로 간결하게 다듬었습니다.\n- “양해를 구하고자 합니다” → “양해 부탁드립니다”로 자연스럽게 바꿨습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "cbd4702e43168b1b80d35d2b9b11ca483990a7f8967e32ecac2d91e4dbfed4ff",
+              "body": "안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "marketing",
+          "domain": "marketing",
+          "input": "🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=marketing:\n🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+              "request_sha256": "2d650c2bf4686a7d273d000ca2542c31be8804cbfad847cb9f99af9edfbe885b",
+              "output": "## Humanized\n\n이 솔루션으로 여러 비즈니스 가치를 최대한 끌어올리고, 사용자 경험도 한 단계 더 높일 수 있습니다.\n\n## 주요 변경 (최대 5개)\n- \"혁신적인 솔루션을 활용하여\" → \"이 솔루션으로\" (이유: 근거 없는 공허한 형용사, AI가 자주 쓰는 어휘 '활용')\n- \"다양한 비즈니스 가치\" → \"여러 비즈니스 가치\" (이유: 공허한 형용사)\n- \"극대화하고\" → \"최대한 끌어올리고\" (이유: AI가 자주 쓰는 한자어를 풀어 씀)\n- \"이러한 접근을 통해 ~ 한층 더 고도화할 수 있습니다\" → \"~도 한 단계 더 높일 수 있습니다\" (이유: '이러한'과 '~을 통해' 같은 번역체, 강조어와 한자어가 이어짐. '할 수 있다'는 가능성 표현은 그대로 둠)\n- 🚀 ✨ 삭제 (이유: 홍보 문구에 습관처럼 붙는 장식 이모지)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "8cdf614b68d9169db1c7ca3e004218384af67b539fcad92a19ad5061bbe64914",
+              "body": "이 솔루션으로 여러 비즈니스 가치를 최대한 끌어올리고, 사용자 경험도 한 단계 더 높일 수 있습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=marketing:\n🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+              "request_sha256": "56a4f515ca8954fbd858ab763e0aa9c0063c777d9ccaf214140c5942fd2be894",
+              "output": "## Humanized\n\n이 솔루션으로 사업의 여러 가치를 최대한 높이고, 사용자 경험도 개선할 수 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- “혁신적인 솔루션을 활용하여” → “이 솔루션으로”: 과한 수식과 딱딱한 표현을 줄였습니다.\n- “다양한 비즈니스 가치를 극대화하고” → “사업의 여러 가치를 최대한 높이고”: 평이한 말로 바꿨습니다.\n- “이러한 접근을 통해”는 앞 내용과 겹쳐 덜었습니다.\n- “한층 더 고도화” → “개선”: 과한 강조를 줄였습니다.\n- 장식용 이모지 🚀·✨를 뺐습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "b9d1fb4694ca1fcb77ccfd018d8356fc742dd5d97063b2658cbfeec8870d0828",
+              "body": "이 솔루션으로 사업의 여러 가치를 최대한 높이고, 사용자 경험도 개선할 수 있습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "natural",
+          "domain": "email",
+          "input": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "request_sha256": "d74dc6ee152066aa9ae8704a508ceaf1764f45ff28dcd608d8ea8379d7d6e298",
+              "output": "## Humanized\n\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.\n\n## 주요 변경 (최대 5개)\n- 변경하지 않았습니다. 이미 자연스러운 이메일 문장이고 AI 티가 나는 표현이 없습니다.\n- \"보내주신\", \"답변드리겠습니다\" 유지 (이유: 이메일에 맞는 존칭 표현이고 ~합니다체도 원문 그대로 둠)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "47d796464a4ced6ace9636c303e106a2816d7c4dabb44938f719e67b09ae83da",
+              "body": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "request_sha256": "aa9237d810f46686ee6fdbd291a19b5010f2bf3d6a991a2bb1f7bcba56138cc6",
+              "output": "## Humanized\n\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.\n\n## 주요 변경 (최대 5개)\n\n- 변경 없음. 이미 간결하고 자연스러운 이메일 문장이라 원문을 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "6d8d763c11c8417c2fb40501f120cdd9d0e2aa0ac2851f744fa98af69b80cc22",
+              "body": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "facts",
+          "domain": "email",
+          "input": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "request_sha256": "9dafa3c954eafbbef8aa365709ced9c8b2b29c1dfc5ebe39647da29cb381b7dc",
+              "output": "## Humanized\n\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 내용은 https://example.com/update 에서 확인하실 수 있습니다. 일정은 바뀔 수 있으며, 바뀌면 미리 알려드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n- \"진행될 예정이며, 이용 요금은\" → \"진행할 예정입니다. 이용 요금은\" (이유: 수동형과 긴 연결문을 정리하고, 성격이 다른 정보는 문장을 나눔. 문장이 \"예정\"이라는 점은 그대로 둠)\n- \"상세 안내는\" → \"자세한 내용은\" (이유: 과격식 / 한자어를 줄임)\n- \"변경될 수 있으며, 변경 사항이 발생할 경우 사전에\" → \"바뀔 수 있으며, 바뀌면 미리\" (이유: \"변경\"이 반복되고 \"발생할 경우\"가 번역체라서. 바뀔 수 있다는 내용과 미리 알린다는 내용은 둘 다 남김)\n- \"안내드리겠습니다\" → \"알려드리겠습니다\" (이유: 앞 문장과 겹치지 않게 바꾸고 덜 딱딱하게 함)\n- \"검토 중\" 유지 (이유: 따옴표로 인용된 상태값이라 보존 영역)\n\n날짜, 시간, 금액, 링크는 원문 그대로 두었습니다. 다만 \"내부 상태 표시는 '검토 중'입니다\"는 고객에게 보내는 메일에는 맞지 않아 보입니다. 내부 메모가 섞여 들어간 것이라면 보내기 전에 빼시는 게 좋겠습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요. 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "e88f69872da1a558f7afeea8ce32dfb5412487fc50b04ebfa81d1106d9281629",
+              "body": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 내용은 https://example.com/update 에서 확인하실 수 있습니다. 일정은 바뀔 수 있으며, 바뀌면 미리 알려드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": false
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "request_sha256": "201596bd4c40bd7efffc8f39df43ed1e53a7e307f3e13f6c837628f1b7ad8919",
+              "output": "안녕하세요.\n\n이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 안내는 https://example.com/update 에서 확인하실 수 있습니다.\n\n일정은 변경될 수 있으며, 변경 사항이 있으면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n- “진행될 예정이며”를 “진행할 예정입니다”로 바꾸고, 요금 안내를 별도 문장으로 나눴습니다.\n- “변경 사항이 발생할 경우 사전에”를 “변경 사항이 있으면 미리”로 다듬었습니다.\n- 날짜·금액·링크·\"검토 중\" 표시와 일정 변경 가능성은 그대로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "6beab228c18c217a3781fc28bfad1ef6056c2ae0c6dfe11b3add206eb8dce3b5",
+              "body": null,
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": false,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "emotion",
+          "domain": "chat",
+          "input": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "request_sha256": "e9fd536fc9634069d2119e515b78862fa2f2fe609484840b3ce5986eec61c557",
+              "output": "## Humanized\n\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.\n\n## 주요 변경 (최대 5개)\n- 변경 없음 (이유: 이미 자연스러운 반말 채팅 문장이고, AI가 쓴 티가 나는 표현이 없음)\n- \"😭\" 유지 (이유: 끝났다는 안도감을 전하는 이모지라 빼면 말투가 달라짐)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "50e5f642618a434f0afebfa898827858e1ab10f579e4b5715ef4547faabe4743",
+              "body": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "request_sha256": "436718de7da655bcf48bacc1ce8b9573ec28b84d29b0ab7d7535c03fdacc1dbc",
+              "output": "## Humanized\n\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.\n\n## 주요 변경 (최대 5개)\n\n- 변경 없음. 자연스러운 채팅 말투이고, 😭도 끝낸 뒤의 감정을 전해 그대로 살렸습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "8c03ef6c49c5de4d7da28de542a78d0fc0898f23f2ee6add0402b5985c13a0a0",
+              "body": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "status",
+          "domain": "email",
+          "input": "진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+              "request_sha256": "4f8536b553ced7276a1b04fc3bc0d956274da9a54d7978d5db4367506c7fb580",
+              "output": "## Humanized\n\n진행 상황 말씀드립니다. 자료 검토는 마쳤고, 일정은 지금 조율하고 있습니다.\n\n## 주요 변경 (최대 5개)\n- \"공유드립니다\" → \"말씀드립니다\" (이유: 업무 메일에 흔히 쓰는 '공유드립니다'를 일반적인 경어로 바꿈)\n- \"✅ 완료: 자료 검토\" → \"자료 검토는 마쳤고\" (이유: 이모지 남발. '완료'라는 말에 상태가 이미 담겨 있어 ✅를 빼도 뜻이 같음)\n- \"⏳ 진행 중: 일정 조율\" → \"일정은 지금 조율하고 있습니다\" (이유: 이모지 남발. 상태 라벨을 문장으로 바꿈)\n- \"/\"로 나눈 라벨 나열 → 한 문장 (이유: 대시보드 같은 형식을 메일 본문에 맞게 고침)\n\n항목이 더 늘어날 예정이면 목록 형식(`- 완료: 자료 검토` / `- 진행 중: 일정 조율`)으로 써도 됩니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "c77b8ed9023161f87f40679e8d6d18d7420b63b5218c975be6b024fe0c5b21f2",
+              "body": "진행 상황 말씀드립니다. 자료 검토는 마쳤고, 일정은 지금 조율하고 있습니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+              "request_sha256": "d339faffc3630f5bb28b85b267643b8b1260b0245e1b671fdf284e1f4d1c53b0",
+              "output": "## Humanized\n\n자료 검토는 마쳤고, 일정은 조율 중입니다.\n\n## 주요 변경 (최대 5개)\n\n- 상태별 나열을 자연스러운 문장으로 바꿨습니다.\n- 완료·진행 상태가 문장에 드러나므로 이모지와 도입 문구는 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "731adea2b38a60529d2c1f694eab163e22339f067c30be191ba3f26b22c50748",
+              "body": "자료 검토는 마쳤고, 일정은 조율 중입니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "keep",
+          "domain": "linkedin",
+          "input": "이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin ; 🚀는 그대로 남겨줘:\n이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+              "request_sha256": "caca752fb8932df70d370765cf3eb81c9d8e0b2d00c6eb2aabb1967d16375d8e",
+              "output": "## Humanized\n\n이번 프로젝트에서 많이 배웠습니다. 🚀\n\n## 주요 변경 (최대 5개)\n- \"프로젝트를 통해\" → \"프로젝트에서\" (이유: 번역체 \"~를 통해\")\n- \"많은 것을 배울 수 있었습니다\" → \"많이 배웠습니다\" (이유: 우회적 가능 표현 \"~할 수 있었다\" 정리, 명사구 축약)\n- \"🚀\" 유지 (이유: 사용자 요청)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "6708c8de4f14e8671bffcb1059ba4257ebbd41c174779239eb3a559fe3f1bd6f",
+              "body": "이번 프로젝트에서 많이 배웠습니다. 🚀",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin ; 🚀는 그대로 남겨줘:\n이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+              "request_sha256": "4099890a0c11e1ffccbe131bf33b9d37f18c7e17b7866015f438a57846aeef5d",
+              "output": "## Humanized\n\n이번 프로젝트를 하면서 많이 배웠습니다. 🚀\n\n## 주요 변경 (최대 5개)\n\n- “통해 많은 것을 배울 수 있었습니다” → “하면서 많이 배웠습니다”: 격식을 덜고 자연스럽게 다듬었습니다.\n- 🚀는 요청대로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "dcb42e0f6ef49815a237e7453359a0d22bc6d786d323ab53b140650f4135e7a9",
+              "body": "이번 프로젝트를 하면서 많이 배웠습니다. 🚀",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-chat",
+          "domain": "chat",
+          "input": "안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+              "request_sha256": "27ab02b2fe7d8b514be64f25c827e03ab0a5e3a934d24581f2bde24aa824f7d3",
+              "output": "## Humanized\n\n안녕하세요! 정말 오랜만에 연락드리네요 😊 지난번 프로젝트 끝나고 정신없이 지냈는데, 그동안 OOO님 어떻게 지내시는지 늘 궁금했어요. 다름이 아니라, 다음 주에 시간 괜찮으시면 가볍게 점심 같이 할까 해서요. 부담 갖지 마시고 되는 날 편하게 알려주세요. 답장 기다릴게요!\n\n## 주요 변경 (최대 5개)\n- \"정말 너무 정신없는\", \"정말 많이\", \"정말 너무너무\" → \"정신없이\", \"늘\" (이유: 강조어 남발. \"정말\"이 다섯 번 나와서 첫 인사에만 남겼어요)\n- \"잘 지내고 계신지 정말 많이 궁금했어요\" + \"어떻게 지내셨는지도 정말 너무너무 궁금하네요!!\" → 한 문장으로 합침 (이유: 근황이 궁금하다는 말이 두 번 나옴)\n- \"다름이 아니오라 … 어떨까 싶어서 연락드렸어요~\" → \"다름이 아니라 … 할까 해서요\" (이유: 채팅에 안 맞는 과한 격식. 첫 문장의 \"연락드리네요\"와도 겹침)\n- \"알려주시면 정말 감사하겠습니다\" → \"편하게 알려주세요\" (이유: 혼자 합니다체라 해요체 흐름이 끊김)\n- 🙏 ✨ 🌷 💕, \"~\" 제거 (이유: 꾸밈용 이모지가 너무 많았어요. 친근한 느낌은 첫 인사의 😊 하나로 충분해요)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "1a2982bff880e3eca97a25bfb708fddf579d6b5968353e19c8cb3180c4819278",
+              "body": "안녕하세요! 정말 오랜만에 연락드리네요 😊 지난번 프로젝트 끝나고 정신없이 지냈는데, 그동안 OOO님 어떻게 지내시는지 늘 궁금했어요. 다름이 아니라, 다음 주에 시간 괜찮으시면 가볍게 점심 같이 할까 해서요. 부담 갖지 마시고 되는 날 편하게 알려주세요. 답장 기다릴게요!",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+              "request_sha256": "6bfcffbcb92fb6b4ad6a2d4843bcd939cdd4ed860d2d8414839b48e6006f8403",
+              "output": "## Humanized\n\nOOO님, 안녕하세요! 오랜만에 연락드려요. 지난번 프로젝트 이후로 정신없이 지냈는데, 그동안 잘 지내셨는지 많이 궁금했어요.\n\n다음 주에 시간 괜찮으시면 가볍게 점심 같이할까 해서 연락드렸어요. 부담 갖지 마시고, 가능한 날 편하게 알려주시면 고맙겠어요. 답장 기다릴게요~\n\n## 주요 변경 (최대 5개)\n\n- 반복되는 “정말”, “너무”를 덜어냈어요.\n- “다름이 아니오라”와 긴 제안 표현을 편한 말투로 바꿨어요.\n- 안부가 궁금하다는 두 문장을 하나로 합쳤어요.\n- 이모지를 덜고, 친근한 인사와 해요체는 살렸어요.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "9e0e56c0e6c3bb70261db7ca3ef6c9fd32c13499b547ca8aa4e09c90c5610efa",
+              "body": "OOO님, 안녕하세요! 오랜만에 연락드려요. 지난번 프로젝트 이후로 정신없이 지냈는데, 그동안 잘 지내셨는지 많이 궁금했어요.\n\n다음 주에 시간 괜찮으시면 가볍게 점심 같이할까 해서 연락드렸어요. 부담 갖지 마시고, 가능한 날 편하게 알려주시면 고맙겠어요. 답장 기다릴게요~",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-review",
+          "domain": "review",
+          "input": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+              "request_sha256": "3246626a8ca637b3139f0f18a5b72f62a78f2590111c860b816747067e0c7f89",
+              "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데, 결론부터 말하면 정말 만족하면서 쓰고 있습니다. 키감이 부드럽고 타건음도 적당해서 사무실에서 써도 부담이 없습니다. 무선 연결도 꽤 안정적인 편이고, 배터리도 광고된 사양과 거의 비슷하게 갑니다. 다만 키 배열이 좀 좁아서 적응하는 데 시간이 걸렸습니다. 그래도 전체적인 완성도는 동급 제품 중에서 단연 뛰어나다고 봅니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 쓸모가 많았고, 전반적으로 추천할 만한 제품이라고 생각합니다.\n\n## 주요 변경 (최대 5개)\n- \"사용한 지 … 되었는데, 결론부터 말씀드리면\" → \"써봤는데, 결론부터 말하면\" (이유: 리뷰 글에 맞지 않는 과한 격식)\n- \"매우 부드럽고 / 적절한 수준이라 … 사용 가능합니다\" → \"부드럽고 / 적당해서 … 써도 부담이 없습니다\" (이유: 강조어 남발, 명사형 표현)\n- \"우선 / 또한 / 그럼에도 불구하고\" → 삭제하거나 \"그래도\"로 바꿈 (이유: 문장마다 붙은 불필요한 연결어)\n- \"한 가지 아쉬운 점은, … 다소 협소하여 … 필요했다는 부분입니다\" → \"키 배열이 좀 좁아서 적응하는 데 시간이 걸렸습니다\" (이유: 번역체 구조. 단점의 강도는 그대로 둠)\n- \"다양한 환경에서 활용 가능한 … 매우 유용했으며 … 추천드릴 만한 제품이라고 사료됩니다\" → \"여러 환경에서 쓸 수 있는 … 쓸모가 많았고 … 추천할 만한 제품이라고 생각합니다\" (이유: AI가 자주 쓰는 어휘와 과한 격식)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "973d558552f0ddfb935e4e2e99ead37861272905dbbdd22eb2b37d79e4e3a9b0",
+              "body": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데, 결론부터 말하면 정말 만족하면서 쓰고 있습니다. 키감이 부드럽고 타건음도 적당해서 사무실에서 써도 부담이 없습니다. 무선 연결도 꽤 안정적인 편이고, 배터리도 광고된 사양과 거의 비슷하게 갑니다. 다만 키 배열이 좀 좁아서 적응하는 데 시간이 걸렸습니다. 그래도 전체적인 완성도는 동급 제품 중에서 단연 뛰어나다고 봅니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 쓸모가 많았고, 전반적으로 추천할 만한 제품이라고 생각합니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+              "request_sha256": "a64871ee16ecd66574829e5ca045efc6e5d0859b3081552ce526884bc4cdd7a7",
+              "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 쓰고 있는데 꽤 만족스럽습니다. 키감이 부드럽고 타건음도 적당해서 사무실에서 쓰기에도 부담이 없습니다. 무선 연결도 안정적인 편이고, 배터리도 광고에 나온 시간과 거의 비슷하게 갑니다.\n\n다만 키 배열이 좀 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만 전체적인 완성도는 동급 제품 중에서도 확실히 뛰어나다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 유용하게 썼습니다. 전반적으로 추천할 만한 제품입니다.\n\n## 주요 변경 (최대 5개)\n\n- “결론부터 말씀드리면”을 덜고 사용 소감으로 바로 시작했습니다.\n- “매우”, “정말”처럼 반복되는 강조를 줄였습니다.\n- “배터리 수명도 광고된 사양과 거의 일치합니다” → “배터리도 광고에 나온 시간과 거의 비슷하게 갑니다”로 풀었습니다.\n- “다소 협소하여 적응 기간이 필요했다는 부분” → “좀 좁아서 적응하는 데 시간이 필요했습니다”로 바꿨습니다.\n- “평가하고 싶습니다”, “사료됩니다” 같은 딱딱한 표현을 평소 쓰는 말로 바꿨습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "85788304b31d64d6c7dff58132a7da15c8ee9d027c0bbe1be1d978c4edbcf069",
+              "body": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 쓰고 있는데 꽤 만족스럽습니다. 키감이 부드럽고 타건음도 적당해서 사무실에서 쓰기에도 부담이 없습니다. 무선 연결도 안정적인 편이고, 배터리도 광고에 나온 시간과 거의 비슷하게 갑니다.\n\n다만 키 배열이 좀 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만 전체적인 완성도는 동급 제품 중에서도 확실히 뛰어나다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 유용하게 썼습니다. 전반적으로 추천할 만한 제품입니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-b2b-message",
+          "domain": "b2b-message",
+          "input": "안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=b2b-message:\n안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+              "request_sha256": "34453c2ebdf48697c5b85a6e7acadba225cd12db3b7a475fdba32819fb8d1559",
+              "output": "## Humanized\n\n안녕하세요 OOO 담당자님, Acme 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션과 관련해 추가로 검토가 필요하신 부분이 있을까요?\n\n말씀드린 대로 저희 솔루션은 기존 글로벌 솔루션보다 응대 정확도를 평균 18% 높일 수 있습니다. 도입 비용도 합리적인 수준으로 책정할 수 있습니다.\n\n괜찮으시다면 다음 주 중에 한 번 더 미팅을 하면 어떨까요? 일정이 어려우시면 비대면으로도 진행할 수 있습니다.\n\n바쁘신 중에 검토해 주셔서 감사합니다. 회신 기다리겠습니다.\n\n## 주요 변경 (최대 5개)\n- \"향상될 수 있는 매우 우수한 성능을 보유하고 있습니다\" → \"높일 수 있습니다\" (이유: 공허한 형용사·강조어와 명사형 표현을 걷어냄. '수 있다'로 가능성의 범위는 그대로 둠)\n- \"또한 도입 비용 또한 … 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다\" → \"도입 비용도 … 책정할 수 있습니다\" (이유: '또한'이 두 번 겹침. '~라는 점을 강조드리고 싶다'는 번역체)\n- \"추가 미팅을 진행해 보시는 것은 어떠실까요?\" → \"한 번 더 미팅을 하면 어떨까요?\" (이유: 존댓말이 과함. '진행하다'는 AI가 자주 쓰는 어휘)\n- \"충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다\" → \"비대면으로도 진행할 수 있습니다\" (이유: 강조어와 '~라는 점, 참고해 주시면' 같은 판에 박힌 표현을 덜어냄)\n- \"항상 바쁘신 와중에 … 진심으로 감사드리며, 회신 기다리고 있겠습니다\" → \"바쁘신 중에 … 감사합니다. 회신 기다리겠습니다.\" (이유: 판에 박힌 마무리. 감사 인사는 이메일에서 역할이 있어서 짧게 줄여 남김)\n\n*마음에 안 드는 변경이 있으면 알려주세요. 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "99952937cb79b397bbf2d99d303efac31bc53efdd839dc55384ef9fcabe7e81b",
+              "body": "안녕하세요 OOO 담당자님, Acme 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션과 관련해 추가로 검토가 필요하신 부분이 있을까요?\n\n말씀드린 대로 저희 솔루션은 기존 글로벌 솔루션보다 응대 정확도를 평균 18% 높일 수 있습니다. 도입 비용도 합리적인 수준으로 책정할 수 있습니다.\n\n괜찮으시다면 다음 주 중에 한 번 더 미팅을 하면 어떨까요? 일정이 어려우시면 비대면으로도 진행할 수 있습니다.\n\n바쁘신 중에 검토해 주셔서 감사합니다. 회신 기다리겠습니다.",
+              "tools": [],
+              "catalog_read": false,
+              "exact_headings": true,
+              "exact_footer": false
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=b2b-message:\n안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+              "request_sha256": "2a45be0b2e635252f373d1570877879adefa329259c8b1d442dbcee594d9c425",
+              "output": "## Humanized\n\n안녕하세요, OOO 담당자님. Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션에 대해 추가로 검토가 필요한 부분이 있으실까요?\n\n미팅에서 말씀드렸듯이, 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있습니다. 도입 비용도 합리적인 수준으로 제안드릴 수 있습니다.\n\n괜찮으시다면 다음 주 중에 추가 미팅을 하면 어떨까요? 일정 때문에 어려우시면 비대면으로도 미팅이 가능합니다.\n\n바쁘신 가운데 검토해 주셔서 감사합니다. 회신 기다리겠습니다.\n\n## 주요 변경 (최대 5개)\n\n- “관련하여, 혹시” → “에 대해”로 간결하게 연결했습니다.\n- “매우 우수한 성능을 보유”라는 강조를 덜고, “평균 18% 향상될 수 있습니다”라는 수치와 가능성은 유지했습니다.\n- 비용을 “다시 한번 강조”하는 문장을 “합리적인 수준으로 제안드릴 수 있습니다”로 줄였습니다.\n- 추가 미팅 제안과 비대면 안내에서 겹치는 격식을 덜었습니다.\n- 감사와 회신 요청은 남기고 마무리를 짧게 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "215c4df0bcf705a1a002a1af56ca5ab6a0cfceaba763a5819a1ce599ac38e708",
+              "body": "안녕하세요, OOO 담당자님. Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션에 대해 추가로 검토가 필요한 부분이 있으실까요?\n\n미팅에서 말씀드렸듯이, 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있습니다. 도입 비용도 합리적인 수준으로 제안드릴 수 있습니다.\n\n괜찮으시다면 다음 주 중에 추가 미팅을 하면 어떨까요? 일정 때문에 어려우시면 비대면으로도 미팅이 가능합니다.\n\n바쁘신 가운데 검토해 주셔서 감사합니다. 회신 기다리겠습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-github-issue",
+          "domain": "github-issue",
+          "input": "안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=github-issue:\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "request_sha256": "926e7faae75beb11cfc05f67763b796398ae602eb816095f7228a36c7db07e92",
+              "output": "## Humanized\n\n안녕하세요. 먼저 감사드립니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 분은 처음이라 개인적으로 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 더 쉽게 체험할 수 있는 입구를 만들어주셔서 고맙습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금은 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.\n\n## 주요 변경 (최대 5개)\n- \"먼저 정말 감사합니다\" → \"먼저 감사드립니다\" (이유: 강조어 정리. 아래 문단에 \"정말\"이 한 번 더 나와서 겹침)\n- \"만들어주신 게 처음이라, 개인적으로는\" → \"만들어주신 분은 처음이라 개인적으로\" (이유: 무엇이 처음인지 분명히 하고 쉼표 정리)\n- \"누군가 직접 써보고 … 만들어줬다는 점이 정말 반갑습니다\" → \"직접 써보시고 … 만들어주셔서 고맙습니다\" (이유: 상대가 만든 결과물에는 \"반갑습니다\"가 어색함. 앞 문장에서는 높여 부르다가 여기서 \"누군가\"로 3인칭 지칭하던 것도 맞춤)\n- \"지금도\" → \"지금은\" (이유: 데모가 생기기 전 현재 방식을 말하는 문맥이라 \"은\"이 더 자연스러움)\n- \"방향 자체는 좋아 보입니다\" 유지 (이유: 뒤에 조건이나 논의할 점을 이어갈 여지를 남기는 표현)\n\n참고로, 이 답글에 저장 정책이나 공식/비공식 표기 같은 조건을 이어서 쓰실 거라면 그 전에 의도를 한 문장으로 확인해 두면 덜 방어적으로 읽힙니다. 이 데모가 커뮤니티 데모 제안인지, 따로 운영하는 서비스를 README에 연결하자는 제안인지 묻는 식입니다. 원문에 없는 내용이라 본문에는 넣지 않았습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "d96886cbd9f4db12664c13982c64d9eb3536b7dcdea9a03170873e59308e9278",
+              "body": "안녕하세요. 먼저 감사드립니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 분은 처음이라 개인적으로 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 더 쉽게 체험할 수 있는 입구를 만들어주셔서 고맙습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금은 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "0c49ac88d132bae4649e82b0dfc884ea6834a010",
+                "skill_sha256": "a349199587b2087f21b436324ab6c34c1299b0c377de1c2bda3c1be724fda44e",
+                "catalog_sha256": "d38fb8b0ac58e406d67486b752f665e3a34e270b8611f155b78ff983fa7a044e"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=github-issue:\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "request_sha256": "c19ad374c355af028dd734f314cfc5aff9ccdc1b96878efbeea0585e88bee633",
+              "output": "안녕하세요. 데모까지 만들어주셔서 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모를 만들어주신 분은 처음이라 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데, 직접 써보시고 다른 사람도 쉽게 체험할 수 있게 해주셔서 고맙습니다.\n\n제안하신 방향도 좋아 보입니다. 지금은 README의 “Try It in 30 Seconds” 섹션에서도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보도록 안내하고 있습니다. 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.\n\n주요 변경:\n\n- “체험할 수 있는 입구”를 “쉽게 체험할 수 있게”로 풀었습니다.\n- “만들어줬다는 점이 정말 반갑습니다”를 “해주셔서 고맙습니다”로 바꿨습니다.\n- README 설명과 데모의 장점을 두 문장으로 나눴습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "4a5930c05f0199f5a692fde6f73a6b382858c0497794f886d4f8a8b6b86427ce",
+              "body": null,
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": false,
+              "exact_footer": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "variant": "final",
+      "source": {
+        "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+        "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+        "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+      },
+      "cases": [
+        {
+          "id": "linkedin",
+          "domain": "linkedin",
+          "input": "이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin:\n이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+              "request_sha256": "1e973fc04afc805cf66b1a2566ba01d8d165867464511cfe2c08e3ef4071ba2c",
+              "output": "## Humanized\n\n이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에서 소중한 자산이 될 거라고 확신합니다.\n\n## 주요 변경 (최대 5개)\n- \"이번 프로젝트를 통해 다양한 기술적 도전을 경험하고\" → \"이번 프로젝트에서 여러 기술적 도전을 겪으며\" (이유: 번역체 '~을 통해' / 공허한 형용사 '다양한' / 명사형 나열 정리)\n- \"이러한 경험은\" → \"이 경험은\" (이유: '이러한' 번역체)\n- \"커리어에 있어서\" → \"커리어에서\" (이유: 번역체 '~에 있어서')\n- \"매우 소중한\" → \"소중한\" (이유: 공허한 강조어)\n- \"될 것이라 확신합니다. 🚀\" → \"될 거라고 확신합니다.\" (이유: '것이다' 문어체 완화. 상투적인 🚀 장식 제거. 확신의 정도는 그대로 둠)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "d5f41ca052620b5bf0067fc96dd58b13a4226a557eca2fb57bdd11c76e666696",
+              "body": "이번 프로젝트에서 여러 기술적 도전을 겪으며 성장할 수 있었습니다. 이 경험은 앞으로 커리어에서 소중한 자산이 될 거라고 확신합니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin:\n이번 프로젝트를 통해 다양한 기술적 도전을 경험하고 성장할 수 있었습니다. 이러한 경험은 앞으로의 커리어에 있어서 매우 소중한 자산이 될 것이라 확신합니다. 🚀",
+              "request_sha256": "963788e857baabe7fecf211089b640a0e5a249e3ab6effcdb1aa70f5ee60147b",
+              "output": "## Humanized\n\n이번 프로젝트에서 여러 기술적 과제를 마주하며 성장할 수 있었습니다. 이 경험이 앞으로 커리어를 쌓는 데도 큰 도움이 될 거라 확신합니다.\n\n## 주요 변경 (최대 5개)\n\n- “다양한 기술적 도전을 경험하고” → “여러 기술적 과제를 마주하며”: 딱딱한 표현을 풀었습니다.\n- “매우 소중한 자산” → “큰 도움”: 의미와 확신은 살리고 표현을 담백하게 바꿨습니다.\n- “이러한”, “~에 있어서”와 장식적인 🚀를 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "e6f9b35bdfd8bf62d143c188f54a5c070ffced3e006f7edfc884e07b74b081d9",
+              "body": "이번 프로젝트에서 여러 기술적 과제를 마주하며 성장할 수 있었습니다. 이 경험이 앞으로 커리어를 쌓는 데도 큰 도움이 될 거라 확신합니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "email",
+          "domain": "email",
+          "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+              "request_sha256": "d01dc61a5ee76b31fd5efbf6e4a6a686d3553e51fcd519f98daf7ceae974be65",
+              "output": "## Humanized\n\n안녕하세요. 미팅 일정 건으로 연락드립니다. 부득이한 사정이 생겨 일정을 변경해야 합니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n- \"다름이 아니오라\" → 삭제 (이유: 판에 박힌 개시. 바로 뒤에 연락 목적이 나와서 없어도 뜻이 같습니다)\n- \"미팅 일정과 관련하여 말씀드리고자 연락드립니다\" → \"미팅 일정 건으로 연락드립니다\" (이유: \"~와 관련하여\"는 번역체이고, \"말씀드리고자\"와 \"연락드립니다\"가 같은 행위를 두 번 말합니다)\n- \"부득이한 사정으로 인해 … 불가피한\" → \"부득이한 사정이 생겨\" (이유: \"부득이\"와 \"불가피\"가 같은 뜻이라 한 번만 썼습니다. 일정을 꼭 바꿔야 한다는 뜻은 \"변경해야 합니다\"에 남아 있습니다)\n- \"일정 변경이 불가피한 상황이 발생하여\" → \"일정을 변경해야 합니다\" (이유: \"변경이 ~ 상황이 발생하여\"처럼 명사형이 이어져 딱딱해서 동사 문장으로 풀었습니다)\n- \"양해를 구하고자 합니다\" → \"양해 부탁드립니다\" (이유: 돌려 말하던 것을 직접 요청하는 말로 바꿨습니다. 합니다체는 유지했습니다)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "c17d78e5dca392912428651581b24fdd9407c1a08a998dc62e08d67cf4e86e49",
+              "body": "안녕하세요. 미팅 일정 건으로 연락드립니다. 부득이한 사정이 생겨 일정을 변경해야 합니다. 양해 부탁드립니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+              "request_sha256": "e5b5bedac845f48e46f1ba8b1e7fd213e6f2b332187a2cb9f31f52b79b97e4a4",
+              "output": "## Humanized\n\n안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n\n- “다름이 아니오라”를 덜고 연락 목적을 바로 전했습니다.\n- “일정 변경이 불가피한 상황이 발생하여”를 “일정을 변경해야 해서”로 줄였습니다.\n- “양해를 구하고자 합니다”를 “양해 부탁드립니다”로 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "d76d9de1c47c5a52f755e84847e5355a36a5d75221383578737730e631bdaace",
+              "body": "안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "marketing",
+          "domain": "marketing",
+          "input": "🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=marketing:\n🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+              "request_sha256": "2d650c2bf4686a7d273d000ca2542c31be8804cbfad847cb9f99af9edfbe885b",
+              "output": "## Humanized\n\n이 솔루션으로 여러 비즈니스 가치를 최대한 끌어올리고, 사용자 경험도 더 좋게 만들 수 있습니다.\n\n## 주요 변경 (최대 5개)\n- \"🚀\", \"✨\" → 삭제 (이유: 홍보 문장 앞뒤에 붙는 상투적인 장식 이모지)\n- \"혁신적인 솔루션을 활용하여\" → \"이 솔루션으로\" (이유: 근거 없는 공허한 형용사, AI 고빈도 어휘 '활용하여')\n- \"다양한 비즈니스 가치를 극대화하고\" → \"여러 비즈니스 가치를 최대한 끌어올리고\" (이유: 공허한 형용사, 고빈도 어휘 '극대화'를 정도는 그대로 두고 풀어 씀)\n- \"이러한 접근을 통해\" → 삭제 (이유: 앞 절의 '이 솔루션으로'와 같은 내용이 반복되고 번역체 '~을 통해'가 들어 있음. 두 결과가 같은 수단에서 나온다는 연결은 문장 구조로 유지)\n- \"한층 더 고도화할 수 있습니다\" → \"더 좋게 만들 수 있습니다\" (이유: 강조어 '한층 더'와 명사형 '고도화'를 줄임. 개선의 방향은 원문처럼 넓게 두고, '~할 수 있습니다'의 가능성 표현과 합니다체도 그대로 유지)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "df59244bce6badcc4d389d8373a82928d8d788c0bf3a6cec96c2ccfef835ac15",
+              "body": "이 솔루션으로 여러 비즈니스 가치를 최대한 끌어올리고, 사용자 경험도 더 좋게 만들 수 있습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=marketing:\n🚀 혁신적인 솔루션을 활용하여 다양한 비즈니스 가치를 극대화하고, 이러한 접근을 통해 사용자 경험을 한층 더 고도화할 수 있습니다. ✨",
+              "request_sha256": "56a4f515ca8954fbd858ab763e0aa9c0063c777d9ccaf214140c5942fd2be894",
+              "output": "## Humanized\n\n이 솔루션으로 여러 비즈니스 가치를 최대한 높이고, 사용자 경험도 더 개선할 수 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- “혁신적인 솔루션을 활용하여” → “이 솔루션으로”: 과장된 수식과 딱딱한 표현을 줄였습니다.\n- “다양한 비즈니스 가치를 극대화하고” → “여러 비즈니스 가치를 최대한 높이고”: 쉬운 말로 바꿨습니다.\n- “이러한 접근을 통해” → 생략: 앞의 내용을 반복하는 연결 표현을 덜었습니다.\n- “한층 더 고도화” → “더 개선”: 뜻을 유지하면서 자연스럽게 바꿨습니다.\n- 🚀·✨ → 삭제: 장식적인 홍보 이모지를 뺐습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "701c98e5d1672d5e0220cf4f40a167f21e78ba10063a5853b5150bf8e17f88a6",
+              "body": "이 솔루션으로 여러 비즈니스 가치를 최대한 높이고, 사용자 경험도 더 개선할 수 있습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "natural",
+          "domain": "email",
+          "input": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "request_sha256": "d74dc6ee152066aa9ae8704a508ceaf1764f45ff28dcd608d8ea8379d7d6e298",
+              "output": "## Humanized\n\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.\n\n## 주요 변경 (최대 5개)\n- 변경 없음 (이유: 이미 자연스러운 격식 이메일 문장입니다. 강조어, 번역체, 판에 박힌 인사, 과한 hedging이 없습니다.)\n- \"보내주신\", \"답변드리겠습니다\" 유지 (이유: 이메일 도메인의 존칭 표현이고 ~합니다체를 그대로 둬야 함. 날짜 \"다음 주 화요일\"도 보존 대상)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "a92d6a64fd6d2a2b807c4a367b1bfde7b427b9d9b91e4d703a95958afca7fe77",
+              "body": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "request_sha256": "aa9237d810f46686ee6fdbd291a19b5010f2bf3d6a991a2bb1f7bcba56138cc6",
+              "output": "## Humanized\n\n오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.\n\n## 주요 변경 (최대 5개)\n\n- 변경 없음. 이메일에 맞게 정중하고 자연스러우며, 답변 일정도 명확해 원문을 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "c030c4c190303bf90dc088199e015d618b70bb1e68f171fdf7d1465fe8e70e30",
+              "body": "오늘 보내주신 제안 잘 읽었습니다. 다음 주 화요일에 답변드리겠습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "facts",
+          "domain": "email",
+          "input": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "request_sha256": "9dafa3c954eafbbef8aa365709ced9c8b2b29c1dfc5ebe39647da29cb381b7dc",
+              "output": "## Humanized\n\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 내용은 https://example.com/update 에서 확인하실 수 있습니다. 일정은 바뀔 수 있으며, 바뀌면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n- \"진행될 예정이며, 이용 요금은\" → \"진행할 예정입니다. 이용 요금은\" (이유: 수동형을 능동형으로 바꿈. 일정과 요금은 서로 다른 정보라 쉼표로 길게 잇지 않고 두 문장으로 나눔)\n- \"상세 안내는\" → \"자세한 내용은\" (이유: 이메일에서 더 자연스러운 표현)\n- \"변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다\" → \"바뀔 수 있으며, 바뀌면 미리 안내드리겠습니다\" (이유: 번역체 명사구 \"변경 사항이 발생할 경우\"를 풀어 씀. \"변경\"이 겹치던 것도 줄임. 바뀔 수 있다는 조건과 미리 안내한다는 약속은 그대로 둠)\n- 날짜·시간·금액·URL과 \"검토 중\" 유지 (이유: 보존 영역. 합니다체 어미도 그대로 둠)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "4a272821a6a72eee143c50e7dae4c52f972828f5ecb24419d41aef0d2fc34b45",
+              "body": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 내용은 https://example.com/update 에서 확인하실 수 있습니다. 일정은 바뀔 수 있으며, 바뀌면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "request_sha256": "201596bd4c40bd7efffc8f39df43ed1e53a7e307f3e13f6c837628f1b7ad8919",
+              "output": "## Humanized\n\n안녕하세요.\n\n이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 안내는 https://example.com/update 에서 확인하실 수 있습니다.\n\n일정은 변경될 수 있으며, 변경 사항이 있으면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n\n- “진행될 예정이며” → “진행할 예정입니다.”로 바꾸고, 일정과 요금을 별도 문장으로 나눴습니다.\n- “상세 안내” → “자세한 안내”로 다듬었습니다.\n- “변경 사항이 발생할 경우 사전에” → “변경 사항이 있으면 미리”로 풀어 썼습니다.\n- 날짜·시간·금액·링크·\"검토 중\" 표시와 일정 변경 가능성은 그대로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "37a93881e48179541e23fe14f77bea235d835768b3802bec2950c7ebd418f391",
+              "body": "안녕하세요.\n\n이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 안내는 https://example.com/update 에서 확인하실 수 있습니다.\n\n일정은 변경될 수 있으며, 변경 사항이 있으면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "emotion",
+          "domain": "chat",
+          "input": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "request_sha256": "e9fd536fc9634069d2119e515b78862fa2f2fe609484840b3ce5986eec61c557",
+              "output": "## Humanized\n\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.\n\n## 주요 변경 (최대 5개)\n- 변경 없음 (이유: 이미 사람이 쓴 채팅처럼 자연스러움. 반말, 짧은 호흡, 감정 강도가 모두 채팅 말투에 맞음)\n- \"😭\" 유지 (이유: 끝나서 후련하면서도 힘들었다는 감정을 전하는 이모지라, 빼면 뉘앙스가 달라짐)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "b2702cef939ba20f401d726f29bc701767fb8c17b0280726da9a0c97b4a43c93",
+              "body": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "request_sha256": "436718de7da655bcf48bacc1ce8b9573ec28b84d29b0ab7d7535c03fdacc1dbc",
+              "output": "## Humanized\n\n드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.\n\n## 주요 변경 (최대 5개)\n\n- 변경 없음. 자연스러운 채팅 말투이고, 😭도 끝낸 뒤의 감정을 전달해 그대로 뒀어요.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "e1d33d3d63cd8a79d61944aaf91c6a892c8481f4af22ffcd086b15f65183cf66",
+              "body": "드디어 끝났다 😭 오래 걸렸지만 끝내서 다행이야.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "status",
+          "domain": "email",
+          "input": "진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+              "request_sha256": "4f8536b553ced7276a1b04fc3bc0d956274da9a54d7978d5db4367506c7fb580",
+              "output": "## Humanized\n\n진행 상황을 알려드립니다.\n\n✅ 완료: 자료 검토\n⏳ 진행 중: 일정 조율\n\n## 주요 변경 (최대 5개)\n- \"공유드립니다\" → \"알려드립니다\" (이유: '공유드리다'는 업무 메일에서 자주 보이는 번역투 조합이라 평범한 높임 표현으로 바꿈)\n- \"자료 검토 / 일정 조율\"을 한 줄에 쓰던 것을 항목마다 한 줄로 나눔 (이유: 이메일에서는 상태 목록을 줄을 나눠 쓰는 편이 읽기 쉬움)\n- \"✅ / ⏳\" 유지 (이유: 장식이 아니라 완료와 진행 중을 구분하는 표시)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "c0f7544d025f46d909ad4ac9832e371f33c004cc109e4f5550015e9320f6c71c",
+              "body": "진행 상황을 알려드립니다.\n\n✅ 완료: 자료 검토\n⏳ 진행 중: 일정 조율",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n진행 상황을 공유드립니다. ✅ 완료: 자료 검토 / ⏳ 진행 중: 일정 조율",
+              "request_sha256": "d339faffc3630f5bb28b85b267643b8b1260b0245e1b671fdf284e1f4d1c53b0",
+              "output": "## Humanized\n\n자료 검토는 마쳤고, 일정은 조율 중입니다.\n\n## 주요 변경 (최대 5개)\n\n- 상태를 나열한 표현을 이메일에 맞는 문장으로 풀었습니다.\n- 완료·진행 중이라는 정보가 문장에 담겨 이모지와 도입 문구를 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "fdc109ce9ae3217d9861903aab9326d543989a5d8f3415ef46ffff8a5d2301e2",
+              "body": "자료 검토는 마쳤고, 일정은 조율 중입니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "keep",
+          "domain": "linkedin",
+          "input": "이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin ; 🚀는 그대로 남겨줘:\n이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+              "request_sha256": "caca752fb8932df70d370765cf3eb81c9d8e0b2d00c6eb2aabb1967d16375d8e",
+              "output": "## Humanized\n\n이번 프로젝트를 하면서 많이 배웠습니다. 🚀\n\n## 주요 변경 (최대 5개)\n- \"프로젝트를 통해\" → \"프로젝트를 하면서\" (이유: 번역체 \"~을 통해\")\n- \"많은 것을 배울 수 있었습니다\" → \"많이 배웠습니다\" (이유: 명사형 목적어와 \"~할 수 있었다\"를 단순한 동사로 바꿈. 배웠다는 뜻은 같음)\n- \"🚀\" 유지 (이유: 사용자 유지 요청)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "6a4bc6e1ed5c03e5ddb79114a1fd0a230f4b41d67f1c7f369bbf945cc5d0f122",
+              "body": "이번 프로젝트를 하면서 많이 배웠습니다. 🚀",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=linkedin ; 🚀는 그대로 남겨줘:\n이번 프로젝트를 통해 많은 것을 배울 수 있었습니다. 🚀",
+              "request_sha256": "4099890a0c11e1ffccbe131bf33b9d37f18c7e17b7866015f438a57846aeef5d",
+              "output": "## Humanized\n\n이번 프로젝트에서 많이 배웠습니다. 🚀\n\n## 주요 변경 (최대 5개)\n\n- “통해 많은 것을 배울 수 있었습니다” → “에서 많이 배웠습니다” (배운 경험을 간결하고 자연스럽게 표현)\n- 🚀 유지 (사용자 요청)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "651f7593c4da1d9296ee346012948d4bb3f628238323b725017d088d40ddd5d7",
+              "body": "이번 프로젝트에서 많이 배웠습니다. 🚀",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-chat",
+          "domain": "chat",
+          "input": "안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+          "runs": [
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+              "request_sha256": "27ab02b2fe7d8b514be64f25c827e03ab0a5e3a934d24581f2bde24aa824f7d3",
+              "output": "## Humanized\n\n안녕하세요! 정말 오랜만에 연락드리네요 😊 지난번 프로젝트 끝나고 정신없이 지냈는데, OOO님은 그동안 어떻게 지내셨는지 늘 궁금했어요.\n\n다른 게 아니라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심 같이 하면 어떨까 해서 연락드렸어요. 부담 갖지 마시고 편한 날짜 알려주시면 고맙겠어요. 답장 기다릴게요~\n\n## 주요 변경 (최대 5개)\n- \"정말 너무 정신없는 시간을 보내고 있었는데요\" → \"정신없이 지냈는데\" (이유: 강조어 남발. 첫 인사의 \"정말\"만 남기고 나머지 \"정말·너무·너무너무\"는 뺐어요)\n- \"잘 지내고 계신지 정말 많이 궁금했어요\" + \"어떻게 지내셨는지도 정말 너무너무 궁금하네요!!\" → \"그동안 어떻게 지내셨는지 늘 궁금했어요\" (이유: 같은 안부를 두 번 물어서 한 문장으로 합쳤어요)\n- \"다름이 아니오라\" → \"다른 게 아니라\" (이유: 과격식. 채팅 말투에 비해 너무 딱딱해요)\n- \"정말 감사하겠습니다\" → \"고맙겠어요\" (이유: 존댓말 수준이 섞여 있어서 글 대부분에 쓰인 해요체로 맞췄어요)\n- 🙏 ✨ 🌷 💕 삭제, 😊 유지 / \"~\"·\"!!\" 줄임 (이유: 이모지 남발. 인사의 친근함을 보여주는 😊만 남기고, 끝의 \"~\"는 채팅 말투라 한 번만 남겼어요)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "5c961041edf6349c4e1db6e0f3565524d659c04d41c4d7a8da98ce621a556d5d",
+              "body": "안녕하세요! 정말 오랜만에 연락드리네요 😊 지난번 프로젝트 끝나고 정신없이 지냈는데, OOO님은 그동안 어떻게 지내셨는지 늘 궁금했어요.\n\n다른 게 아니라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심 같이 하면 어떨까 해서 연락드렸어요. 부담 갖지 마시고 편한 날짜 알려주시면 고맙겠어요. 답장 기다릴게요~",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=chat:\n안녕하세요! 정말 오랜만에 연락드리네요~ 😊 지난번 프로젝트 이후로 정말 너무 정신없는 시간을 보내고 있었는데요, 항상 OOO님이 잘 지내고 계신지 정말 많이 궁금했어요! 🙏 다름이 아니오라, 다음 주에 혹시 시간 괜찮으시면 가볍게 점심이라도 함께하면 어떨까 싶어서 연락드렸어요~ ✨ 너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다 🌷 그동안 어떻게 지내셨는지도 정말 너무너무 궁금하네요!! 답장 기다리고 있을게요~ 💕",
+              "request_sha256": "6bfcffbcb92fb6b4ad6a2d4843bcd939cdd4ed860d2d8414839b48e6006f8403",
+              "output": "## Humanized\n\nOOO님, 안녕하세요! 오랜만에 연락드려요.\n지난번 프로젝트 이후로 정신없이 지냈는데, 어떻게 지내시는지 많이 궁금했어요.\n\n다음 주에 시간 괜찮으시면 가볍게 점심 같이 할까요? 부담 갖지 마시고 편한 일정 알려주시면 감사하겠어요. 답장 기다릴게요~\n\n## 주요 변경 (최대 5개)\n\n- 반복된 “정말”, “너무”를 줄였어요.\n- 거듭 나온 안부 표현을 한 문장으로 합쳤어요.\n- “다름이 아니오라”를 덜고 점심 제안을 자연스럽게 바꿨어요.\n- 이모지는 덜어내고 친근한 인사와 말투는 살렸어요.\n- “감사하겠습니다”를 “감사하겠어요”로 바꿔 해요체로 맞췄어요.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "426bd276b945703c2adccfc91ee6b8149c699507d2a20fbe4a123031b1b8c969",
+              "body": "OOO님, 안녕하세요! 오랜만에 연락드려요.\n지난번 프로젝트 이후로 정신없이 지냈는데, 어떻게 지내시는지 많이 궁금했어요.\n\n다음 주에 시간 괜찮으시면 가볍게 점심 같이 할까요? 부담 갖지 마시고 편한 일정 알려주시면 감사하겠어요. 답장 기다릴게요~",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-review",
+          "domain": "review",
+          "input": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+              "request_sha256": "3246626a8ca637b3139f0f18a5b72f62a78f2590111c860b816747067e0c7f89",
+              "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 쓴 지 한 달 정도 됐는데, 결론부터 말씀드리면 정말 만족하면서 쓰고 있습니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리 수명도 광고된 사양과 거의 맞습니다. 다만 키 배열이 좀 좁아서 적응하는 데 시간이 걸린 점은 아쉬웠습니다. 그래도 전체적인 완성도는 동급 제품 중 단연 뛰어나다고 봅니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했고, 전반적으로 추천할 만한 제품이라고 생각합니다.\n\n## 주요 변경 (최대 5개)\n- \"사용 가능합니다 / 사용하고 있습니다\" → \"쓸 수 있습니다 / 쓰고 있습니다\" (이유: 과격식 / 명사형 표현)\n- \"또한\", \"우선\", \"그럼에도 불구하고\" → 삭제 / \"그래도\" (이유: 불필요한 연결어. 대조를 나타내는 \"다만\"은 유지)\n- \"다소 협소하여 적응 기간이 필요했다는 부분입니다\" → \"좀 좁아서 적응하는 데 시간이 걸린 점은 아쉬웠습니다\" (이유: 번역체 명사형. 단점의 강도는 그대로 둠)\n- \"안정성도 매우 우수한 편이며\" → \"아주 안정적인 편이고\" (이유: 명사형을 풀어 씀. 평가 강도 유지)\n- \"추천드릴 만한 제품이라고 사료됩니다\" → \"추천할 만한 제품이라고 생각합니다\" (이유: 과격식. 원문의 조심스러운 어조는 남김)\n\n+1개 더 — '전체 diff로 보여줘'라고 하면 모두 표시\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "b3d85da990f7887197cc1cca924979516d630fe6c80a583e649b237522339ca7",
+              "body": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 쓴 지 한 달 정도 됐는데, 결론부터 말씀드리면 정말 만족하면서 쓰고 있습니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리 수명도 광고된 사양과 거의 맞습니다. 다만 키 배열이 좀 좁아서 적응하는 데 시간이 걸린 점은 아쉬웠습니다. 그래도 전체적인 완성도는 동급 제품 중 단연 뛰어나다고 봅니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했고, 전반적으로 추천할 만한 제품이라고 생각합니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+              "request_sha256": "a64871ee16ecd66574829e5ca045efc6e5d0859b3081552ce526884bc4cdd7a7",
+              "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데 정말 만족합니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리도 광고에 나온 시간만큼 거의 갑니다.\n\n다만 키 배열이 조금 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만, 전체적인 완성도는 동급 제품 중에서도 단연 뛰어나다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했습니다. 전체적으로 추천할 만한 제품입니다.\n\n## 주요 변경 (최대 5개)\n\n- “결론부터 말씀드리면”을 덜고 사용 소감으로 바로 시작했습니다.\n- “안정성도 매우 우수한” → “아주 안정적인”처럼 평가의 강도를 살리면서 표현을 풀었습니다.\n- “키 배열이 다소 협소하여 적응 기간이 필요했다는 부분” → “키 배열이 조금 좁아서 적응하는 데 시간이 필요했습니다”로 바꿨습니다.\n- “그럼에도 불구하고”, “활용 가능한”, “사료됩니다” 같은 딱딱한 표현을 일상적인 말로 바꿨습니다.\n- 별점·구매 시점·사용 기간과 장단점, 동급 제품에 대한 비교 평가는 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "ca6e0b4966339d85c55602b3ef469e0941c93e4d62480208826bdc57f3fc72e8",
+              "body": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데 정말 만족합니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리도 광고에 나온 시간만큼 거의 갑니다.\n\n다만 키 배열이 조금 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만, 전체적인 완성도는 동급 제품 중에서도 단연 뛰어나다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했습니다. 전체적으로 추천할 만한 제품입니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-b2b-message",
+          "domain": "b2b-message",
+          "input": "안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=b2b-message:\n안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+              "request_sha256": "34453c2ebdf48697c5b85a6e7acadba225cd12db3b7a475fdba32819fb8d1559",
+              "output": "## Humanized\n\n안녕하세요 OOO 담당자님, Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개해 드린 한국어 NLP 솔루션과 관련해 더 검토하실 부분이 있을까요?\n\n말씀드린 대로 저희 솔루션은 성능이 뛰어나서 기존 글로벌 솔루션보다 응대 정확도를 평균 18% 높일 수 있습니다. 도입 비용도 합리적인 수준으로 책정할 수 있다는 점을 다시 한번 말씀드립니다.\n\n괜찮으시면 다음 주 중에 미팅을 한 번 더 할 수 있을까요? 일정이 맞지 않으시면 비대면으로 진행해도 됩니다.\n\n바쁘신 중에 검토해 주셔서 감사합니다. 회신 기다리겠습니다.\n\n## 주요 변경 (최대 5개)\n- \"관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요?\" → \"관련해 더 검토하실 부분이 있을까요?\" (이유: 번역체·존칭이 두 번 겹쳐서 한 번으로 줄임)\n- \"대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다\" → \"성능이 뛰어나서 기존 글로벌 솔루션보다 응대 정확도를 평균 18% 높일 수 있습니다\" (이유: 명사형으로 이어진 문장과 강조어 '매우'를 정리함. 수치와 '~할 수 있다'는 가능성 표현은 그대로 둠)\n- \"또한 도입 비용 또한 … 강조드리고 싶습니다\" → \"도입 비용도 … 다시 한번 말씀드립니다\" (이유: '또한'이 한 문장에 두 번 나오고, '강조드리다'라는 어색한 높임 표현이 있음)\n- \"가능하시다면 … 진행해 보시는 것은 어떠실까요?\" → \"괜찮으시면 … 한 번 더 할 수 있을까요?\" (이유: 이중 존경 표현을 한 단계 줄이고, '추가 미팅을 진행'이라는 명사형을 동사로 바꿈)\n- \"충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다\" / \"항상 … 진심으로 감사드리며\" → \"비대면으로 진행해도 됩니다\" / \"바쁘신 중에 … 감사합니다\" (이유: '참고해 주시면 감사하겠습니다'와 마무리 감사 인사가 겹쳐서 하나만 남김. 장식용 부사 '항상'과 '진심으로'는 뺌)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "a099d536e80ec8451ee9bff42833923a3a9a0f7d7f2755410f59142cbd9b5c7c",
+              "body": "안녕하세요 OOO 담당자님, Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개해 드린 한국어 NLP 솔루션과 관련해 더 검토하실 부분이 있을까요?\n\n말씀드린 대로 저희 솔루션은 성능이 뛰어나서 기존 글로벌 솔루션보다 응대 정확도를 평균 18% 높일 수 있습니다. 도입 비용도 합리적인 수준으로 책정할 수 있다는 점을 다시 한번 말씀드립니다.\n\n괜찮으시면 다음 주 중에 미팅을 한 번 더 할 수 있을까요? 일정이 맞지 않으시면 비대면으로 진행해도 됩니다.\n\n바쁘신 중에 검토해 주셔서 감사합니다. 회신 기다리겠습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+                "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+                "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=b2b-message:\n안녕하세요 OOO 담당자님, Acme의 김OOO입니다. 지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션 관련하여, 혹시 추가로 검토가 필요하신 부분이 있으실까요? 말씀드린 바와 같이 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있는 매우 우수한 성능을 보유하고 있습니다. 또한 도입 비용 또한 합리적인 수준으로 책정 가능하다는 점을 다시 한번 강조드리고 싶습니다. 가능하시다면 다음 주 중에 추가 미팅을 진행해 보시는 것은 어떠실까요? 일정상 어려우시다면 비대면 미팅으로도 충분히 진행 가능하다는 점, 참고해 주시면 감사하겠습니다. 항상 바쁘신 와중에 검토해 주셔서 진심으로 감사드리며, 회신 기다리고 있겠습니다.",
+              "request_sha256": "2a45be0b2e635252f373d1570877879adefa329259c8b1d442dbcee594d9c425",
+              "output": "## Humanized\n\n안녕하세요, OOO 담당자님. Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션에 대해 추가로 검토가 필요한 부분이 있으실까요?\n\n당시 말씀드린 대로, 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있습니다. 도입 비용도 합리적인 수준으로 제안드릴 수 있습니다.\n\n괜찮으시면 다음 주 중에 추가 미팅을 하면 어떨까요? 일정상 어려우시면 비대면으로도 충분히 논의할 수 있습니다.\n\n바쁘신데 검토해 주셔서 감사합니다. 회신 기다리겠습니다.\n\n## 주요 변경 (최대 5개)\n\n- “관련하여, 혹시” → “에 대해”로 다듬어 질문을 간결하게 했습니다.\n- “매우 우수한 성능을 보유”라는 홍보성 수식을 덜고, 평균 18%라는 수치와 향상 가능성은 유지했습니다.\n- “책정 가능하다는 점을 다시 한번 강조” → “제안드릴 수 있습니다”로 바꿨습니다.\n- 미팅 제안과 비대면 대안을 짧고 자연스럽게 정리했습니다.\n- 감사와 회신 요청은 남기고, 과한 격식과 강조를 줄였습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "857dc4b8638f6291352900a739810b29fa46083409b613f559ddfc8f757aaced",
+              "body": "안녕하세요, OOO 담당자님. Acme의 김OOO입니다.\n\n지난 4월 23일 미팅에서 소개드린 한국어 NLP 솔루션에 대해 추가로 검토가 필요한 부분이 있으실까요?\n\n당시 말씀드린 대로, 저희 솔루션은 기존 글로벌 솔루션 대비 응대 정확도가 평균 18% 향상될 수 있습니다. 도입 비용도 합리적인 수준으로 제안드릴 수 있습니다.\n\n괜찮으시면 다음 주 중에 추가 미팅을 하면 어떨까요? 일정상 어려우시면 비대면으로도 충분히 논의할 수 있습니다.\n\n바쁘신데 검토해 주셔서 감사합니다. 회신 기다리겠습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        },
+        {
+          "id": "domain-github-issue",
+          "domain": "github-issue",
+          "input": "안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+          "runs": [
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "claude",
+              "model_requested": "claude-opus-5-5",
+              "model_reported": [
+                "claude-opus-5-5"
+              ],
+              "skill_available": true,
+              "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=github-issue:\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "request_sha256": "926e7faae75beb11cfc05f67763b796398ae602eb816095f7228a36c7db07e92",
+              "output": "## Humanized\n\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 분은 처음이라, 개인적으로 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 더 쉽게 체험할 수 있는 입구까지 만들어주셔서 정말 고맙습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식입니다. 그래서 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.\n\n## 주요 변경 (최대 5개)\n- \"만들어줬다는 점이 정말 반갑습니다\" → \"만들어주셔서 정말 고맙습니다\" (이유: \"반갑습니다\"는 주로 사람을 만나거나 소식을 들었을 때 쓰는 인사말이라, 상대가 만든 결과물에는 감사 표현이 더 자연스럽습니다. \"~다는 점이\"처럼 명사로 묶는 표현도 풀었습니다)\n- \"누군가 직접 써보고\" → \"직접 써보시고\" (이유: 이슈 작성자에게 직접 하는 말이라 \"누군가\" 대신 상대를 가리키도록 바꾸고, 앞 문장의 \"만들어주신\"에 맞춰 존댓말을 통일했습니다)\n- \"만들어주신 게 처음이라, 개인적으로는\" → \"만들어주신 분은 처음이라, 개인적으로\" (이유: 불필요한 보조사 \"는\"을 덜어냈습니다)\n- \"~방식이라, ~데모가 있으면 확실히 도움이 될 것 같습니다\" → 두 문장으로 나누고 \"그래서\"로 연결 (이유: 쉼표 하나로 길게 이어진 문장을 나눴습니다. \"확실히 ~ 것 같습니다\"의 확신 정도는 그대로 뒀습니다)\n- \"먼저 정말 감사합니다\" 유지 (이유: GitHub Issue에서 외부 기여에 감사하는 첫인사라 필요한 표현입니다)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "8d43f49c7eda8f010a6c7790fe43b87ea1b83619ee7d2be27da8184c0be13ff7",
+              "body": "안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 분은 처음이라, 개인적으로 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 더 쉽게 체험할 수 있는 입구까지 만들어주셔서 정말 고맙습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식입니다. 그래서 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "tools": [
+                {
+                  "name": "Read",
+                  "input": {
+                    "file_path": "$TEST_PROJECT/.claude/skills/korean-humanizer/references/ko-ai-signals.md"
+                  }
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            },
+            {
+              "source": {
+                "commit": "75a331aa428c48d7295f2389238c17b23f041976",
+                "skill_sha256": "227ef62f19ca91048cd0d50ac18eb6906a198b174726c7f9fc7bf41b69d6ad60",
+                "catalog_sha256": "9c13e03d25490e0a09c81017f1d91aa73ab84d686eff12eb7e24d433d39c0c6a"
+              },
+              "client": "codex",
+              "model_requested": "gpt-6-astra",
+              "model_reported": null,
+              "skill_available": null,
+              "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=github-issue:\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 누군가 직접 써보고, 더 쉽게 체험할 수 있는 입구를 만들어줬다는 점이 정말 반갑습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식이라, 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "request_sha256": "c19ad374c355af028dd734f314cfc5aff9ccdc1b96878efbeea0585e88bee633",
+              "output": "## Humanized\n\n안녕하세요. 데모까지 만들어주셔서 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모를 만들어주신 분은 처음이라 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 다른 사람들도 더 쉽게 체험할 수 있게 해주셔서 고맙습니다.\n\n제안하신 방향도 좋아 보입니다. README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식입니다. 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.\n\n## 주요 변경 (최대 5개)\n\n- “먼저 정말 감사합니다” → “데모까지 만들어주셔서 정말 감사합니다”: 감사하는 이유를 바로 밝혔습니다.\n- “개인적으로는”을 덜고, 처음 데모를 만들어준 사람이 생겨 기쁘다는 뜻을 살렸습니다.\n- “체험할 수 있는 입구”, “만들어줬다는 점이 반갑습니다” → “더 쉽게 체험할 수 있게 해주셔서 고맙습니다”: 추상적인 표현을 풀고 감사를 자연스럽게 전했습니다.\n- README의 현재 사용 방식과 데모의 기대 효과를 두 문장으로 나눴습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+              "output_sha256": "b3995a50c2e9b86dca49af98b9d4b7536924c29eadc42b01ae75c9af7d77810b",
+              "body": "안녕하세요. 데모까지 만들어주셔서 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모를 만들어주신 분은 처음이라 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 다른 사람들도 더 쉽게 체험할 수 있게 해주셔서 고맙습니다.\n\n제안하신 방향도 좋아 보입니다. README의 “Try It in 30 Seconds” 섹션은 지금도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식입니다. 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.",
+              "tools": [
+                {
+                  "type": "command_execution",
+                  "command": "/bin/zsh -lc 'cat $SKILL_ROOT/references/ko-ai-signals.md'",
+                  "status": "completed"
+                }
+              ],
+              "catalog_read": true,
+              "exact_headings": true,
+              "exact_footer": true
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "diagnostics": [
+    {
+      "case": "domain-github-issue",
+      "client": "codex",
+      "source": {
+        "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+        "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+        "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+      },
+      "output": "안녕하세요. 데모까지 만들어주셔서 정말 감사합니다.\n\n이 프로젝트를 보고 바로 실행해볼 수 있는 데모를 만들어주신 분은 처음이라 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데 직접 써보시고, 다른 사람들도 쉽게 체험할 수 있게 해주셔서 고맙습니다.\n\n제안해주신 방향도 좋아 보입니다. 지금은 README의 “Try It in 30 Seconds” 섹션에서도 사용자가 `PROMPT.short.md`를 직접 복사해서 써보도록 안내하고 있습니다. 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 확실히 도움이 될 것 같습니다.\n\n주요 변경:\n\n- 감사의 대상을 첫 문장에 밝혔습니다.\n- “체험할 수 있는 입구”, “만들어줬다는 점이 반갑습니다”를 구체적이고 자연스러운 표현으로 바꿨습니다.\n- README의 현재 사용 방식과 데모의 장점을 두 문장으로 나눴습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "finding": "Default section headers omitted; clarified domain does not imply body-only response"
+    },
+    {
+      "case": "domain-chat",
+      "client": "claude",
+      "source": {
+        "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+        "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+        "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+      },
+      "output": "## Humanized\n\n안녕하세요! 정말 오랜만에 연락드리네요 😊 지난번 프로젝트 끝나고 계속 정신없이 지냈는데, OOO님은 그동안 어떻게 지내셨는지 늘 궁금했어요. 다음 주에 시간 괜찮으시면 가볍게 점심 같이 하면 어떨까 해서 연락드렸어요. 부담 갖지 마시고 가능한 날 알려주시면 감사하겠어요. 답장 기다릴게요~\n\n## 주요 변경 (최대 5개)\n- \"정말\" 6회, \"너무\" 2회, \"너무너무\" 1회 → 첫 인사의 \"정말\" 하나만 남김 (이유: 강조어 남발)\n- 🙏 ✨ 🌷 💕 → 삭제, 😊는 첫 인사에 하나 남김 (이유: 이모지 남발. 친근한 느낌은 😊 하나로 충분함)\n- \"잘 지내고 계신지 정말 많이 궁금했어요\" + \"어떻게 지내셨는지도 정말 너무너무 궁금하네요!!\" → \"그동안 어떻게 지내셨는지 늘 궁금했어요\" (이유: 같은 말을 두 번 함)\n- \"다름이 아니오라,\" → 삭제 (이유: 채팅에는 너무 격식 있는 시작 문구)\n- \"너무 부담 갖지 마시고, 가능하신 일정 편하게 알려주시면 정말 감사하겠습니다\" → \"부담 갖지 마시고 가능한 날 알려주시면 감사하겠어요\" (이유: '부담'과 '편하게'의 뜻이 겹침. 혼자 '~습니다'로 끝나던 문장을 다른 문장처럼 '~해요'로 맞춤)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "finding": "Change explanation claimed six occurrences, but original contained five"
+    },
+    {
+      "case": "domain-review",
+      "client": "claude",
+      "source": {
+        "commit": "da6c68c547242bdb1ce1ade66875b1e6b6a7fc68",
+        "skill_sha256": "473e4bd9d57d25694b5166dacc1fe7f6c72f5d07bfe1338dd10819cf85c6c7bc",
+        "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+      },
+      "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데, 결론부터 말하면 정말 만족하면서 쓰고 있습니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서 써도 부담이 없습니다. 무선 연결도 꽤 안정적인 편이고, 배터리도 광고에 나온 수치와 거의 같습니다. 다만 하나 아쉬웠던 건 키 배열이 좀 좁아서 적응하는 데 시간이 걸렸다는 점입니다. 그래도 전체적인 완성도는 동급 제품 중에서 단연 뛰어나다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 쓸모가 많았고, 전반적으로 추천할 만한 제품이라고 봅니다.\n\n## 주요 변경 (최대 5개)\n- \"추천드릴 만한 제품이라고 사료됩니다\" → \"추천할 만한 제품이라고 봅니다\" (이유: 리뷰에 맞지 않는 논문식 표현. 의견이라는 점은 유지)\n- \"우선 / 또한 / 그럼에도 불구하고\" → 삭제 또는 \"그래도\" (이유: 문장마다 붙은 연결어. 대조하는 \"다만\"은 유지)\n- \"매우 부드럽고 / 매우 우수한 편 / 매우 유용했으며\" → \"아주 부드럽고 / 꽤 안정적인 편 / 쓸모가 많았고\" (이유: 같은 강조어가 반복됨. 평가의 강도는 유지)\n- \"다소 협소하여 적응 기간이 필요했다는 부분입니다\" → \"좀 좁아서 적응하는 데 시간이 걸렸다는 점입니다\" (이유: 번역체·명사형. 단점은 누그러뜨리지 않음)\n- \"다양한 환경에서 활용 가능한\" / \"평가하고 싶습니다\" → \"여러 환경에서 쓸 수 있는\" / \"생각합니다\" (이유: AI가 자주 쓰는 어휘와 돌려 말하는 표현)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "finding": "Very good stability was weakened to fairly stable"
+    },
+    {
+      "case": "domain-github-issue",
+      "client": "claude",
+      "source": {
+        "commit": "0c0cd4e76546e2f0ae2e748d16d55f13ac8fc291",
+        "skill_sha256": "e571b13cbfd6498ba11fe89b9cc1cf2b840bfa7372cbd369d6e8f71013d0db65",
+        "catalog_sha256": "be23ee86ac3a45045e6e7a863cb423f55035f5eec8930df836aa8ca2a0ff2e55"
+      },
+      "output": "## Humanized\n\n안녕하세요. 먼저 정말 감사합니다.\n\n이 프로젝트로 바로 실행해볼 수 있는 데모를 만들어주신 분은 처음이라 꽤 기쁩니다. 아직 작은 prompt/skill 프로젝트인데, 직접 써보시고 다른 사람이 더 쉽게 체험할 수 있는 길까지 만들어주셔서 고맙습니다.\n\n방향 자체는 좋아 보입니다. 특히 README의 “Try It in 30 Seconds” 섹션은 지금 사용자가 `PROMPT.short.md`를 직접 복사해서 써보는 방식입니다. 설치 없이 바로 결과를 확인할 수 있는 데모가 있으면 도움이 많이 될 것 같습니다.\n\n## 주요 변경 (최대 5개)\n- \"만들어줬다는 점이 정말 반갑습니다\" → \"만들어주셔서 고맙습니다\" (이유: 결과물에는 \"반갑다\"보다 \"고맙다\"가 자연스러움. 앞 문장의 \"만들어주신\"과 높임 수준도 맞춤)\n- \"입구를 만들어줬다는 점\" → \"길까지 만들어주셔서\" (이유: \"입구\"는 번역체 비유 / \"~라는 점이\" 명사형을 동사로 풀어씀)\n- \"데모까지 만들어주신 게 처음이라, 개인적으로는 꽤 기쁩니다\" → \"데모를 만들어주신 분은 처음이라 꽤 기쁩니다\" (이유: 군더더기 \"개인적으로는\"을 빼고 쉼표도 정리. \"꽤 기쁩니다\"의 정도는 유지)\n- \"~방식이라, ~데모가 있으면\" → 두 문장으로 나눔 (이유: 쉼표로 길게 이어진 문장)\n- \"확실히 도움이 될 것 같습니다\" → \"도움이 많이 될 것 같습니다\" (이유: \"확실히\"와 \"것 같다\"가 부딪침. 추정은 남기고 강도는 \"많이\"로 옮김)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "finding": "Certainty was converted into amount of benefit"
+    }
+  ]
+}
