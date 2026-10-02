@@ -6,9 +6,8 @@
 
 [English](README.md) · [한국어](README.ko.md)
 
-[![Next release](https://img.shields.io/badge/next-2.0_unreleased-orange.svg)](docs/MIGRATION-1.x-to-2.x.md)
 
-最后发布的版本是 **v1.0.1**。本文说明**尚未发布的 2.0 准备变更**，请参阅 [1.x 兼容承诺](docs/STABILITY-PROMISE.md)和[迁移草案](docs/MIGRATION-1.x-to-2.x.md)。
+最新正式版本是 **v1.0.1**。本文说明 main 的改进内容，下一版本号尚未确定。请参阅[版本政策](docs/STABILITY-PROMISE.md)和[变更说明](docs/UPGRADE-NOTES.md)。
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -44,25 +43,19 @@ Humanize this Korean text:
 
 `korean-humanizer` 不是英文规则的翻译版，而是围绕韩语本身的写作信号设计的。
 
-## 主要用途
+## 安装
 
-### Codex
-
-```bash
-git clone https://github.com/dotoricode/korean-humanizer.git
-cd korean-humanizer
-bash scripts/install-codex-skill.sh
-bash scripts/check-codex-skill.sh
-```
-
-### Claude Code
+在需要使用此技能的项目中运行以下命令。它使用 [Skills CLI](https://github.com/vercel-labs/skills)，需要 Node.js/npm。
 
 ```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/korean-humanizer
+npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent codex claude-code --copy
 ```
 
-上述命令安装默认分支；候选变更见 [PR #5](https://github.com/dotoricode/korean-humanizer/pull/5)。在克隆目录运行 `git checkout v1.0.1` 可固定已发布版本。本次验证了 Codex 安装及少量运行案例，未验证 Claude Code 全新安装到首次使用的完整流程。
+该命令把公开仓库的默认分支复制到 Codex 的 `.agents/skills/korean-humanizer/` 和 Claude Code 的 `.claude/skills/korean-humanizer/`。只安装一个环境时使用 `--agent codex` 或 `--agent claude-code`；添加 `--global` 可供所有项目使用。这是第三方技能安装 CLI，不是 Codex 或 Claude 的内置命令。
+
+在该项目中开始新对话：Codex 使用 `$korean-humanizer`，Claude Code 使用 `/korean-humanizer`。通过 `npx skills list` 查看已安装技能。
+
+PR #5 已合并。默认分支包含 v1.0.1 之后的改进，最新正式标签仍为 v1.0.1。安装和首次调用检查与输出质量评估分开；剩余发布检查记录在 `ROADMAP.md`。
 
 然后直接请求：
 

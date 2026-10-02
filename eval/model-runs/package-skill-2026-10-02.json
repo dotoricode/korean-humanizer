@@ -1,0 +1,224 @@
+{
+  "date": "2026-10-02",
+  "scope": "Fresh projects; real ZIP files; native skill invocation; three inputs; Codex two repeats, Claude one repeat. No output-format hints in requests and no postprocessing.",
+  "clients": {
+    "codex": {
+      "cli": "0.159.3",
+      "requested_model": "gpt-6-astra",
+      "effort": "medium"
+    },
+    "claude": {
+      "cli": "2.1.287",
+      "requested_model": "claude-opus-5-5",
+      "effort": "medium"
+    }
+  },
+  "package": {
+    "archive_sha256": "28950160080064182c1717e406a045286d60b0727a6c64fc51daa2221a518ecb",
+    "base_commit": "4fc566b7d7ded76887f7a85c0886e44796e5e38c",
+    "source_file_sha256": {
+      "SKILL.md": "62c45a4860e8482001232eb4edc49d63ced8d8695314bdf3dee0d61beab71075",
+      "LICENSE": "7b9764f9f5d102eaccda9e434178a197607bfab94698811f7e6bd6673c10d3bd",
+      "PROMPT.md": "13fc12452f2050cc74cca5c7f42d9c14098ff6787c13ac643ee6c32d7bec49e4",
+      "PROMPT.short.md": "b12f0ad5b6546fefdcf52e8523c5e8b67192b69b108e529c16dd4900217fc222",
+      "references/ko-ai-signals.md": "056c2f3e9e83816b06796e6c8b64c9e1af62c0b2149a0ca82dbb4330466fb221",
+      "examples/before-after.md": "54e6d408dc494747fa73d638541b7de54fdb984a8a5ea68b828095dd04390ebb",
+      "examples/personal-list.md": "7ebd44f606f1f4194a2999ac6488bc574aaf702a0d7a7f6e3cf62648afaeb855",
+      "examples/brand-voice-template.md": "216ade545560c8b5475ade8926cc432c68fbaa7c9443f7152461624cdff85fe5",
+      "examples/brand-voice-toss-style.md": "ceebfe19b71715dbef41fd9d865b28939531765fc2f895c770d812e69bd401b2",
+      "examples/brand-voice-essayist.md": "7ffd8a200e112f37cdbb3aad0e74471200bf67c8ca910c54450f69c219eeb93b",
+      "examples/domain-academic.md": "c4bd963456d069c92ff89d425791e049ec858440c764f13f58180a77bd59d7ac",
+      "examples/domain-b2b-message.md": "b3cf8cdb903915512b7940e0b02d0cadb6d8ca4f2a617ce3df2591cbb2285e16",
+      "examples/domain-chat.md": "51a531fbf4b055e45cf436dfa972f3efaa3ab51db9c195969a65477ab67dd5ac",
+      "examples/domain-github-issue.md": "4ef1fe9933578fefd3b287d42f3341bc0cd3976033de55558a635fe67360ba10",
+      "examples/domain-news.md": "82759cfd71be2fe8a4181bfcd673f4b91f687c07420eacf663d38e6e7ff6d26c",
+      "examples/domain-review.md": "0d12c35249cdce4c77b56fe12cb320fd284a89290421c4b4663ed740afec5e4a"
+    },
+    "packaged_file_sha256": {
+      "LICENSE": "7b9764f9f5d102eaccda9e434178a197607bfab94698811f7e6bd6673c10d3bd",
+      "PROMPT.md": "13fc12452f2050cc74cca5c7f42d9c14098ff6787c13ac643ee6c32d7bec49e4",
+      "PROMPT.short.md": "b12f0ad5b6546fefdcf52e8523c5e8b67192b69b108e529c16dd4900217fc222",
+      "README.md": "4708f24fa0047a2fa5b4578b7a39440cf77b3be2d0a1ed9b9e6a3299277ac5a8",
+      "SKILL.md": "62c45a4860e8482001232eb4edc49d63ced8d8695314bdf3dee0d61beab71075",
+      "examples/before-after.md": "68fda06ed44e5e80b6dd6a106804d8155d05c5255d0be6fe9e336f1e72970726",
+      "examples/brand-voice-essayist.md": "7ffd8a200e112f37cdbb3aad0e74471200bf67c8ca910c54450f69c219eeb93b",
+      "examples/brand-voice-template.md": "216ade545560c8b5475ade8926cc432c68fbaa7c9443f7152461624cdff85fe5",
+      "examples/brand-voice-toss-style.md": "ceebfe19b71715dbef41fd9d865b28939531765fc2f895c770d812e69bd401b2",
+      "examples/domain-academic.md": "c4bd963456d069c92ff89d425791e049ec858440c764f13f58180a77bd59d7ac",
+      "examples/domain-b2b-message.md": "b3cf8cdb903915512b7940e0b02d0cadb6d8ca4f2a617ce3df2591cbb2285e16",
+      "examples/domain-chat.md": "c4fd49df42f59d179c4a96c13f9f94ffcac7d67939a66299797d35bc74d8d9f9",
+      "examples/domain-github-issue.md": "1052451e7ecca0dda1bdc4354d8ef6dfaeeac72f518d11d61a03bf52347026d9",
+      "examples/domain-news.md": "9e15965f036cf42175b5a69f7d22c63b3610e7d50031919c7200d87f1c5a110f",
+      "examples/domain-review.md": "609e534519b3ba468b200b313d0fb6414347340a628a37ebada56abcaf9b35fa",
+      "examples/personal-list.md": "7ebd44f606f1f4194a2999ac6488bc574aaf702a0d7a7f6e3cf62648afaeb855",
+      "references/ko-ai-signals.md": "ffd65173b23265cb2ef876a279f19abf896c2eb5256463118c614ce3f1a332c1"
+    },
+    "source_state": "uncommitted working tree at run time; base_commit is not the exact tested source"
+  },
+  "format_results": {
+    "codex": "6/6",
+    "claude": "3/3"
+  },
+  "independent_body_review": {
+    "outputs_reviewed": 6,
+    "scope": "first repeat; headings excluded",
+    "confirmed_defects": 0,
+    "note": "Minor wording preference noted; no automatic quality metric"
+  },
+  "prior_candidate_results": [
+    {
+      "candidate": "Contract reread and comparison-expression review",
+      "codex_format": "2/4",
+      "claude_format": "4/4"
+    },
+    {
+      "candidate": "Markdown document definition without metadata change",
+      "codex_format": "5/6",
+      "claude_format": "3/3",
+      "failure": "codex-email-r2 omitted headings"
+    }
+  ],
+  "limitations": [
+    "Small observed sample, not a general success rate or universal guarantee",
+    "Only first-repeat bodies received independent review",
+    "Model selection names are requested configuration; no model ranking",
+    "Raw CLI tool traces retained locally, not included here"
+  ],
+  "records": [
+    {
+      "client": "claude",
+      "case": "domain-review",
+      "repeat": 1,
+      "input": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달쯤 됐는데, 결론부터 말씀드리면 정말 만족하며 쓰고 있습니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리 수명도 광고한 사양과 거의 같습니다. 다만 아쉬운 점을 하나 꼽자면 키 배열이 조금 좁아서 적응하는 데 시간이 걸렸다는 겁니다. 그래도 전체적인 완성도는 동급 제품 중에서 단연 뛰어나다고 봅니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했고, 전반적으로 추천할 만한 제품이라고 생각합니다.\n\n## 주요 변경 (최대 5개)\n- \"우선 / 또한 / 그럼에도 불구하고\" → 삭제 / \"그래도\" (이유: 불필요한 연결어)\n- \"부담 없이 사용 가능합니다\", \"다양한 환경에서 활용 가능한\" → \"부담 없이 쓸 수 있습니다\", \"여러 환경에서 쓸 수 있는\" (이유: 번역체 명사형 / AI 고빈도 어휘 / 공허한 형용사)\n- \"무선 연결의 안정성도 매우 우수한 편이며\" → \"무선 연결도 아주 안정적인 편이고\" (이유: 명사형 풀기, 평가 강도는 유지)\n- \"한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다\" → \"아쉬운 점을 하나 꼽자면 키 배열이 조금 좁아서 적응하는 데 시간이 걸렸다는 겁니다\" (이유: 과격식 / 번역체. 단점의 내용은 그대로 둠)\n- \"평가하고 싶습니다\", \"추천드릴 만한 제품이라고 사료됩니다\" → \"봅니다\", \"추천할 만한 제품이라고 생각합니다\" (이유: 리뷰에 맞지 않는 과격식. 의견이라는 성격은 유지)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "dbf9bdd7b5858c1cd6203596d33c6b207086a6f99c6c087cc6452da46993e120",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "claude",
+      "case": "email",
+      "repeat": 1,
+      "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "output": "## Humanized\n\n안녕하세요. 미팅 일정 건으로 연락드립니다. 부득이한 사정이 생겨 일정을 변경해야 하는 상황입니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n- \"다름이 아니오라 ~ 말씀드리고자 연락드립니다\" → \"미팅 일정 건으로 연락드립니다\" (이유: 판에 박힌 개시. 연락 목적은 남기고 상투적인 도입만 줄임)\n- \"~과 관련하여\" → \"~ 건으로\" (이유: 과격식 / 번역체)\n- \"부득이한 사정으로 인해 ~ 불가피한 상황이 발생하여\" → \"부득이한 사정이 생겨 ~ 변경해야 하는 상황입니다\" (이유: \"부득이\"와 \"불가피\"가 같은 뜻으로 겹치고 명사형이 이어짐. 일정을 반드시 바꿔야 한다는 뜻은 유지)\n- \"양해를 구하고자 합니다\" → \"양해 부탁드립니다\" (이유: 과격식. 이메일에 맞는 합니다체는 유지)\n- \"안녕하세요\" 유지 (이유: 이메일 인사로 필요한 역할이 있음)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "58eb8b174fb74d18ed30f4ea3b4728894f7b2e16d42c5d990ed12c164e91ff65",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "claude",
+      "case": "facts",
+      "repeat": 1,
+      "input": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "request": "/korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "output": "## Humanized\n\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 바뀔 수 있으며, 그럴 경우 미리 알려드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n- \"진행될 예정이며, 이용 요금은\" → \"진행할 예정입니다. 이용 요금은\" (이유: 수동형을 능동형으로 바꿈. 관련 없는 두 정보가 쉼표로 이어져 있어 두 문장으로 나눔)\n- \"상세 안내는\" → \"자세한 안내는\" (이유: 한자어 대신 더 흔히 쓰는 말로 바꿈)\n- \"변경될 수 있으며, 변경 사항이 발생할 경우\" → \"바뀔 수 있으며, 그럴 경우\" (이유: 수동형과 명사형 표현을 줄이고 \"변경\"이 두 번 반복되던 것을 정리함. 바뀔 수 있다는 가능성은 그대로 둠)\n- \"사전에 안내드리겠습니다\" → \"미리 알려드리겠습니다\" (이유: 딱딱한 격식 표현을 부드럽게 바꿈. ~합니다체는 유지)\n- \"내부 상태 표시는 \\\"검토 중\\\"입니다.\" 유지 (이유: 원문의 정보이고 인용 표기라서 바꾸지 않음)\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "6ce3cefb973f4802fdc7a3540cd75f52f4325570ca77fad639c8ea4d16bd729b",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "domain-review",
+      "repeat": 1,
+      "input": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 써봤는데 정말 만족스럽습니다. 키감이 아주 부드럽고 타건음도 적당해서 사무실에서도 부담 없이 쓸 수 있습니다. 무선 연결도 아주 안정적인 편이고, 배터리도 광고에 나온 시간만큼 거의 갑니다.\n\n다만 키 배열이 조금 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만, 전체적인 완성도는 동급 제품 중에서도 단연 돋보인다고 생각합니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 무척 유용했습니다. 전체적으로 추천할 만한 제품입니다.\n\n## 주요 변경 (최대 5개)\n\n- “결론부터 말씀드리면”을 덜고 사용 소감으로 바로 시작했습니다.\n- “안정성도 매우 우수한”을 “아주 안정적인”으로 바꿔 평가의 강도는 살렸습니다.\n- “적응 기간이 필요했다는 부분”을 “적응하는 데 시간이 필요했습니다”로 풀었습니다.\n- “평가하고 싶습니다”, “사료됩니다” 같은 딱딱한 표현을 일상적인 말로 바꿨습니다.\n- 별점·구매 시기·사용 기간과 장단점, 동급 제품과의 비교 평가는 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "4555d9e5a621cf015d36bb5a0b0545489287d64f7e8d363ca260add35a114183",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "domain-review",
+      "repeat": 2,
+      "input": "★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=review:\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n이 키보드를 사용한 지 한 달 정도 되었는데, 결론부터 말씀드리면 정말 만족스럽게 사용하고 있습니다. 우선 키감이 매우 부드럽고, 타건음도 적절한 수준이라 사무실에서도 부담 없이 사용 가능합니다. 또한 무선 연결의 안정성도 매우 우수한 편이며, 배터리 수명도 광고된 사양과 거의 일치합니다. 다만 한 가지 아쉬운 점은, 키 배열이 다소 협소하여 적응 기간이 필요했다는 부분입니다. 그럼에도 불구하고 전체적인 완성도는 동급 제품 중 단연 뛰어난 수준이라고 평가하고 싶습니다. 다양한 환경에서 활용 가능한 멀티 디바이스 페어링 기능도 매우 유용했으며, 전반적으로 추천드릴 만한 제품이라고 사료됩니다.",
+      "output": "## Humanized\n\n★★★★☆ (4/5) — 2026년 3월 구매, 한 달 사용 후기.\n\n한 달 정도 썼는데 정말 만족스럽습니다. 키감이 아주 부드럽고 타건음도 사무실에서 부담 없이 쓸 만한 수준입니다. 무선 연결도 무척 안정적인 편이고, 배터리도 광고에 나온 시간만큼 거의 갑니다. 여러 환경에서 쓸 수 있는 멀티 디바이스 페어링 기능도 아주 유용했습니다.\n\n다만 키 배열이 조금 좁아서 적응하는 데 시간이 필요했습니다. 이 점은 아쉽지만, 전체적인 완성도는 동급 제품 중에서도 월등하다고 느꼈습니다. 전반적으로 추천할 만한 제품이라고 생각합니다.\n\n## 주요 변경 (최대 5개)\n\n- “결론부터 말씀드리면”을 덜고 사용 소감으로 바로 시작했습니다.\n- “매우 부드럽고”, “안정성도 매우 우수한 편”은 평가 강도를 유지하면서 자연스럽게 바꿨습니다.\n- “적응 기간이 필요했다는 부분”을 “적응하는 데 시간이 필요했습니다”로 풀었습니다.\n- “평가하고 싶습니다”, “사료됩니다”를 “느꼈습니다”, “생각합니다”로 바꿨습니다.\n- 별점·구매 시점·사용 기간과 장단점, 동급 제품에 대한 비교 평가를 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "a45514e388b1766add6acb11ebedc36fc9bba976ffec7b557ff84d8aca6c5898",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "email",
+      "repeat": 1,
+      "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "output": "## Humanized\n\n안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n\n- “다름이 아니오라”, “말씀드리고자”를 덜고 연락 목적을 바로 전달함.\n- “일정 변경이 불가피한 상황이 발생하여”를 “일정을 변경해야 해서”로 정리함.\n- “양해를 구하고자 합니다”를 “양해 부탁드립니다”로 다듬음.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "844f833e5781038c1cec90f1d9047f12d0ec8b4344bee509dcd97d15518580f3",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 3,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "email",
+      "repeat": 2,
+      "input": "안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 다름이 아니오라 미팅 일정과 관련하여 말씀드리고자 연락드립니다. 부득이한 사정으로 인해 일정 변경이 불가피한 상황이 발생하여 양해를 구하고자 합니다.",
+      "output": "## Humanized\n\n안녕하세요. 부득이한 사정으로 미팅 일정을 변경해야 해서 연락드립니다. 양해 부탁드립니다.\n\n## 주요 변경 (최대 5개)\n\n- “다름이 아니오라”, “말씀드리고자”를 덜고 연락 목적을 바로 전했습니다.\n- “일정 변경이 불가피한 상황이 발생하여”를 “일정을 변경해야 해서”로 줄였습니다.\n- “양해를 구하고자 합니다”를 “양해 부탁드립니다”로 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "d9201099ff6704f040fa045c29776c688aab218f4b4b2f3e9693b6591a6407a6",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 3,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "facts",
+      "repeat": 1,
+      "input": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "output": "## Humanized\n\n안녕하세요.\n\n이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 내용은 https://example.com/update 에서 확인하실 수 있습니다.\n\n일정은 변경될 수 있으며, 변경 사항이 있으면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n\n- 일정과 요금을 두 문장으로 나눠 읽기 쉽게 정리했습니다.\n- “진행될 예정” → “진행할 예정”으로 다듬었습니다.\n- “상세 안내” → “자세한 내용”으로 바꿨습니다.\n- “변경 사항이 발생할 경우 사전에” → “변경 사항이 있으면 미리”로 풀었습니다.\n- 날짜·시간·요금·링크·\"검토 중\" 표시와 일정 변경 가능성은 그대로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "6bc7e16289e0a1d9f67ceb53fb3382e6ff69ac1d22f6c8088f4624854cd881c9",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 5,
+      "max_five": true,
+      "exact_footer": true
+    },
+    {
+      "client": "codex",
+      "case": "facts",
+      "repeat": 2,
+      "input": "안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "request": "$korean-humanizer 이거 AI 티 빼줘. 도메인=email:\n안녕하세요. 이번 업데이트는 2026년 10월 8일 14:00에 진행될 예정이며, 이용 요금은 월 19,800원입니다. 상세 안내는 https://example.com/update 에서 확인하실 수 있습니다. 일정은 변경될 수 있으며, 변경 사항이 발생할 경우 사전에 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.",
+      "output": "## Humanized\n\n안녕하세요.\n\n이번 업데이트는 2026년 10월 8일 14:00에 진행할 예정입니다. 이용 요금은 월 19,800원입니다. 자세한 안내는 https://example.com/update 에서 확인하실 수 있습니다.\n\n일정은 변경될 수 있으며, 변경 사항이 있으면 미리 안내드리겠습니다. 내부 상태 표시는 \"검토 중\"입니다.\n\n## 주요 변경 (최대 5개)\n\n- “진행될 예정이며” → “진행할 예정입니다.”로 바꾸고 일정과 요금을 두 문장으로 나눔.\n- “상세 안내” → “자세한 안내”로 다듬음.\n- “변경 사항이 발생할 경우 사전에” → “변경 사항이 있으면 미리”로 풀어 씀.\n- 날짜·시간·금액·링크·\"검토 중\" 표시와 일정 변경 가능성은 그대로 유지함.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "sha256": "76df53096ed17c8a423e3412a4934bf2323244a3e416a2b1155dcd1096956127",
+      "returncode": 0,
+      "catalog_read": true,
+      "exact_headings": true,
+      "change_count": 4,
+      "max_five": true,
+      "exact_footer": true
+    }
+  ]
+}

@@ -2,10 +2,9 @@
 
 This repository is the source of truth for the `korean-humanizer` Codex skill.
 
-- Do not install this skill by copying files into `~/.codex/skills` manually.
-- Use `scripts/install-codex-skill.sh`; it links the repo into the active `$CODEX_SKILLS_DIR` and the legacy `~/.codex/skills` path.
-- Use `scripts/check-codex-skill.sh` after changing install behavior or `SKILL.md`.
-- The active Codex home on this machine may be `~/.codex-personal`, so `~/.codex/skills` alone is not sufficient.
+- End-user installation uses the Skills CLI command documented in `README.md`.
+- For local development on this machine, use `scripts/install-codex-skill.sh` to link this source checkout into the active `$CODEX_SKILLS_DIR` and legacy `~/.codex/skills` paths. Keep those links pointing at the repository instead of replacing them with copied files.
+- For a repository-linked development install, use `scripts/check-codex-skill.sh` after changing install behavior or `SKILL.md`. For a copied end-user install, compare every installed runtime file with the package manifest; the development checker requires repository links.
 
 ## Project terminology
 

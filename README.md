@@ -5,11 +5,10 @@
 [한국어](README.ko.md) · [中文](README.zh-CN.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Next release](https://img.shields.io/badge/next-2.0_unreleased-orange.svg)](docs/MIGRATION-1.x-to-2.x.md)
 [![Patterns](https://img.shields.io/badge/patterns-137%2B-brightgreen.svg)](references/ko-ai-signals.md)
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 
-The last released version is **v1.0.1**. This document describes **unreleased 2.0 preparation**. See the [1.x compatibility promise](docs/STABILITY-PROMISE.md) and [migration draft](docs/MIGRATION-1.x-to-2.x.md).
+The latest release is **v1.0.1**. This document describes improvements on main; the next version is undecided. See the [version policy](docs/STABILITY-PROMISE.md) and [change notes](docs/UPGRADE-NOTES.md).
 
 The catalog provides context-dependent editing candidates, not words to replace in every sentence. Preserve facts, tone, uncertainty and conditions; leave already natural text unchanged.
 
@@ -73,25 +72,17 @@ These are first final responses from native `/korean-humanizer` and `$korean-hum
 
 ## Install
 
-### Codex
+Run this command in the project where you want to use the skill. It uses the [Skills CLI](https://github.com/vercel-labs/skills) and requires Node.js/npm.
 
 ```bash
-git clone https://github.com/dotoricode/korean-humanizer.git
-cd korean-humanizer
-bash scripts/install-codex-skill.sh
-bash scripts/check-codex-skill.sh
+npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent codex claude-code --copy
 ```
 
-### Claude Code
+This installs the public default branch as files in `.agents/skills/korean-humanizer/` for Codex and `.claude/skills/korean-humanizer/` for Claude Code. Use `--agent codex` or `--agent claude-code` to install for just one agent; add `--global` for all projects. The installer is a third-party CLI, not a built-in Codex or Claude command.
 
-```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/korean-humanizer
-```
+Start a new conversation in that project and invoke `$korean-humanizer` in Codex or `/korean-humanizer` in Claude Code, followed by your Korean text. List installed skills with `npx skills list`.
 
-These commands install the default branch. Candidate changes are in [PR #5](https://github.com/dotoricode/korean-humanizer/pull/5); use `git checkout v1.0.1` in the clone to pin the released version. Codex installation and small execution checks were verified; a fresh Claude Code installation through first use was not.
-
-Then ask naturally — `이거 AI 티 빼줘:` followed by your Korean text.
+PR #5 is merged. The default branch includes improvements since v1.0.1; the latest tagged release is v1.0.1. Installation and a first invocation are checked separately from output quality; see `ROADMAP.md` for remaining release checks.
 
 **Other LLMs:** paste [`PROMPT.short.md`](PROMPT.short.md) as a system prompt, or use the full [`PROMPT.md`](PROMPT.md).
 

@@ -74,6 +74,9 @@ jobs:
       - name: Run regression checks
         run: python3 scripts/test-regressions.py
 
+      - name: Check package source provenance
+        run: python3 scripts/test-package-skill.py
+
       - name: Run eval harness
         run: bash scripts/eval-harness.sh
 

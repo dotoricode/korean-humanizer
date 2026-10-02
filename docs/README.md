@@ -1,6 +1,6 @@
 # 문서 안내
 
-처음 사용한다면 [한국어 README](../README.ko.md)를 읽으세요. 아래 안내는 미출시 2.0 준비 변경 기준입니다. 마지막 출시 버전 v1.0.1의 규칙은 해당 태그와 [1.x 호환성 약속](STABILITY-PROMISE.md)에 남아 있습니다.
+처음 사용한다면 [한국어 README](../README.ko.md)를 읽으세요. 아래 안내는 main의 개선 사항 기준이며 다음 버전 번호는 미정입니다. 마지막 출시 버전 v1.0.1의 규칙은 해당 태그와 [버전 정책과 과거 기록](STABILITY-PROMISE.md)에 남아 있습니다.
 
 ## 사용에 필요한 문서
 
@@ -24,7 +24,7 @@
 | 회귀 검사 | [평가 안내](../eval/README.md), [평가표](../eval/scorecard.md), `eval/fixtures/` |
 | 실제 모델 비교 | [실제 스킬 호출: Opus 5.5·Astra](../eval/native-skill-2026-10-01.md) |
 | 이번 QA 근거 | [2026-10-01 QA 기록](reviews/2026-10-01-qa.md) |
-| 버전과 호환성 | [CHANGELOG](../CHANGELOG.md), [1.x 약속](STABILITY-PROMISE.md), [2.0 마이그레이션 준비](MIGRATION-1.x-to-2.x.md) |
+| 버전과 호환성 | [CHANGELOG](../CHANGELOG.md), [버전 정책](STABILITY-PROMISE.md), [변경 안내](UPGRADE-NOTES.md) |
 | 남은 출시 작업 | [ROADMAP](../ROADMAP.md) |
 | 보안·라이선스 | [SECURITY](../SECURITY.md), [LICENSE](../LICENSE) |
 
@@ -37,4 +37,4 @@
 - [홍보 문구 기록](marketing/LAUNCH.md): 재사용 가능한 과거 출시 문구입니다. 현재 버전·효과는 따로 확인해야 합니다.
 - [보관 문서](archive/README.md): 완료된 개발 계획·베타 안내·과거 비교 예시입니다.
 
-배포 ZIP에는 `SKILL.md`, `LICENSE`, 간단한 사용법과 스킬이 참조하는 `references/`, `examples/`만 포함하는 방향으로 준비합니다. 보관 문서·연구 배경·개발 지침은 실행에 필요하지 않습니다. ZIP 제작과 새 설치 검증은 아직 남아 있습니다.
+배포 ZIP은 변경을 커밋한 깨끗한 저장소에서 `python3 scripts/package-skill.py --output-dir <저장소 밖의 폴더>`로 생성합니다. 작업 폴더에 수정·미추적 파일이 있으면 생성을 거부하며, 커밋에 저장된 파일을 읽어 ZIP과 파일 해시를 기록합니다. `SKILL.md`, `LICENSE`, 구매자용 사용법, 프롬프트와 실행에 필요한 `references/`, `examples/`를 포함합니다. 보관 문서·연구 배경·개발 지침은 포함하지 않습니다. ZIP 설치와 첫 실행, 최신 9응답의 출력 형식을 확인했으며 작은 표본의 원본 기록은 `eval/model-runs/package-skill-2026-10-02.json`에 있습니다.
