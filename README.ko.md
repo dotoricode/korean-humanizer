@@ -5,9 +5,8 @@
 [English](README.md) · [中文](README.zh-CN.md)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Next release](https://img.shields.io/badge/next-2.0_unreleased-orange.svg)](docs/MIGRATION-1.x-to-2.x.md)
 
-마지막 출시 버전은 **v1.0.1**입니다. 이 문서는 **미출시 2.0 준비 변경**을 설명합니다. 1.x 사용자는 [호환성 약속](docs/STABILITY-PROMISE.md)과 [마이그레이션 안내](docs/MIGRATION-1.x-to-2.x.md)를 확인하세요.
+마지막 출시 버전은 **v1.0.1**입니다. 이 문서는 main의 개선 사항을 설명하며 다음 버전 번호는 미정입니다. [버전 정책](docs/STABILITY-PROMISE.md)과 [변경 안내](docs/UPGRADE-NOTES.md)를 확인하세요.
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -40,27 +39,17 @@
 
 ## 설치
 
-### Codex
+스킬을 사용할 프로젝트에서 아래 명령을 실행합니다. [Skills CLI](https://github.com/vercel-labs/skills)를 사용하며 Node.js/npm이 필요합니다.
 
 ```bash
-git clone https://github.com/dotoricode/korean-humanizer.git
-cd korean-humanizer
-bash scripts/install-codex-skill.sh
-bash scripts/check-codex-skill.sh
+npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent codex claude-code --copy
 ```
 
-설치 스크립트는 저장소를 스킬 경로에 연결합니다. 설치 후 저장소를 옮기면 링크를 다시 설치해야 합니다.
+공개 저장소의 기본 브랜치를 Codex의 `.agents/skills/korean-humanizer/`와 Claude Code의 `.claude/skills/korean-humanizer/`에 파일로 설치합니다. 하나만 설치하려면 `--agent codex` 또는 `--agent claude-code`로 바꾸고, 모든 프로젝트에서 쓰려면 `--global`을 추가합니다. Codex·Claude 내장 명령이 아닌 외부 전용 설치 CLI입니다.
 
-### Claude Code
+설치한 프로젝트에서 새 대화를 시작합니다. Codex에서는 `$korean-humanizer`, Claude Code에서는 `/korean-humanizer` 뒤에 교정할 원문을 전달합니다. 설치 목록은 `npx skills list`로 확인합니다.
 
-```bash
-mkdir -p ~/.claude/skills
-git clone https://github.com/dotoricode/korean-humanizer.git ~/.claude/skills/korean-humanizer
-```
-
-설치 후 `이거 AI 티 빼줘:`와 함께 원문을 전달하세요. 이번 작업에서는 Codex 설치와 작은 실행 사례를 검사했으며, Claude Code 설치부터 첫 실행까지는 검사하지 않았습니다.
-
-위 명령은 기본 브랜치를 설치합니다. 미출시 변경은 [PR #5](https://github.com/dotoricode/korean-humanizer/pull/5)에서 확인할 수 있습니다. 출시된 1.x를 고정하려면 복제한 저장소에서 `git checkout v1.0.1`을 실행하세요.
+PR #5는 머지되었습니다. 기본 브랜치는 v1.0.1 이후 개선을 포함하며 마지막 정식 태그는 v1.0.1입니다. 설치·첫 호출 검사와 출력 품질 검사는 구분합니다. 남은 출시 검사는 `ROADMAP.md`에 기록합니다.
 
 ## 어떻게 다듬나요?
 
