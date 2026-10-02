@@ -19,7 +19,7 @@ npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent code
 | Codex | `.agents/skills/korean-humanizer/` | `$korean-humanizer` |
 | Claude Code | `.claude/skills/korean-humanizer/` | `/korean-humanizer` |
 
-프로젝트 밖에서 ZIP을 풀었다면 `korean-humanizer` 디렉토리 전체를 위 경로로 옮깁니다. 파일 하나만 옮기면 참조 파일을 읽을 수 없습니다. 설치한 프로젝트에서 새 대화를 시작해 아래처럼 요청하세요.
+ZIP 안의 파일은 최상위에 있으며 `korean-humanizer` 폴더가 자동 생성되지는 않습니다. 프로젝트 밖에서 풀려면 먼저 빈 `korean-humanizer` 폴더를 만들고 그 안에 압축을 해제한 뒤, 폴더 전체를 위 경로로 옮깁니다. 이미 다른 폴더에 풀었다면 `SKILL.md`, `LICENSE`, `README.md`, 프롬프트와 `references/`, `examples/`를 모두 새 폴더에 옮깁니다. 파일 하나만 옮기면 참조 파일을 읽을 수 없습니다. 설치한 프로젝트에서 새 대화를 시작해 아래처럼 요청하세요.
 
 ```text
 $korean-humanizer 이거 AI 티 빼줘. 도메인=email:

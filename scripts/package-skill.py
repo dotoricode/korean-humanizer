@@ -20,9 +20,16 @@ LINK = re.compile(r'(?<!!)\[([^\]]+)\]\(([^\s)]+)\)')
 
 
 def build(output):
+    status = subprocess.check_output(
+        ['git', 'status', '--porcelain', '--untracked-files=normal'], cwd=ROOT, text=True)
+    if status:
+        raise ValueError('Packaging requires a clean source tree; commit source changes first.')
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
-    contents = {name: (ROOT / name).read_text() for name in FILES}
-    contents['README.md'] = (ROOT / 'docs/distribution/PACKAGE-README.md').read_text()
+    source_names = FILES + ['docs/distribution/PACKAGE-README.md']
+    sources = {name: subprocess.check_output(['git', 'show', f'{commit}:{name}'], cwd=ROOT)
+               for name in source_names}
+    contents = {name: sources[name].decode() for name in FILES}
+    contents['README.md'] = sources['docs/distribution/PACKAGE-README.md'].decode()
     rewritten = []
     for name, source in list(contents.items()):
         def replace(match):
@@ -33,7 +40,8 @@ def build(output):
             resolved = posixpath.normpath(posixpath.join(posixpath.dirname(name), parts.path))
             if resolved in contents:
                 return match.group(0)
-            if not (ROOT / resolved).is_file():
+            if subprocess.run(['git', 'cat-file', '-e', f'{commit}:{resolved}'], cwd=ROOT,
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode:
                 raise ValueError(f'Unresolved link: {name} -> {target}')
             url = f'https://github.com/dotoricode/korean-humanizer/blob/{commit}/{resolved}'
             if parts.fragment:
@@ -42,11 +50,11 @@ def build(output):
             return f'[{label}]({url})'
         contents[name] = LINK.sub(replace, source)
     contents = {name: value.encode() for name, value in contents.items()}
-    manifest = {'source_commit': commit, 'source_file_sha256': {name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest() for name in FILES}, 'files': {
+    manifest = {'source_commit': commit, 'source_file_sha256': {name: hashlib.sha256(value).hexdigest() for name, value in sources.items()}, 'files': {
         name: hashlib.sha256(value).hexdigest() for name, value in sorted(contents.items())},
         'external_evidence_links': rewritten}
     output.mkdir(parents=True, exist_ok=True)
-    archive = output / f'korean-humanizer-main-{commit[:7]}.zip'
+    archive = output / f'korean-humanizer-{commit[:7]}.zip'
     with ZipFile(archive, 'w', ZIP_DEFLATED) as zf:
         for name, value in sorted(contents.items()):
             info = ZipInfo(name, (2026, 10, 1, 0, 0, 0))
@@ -57,8 +65,8 @@ def build(output):
         assert zf.testzip() is None
         assert all(hashlib.sha256(zf.read(name)).hexdigest() == digest
                    for name, digest in manifest['files'].items())
-        assert zf.read('SKILL.md') == (ROOT / 'SKILL.md').read_bytes()
-        assert zf.read('LICENSE') == (ROOT / 'LICENSE').read_bytes()
+        assert zf.read('SKILL.md') == sources['SKILL.md']
+        assert zf.read('LICENSE') == sources['LICENSE']
     manifest['archive_sha256'] = hashlib.sha256(archive.read_bytes()).hexdigest()
     (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
     print(archive)
