@@ -18,6 +18,8 @@
 
 촬영에는 태그 출시본이나 공개 main과 다른 로컬 개발본을 사용했습니다. 영상은 원래 속도를 유지합니다. [촬영 정보와 파일 해시](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json)에서 사용한 소스를 확인할 수 있습니다.
 
+[원본 인터랙티브 녹화 (MOV, 45초)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-original.mov)도 공유합니다. 위의 30초 영상과 별도로 녹화한 파일이며 변환 없이 업로드했습니다.
+
 ## 바로 써보기
 
 설치 없이 쓰려면 [짧은 프롬프트](PROMPT.short.md)를 사용하는 LLM의 지침 또는 첫 메시지에 붙여 넣고 아래처럼 요청하세요. 더 자세한 규칙은 [전체 프롬프트](PROMPT.md)에 있습니다.

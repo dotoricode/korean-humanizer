@@ -22,6 +22,8 @@ Actual Codex CLI session recorded in Warp on 2026-10-07, with `korean-humanizer`
 
 Recorded using a local development snapshot, not a tagged release or the public main revision. The video preserves normal playback speed; see [capture details and file hashes](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json).
 
+[Original interactive recording (MOV, 45 seconds)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-original.mov). This is a separate recording from the 30-second video above, uploaded without conversion.
+
 ## Recorded model comparison
 
 These are first final responses from native `/korean-humanizer` and `$korean-humanizer` calls on 2026-10-01. The request contains no injected skill/catalog text or answer hints. Outputs were not rewritten after the response; diff blocks extract only the response bodies. Both CLIs selected `medium` effort.

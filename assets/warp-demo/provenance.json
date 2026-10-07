@@ -35,5 +35,17 @@
       "bytes": 683014,
       "sha256": "2ed8c9f0f5ad50a62a94bc89009266b5ba5b41b1e008c90b161a0531e0e59af9"
     }
+  },
+  "additional_recordings": {
+    "warp-demo-final-original.mov": {
+      "bytes": 5520533,
+      "sha256": "d353cfad8e10e959768e540af66a3d18ad4513377078980383d839293f9a066a",
+      "duration_seconds": 45.008333,
+      "width": 2906,
+      "height": 1898,
+      "mode": "Interactive Codex CLI",
+      "relationship": "Separate original recording; not the source of the 30-second exec video",
+      "modified_for_upload": false
+    }
   }
 }
