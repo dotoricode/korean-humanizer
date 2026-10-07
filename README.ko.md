@@ -10,6 +10,14 @@
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
+## Warp 데모
+
+2026-10-07에 Warp에서 Codex CLI를 실제 실행한 화면입니다. 작업 디렉토리는 `korean-humanizer`이며 요청·제목·설명은 영어, 원문과 교정문은 한국어입니다. 생성된 응답은 후처리하지 않았습니다.
+
+[30초 영상](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/korean-humanizer-warp-demo-30s.mp4) · [요청 화면](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/01-request.png) · [전체 결과 화면](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/02-result.png)
+
+촬영에는 태그 출시본이나 공개 main과 다른 로컬 개발본을 사용했습니다. 영상은 원래 속도를 유지합니다. [촬영 정보와 파일 해시](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json)에서 사용한 소스를 확인할 수 있습니다.
+
 ## 바로 써보기
 
 설치 없이 쓰려면 [짧은 프롬프트](PROMPT.short.md)를 사용하는 LLM의 지침 또는 첫 메시지에 붙여 넣고 아래처럼 요청하세요. 더 자세한 규칙은 [전체 프롬프트](PROMPT.md)에 있습니다.

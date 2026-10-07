@@ -14,6 +14,14 @@ The catalog provides context-dependent editing candidates, not words to replace 
 
 ---
 
+## Warp demo
+
+Actual Codex CLI session recorded in Warp on 2026-10-07, with `korean-humanizer` as the working directory. The request, headings and explanations are in English; the original and revised email are in Korean. The generated response was not edited afterward.
+
+[30-second video](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/korean-humanizer-warp-demo-30s.mp4) · [Request screenshot](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/01-request.png) · [Full result screenshot](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/02-result.png)
+
+Recorded using a local development snapshot, not a tagged release or the public main revision. The video preserves normal playback speed; see [capture details and file hashes](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json).
+
 ## Recorded model comparison
 
 These are first final responses from native `/korean-humanizer` and `$korean-humanizer` calls on 2026-10-01. The request contains no injected skill/catalog text or answer hints. Outputs were not rewritten after the response; diff blocks extract only the response bodies. Both CLIs selected `medium` effort.

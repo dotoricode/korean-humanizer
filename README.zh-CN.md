@@ -11,6 +11,14 @@
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
+## Warp 演示
+
+2026-10-07 在 Warp 中实际运行 Codex CLI，工作目录为 `korean-humanizer`。请求、标题和说明使用英语，原文和修改后的邮件使用韩语。生成的响应未经后期改写。
+
+[30 秒视频](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/korean-humanizer-warp-demo-30s.mp4) · [请求截图](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/01-request.png) · [完整结果截图](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/02-result.png)
+
+录制使用本地开发快照，与正式版本及公开 main 不同。视频保持原始播放速度；参阅[录制信息和文件哈希](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json)。
+
 ## 30 秒试用
 
 把 [`PROMPT.short.md`](PROMPT.short.md) 复制到你的 LLM 或 agent instructions 中，然后输入：

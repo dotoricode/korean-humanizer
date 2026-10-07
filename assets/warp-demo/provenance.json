@@ -1,0 +1,39 @@
+{
+  "capture_type": "Actual Warp window footage and native screenshots; no simulated interface",
+  "model": "gpt-6.1-sol",
+  "mode": "codex exec",
+  "language": "English request, headings, explanations and guidance; original and revised email in Korean",
+  "skill_source_sha256": {
+    "SKILL.md": "52a89c4d20a23df637541a0ea54b21108d0d51106e7ce17f9bd229c72946a519",
+    "references/ko-ai-signals.md": "65d720f8d0e68c739bb567244fec3f898864906c59b9d3a71347c6fe4a5eb017"
+  },
+  "response_sha256": "776d8baa68db06c5f9270149c538eb3373da90843e86eb9b01e2bff0e483cb7c",
+  "response_postprocessed": false,
+  "video_edit": "First 30 seconds, normal speed, resolution conversion only",
+  "audio": false,
+  "video_verified": {
+    "duration_seconds": 30,
+    "width": 1920,
+    "height": 1254,
+    "codec": "h264",
+    "full_decode": true
+  },
+  "recorded_on": "2026-10-07",
+  "working_directory_name": "korean-humanizer",
+  "source_status": "Local development snapshot; not a tagged release or the public main revision",
+  "base_commit": "93580567d4c965024e5b9eb1fb96ace3e7b45907",
+  "files": {
+    "01-request.png": {
+      "bytes": 277256,
+      "sha256": "28a596e49540015d2068f6c24dd6b395319cb129b69d5bd0902e8442f84b9c9d"
+    },
+    "02-result.png": {
+      "bytes": 399361,
+      "sha256": "33757fb8cb92d1c41de1c2205dcdab979bed3315aaa090ef2b78350bca95a0d9"
+    },
+    "korean-humanizer-warp-demo-30s.mp4": {
+      "bytes": 683014,
+      "sha256": "2ed8c9f0f5ad50a62a94bc89009266b5ba5b41b1e008c90b161a0531e0e59af9"
+    }
+  }
+}
