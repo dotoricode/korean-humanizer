@@ -20,6 +20,8 @@
 
 [전체 인터랙티브 녹화 (MP4, 45초)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final.mp4)도 공유합니다. 위의 30초 영상과 별도로 녹화한 파일입니다. 원본 MOV의 영상은 재인코딩·잘라내기·속도 변경 없이 MP4로 옮겼습니다.
 
+[부드러운 확대·축소를 적용한 15초 데모](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-15s-zoom.mp4)입니다. 인터랙티브 원본의 처음 15초를 원래 속도로 보여줍니다.
+
 ## 바로 써보기
 
 설치 없이 쓰려면 [짧은 프롬프트](PROMPT.short.md)를 사용하는 LLM의 지침 또는 첫 메시지에 붙여 넣고 아래처럼 요청하세요. 더 자세한 규칙은 [전체 프롬프트](PROMPT.md)에 있습니다.

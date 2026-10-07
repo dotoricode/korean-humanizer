@@ -24,6 +24,8 @@ Recorded using a local development snapshot, not a tagged release or the public 
 
 [Full interactive recording (MP4, 45 seconds)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final.mp4). This is a separate recording from the 30-second video above. The original MOV was remuxed to MP4 without re-encoding, trimming or changing playback speed.
 
+[15-second demo with smooth zoom](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-15s-zoom.mp4): the first 15 seconds of the interactive recording at original speed, with gentle zoom in/out.
+
 ## Recorded model comparison
 
 These are first final responses from native `/korean-humanizer` and `$korean-humanizer` calls on 2026-10-01. The request contains no injected skill/catalog text or answer hints. Outputs were not rewritten after the response; diff blocks extract only the response bodies. Both CLIs selected `medium` effort.

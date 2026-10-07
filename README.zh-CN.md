@@ -21,6 +21,8 @@
 
 [完整交互录屏（MP4，45 秒）](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final.mp4)。这是与上述 30 秒视频分开录制的文件。原始 MOV 转封装为 MP4，未重新编码、裁剪或改变播放速度。
 
+[带平滑缩放的 15 秒演示](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-15s-zoom.mp4)：以原始速度播放交互录屏的前 15 秒，并添加轻柔的放大和缩小效果。
+
 ## 30 秒试用
 
 把 [`PROMPT.short.md`](PROMPT.short.md) 复制到你的 LLM 或 agent instructions 中，然后输入：

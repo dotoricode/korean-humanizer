@@ -59,6 +59,22 @@
       "height": 1898,
       "codec": "h264",
       "full_decode": true
+    },
+    "warp-demo-final-15s-zoom.mp4": {
+      "source": "warp-demo-final.mp4",
+      "source_interval_seconds": [
+        0,
+        15
+      ],
+      "playback_speed": 1,
+      "duration_seconds": 15,
+      "width": 1920,
+      "height": 1254,
+      "fps": 30,
+      "bytes": 1786778,
+      "sha256": "a7b8d6bffef33abf8e77fc1df96e843b356ede8d5ddaeb42454a6b76a6e6d2a3",
+      "visual_edit": "Smooth cosine zoom from 90% to 100% and back to 90%; full terminal remains visible; no output text edits",
+      "full_decode": true
     }
   }
 }
