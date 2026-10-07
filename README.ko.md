@@ -18,7 +18,7 @@
 
 촬영에는 태그 출시본이나 공개 main과 다른 로컬 개발본을 사용했습니다. 영상은 원래 속도를 유지합니다. [촬영 정보와 파일 해시](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json)에서 사용한 소스를 확인할 수 있습니다.
 
-[원본 인터랙티브 녹화 (MOV, 45초)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-original.mov)도 공유합니다. 위의 30초 영상과 별도로 녹화한 파일이며 변환 없이 업로드했습니다.
+[전체 인터랙티브 녹화 (MP4, 45초)](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final.mp4)도 공유합니다. 위의 30초 영상과 별도로 녹화한 파일입니다. 원본 MOV의 영상은 재인코딩·잘라내기·속도 변경 없이 MP4로 옮겼습니다.
 
 ## 바로 써보기
 

@@ -46,6 +46,19 @@
       "mode": "Interactive Codex CLI",
       "relationship": "Separate original recording; not the source of the 30-second exec video",
       "modified_for_upload": false
+    },
+    "warp-demo-final.mp4": {
+      "bytes": 5518061,
+      "sha256": "0feecd534854d8a6f4c9bece21d8da9a7a2e554ca644702e98bdccec40ccd446",
+      "source": "warp-demo-final-original.mov",
+      "conversion": "MP4 container remux with stream copy and faststart; no video re-encoding, trimming or speed change",
+      "video_stream_sha256": "1441721ed9e1222dd6aa10f5dc4fde27aad51cdbce70e4af41879859d1aca14a",
+      "video_stream_matches_original": true,
+      "container_duration_seconds": 45.033333,
+      "width": 2906,
+      "height": 1898,
+      "codec": "h264",
+      "full_decode": true
     }
   }
 }

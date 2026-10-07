@@ -19,7 +19,7 @@
 
 录制使用本地开发快照，与正式版本及公开 main 不同。视频保持原始播放速度；参阅[录制信息和文件哈希](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/provenance.json)。
 
-[原始交互录屏（MOV，45 秒）](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final-original.mov)。这是与上述 30 秒视频分开录制的文件，上传前未进行转换。
+[完整交互录屏（MP4，45 秒）](https://github.com/dotoricode/korean-humanizer/blob/dotoricode/docs-warp-demo-media/assets/warp-demo/warp-demo-final.mp4)。这是与上述 30 秒视频分开录制的文件。原始 MOV 转封装为 MP4，未重新编码、裁剪或改变播放速度。
 
 ## 30 秒试用
 
