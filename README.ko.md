@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-마지막 출시 버전은 **v1.0.1**입니다. 이 문서는 main의 개선 사항을 설명하며 다음 버전 번호는 미정입니다. [버전 정책](docs/STABILITY-PROMISE.md)과 [변경 안내](docs/UPGRADE-NOTES.md)를 확인하세요.
+최신 출시 버전은 **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**입니다. 의미를 보존하는 간결화 규칙과 기존 main의 개선 사항을 포함합니다. [버전 정책](docs/STABILITY-PROMISE.md)과 [변경 안내](docs/UPGRADE-NOTES.md)를 확인하세요.
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -49,7 +49,7 @@ npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent code
 
 설치한 프로젝트에서 새 대화를 시작합니다. Codex에서는 `$korean-humanizer`, Claude Code에서는 `/korean-humanizer` 뒤에 교정할 원문을 전달합니다. 설치 목록은 `npx skills list`로 확인합니다.
 
-PR #5는 머지되었습니다. 기본 브랜치는 v1.0.1 이후 개선을 포함하며 마지막 정식 태그는 v1.0.1입니다. 설치·첫 호출 검사와 출력 품질 검사는 구분합니다. 남은 출시 검사는 `ROADMAP.md`에 기록합니다.
+v1.1.0에는 PR #5·#6·#8의 병합된 개선 사항이 포함됩니다. 설치·첫 호출 검사와 출력 품질 검사는 구분합니다. 남은 출시 검사는 `ROADMAP.md`에 기록합니다.
 
 ## 어떻게 다듬나요?
 

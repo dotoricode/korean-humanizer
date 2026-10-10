@@ -7,7 +7,7 @@
 [English](README.md) · [한국어](README.ko.md)
 
 
-最新正式版本是 **v1.0.1**。本文说明 main 的改进内容，下一版本号尚未确定。请参阅[版本政策](docs/STABILITY-PROMISE.md)和[变更说明](docs/UPGRADE-NOTES.md)。
+最新正式版本是 **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**，包含保留原意的精简规则和 main 分支的改进。请参阅[版本政策](docs/STABILITY-PROMISE.md)和[变更说明](docs/UPGRADE-NOTES.md)。
 
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
@@ -55,7 +55,7 @@ npx skills add dotoricode/korean-humanizer --skill korean-humanizer --agent code
 
 在该项目中开始新对话：Codex 使用 `$korean-humanizer`，Claude Code 使用 `/korean-humanizer`。通过 `npx skills list` 查看已安装技能。
 
-PR #5 已合并。默认分支包含 v1.0.1 之后的改进，最新正式标签仍为 v1.0.1。安装和首次调用检查与输出质量评估分开；剩余发布检查记录在 `ROADMAP.md`。
+v1.1.0 包含 PR #5、#6 和 #8 已合并的改进。安装和首次调用检查与输出质量评估分开；剩余发布检查记录在 `ROADMAP.md`。
 
 然后直接请求：
 

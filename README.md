@@ -8,7 +8,7 @@
 [![Patterns](https://img.shields.io/badge/patterns-137%2B-brightgreen.svg)](references/ko-ai-signals.md)
 [![Domains](https://img.shields.io/badge/domains-12-brightgreen.svg)](references/ko-ai-signals.md#부록-e-도메인별-카테고리-우선-적용)
 
-The latest release is **v1.0.1**. This document describes improvements on main; the next version is undecided. See the [version policy](docs/STABILITY-PROMISE.md) and [change notes](docs/UPGRADE-NOTES.md).
+The latest release is **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**. It includes meaning-preserving concision rules and the improvements on main since the documented v1.0.1 version. See the [version policy](docs/STABILITY-PROMISE.md) and [change notes](docs/UPGRADE-NOTES.md).
 
 The catalog provides context-dependent editing candidates, not words to replace in every sentence. Preserve facts, tone, uncertainty and conditions; leave already natural text unchanged.
 
@@ -82,7 +82,7 @@ This installs the public default branch as files in `.agents/skills/korean-human
 
 Start a new conversation in that project and invoke `$korean-humanizer` in Codex or `/korean-humanizer` in Claude Code, followed by your Korean text. List installed skills with `npx skills list`.
 
-PR #5 is merged. The default branch includes improvements since v1.0.1; the latest tagged release is v1.0.1. Installation and a first invocation are checked separately from output quality; see `ROADMAP.md` for remaining release checks.
+The v1.1.0 release includes the merged improvements from PR #5, #6 and #8. Installation and a first invocation are checked separately from output quality; see `ROADMAP.md` for remaining release checks.
 
 **Other LLMs:** paste [`PROMPT.short.md`](PROMPT.short.md) as a system prompt, or use the full [`PROMPT.md`](PROMPT.md).
 
