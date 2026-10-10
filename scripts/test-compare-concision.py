@@ -97,6 +97,7 @@ class ComparisonTests(unittest.TestCase):
             self.assertEqual(runs["candidate"]["response"], "partial response")
             self.assertEqual(runs["candidate"]["errors"][0]["type"], "timeout")
             self.assertEqual(runs["candidate"]["stderr"], "timeout")
+            self.assertEqual(runs["candidate"]["stdout"], stdout)
             self.assertEqual(runs["candidate"]["command_results"][0]["exit_code"], 0)
             self.assertEqual(runs["baseline"]["prompt"], runs["candidate"]["prompt"])
 

@@ -114,6 +114,7 @@ def run(case, variant, source, root):
             "command_results": command_results,
             "usage": [e.get("usage") for e in events if e.get("type") == "turn.completed"],
             "errors": failures + [e for e in events if e.get("type") in ("error", "turn.failed")],
+            "stdout": result.stdout if result.returncode else "",
             "stderr": result.stderr if result.returncode else ""}
     print(f'{variant} {case["id"]}: exit={result.returncode}, '
           f'format={item["format_checks_passed"]}, {item["seconds"]}s', flush=True)
