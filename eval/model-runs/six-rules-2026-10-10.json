@@ -100,7 +100,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n지난주부터 원인을 계속 조사하고 있습니다. 진행 상황은 매주 수요일에 공유합니다. 현장에는 아직 확인하지 못한 자료가 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- 조사 중이라는 두 문장을 합쳐 시작 시점과 현재 진행 상태를 함께 담았습니다.\n- “공유하고 있습니다”를 “공유합니다”로 줄여 정기적인 공유를 간결하게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -117,7 +117,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "ongoing-existence",
@@ -128,7 +130,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n지난주부터 원인을 계속 조사하고 있습니다. 진행 상황은 매주 수요일에 공유합니다. 현장에는 아직 확인하지 못한 자료가 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- 첫 문장과 마지막 문장을 합쳐 조사 시작 시점과 현재까지 이어지는 상태를 함께 담았습니다.\n- “공유하고 있습니다” → “공유합니다”: 매주 반복하는 일이라 간결하게 다듬었습니다.\n- “확인하지 못한 자료가 있습니다”는 자료의 존재와 미확인 상태를 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -145,7 +147,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 3
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "noun-negation",
@@ -156,7 +160,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n지금은 시간이 필요합니다. 속도보다 정확성이 중요합니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 건 첫 번째 방법입니다.\n\n## 주요 변경 (최대 5개)\n\n- “지금 필요한 것은 시간입니다” → “지금은 시간이 필요합니다”로 간결하게 다듬었습니다.\n- “중요한 것은 속도보다 정확성이라는 것입니다” → “속도보다 정확성이 중요합니다”로 반복되는 표현을 줄였습니다.\n- “제가 말한 것은” → “제가 말한 건”으로 자연스럽게 바꿨습니다.\n- “모두가 … 동의한 것은 아닙니다”는 전원이 동의하지는 않았다는 뜻을 보존했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -173,7 +177,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 4
+      "change_entry_count": 4,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "noun-negation",
@@ -184,7 +190,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n지금 필요한 것은 시간입니다. 속도보다 정확성이 중요합니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 것은 첫 번째 방법입니다.\n\n## 주요 변경 (최대 5개)\n\n- “중요한 것은 속도보다 정확성이라는 것입니다” → “속도보다 정확성이 중요합니다”로 간결하게 다듬었습니다.\n- 나머지 문장의 ‘것’은 강조·부분 부정·대상 지칭을 담고 있어 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -201,7 +207,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "possibility",
@@ -212,7 +220,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 누전이 생기는 것은 아닙니다. 실제 누전 사례는 아직 확인하지 않았습니다.\n\n## 주요 변경 (최대 5개)\n\n- “이런 문제” → “누전”: 무엇을 뜻하는지 명확히 했습니다.\n- “확인한 것은 아닙니다” → “확인하지 않았습니다”: 가능성과 실제 사례 확인 여부를 구분하면서 문장을 간결하게 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -229,7 +237,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "possibility",
@@ -240,7 +250,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 이런 문제가 생기지는 않습니다. 아직 실제 누전 사례는 확인하지 않았습니다.\n\n## 주요 변경 (최대 5개)\n\n- “생기는 것은 아닙니다” → “생기지는 않습니다”로 간결하게 다듬었습니다.\n- “확인한 것은 아닙니다” → “확인하지 않았습니다”로 풀어 썼습니다.\n- “누전을 일으킬 수도 있습니다”는 가능성을 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -257,7 +267,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 3
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "ability-permission",
@@ -268,7 +280,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n저는 이제 혼자서도 이 장비를 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물 수 있습니다. 다만 어린이는 보호자의 동의가 없으면 체험에 참여할 수 없습니다.\n\n## 주요 변경 (최대 5개)\n\n- 마지막 문장의 ‘어린이는’을 앞으로 옮겨 안내 대상을 먼저 제시했습니다.\n- ‘할 수 있습니다 / 없습니다’는 능력과 이용 허용 여부를 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -285,7 +297,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "ability-permission",
@@ -296,7 +310,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n저는 이제 이 장비를 혼자서도 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물러도 됩니다. 다만 어린이는 보호자의 동의가 없으면 체험에 참여할 수 없습니다.\n\n## 주요 변경 (최대 5개)\n\n- 첫 문장과 마지막 문장의 어순을 다듬어 읽기 편하게 정리했습니다.\n- “머물 수 있습니다” → “머물러도 됩니다”: 이용 허용의 의미를 더 분명하게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -313,7 +327,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "redundant-ending",
@@ -324,7 +340,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n이번 모임은 토요일 오후 2시에 시작합니다. 필기구를 가져오시면 됩니다.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 모임 시간과 준비물 안내를 한 번씩만 전달하도록 정리했습니다.\n- 불필요한 연결어와 “이상으로 … 안내를 마치도록 하겠습니다”라는 마무리를 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -341,7 +357,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "redundant-ending",
@@ -352,7 +370,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n이번 모임은 토요일 오후 2시에 시작합니다. 필기구를 가져오시면 됩니다.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 모임 시간과 준비물 안내를 합쳤습니다.\n- 불필요한 “또한”, “결론적으로”와 상투적인 마무리 문장을 덜어냈습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -369,7 +387,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "voice-connectives",
@@ -380,7 +400,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n비가 와서 버스를 탔어요. 하지만 늦지는 않았어요. 친구는 먼저 와 있었어요. 나는 잠깐 말을 멈췄어요.\n\n괜찮아요. 그런 날도 있죠.\n\n## 주요 변경 (최대 5개)\n\n- “먼저 도착해 있었어요” → “먼저 와 있었어요”: 같은 뜻을 조금 더 편안하게 표현했습니다.\n- “하지만”과 해요체는 유지했습니다. 대조와 원문의 다정한 말투를 살렸습니다.\n- 마지막 두 문장은 문단을 나눠 짧은 여운을 남겼습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -397,7 +417,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 3
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "voice-connectives",
@@ -408,7 +430,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n비가 와서 버스를 탔지만 늦지는 않았어요. 친구는 먼저 도착해 있었어요. 나는 잠깐 말을 멈췄어요.\n\n괜찮아요. 그런 날도 있죠.\n\n## 주요 변경 (최대 5개)\n\n- 첫 두 문장을 ‘~탔지만’으로 연결해 대조를 살리면서 흐름을 다듬었습니다.\n- “괜찮아요. 그런 날도 있죠.”는 짧은 호흡과 여운을 살려 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -425,7 +447,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "requested-summary",
@@ -436,7 +460,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n신청 마감은 금요일 오후 5시입니다. 신청서를 제출한 뒤 확인 메일을 기다려 주세요.\n\n정리하면, 금요일 오후 5시까지 신청서를 제출하고, 그다음 확인 메일을 기다려 주세요.\n\n## 주요 변경 (최대 5개)\n\n- “신청은 … 마감됩니다” → “신청 마감은 …입니다”로 간결하게 다듬었습니다.\n- 끝의 요약과 다음 행동 안내는 유지하고, 제출 후 메일을 기다리는 순서가 드러나도록 정리했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -453,7 +477,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "requested-summary",
@@ -464,7 +490,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n신청은 금요일 오후 5시에 마감됩니다.\n\n정리하면, 금요일 오후 5시까지 신청서를 제출하고 확인 메일을 기다려 주세요.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 제출 후 안내를 마지막 문장에 합쳐, 요약과 다음 행동 안내를 남겼습니다.\n- “기다리시면 됩니다”를 “기다려 주세요”로 바꿔 행동 안내를 직접적으로 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -481,7 +507,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "heldout-modality",
@@ -492,7 +520,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 안에 뭐가 들었는지 알 수 있을지는 모르겠어요. 저는 뜻밖의 선물을 기대하고 있어요.\n\n## 주요 변경 (최대 5개)\n\n- “내용물을 알아볼” → “안에 뭐가 들었는지 알”: 일상적인 말로 풀었습니다.\n- “제가 기대하는 것은 뜻밖의 선물이에요” → “저는 뜻밖의 선물을 기대하고 있어요”: 기대하는 마음을 자연스럽게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -509,7 +537,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 2
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     },
     {
       "case_id": "heldout-modality",
@@ -520,7 +550,7 @@
       "exit_code": 0,
       "response": "## Humanized\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 뭐가 들어 있는지 알아볼 수 있을지는 모르겠어요. 저는 뜻밖의 선물을 기대해요.\n\n## 주요 변경 (최대 5개)\n\n- “내용물을” → “뭐가 들어 있는지”: 일상적인 말로 다듬었어요.\n- “제가 기대하는 것은 뜻밖의 선물이에요” → “저는 뜻밖의 선물을 기대해요”: 뜻을 유지하면서 문장을 간결하게 바꿨어요.\n- “놓여 있어요”와 “알아볼 수 있을지는 모르겠어요”는 상태와 불확실성을 나타내므로 유지했어요.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
       "format_checks_passed": true,
-      "catalog_read_observed": true,
+      "catalog_read_observed": null,
       "tool_commands": [
         "/bin/zsh -lc 'cat ./skill/SKILL.md'",
         "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
@@ -537,7 +567,9 @@
       ],
       "errors": [],
       "stderr": "",
-      "change_entry_count": 3
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
     }
   ],
   "configured_profile": {

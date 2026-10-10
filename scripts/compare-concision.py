@@ -6,12 +6,13 @@ and structural checks; semantic preservation still requires reading the results.
 """
 
 import argparse
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import hashlib
 import json
 import os
 from pathlib import Path
 import re
+import shlex
 import shutil
 import subprocess
 import tempfile
@@ -32,6 +33,37 @@ def snapshot(source, target):
             for p in sorted(target.rglob("*")) if p.is_file()}
 
 
+def check_format(response):
+    changes = response.split("## 주요 변경 (최대 5개)")
+    entries = list(re.finditer(r"^([ \t]*)([-+*]|\d+[.)])\s+", changes[1], re.M)) if len(changes) == 2 else []
+    valid = (response.startswith("## Humanized\n") and len(changes) == 2
+             and 0 < len(entries) <= 5
+             and all(not e[1] and e[2] == "-" for e in entries)
+             and response.rstrip().endswith(
+                 "*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*"))
+    return valid, len(entries)
+
+
+def catalog_was_read(item, work):
+    if item.get("exit_code") != 0 or not item.get("aggregated_output", "").strip():
+        return False
+    try:
+        args = shlex.split(item["command"])
+        if len(args) == 3 and Path(args[0]).name in ("sh", "bash", "zsh") and args[1] in ("-c", "-lc"):
+            args = shlex.split(args[2])
+    except (ValueError, KeyError):
+        return False
+    if args[:2] == ["cat", "--"]:
+        args.pop(1)
+    if len(args) != 2 or args[0] != "cat":
+        return False
+    catalog = work / "skill/references/ko-ai-signals.md"
+    if (work / args[1]).resolve() != catalog.resolve():
+        return False
+    headings = catalog.read_text(encoding="utf-8").splitlines()
+    return bool(headings) and headings[0] in item["aggregated_output"]
+
+
 def run(case, variant, source, root):
     work = root / (case["id"] + "-" + variant)
     work.mkdir()
@@ -45,8 +77,18 @@ def run(case, variant, source, root):
                "--sandbox", "read-only", "--skip-git-repo-check",
                "--cd", str(work), "--output-last-message", str(output), "-"]
     start = time.monotonic()
-    result = subprocess.run(command, input=prompt, text=True, encoding="utf-8",
-                            capture_output=True, timeout=600)
+    failures = []
+    try:
+        result = subprocess.run(command, input=prompt, text=True, encoding="utf-8",
+                                capture_output=True, timeout=600)
+    except subprocess.TimeoutExpired as exc:
+        # TimeoutExpired can carry bytes even with text=True.
+        decode = lambda value: value.decode("utf-8", errors="replace") if isinstance(value, bytes) else (value or "")
+        result = subprocess.CompletedProcess(command, 124, decode(exc.stdout), decode(exc.stderr))
+        failures.append({"type": "timeout", "message": "Codex exceeded the 600-second timeout."})
+    except OSError as exc:
+        result = subprocess.CompletedProcess(command, 127, "", str(exc))
+        failures.append({"type": "launch_error", "message": str(exc)})
     events = []
     for line in result.stdout.splitlines():
         try:
@@ -54,23 +96,24 @@ def run(case, variant, source, root):
         except json.JSONDecodeError:
             pass
     response = output.read_text(encoding="utf-8") if output.exists() else ""
-    commands = [event["item"]["command"] for event in events
-                if event.get("type") == "item.completed"
-                and event.get("item", {}).get("type") == "command_execution"]
-    changes = response.split("## 주요 변경 (최대 5개)", 1)
-    count = len(re.findall(r"^- ", changes[1], flags=re.M)) if len(changes) == 2 else 0
+    executions = [event["item"] for event in events
+                  if event.get("type") == "item.completed"
+                  and event.get("item", {}).get("type") == "command_execution"]
+    command_results = [{"command": e["command"], "exit_code": e.get("exit_code"),
+                        "aggregated_output": e.get("aggregated_output", "")}
+                       for e in executions]
+    valid, count = check_format(response)
     item = {"case_id": case["id"], "variant": variant,
             "prompt": prompt, "prompt_sha256": sha(prompt.encode()),
             "seconds": round(time.monotonic() - start, 2),
             "exit_code": result.returncode, "response": response,
-            "format_checks_passed": response.startswith("## Humanized\n")
-                and len(changes) == 2 and count <= 5
-                and "*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*" in response,
+            "format_checks_passed": valid,
             "change_entry_count": count,
-            "catalog_read_observed": any("ko-ai-signals.md" in c for c in commands),
-            "tool_commands": commands,
+            "catalog_read_observed": any(catalog_was_read(e, work) for e in command_results),
+            "tool_commands": [e["command"] for e in command_results],
+            "command_results": command_results,
             "usage": [e.get("usage") for e in events if e.get("type") == "turn.completed"],
-            "errors": [e for e in events if e.get("type") in ("error", "turn.failed")],
+            "errors": failures + [e for e in events if e.get("type") in ("error", "turn.failed")],
             "stderr": result.stderr if result.returncode else ""}
     print(f'{variant} {case["id"]}: exit={result.returncode}, '
           f'format={item["format_checks_passed"]}, {item["seconds"]}s', flush=True)
@@ -99,17 +142,27 @@ def main():
         manifests = {v: snapshot(src.resolve(), sources[v]) for v, src in
                      (("baseline", args.baseline), ("candidate", args.candidate))}
         tasks = [(c, v, sources[v], root) for c in cases for v in sources]
+        runs = []
+        record = {"baseline_commit": args.baseline_commit,
+            "codex_version": subprocess.check_output(["codex", "--version"], text=True).strip(),
+            "configured_profile": profile,
+            "invocation": "Fresh codex exec context; active model/config, read-only sandbox; identical relative skill path and prompt per pair; no output postprocessing.",
+            "source_manifests": manifests, "cases": cases, "runs": runs}
         with ThreadPoolExecutor(max_workers=args.jobs) as pool:
-            runs = list(pool.map(lambda task: run(*task), tasks))
-    record = {"baseline_commit": args.baseline_commit,
-        "codex_version": subprocess.check_output(["codex", "--version"], text=True).strip(),
-        "configured_profile": profile,
-        "invocation": "Fresh codex exec context; active model/config, read-only sandbox; identical relative skill path and prompt per pair; no output postprocessing.",
-        "source_manifests": manifests, "cases": cases, "runs": runs}
-    for case in cases:
-        pair = [r for r in runs if r["case_id"] == case["id"]]
-        assert len(pair) == 2 and pair[0]["prompt"] == pair[1]["prompt"]
-    args.output.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            futures = {pool.submit(run, *task): task for task in tasks}
+            for future in as_completed(futures):
+                case, variant, _, _ = futures[future]
+                try:
+                    runs.append(future.result())
+                except Exception as exc:
+                    runs.append({"case_id": case["id"], "variant": variant,
+                                 "exit_code": 1, "response": "",
+                                 "errors": [{"type": type(exc).__name__, "message": str(exc)}]})
+                with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=args.output.parent,
+                                                 delete=False) as checkpoint:
+                    json.dump(record, checkpoint, ensure_ascii=False, indent=2)
+                    checkpoint.write("\n")
+                Path(checkpoint.name).replace(args.output)
     if any(r["exit_code"] or not r["response"] for r in runs):
         raise SystemExit("One or more runs failed; inspect the recorded errors.")
 
