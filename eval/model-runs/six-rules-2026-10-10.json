@@ -1,0 +1,581 @@
+{
+  "baseline_commit": "93580567d4c965024e5b9eb1fb96ace3e7b45907",
+  "codex_version": "codex-cli 0.162.0",
+  "invocation": "Fresh codex exec context; active model/config, read-only sandbox; identical relative skill path and prompt per pair; no output postprocessing.",
+  "source_manifests": {
+    "baseline": {
+      "LICENSE": "7b9764f9f5d102eaccda9e434178a197607bfab94698811f7e6bd6673c10d3bd",
+      "PROMPT.md": "13fc12452f2050cc74cca5c7f42d9c14098ff6787c13ac643ee6c32d7bec49e4",
+      "PROMPT.short.md": "b12f0ad5b6546fefdcf52e8523c5e8b67192b69b108e529c16dd4900217fc222",
+      "SKILL.md": "62c45a4860e8482001232eb4edc49d63ced8d8695314bdf3dee0d61beab71075",
+      "examples/before-after.md": "54e6d408dc494747fa73d638541b7de54fdb984a8a5ea68b828095dd04390ebb",
+      "examples/brand-voice-essayist.md": "7ffd8a200e112f37cdbb3aad0e74471200bf67c8ca910c54450f69c219eeb93b",
+      "examples/brand-voice-template.md": "216ade545560c8b5475ade8926cc432c68fbaa7c9443f7152461624cdff85fe5",
+      "examples/brand-voice-toss-style.md": "ceebfe19b71715dbef41fd9d865b28939531765fc2f895c770d812e69bd401b2",
+      "examples/domain-academic.md": "c4bd963456d069c92ff89d425791e049ec858440c764f13f58180a77bd59d7ac",
+      "examples/domain-b2b-message.md": "b3cf8cdb903915512b7940e0b02d0cadb6d8ca4f2a617ce3df2591cbb2285e16",
+      "examples/domain-chat.md": "51a531fbf4b055e45cf436dfa972f3efaa3ab51db9c195969a65477ab67dd5ac",
+      "examples/domain-github-issue.md": "4ef1fe9933578fefd3b287d42f3341bc0cd3976033de55558a635fe67360ba10",
+      "examples/domain-news.md": "82759cfd71be2fe8a4181bfcd673f4b91f687c07420eacf663d38e6e7ff6d26c",
+      "examples/domain-review.md": "0d12c35249cdce4c77b56fe12cb320fd284a89290421c4b4663ed740afec5e4a",
+      "examples/personal-list.md": "7ebd44f606f1f4194a2999ac6488bc574aaf702a0d7a7f6e3cf62648afaeb855",
+      "references/ko-ai-signals.md": "056c2f3e9e83816b06796e6c8b64c9e1af62c0b2149a0ca82dbb4330466fb221"
+    },
+    "candidate": {
+      "LICENSE": "7b9764f9f5d102eaccda9e434178a197607bfab94698811f7e6bd6673c10d3bd",
+      "PROMPT.md": "014a41583deed680a08df4cc9e4082bcd95a0e5ef1a0d54fff3a16ec0541c982",
+      "PROMPT.short.md": "6dc8a2522063baa048a803e14a537e07ce4c4004929b9eb63b7dcf6f11ae783c",
+      "SKILL.md": "0f037e6fbc0721d2d23febd34b9c09c771c5c6837e56842d15425749e7bc8950",
+      "examples/before-after.md": "54e6d408dc494747fa73d638541b7de54fdb984a8a5ea68b828095dd04390ebb",
+      "examples/brand-voice-essayist.md": "7ffd8a200e112f37cdbb3aad0e74471200bf67c8ca910c54450f69c219eeb93b",
+      "examples/brand-voice-template.md": "216ade545560c8b5475ade8926cc432c68fbaa7c9443f7152461624cdff85fe5",
+      "examples/brand-voice-toss-style.md": "ceebfe19b71715dbef41fd9d865b28939531765fc2f895c770d812e69bd401b2",
+      "examples/domain-academic.md": "c4bd963456d069c92ff89d425791e049ec858440c764f13f58180a77bd59d7ac",
+      "examples/domain-b2b-message.md": "b3cf8cdb903915512b7940e0b02d0cadb6d8ca4f2a617ce3df2591cbb2285e16",
+      "examples/domain-chat.md": "51a531fbf4b055e45cf436dfa972f3efaa3ab51db9c195969a65477ab67dd5ac",
+      "examples/domain-github-issue.md": "4ef1fe9933578fefd3b287d42f3341bc0cd3976033de55558a635fe67360ba10",
+      "examples/domain-news.md": "82759cfd71be2fe8a4181bfcd673f4b91f687c07420eacf663d38e6e7ff6d26c",
+      "examples/domain-review.md": "0d12c35249cdce4c77b56fe12cb320fd284a89290421c4b4663ed740afec5e4a",
+      "examples/personal-list.md": "7ebd44f606f1f4194a2999ac6488bc574aaf702a0d7a7f6e3cf62648afaeb855",
+      "references/ko-ai-signals.md": "52cff5cc076839f9b39b44259a4768540ff93b88932cb4c9be8ba39a3f127b1d"
+    }
+  },
+  "cases": [
+    {
+      "id": "ongoing-existence",
+      "request": "업무 공유 글을 자연스럽게 다듬어줘.",
+      "input": "현재 원인을 조사하고 있습니다. 매주 수요일에는 진행 상황을 공유하고 있습니다. 현장에는 아직 확인하지 못한 자료가 있습니다. 조사는 지난주부터 계속되고 있습니다.",
+      "review": "현재 진행, 정기적 반복, 자료의 존재, 지난주부터 지속되는 상태 보존"
+    },
+    {
+      "id": "noun-negation",
+      "request": "블로그 글을 자연스럽게 다듬어줘.",
+      "input": "지금 필요한 것은 시간입니다. 중요한 것은 속도보다 정확성이라는 것입니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 것은 첫 번째 방법입니다.",
+      "review": "강조·대상 지칭·부분 부정과 첫 번째 방법 보존; 불필요한 설명형 종결 축소"
+    },
+    {
+      "id": "possibility",
+      "request": "생활 정보 글을 자연스럽게 다듬어줘.",
+      "input": "오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 이런 문제가 생기는 것은 아닙니다. 아직 실제 누전 사례를 확인한 것은 아닙니다.",
+      "review": "가능성을 실제 발생 사례로 바꾸지 않기; 전체가 아닌 범위와 미확인 상태 보존"
+    },
+    {
+      "id": "ability-permission",
+      "request": "이용 안내 글을 자연스럽게 다듬어줘.",
+      "input": "저는 이제 혼자서도 이 장비를 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물 수 있습니다. 다만 보호자의 동의가 없으면 어린이는 체험에 참여할 수 없습니다.",
+      "review": "능력·체류 허용·동의 없을 때 참여 금지·오후 6시 보존"
+    },
+    {
+      "id": "redundant-ending",
+      "request": "소식지 안내문을 자연스럽게 다듬어줘.",
+      "input": "이번 모임은 토요일 오후 2시에 시작합니다. 모임이 시작되는 시각은 토요일 오후 2시라는 것입니다. 또한 준비물은 필기구입니다. 결론적으로 토요일 오후 2시에 필기구를 가져오시면 됩니다. 이상으로 모임 시간과 준비물에 대한 안내를 마치도록 하겠습니다.",
+      "review": "날짜·시각·준비물 보존; 반복·내용 없는 마무리 축소"
+    },
+    {
+      "id": "voice-connectives",
+      "request": "에세이를 자연스럽게 다듬어줘.",
+      "input": "비가 와서 버스를 탔어요. 하지만 늦지는 않았어요. 친구는 먼저 도착해 있었어요. 나는 잠깐 말을 멈췄어요. 괜찮아요. 그런 날도 있죠.",
+      "review": "인과·대조·도착한 결과 상태, 침묵의 장면과 공감·여운 보존; 원문에 없는 서두름 추가 금지"
+    },
+    {
+      "id": "requested-summary",
+      "request": "뉴스레터 글을 자연스럽게 다듬어줘. 끝의 요약과 다음 행동 안내는 남겨줘.",
+      "input": "신청은 금요일 오후 5시에 마감됩니다. 신청서를 제출한 뒤 확인 메일을 기다려 주세요. 정리하면, 금요일 오후 5시까지 신청서를 내고 확인 메일을 기다리시면 됩니다.",
+      "review": "사용자가 요구한 끝의 요약·다음 행동과 기한 보존"
+    },
+    {
+      "id": "heldout-modality",
+      "request": "후기 글을 자연스럽게 다듬어줘.",
+      "input": "상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 내용물을 알아볼 수 있을지는 모르겠어요. 제가 기대하는 것은 뜻밖의 선물이에요.",
+      "review": "위치·결과 상태, 아직 열지 않은 상태, 능력의 불확실성·기대·해요체 보존; 교육 예시와 다른 입력"
+    }
+  ],
+  "runs": [
+    {
+      "case_id": "ongoing-existence",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n업무 공유 글을 자연스럽게 다듬어줘.\n\n현재 원인을 조사하고 있습니다. 매주 수요일에는 진행 상황을 공유하고 있습니다. 현장에는 아직 확인하지 못한 자료가 있습니다. 조사는 지난주부터 계속되고 있습니다.",
+      "prompt_sha256": "ecc5300e8d031d6cd69dbdc8c0e2e1a8361bf2f12022095db74e7998c19ae31f",
+      "seconds": 20.39,
+      "exit_code": 0,
+      "response": "## Humanized\n\n지난주부터 원인을 계속 조사하고 있습니다. 진행 상황은 매주 수요일에 공유합니다. 현장에는 아직 확인하지 못한 자료가 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- 조사 중이라는 두 문장을 합쳐 시작 시점과 현재 진행 상태를 함께 담았습니다.\n- “공유하고 있습니다”를 “공유합니다”로 줄여 정기적인 공유를 간결하게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145649,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 401,
+          "reasoning_output_tokens": 125
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "ongoing-existence",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n업무 공유 글을 자연스럽게 다듬어줘.\n\n현재 원인을 조사하고 있습니다. 매주 수요일에는 진행 상황을 공유하고 있습니다. 현장에는 아직 확인하지 못한 자료가 있습니다. 조사는 지난주부터 계속되고 있습니다.",
+      "prompt_sha256": "ecc5300e8d031d6cd69dbdc8c0e2e1a8361bf2f12022095db74e7998c19ae31f",
+      "seconds": 17.61,
+      "exit_code": 0,
+      "response": "## Humanized\n\n지난주부터 원인을 계속 조사하고 있습니다. 진행 상황은 매주 수요일에 공유합니다. 현장에는 아직 확인하지 못한 자료가 있습니다.\n\n## 주요 변경 (최대 5개)\n\n- 첫 문장과 마지막 문장을 합쳐 조사 시작 시점과 현재까지 이어지는 상태를 함께 담았습니다.\n- “공유하고 있습니다” → “공유합니다”: 매주 반복하는 일이라 간결하게 다듬었습니다.\n- “확인하지 못한 자료가 있습니다”는 자료의 존재와 미확인 상태를 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147528,
+          "cached_input_tokens": 114816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 414,
+          "reasoning_output_tokens": 107
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "noun-negation",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n블로그 글을 자연스럽게 다듬어줘.\n\n지금 필요한 것은 시간입니다. 중요한 것은 속도보다 정확성이라는 것입니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 것은 첫 번째 방법입니다.",
+      "prompt_sha256": "efa5277c7937de54249720525512dfa94325a2791d3539e8b5b501860f1e759a",
+      "seconds": 19.55,
+      "exit_code": 0,
+      "response": "## Humanized\n\n지금은 시간이 필요합니다. 속도보다 정확성이 중요합니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 건 첫 번째 방법입니다.\n\n## 주요 변경 (최대 5개)\n\n- “지금 필요한 것은 시간입니다” → “지금은 시간이 필요합니다”로 간결하게 다듬었습니다.\n- “중요한 것은 속도보다 정확성이라는 것입니다” → “속도보다 정확성이 중요합니다”로 반복되는 표현을 줄였습니다.\n- “제가 말한 것은” → “제가 말한 건”으로 자연스럽게 바꿨습니다.\n- “모두가 … 동의한 것은 아닙니다”는 전원이 동의하지는 않았다는 뜻을 보존했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약$/,/''^## 목적$/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145633,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 467,
+          "reasoning_output_tokens": 120
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 4,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "noun-negation",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n블로그 글을 자연스럽게 다듬어줘.\n\n지금 필요한 것은 시간입니다. 중요한 것은 속도보다 정확성이라는 것입니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 것은 첫 번째 방법입니다.",
+      "prompt_sha256": "efa5277c7937de54249720525512dfa94325a2791d3539e8b5b501860f1e759a",
+      "seconds": 17.7,
+      "exit_code": 0,
+      "response": "## Humanized\n\n지금 필요한 것은 시간입니다. 속도보다 정확성이 중요합니다. 그렇다고 모두가 이 방법에 동의한 것은 아닙니다. 제가 말한 것은 첫 번째 방법입니다.\n\n## 주요 변경 (최대 5개)\n\n- “중요한 것은 속도보다 정확성이라는 것입니다” → “속도보다 정확성이 중요합니다”로 간결하게 다듬었습니다.\n- 나머지 문장의 ‘것’은 강조·부분 부정·대상 지칭을 담고 있어 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147504,
+          "cached_input_tokens": 114688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 385,
+          "reasoning_output_tokens": 91
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "possibility",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n생활 정보 글을 자연스럽게 다듬어줘.\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 이런 문제가 생기는 것은 아닙니다. 아직 실제 누전 사례를 확인한 것은 아닙니다.",
+      "prompt_sha256": "4c265e6f190cabc185b0fbfa258f7262e9051a1ec088a4ede48b1047810eb45d",
+      "seconds": 24.66,
+      "exit_code": 0,
+      "response": "## Humanized\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 누전이 생기는 것은 아닙니다. 실제 누전 사례는 아직 확인하지 않았습니다.\n\n## 주요 변경 (최대 5개)\n\n- “이런 문제” → “누전”: 무엇을 뜻하는지 명확히 했습니다.\n- “확인한 것은 아닙니다” → “확인하지 않았습니다”: 가능성과 실제 사례 확인 여부를 구분하면서 문장을 간결하게 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약$/,/''^## 목적$/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145755,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 546,
+          "reasoning_output_tokens": 248
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "possibility",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n생활 정보 글을 자연스럽게 다듬어줘.\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 이런 문제가 생기는 것은 아닙니다. 아직 실제 누전 사례를 확인한 것은 아닙니다.",
+      "prompt_sha256": "4c265e6f190cabc185b0fbfa258f7262e9051a1ec088a4ede48b1047810eb45d",
+      "seconds": 20.09,
+      "exit_code": 0,
+      "response": "## Humanized\n\n오래된 전선은 누전을 일으킬 수도 있습니다. 다만 모든 전선에서 이런 문제가 생기지는 않습니다. 아직 실제 누전 사례는 확인하지 않았습니다.\n\n## 주요 변경 (최대 5개)\n\n- “생기는 것은 아닙니다” → “생기지는 않습니다”로 간결하게 다듬었습니다.\n- “확인한 것은 아닙니다” → “확인하지 않았습니다”로 풀어 썼습니다.\n- “누전을 일으킬 수도 있습니다”는 가능성을 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147579,
+          "cached_input_tokens": 114688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 476,
+          "reasoning_output_tokens": 175
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "ability-permission",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n이용 안내 글을 자연스럽게 다듬어줘.\n\n저는 이제 혼자서도 이 장비를 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물 수 있습니다. 다만 보호자의 동의가 없으면 어린이는 체험에 참여할 수 없습니다.",
+      "prompt_sha256": "3ce1faf29274d9cdf55eaab401ca801dff9838a0f9dafcb7af99ce0e7fbe3b73",
+      "seconds": 17.93,
+      "exit_code": 0,
+      "response": "## Humanized\n\n저는 이제 혼자서도 이 장비를 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물 수 있습니다. 다만 어린이는 보호자의 동의가 없으면 체험에 참여할 수 없습니다.\n\n## 주요 변경 (최대 5개)\n\n- 마지막 문장의 ‘어린이는’을 앞으로 옮겨 안내 대상을 먼저 제시했습니다.\n- ‘할 수 있습니다 / 없습니다’는 능력과 이용 허용 여부를 나타내므로 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145669,
+          "cached_input_tokens": 99840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 377,
+          "reasoning_output_tokens": 77
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "ability-permission",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n이용 안내 글을 자연스럽게 다듬어줘.\n\n저는 이제 혼자서도 이 장비를 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물 수 있습니다. 다만 보호자의 동의가 없으면 어린이는 체험에 참여할 수 없습니다.",
+      "prompt_sha256": "3ce1faf29274d9cdf55eaab401ca801dff9838a0f9dafcb7af99ce0e7fbe3b73",
+      "seconds": 20.54,
+      "exit_code": 0,
+      "response": "## Humanized\n\n저는 이제 이 장비를 혼자서도 조립할 수 있습니다. 방문객은 오후 6시까지 전시실에 머물러도 됩니다. 다만 어린이는 보호자의 동의가 없으면 체험에 참여할 수 없습니다.\n\n## 주요 변경 (최대 5개)\n\n- 첫 문장과 마지막 문장의 어순을 다듬어 읽기 편하게 정리했습니다.\n- “머물 수 있습니다” → “머물러도 됩니다”: 이용 허용의 의미를 더 분명하게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약$/,/''^## 목적$/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147649,
+          "cached_input_tokens": 114944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 472,
+          "reasoning_output_tokens": 163
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "redundant-ending",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n소식지 안내문을 자연스럽게 다듬어줘.\n\n이번 모임은 토요일 오후 2시에 시작합니다. 모임이 시작되는 시각은 토요일 오후 2시라는 것입니다. 또한 준비물은 필기구입니다. 결론적으로 토요일 오후 2시에 필기구를 가져오시면 됩니다. 이상으로 모임 시간과 준비물에 대한 안내를 마치도록 하겠습니다.",
+      "prompt_sha256": "8ac5b92f5d2d04281d7cc890fb93c5fb35a1d88412732f431b0fa443a4753a2b",
+      "seconds": 19.26,
+      "exit_code": 0,
+      "response": "## Humanized\n\n이번 모임은 토요일 오후 2시에 시작합니다. 필기구를 가져오시면 됩니다.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 모임 시간과 준비물 안내를 한 번씩만 전달하도록 정리했습니다.\n- 불필요한 연결어와 “이상으로 … 안내를 마치도록 하겠습니다”라는 마무리를 덜었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약$/,/''^## 목적$/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145733,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 335,
+          "reasoning_output_tokens": 65
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "redundant-ending",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n소식지 안내문을 자연스럽게 다듬어줘.\n\n이번 모임은 토요일 오후 2시에 시작합니다. 모임이 시작되는 시각은 토요일 오후 2시라는 것입니다. 또한 준비물은 필기구입니다. 결론적으로 토요일 오후 2시에 필기구를 가져오시면 됩니다. 이상으로 모임 시간과 준비물에 대한 안내를 마치도록 하겠습니다.",
+      "prompt_sha256": "8ac5b92f5d2d04281d7cc890fb93c5fb35a1d88412732f431b0fa443a4753a2b",
+      "seconds": 17.6,
+      "exit_code": 0,
+      "response": "## Humanized\n\n이번 모임은 토요일 오후 2시에 시작합니다. 필기구를 가져오시면 됩니다.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 모임 시간과 준비물 안내를 합쳤습니다.\n- 불필요한 “또한”, “결론적으로”와 상투적인 마무리 문장을 덜어냈습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147640,
+          "cached_input_tokens": 114944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 318,
+          "reasoning_output_tokens": 50
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "voice-connectives",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n에세이를 자연스럽게 다듬어줘.\n\n비가 와서 버스를 탔어요. 하지만 늦지는 않았어요. 친구는 먼저 도착해 있었어요. 나는 잠깐 말을 멈췄어요. 괜찮아요. 그런 날도 있죠.",
+      "prompt_sha256": "3bb494144874d398691b38cdc72c77d17406a994eb3f102e7cfcd786d5a18d18",
+      "seconds": 20.42,
+      "exit_code": 0,
+      "response": "## Humanized\n\n비가 와서 버스를 탔어요. 하지만 늦지는 않았어요. 친구는 먼저 와 있었어요. 나는 잠깐 말을 멈췄어요.\n\n괜찮아요. 그런 날도 있죠.\n\n## 주요 변경 (최대 5개)\n\n- “먼저 도착해 있었어요” → “먼저 와 있었어요”: 같은 뜻을 조금 더 편안하게 표현했습니다.\n- “하지만”과 해요체는 유지했습니다. 대조와 원문의 다정한 말투를 살렸습니다.\n- 마지막 두 문장은 문단을 나눠 짧은 여운을 남겼습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145771,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 534,
+          "reasoning_output_tokens": 206
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "voice-connectives",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n에세이를 자연스럽게 다듬어줘.\n\n비가 와서 버스를 탔어요. 하지만 늦지는 않았어요. 친구는 먼저 도착해 있었어요. 나는 잠깐 말을 멈췄어요. 괜찮아요. 그런 날도 있죠.",
+      "prompt_sha256": "3bb494144874d398691b38cdc72c77d17406a994eb3f102e7cfcd786d5a18d18",
+      "seconds": 22.62,
+      "exit_code": 0,
+      "response": "## Humanized\n\n비가 와서 버스를 탔지만 늦지는 않았어요. 친구는 먼저 도착해 있었어요. 나는 잠깐 말을 멈췄어요.\n\n괜찮아요. 그런 날도 있죠.\n\n## 주요 변경 (최대 5개)\n\n- 첫 두 문장을 ‘~탔지만’으로 연결해 대조를 살리면서 흐름을 다듬었습니다.\n- “괜찮아요. 그런 날도 있죠.”는 짧은 호흡과 여운을 살려 유지했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147717,
+          "cached_input_tokens": 114816,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 559,
+          "reasoning_output_tokens": 255
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "requested-summary",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n뉴스레터 글을 자연스럽게 다듬어줘. 끝의 요약과 다음 행동 안내는 남겨줘.\n\n신청은 금요일 오후 5시에 마감됩니다. 신청서를 제출한 뒤 확인 메일을 기다려 주세요. 정리하면, 금요일 오후 5시까지 신청서를 내고 확인 메일을 기다리시면 됩니다.",
+      "prompt_sha256": "e0b03e1503c37bf1991f57e50a1200008952296cd83246ad4e43ab5646723523",
+      "seconds": 16.8,
+      "exit_code": 0,
+      "response": "## Humanized\n\n신청 마감은 금요일 오후 5시입니다. 신청서를 제출한 뒤 확인 메일을 기다려 주세요.\n\n정리하면, 금요일 오후 5시까지 신청서를 제출하고, 그다음 확인 메일을 기다려 주세요.\n\n## 주요 변경 (최대 5개)\n\n- “신청은 … 마감됩니다” → “신청 마감은 …입니다”로 간결하게 다듬었습니다.\n- 끝의 요약과 다음 행동 안내는 유지하고, 제출 후 메일을 기다리는 순서가 드러나도록 정리했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145786,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 472,
+          "reasoning_output_tokens": 151
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "requested-summary",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n뉴스레터 글을 자연스럽게 다듬어줘. 끝의 요약과 다음 행동 안내는 남겨줘.\n\n신청은 금요일 오후 5시에 마감됩니다. 신청서를 제출한 뒤 확인 메일을 기다려 주세요. 정리하면, 금요일 오후 5시까지 신청서를 내고 확인 메일을 기다리시면 됩니다.",
+      "prompt_sha256": "e0b03e1503c37bf1991f57e50a1200008952296cd83246ad4e43ab5646723523",
+      "seconds": 20.43,
+      "exit_code": 0,
+      "response": "## Humanized\n\n신청은 금요일 오후 5시에 마감됩니다.\n\n정리하면, 금요일 오후 5시까지 신청서를 제출하고 확인 메일을 기다려 주세요.\n\n## 주요 변경 (최대 5개)\n\n- 반복된 제출 후 안내를 마지막 문장에 합쳐, 요약과 다음 행동 안내를 남겼습니다.\n- “기다리시면 됩니다”를 “기다려 주세요”로 바꿔 행동 안내를 직접적으로 다듬었습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약$/,/''^## 목적$/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147606,
+          "cached_input_tokens": 114944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 384,
+          "reasoning_output_tokens": 92
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "heldout-modality",
+      "variant": "baseline",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n후기 글을 자연스럽게 다듬어줘.\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 내용물을 알아볼 수 있을지는 모르겠어요. 제가 기대하는 것은 뜻밖의 선물이에요.",
+      "prompt_sha256": "1330f9f3598e73bb4dd9c06abdab93ea44069aa6fc44c77615d50f6c28208a1b",
+      "seconds": 20.45,
+      "exit_code": 0,
+      "response": "## Humanized\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 안에 뭐가 들었는지 알 수 있을지는 모르겠어요. 저는 뜻밖의 선물을 기대하고 있어요.\n\n## 주요 변경 (최대 5개)\n\n- “내용물을 알아볼” → “안에 뭐가 들었는지 알”: 일상적인 말로 풀었습니다.\n- “제가 기대하는 것은 뜻밖의 선물이에요” → “저는 뜻밖의 선물을 기대하고 있어요”: 기대하는 마음을 자연스럽게 표현했습니다.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 145759,
+          "cached_input_tokens": 113792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 502,
+          "reasoning_output_tokens": 179
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 2,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    },
+    {
+      "case_id": "heldout-modality",
+      "variant": "candidate",
+      "prompt": "이 작업에는 ./skill/SKILL.md와 그 안에서 지정한 참조만 사용하세요. 다른 설치본은 사용하지 마세요.\n\n후기 글을 자연스럽게 다듬어줘.\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 내용물을 알아볼 수 있을지는 모르겠어요. 제가 기대하는 것은 뜻밖의 선물이에요.",
+      "prompt_sha256": "1330f9f3598e73bb4dd9c06abdab93ea44069aa6fc44c77615d50f6c28208a1b",
+      "seconds": 23.58,
+      "exit_code": 0,
+      "response": "## Humanized\n\n상자는 책상 밑에 놓여 있어요. 뚜껑은 아직 열지 않았어요. 사진만 보고도 뭐가 들어 있는지 알아볼 수 있을지는 모르겠어요. 저는 뜻밖의 선물을 기대해요.\n\n## 주요 변경 (최대 5개)\n\n- “내용물을” → “뭐가 들어 있는지”: 일상적인 말로 다듬었어요.\n- “제가 기대하는 것은 뜻밖의 선물이에요” → “저는 뜻밖의 선물을 기대해요”: 뜻을 유지하면서 문장을 간결하게 바꿨어요.\n- “놓여 있어요”와 “알아볼 수 있을지는 모르겠어요”는 상태와 불확실성을 나타내므로 유지했어요.\n\n*마음에 안 드는 변경이 있으면 알려주세요 — 되돌리거나 다시 다듬겠습니다.*",
+      "format_checks_passed": true,
+      "catalog_read_observed": null,
+      "tool_commands": [
+        "/bin/zsh -lc 'cat ./skill/SKILL.md'",
+        "/bin/zsh -lc 'cat ./skill/references/ko-ai-signals.md'",
+        "/bin/zsh -lc \"sed -n '/\"'^## 출력 계약/,/''^## 목적/p'\"' ./skill/SKILL.md\""
+      ],
+      "usage": [
+        {
+          "input_tokens": 147679,
+          "cached_input_tokens": 126592,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 550,
+          "reasoning_output_tokens": 195
+        }
+      ],
+      "errors": [],
+      "stderr": "",
+      "change_entry_count": 3,
+      "legacy_catalog_command_mentioned": true,
+      "catalog_read_verification": "Legacy collection retained command names only, not exit codes or command output; successful reads cannot be verified retrospectively."
+    }
+  ],
+  "configured_profile": {
+    "model": "gpt-6.1-sol",
+    "model_reasoning_effort": "high"
+  },
+  "configured_profile_observation": "Read before evaluation in the session and confirmed after evaluation; CLI was invoked without model/effort overrides.",
+  "date": "2026-10-10"
+}

@@ -56,6 +56,16 @@ for file in "${FILES[@]}"; do
   fi
 done
 
+# 조건부 간결화가 독립 실행 프롬프트에도 남아 있는지 확인한다.
+for file in SKILL.md PROMPT.md PROMPT.short.md references/ko-ai-signals.md; do
+  for rule in '있다·것·수·접속사' '능력·허용' '되돌'; do
+    if ! grep -qF "$rule" "$file"; then
+      echo "FAIL: 간결화 보존 기준 '$rule' 가 $file 에 없습니다."
+      errors=$((errors + 1))
+    fi
+  done
+done
+
 if [[ $errors -gt 0 ]]; then
   exit 1
 fi
