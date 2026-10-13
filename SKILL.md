@@ -210,8 +210,8 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 
 - **Claude Code / OpenCode / Codex**: 네 방식 모두 사용 가능. 매 세션 인라인 한 줄 (방식 A) 권장, 영구화는 별도 파일을 만든 뒤 `personal=파일경로`로 지정 (방식 C), brand voice 는 `examples/brand-voice-<name>.md` 저장 후 호출 시 path 명시 (방식 D).
 - **Agensi MCP**: 스킬 파일은 MCP 응답으로만 받고 디스크에 저장하지 않는다. 방식 A·B를 권장하고, 방식 C·D는 사용자의 절대 경로 파일이나 동봉 예시(`brand=examples/brand-voice-toss-style.md`)를 지정한다. SKILL.md 하단 `## My personal list`는 편집할 수 없다.
-- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 SKILL.md 다운로드 → 편집 → 재업로드. Brand voice 파일도 첨부 가능.
-- **ChatGPT / Cursor / Gemini**: `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정. Brand voice 는 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어붙이면 된다.
+- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 GitHub의 SKILL.md를 받아 편집한 뒤 재업로드(Agensi MCP로 불러온 스킬은 편집할 수 없음). Brand voice 파일도 첨부 가능.
+- **ChatGPT / Cursor / Gemini**: GitHub 저장소의 `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정. Brand voice 는 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어붙이면 된다.
 
 ### 적용 순서
 
@@ -245,7 +245,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 - `examples/personal-list.md` — 사용자 커스터마이징 템플릿 (방식 C).
 - `examples/brand-voice-template.md` — Brand voice 프로필 템플릿 (방식 D).
 - `examples/brand-voice-toss-style.md` / `examples/brand-voice-essayist.md` — Brand voice 케이스 스터디.
-- 일반 LLM 사용자: `PROMPT.md` 시스템 프롬프트 형태로도 제공.
+- 일반 LLM 사용자: GitHub 저장소의 `PROMPT.md`를 시스템 프롬프트로 쓸 수 있다(Agensi MCP 패키지에는 포함하지 않음).
 
 ---
 

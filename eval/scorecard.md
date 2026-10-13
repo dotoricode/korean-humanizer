@@ -2,7 +2,7 @@
 
 # Eval scorecard
 
-> Generated: 2026-10-13 01:55 UTC
+> Generated: 2026-10-01 03:07 UTC
 > Source: `eval/fixtures/*.md` (25 fixtures)
 
 ## Summary

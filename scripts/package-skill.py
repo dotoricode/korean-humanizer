@@ -57,6 +57,7 @@ def build(output):
         'external_evidence_links': rewritten}
     if len(contents) > MAX_FILES or sum(map(len, contents.values())) > MAX_BYTES:
         raise ValueError(f'Package exceeds the Agensi limit of {MAX_FILES} files / {MAX_BYTES} bytes.')
+    # Pass skill_slug and files to update_skill as separate arguments; submit_skill takes files only.
     payload = {'skill_slug': 'korean-humanizer', 'files': [
         {'path': name, 'content': value.decode()} for name, value in sorted(contents.items())]}
     assert contents['SKILL.md'] == sources['SKILL.md']
