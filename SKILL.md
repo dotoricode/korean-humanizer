@@ -65,7 +65,7 @@ description: 한국어로 작성된 AI 생성 텍스트에서 "AI 티"가 나는
 
 ## 워크플로우
 
-교정 전에 스킬 루트의 `references/ko-ai-signals.md`를 실제로 읽는다. 카탈로그를 아직 읽지 않았으면 4단계로 넘어가지 않는다. 이미 같은 세션에서 읽었다면 재사용한다. 읽을 수 없으면 그 한계를 알리고 완료한 교정으로 소개하지 않는다.
+교정 전에 스킬 루트의 `references/ko-ai-signals.md`를 실제로 읽는다. MCP 등으로 스킬 파일을 응답 본문에 받았으면 디스크에서 찾지 말고 같은 응답에 포함된 `references/ko-ai-signals.md` 내용을 읽는다. 카탈로그를 아직 읽지 않았으면 4단계로 넘어가지 않는다. 이미 같은 세션에서 읽었다면 재사용한다. 읽을 수 없으면 그 한계를 알리고 완료한 교정으로 소개하지 않는다.
 
 ### 1단계. 입력 확인
 
@@ -139,7 +139,7 @@ GitHub Issue / 외부 제안 답변에서는 카탈로그의 감사 표현 안�
 
 교정문을 처음부터 다시 읽고, 겹치는 의무·변화 표현과 같은 사건의 반복을 정리한다. 원문과 문장별로 대조해 정보·평가의 정도·조건을 확인한 뒤, 두 제목과 변경 목록·첫 응답 안내를 앞의 출력 계약 템플릿과 대조한다. 이 검토를 마친 한 개의 최종 응답만 출력한다.
 
-최종 응답을 작성하기 직전에 스킬 루트의 `SKILL.md`에서 `## 출력 계약`부터 `## 목적` 앞까지 다시 읽는다. 이 단계는 교정 기준을 다시 적용하기 위한 것이 아니라, 긴 카탈로그를 읽은 뒤 실제 응답 틀을 확인하기 위한 것이다. 사용자가 형식을 따로 지정하지 않았다면 그 계약의 두 제목·최대 5개 변경 목록·첫 응답 안내를 채운 응답으로 완료한다.
+최종 응답을 작성하기 직전에 스킬 루트의 `SKILL.md`(MCP로 받았으면 받은 SKILL.md 내용)에서 `## 출력 계약`부터 `## 목적` 앞까지 다시 읽는다. 이 단계는 교정 기준을 다시 적용하기 위한 것이 아니라, 긴 카탈로그를 읽은 뒤 실제 응답 틀을 확인하기 위한 것이다. 사용자가 형식을 따로 지정하지 않았다면 그 계약의 두 제목·최대 5개 변경 목록·첫 응답 안내를 채운 응답으로 완료한다.
 
 ## 사용자 커스터마이징 (Personal List + Brand Voice)
 
@@ -177,7 +177,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 
 ### 방식 C. 파일 (영구 저장)
 
-`examples/personal-list.md`는 작성 예시이며 자동 적용하지 않는다. 개인 설정은 별도 파일에 저장하고 `personal=파일경로`로 지정한다. 지정한 파일만 읽으며, 경로는 스킬 루트 기준 상대 경로 또는 절대 경로다. 파일을 읽지 못하면 적용하지 않았음을 알린다. SKILL.md 하단의 주석 밖 `## My personal list`에 사용자가 직접 작성한 목록도 적용한다. 주석과 예시 블록은 설정으로 취급하지 않는다.
+`examples/personal-list.md`는 작성 예시이며 자동 적용하지 않는다. 개인 설정은 별도 파일에 저장하고 `personal=파일경로`로 지정한다. 지정한 파일만 읽으며, 경로는 스킬 루트 기준 상대 경로 또는 절대 경로다. MCP로 받아 스킬 루트가 없으면 상대 경로는 같은 응답에 포함된 동봉 파일로만 해석하고, 사용자 파일은 절대 경로로 읽는다. 파일을 읽지 못하면 적용하지 않았음을 알린다. SKILL.md 하단의 주석 밖 `## My personal list`에 사용자가 직접 작성한 목록도 적용한다. 주석과 예시 블록은 설정으로 취급하지 않는다.
 
 ```markdown
 ## My personal list
@@ -209,8 +209,9 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 ### 환경별 관리
 
 - **Claude Code / OpenCode / Codex**: 네 방식 모두 사용 가능. 매 세션 인라인 한 줄 (방식 A) 권장, 영구화는 별도 파일을 만든 뒤 `personal=파일경로`로 지정 (방식 C), brand voice 는 `examples/brand-voice-<name>.md` 저장 후 호출 시 path 명시 (방식 D).
-- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 SKILL.md 다운로드 → 편집 → 재업로드. Brand voice 파일도 첨부 가능.
-- **ChatGPT / Cursor / Gemini**: `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정. Brand voice 는 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어붙이면 된다.
+- **Agensi MCP**: 스킬 파일은 MCP 응답으로만 받고 디스크에 저장하지 않는다. 방식 A·B를 권장하고, 방식 C·D는 사용자의 절대 경로 파일이나 동봉 예시(`brand=examples/brand-voice-toss-style.md`)를 지정한다. SKILL.md 하단 `## My personal list`는 편집할 수 없다.
+- **Claude.ai (Cowork)**: 세션 내 인라인 / 자연어 입력으로 즉시 반영. 영구 반영은 GitHub의 SKILL.md를 받아 편집한 뒤 재업로드(Agensi MCP로 불러온 스킬은 편집할 수 없음). Brand voice 파일도 첨부 가능.
+- **ChatGPT / Cursor / Gemini**: GitHub 저장소의 `PROMPT.md` 를 system prompt / Cursor Rule 에 붙여 넣고 personal list 줄을 직접 추가하거나 매 메시지 인라인으로 지정. Brand voice 는 PROMPT.md 뒤에 brand voice 파일의 frontmatter + 본문을 그대로 이어붙이면 된다.
 
 ### 적용 순서
 
@@ -244,7 +245,7 @@ humanize 결과를 자기 톤에 맞추려면 사용자의 금지어 / 선호어
 - `examples/personal-list.md` — 사용자 커스터마이징 템플릿 (방식 C).
 - `examples/brand-voice-template.md` — Brand voice 프로필 템플릿 (방식 D).
 - `examples/brand-voice-toss-style.md` / `examples/brand-voice-essayist.md` — Brand voice 케이스 스터디.
-- 일반 LLM 사용자: `PROMPT.md` 시스템 프롬프트 형태로도 제공.
+- 일반 LLM 사용자: GitHub 저장소의 `PROMPT.md`를 시스템 프롬프트로 쓸 수 있다(Agensi MCP 패키지에는 포함하지 않음).
 
 ---
 

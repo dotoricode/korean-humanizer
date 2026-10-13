@@ -4,6 +4,15 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Agensi의 MCP 전용 배포에 맞춰 배포 스크립트가 ZIP 대신 `update_skill`·`submit_skill`에 넘길 `skill_slug`와 `files` 목록을 담은 JSON을 만듭니다. 매 호출 응답에 실리는 `PROMPT.md`·`PROMPT.short.md`는 배포 파일에서 제외하고 GitHub에만 둡니다.
+- 구매자용 README를 Agensi MCP 연결 안내로 바꿨습니다. ZIP 압축 해제 안내를 삭제했습니다.
+
+### Fixed
+
+- MCP로 받은 스킬에는 스킬 루트가 없으므로, 카탈로그·출력 계약·동봉 예시를 같은 응답의 파일 내용에서 읽도록 지침을 보완했습니다.
+
 ## [1.1.0] — 2026-10-10
 
 ### Changed

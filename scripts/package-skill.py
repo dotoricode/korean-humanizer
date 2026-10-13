@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a text-only skill ZIP with local runtime references and pinned evidence links."""
+"""Build the Agensi MCP file payload with local runtime references and pinned evidence links."""
 import argparse
 import hashlib
 import json
@@ -8,14 +8,16 @@ import re
 import subprocess
 from pathlib import Path
 from urllib.parse import urlsplit
-from zipfile import ZIP_DEFLATED, ZipFile, ZipInfo
 
 ROOT = Path(__file__).resolve().parent.parent
-FILES = ['SKILL.md', 'LICENSE', 'PROMPT.md', 'PROMPT.short.md',
-         'references/ko-ai-signals.md', 'examples/before-after.md',
+# PROMPT.md and PROMPT.short.md stay on GitHub: MCP clients load the skill itself.
+FILES = ['SKILL.md', 'LICENSE', 'references/ko-ai-signals.md', 'examples/before-after.md',
          'examples/personal-list.md', 'examples/brand-voice-template.md',
          'examples/brand-voice-toss-style.md', 'examples/brand-voice-essayist.md']
 FILES += sorted(str(p.relative_to(ROOT)) for p in (ROOT / 'examples').glob('domain-*.md'))
+# Agensi submit_skill/update_skill accept at most 100 files and 5 MB.
+MAX_FILES = 100
+MAX_BYTES = 5 * 1024 * 1024
 LINK = re.compile(r'(?<!!)\[([^\]]+)\]\(([^\s)]+)\)')
 
 
@@ -53,24 +55,21 @@ def build(output):
     manifest = {'source_commit': commit, 'source_file_sha256': {name: hashlib.sha256(value).hexdigest() for name, value in sources.items()}, 'files': {
         name: hashlib.sha256(value).hexdigest() for name, value in sorted(contents.items())},
         'external_evidence_links': rewritten}
+    if len(contents) > MAX_FILES or sum(map(len, contents.values())) > MAX_BYTES:
+        raise ValueError(f'Package exceeds the Agensi limit of {MAX_FILES} files / {MAX_BYTES} bytes.')
+    # Pass skill_slug and files to update_skill as separate arguments; submit_skill takes files only.
+    payload = {'skill_slug': 'korean-humanizer', 'files': [
+        {'path': name, 'content': value.decode()} for name, value in sorted(contents.items())]}
+    assert contents['SKILL.md'] == sources['SKILL.md']
+    assert contents['LICENSE'] == sources['LICENSE']
+    data = (json.dumps(payload, ensure_ascii=False, indent=2) + '\n').encode()
     output.mkdir(parents=True, exist_ok=True)
-    archive = output / f'korean-humanizer-{commit[:7]}.zip'
-    with ZipFile(archive, 'w', ZIP_DEFLATED) as zf:
-        for name, value in sorted(contents.items()):
-            info = ZipInfo(name, (2026, 10, 1, 0, 0, 0))
-            info.compress_type = ZIP_DEFLATED
-            info.external_attr = 0o100644 << 16
-            zf.writestr(info, value)
-    with ZipFile(archive) as zf:
-        assert zf.testzip() is None
-        assert all(hashlib.sha256(zf.read(name)).hexdigest() == digest
-                   for name, digest in manifest['files'].items())
-        assert zf.read('SKILL.md') == sources['SKILL.md']
-        assert zf.read('LICENSE') == sources['LICENSE']
-    manifest['archive_sha256'] = hashlib.sha256(archive.read_bytes()).hexdigest()
+    payload_file = output / f'korean-humanizer-{commit[:7]}.agensi.json'
+    payload_file.write_bytes(data)
+    manifest['payload_sha256'] = hashlib.sha256(data).hexdigest()
     (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-    print(archive)
-    print(f'{len(contents)} text files; archive and runtime instruction checks passed')
+    print(payload_file)
+    print(f'{len(contents)} text files; Agensi MCP payload and runtime instruction checks passed')
 
 
 if __name__ == '__main__':
