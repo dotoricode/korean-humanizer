@@ -1,0 +1,69 @@
+name: Claude review
+
+# PR을 열거나 Draft를 해제하면 한 번 리뷰한다. 푸시마다 다시 리뷰하지 않으며,
+# 다시 받으려면 PR에 `@claude review`로 시작하는 코멘트를 남긴다.
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+jobs:
+  review:
+    # 포크 PR에는 시크릿이 없으므로 같은 저장소의 PR만 리뷰한다.
+    # 코멘트 실행은 쓰기 권한이 있는 사람만 시작할 수 있다.
+    if: >-
+      (github.event_name == 'pull_request'
+        && !github.event.pull_request.draft
+        && github.event.pull_request.head.repo.full_name == github.repository)
+      || (github.event_name == 'issue_comment'
+        && github.event.issue.pull_request
+        && startsWith(github.event.comment.body, '@claude review')
+        && contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: claude-review-${{ github.event.pull_request.number || github.event.issue.number }}
+      cancel-in-progress: true
+    env:
+      PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+    steps:
+      - name: Skip fork PRs started by comment
+        if: github.event_name == 'issue_comment'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "$(gh pr view "$PR_NUMBER" --repo "$GITHUB_REPOSITORY" --json isCrossRepository --jq .isCrossRepository)" = true ]; then
+            echo "::error::포크 PR은 자동 리뷰하지 않습니다."
+            exit 1
+          fi
+
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: refs/pull/${{ env.PR_NUMBER }}/head
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: anthropics/claude-code-action@1d6de8cb0c237e7c15e9e1bdf973826ebae490cc # v1.0.248
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          prompt: |
+            REPO: ${{ github.repository }}
+            PR NUMBER: ${{ env.PR_NUMBER }}
+            REQUEST: ${{ github.event.comment.body || '자동 리뷰' }}
+
+            이 PR을 리뷰한다. PR 브랜치는 현재 작업 폴더에 체크아웃되어 있다.
+
+            1. `gh pr view`와 `gh pr diff`로 목적과 변경을 확인한다. 저장소의 AGENTS.md, CLAUDE.md, SKILL.md, CONTRIBUTING.md가 있으면 읽고 그 규칙을 기준으로 삼는다.
+            2. 변경된 코드가 닿는 호출 경로와 테스트를 직접 읽고, 실제로 문제가 되는 것만 지적한다. 버그, PR 설명과 다른 동작, 깨지는 호환성, 보안, 빠진 테스트, 문서와 코드의 불일치를 우선한다. 취향 차이와 사소한 문체는 지적하지 않는다.
+            3. 특정 줄의 문제는 `mcp__github_inline_comment__create_inline_comment`(`confirmed: true`)로 단다. 각 코멘트에는 문제가 생기는 구체적 상황과 고칠 방향을 적는다.
+            4. 마지막에 `gh pr comment`로 요약 코멘트를 하나 남긴다. 변경 요약 3줄 이내, 지적 사항 목록(심각도 순), 확인하지 못한 부분을 적는다. 지적할 것이 없으면 그렇다고 짧게 적는다.
+
+            코멘트는 한국어로 쓰고 코드·경로·식별자는 원문 그대로 둔다. GitHub 코멘트로만 답하고, 코드는 수정하지 않는다.
+          claude_args: |
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
