@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check ZIP provenance and rejection of uncommitted package sources."""
+"""Check Agensi MCP payload provenance and rejection of uncommitted package sources."""
 import hashlib
 import importlib.util
 import json
@@ -8,7 +8,6 @@ import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
-from zipfile import ZipFile
 
 REPO = Path(__file__).resolve().parent.parent
 spec = importlib.util.spec_from_file_location('packager', REPO / 'scripts/package-skill.py')
@@ -45,20 +44,34 @@ class PackageTests(unittest.TestCase):
     def git(self, *args):
         return subprocess.check_output(['git', *args], cwd=self.root, text=True).strip()
 
-    def test_clean_source_has_exact_commit_and_reproducible_archive(self):
+    def payload(self):
+        return json.loads(next(self.output.glob('*.agensi.json')).read_text())
+
+    def test_clean_source_has_exact_commit_and_reproducible_payload(self):
         packager.build(self.output)
         manifest = json.loads((self.output / 'manifest.json').read_text())
         commit = self.git('rev-parse', 'HEAD')
         self.assertEqual(manifest['source_commit'], commit)
         self.assertIn('docs/distribution/PACKAGE-README.md', manifest['source_file_sha256'])
-        archive = next(self.output.glob('*.zip'))
-        with ZipFile(archive) as zf:
-            self.assertEqual(zf.read('README.md').decode(),
-                             f'[Evidence](https://github.com/dotoricode/korean-humanizer/blob/{commit}/docs/evidence.md)\n')
-        first = archive.read_bytes()
+        payload_file = next(self.output.glob('*.agensi.json'))
+        payload = self.payload()
+        self.assertEqual(payload['skill_slug'], 'korean-humanizer')
+        files = {item['path']: item['content'] for item in payload['files']}
+        self.assertEqual(list(files), ['LICENSE', 'README.md', 'SKILL.md'])
+        self.assertEqual(files['README.md'],
+                         f'[Evidence](https://github.com/dotoricode/korean-humanizer/blob/{commit}/docs/evidence.md)\n')
+        self.assertEqual(files['SKILL.md'], 'Skill instructions\n')
+        first = payload_file.read_bytes()
         packager.build(self.output)
-        self.assertEqual(first, archive.read_bytes())
-        self.assertEqual(manifest['archive_sha256'], hashlib.sha256(first).hexdigest())
+        self.assertEqual(first, payload_file.read_bytes())
+        self.assertEqual(manifest['payload_sha256'], hashlib.sha256(first).hexdigest())
+        self.assertEqual(list(self.output.glob('*.zip')), [])
+
+    def test_payload_over_agensi_limit_is_rejected(self):
+        with patch.object(packager, 'MAX_BYTES', 10):
+            with self.assertRaisesRegex(ValueError, 'Agensi limit'):
+                packager.build(self.output)
+        self.assertFalse(self.output.exists())
 
     def test_modified_package_instructions_are_rejected(self):
         (self.root / 'docs/distribution/PACKAGE-README.md').write_text('Uncommitted instructions\n')
@@ -71,6 +84,19 @@ class PackageTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'clean'):
             packager.build(self.output)
         self.assertFalse(self.output.exists())
+
+
+class RuntimeFileSetTests(unittest.TestCase):
+    def test_mcp_package_keeps_runtime_files_and_drops_prompt_copies(self):
+        self.assertIn('references/ko-ai-signals.md', packager.FILES)
+        self.assertIn('examples/brand-voice-template.md', packager.FILES)
+        self.assertNotIn('PROMPT.md', packager.FILES)
+        self.assertNotIn('PROMPT.short.md', packager.FILES)
+
+    def test_package_readme_explains_agensi_mcp_instead_of_zip(self):
+        readme = (REPO / 'docs/distribution/PACKAGE-README.md').read_text()
+        self.assertIn('https://mcp.agensi.io/mcp', readme)
+        self.assertNotIn('ZIP', readme)
 
 
 if __name__ == '__main__':

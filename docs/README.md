@@ -37,4 +37,4 @@
 - [홍보 문구 기록](marketing/LAUNCH.md): 재사용 가능한 과거 출시 문구입니다. 현재 버전·효과는 따로 확인해야 합니다.
 - [보관 문서](archive/README.md): 완료된 개발 계획·베타 안내·과거 비교 예시입니다.
 
-배포 ZIP은 변경을 커밋한 깨끗한 저장소에서 `python3 scripts/package-skill.py --output-dir <저장소 밖의 폴더>`로 생성합니다. 작업 폴더에 수정·미추적 파일이 있으면 생성을 거부하며, 커밋에 저장된 파일을 읽어 ZIP과 파일 해시를 기록합니다. `SKILL.md`, `LICENSE`, 구매자용 사용법, 프롬프트와 실행에 필요한 `references/`, `examples/`를 포함합니다. 보관 문서·연구 배경·개발 지침은 포함하지 않습니다. ZIP 설치와 첫 실행, 최신 9응답의 출력 형식을 확인했으며 작은 표본의 원본 기록은 `eval/model-runs/package-skill-2026-10-02.json`에 있습니다.
+Agensi 배포 파일은 변경을 커밋한 깨끗한 저장소에서 `python3 scripts/package-skill.py --output-dir <저장소 밖의 폴더>`로 생성합니다. Agensi는 2026-10-12부터 다운로드 없이 MCP(`https://mcp.agensi.io/mcp`)로만 스킬을 전달하므로, 결과는 ZIP이 아니라 Agensi MCP의 `update_skill`·`submit_skill`이 받는 `files` 목록(`korean-humanizer-<커밋>.agensi.json`)입니다. 작업 폴더에 수정·미추적 파일이 있으면 생성을 거부하며, 커밋에 저장된 파일을 읽어 파일 해시와 함께 `manifest.json`에 기록합니다. `SKILL.md`, `LICENSE`, 구매자용 사용법, 실행에 필요한 `references/`, `examples/`를 포함합니다. MCP 응답마다 실리는 크기를 줄이기 위해 `PROMPT.md`, `PROMPT.short.md`와 보관 문서·연구 배경·개발 지침은 포함하지 않습니다. Agensi 제한(파일 100개·5MB)을 넘으면 생성을 거부합니다. 이전 ZIP 배포의 설치·첫 실행·9응답 형식 확인 기록은 `eval/model-runs/package-skill-2026-10-02.json`에 있습니다.
