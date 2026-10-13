@@ -39,7 +39,7 @@ Brand voice·개인 금지어도 원문의 사실·조건·말투를 바꿀 수 
 ## 출시 확인 기록
 
 - [x] 변경 범위와 출력 계약 확정: PR #8 병합
-- [ ] v1.1.0 ZIP의 Codex·Claude Code 설치·첫 호출 재검사: 이전 2026-10-02 ZIP의 Claude 3회·Codex 6회 성공 기록과 구분
+- [ ] Agensi 목록을 `update_skill`로 갱신한 뒤 Codex·Claude Code에서 MCP `get_skill`로 불러 첫 호출 재검사: Agensi가 2026-10-12부터 ZIP 다운로드를 중단해 이전 2026-10-02 ZIP의 Claude 3회·Codex 6회 성공 기록과 구분
 - [x] 간결화 규칙 변경 전후 동일 입력 8개·응답 16개 기록: `eval/six-rules-2026-10-10.md`
 - [x] 마이너 버전 v1.1.0 확정 및 변경 설명 갱신
 - [x] 기존 설정과 파서에 미치는 영향 안내
