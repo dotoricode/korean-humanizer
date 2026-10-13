@@ -404,6 +404,10 @@ def write_scorecard(path: Path, results):
 - Overall `✓ (expected: m4)` means the fixture passed only because that metric failure was declared in `expected_failures`. Treat these as trap / known-risk coverage, not clean quality passes.
 - These fixed input/output checks do not run a model or establish semantic quality. M1/M2 are approximate; facts, sentence order, and overall tone need separate review.
 """
+    # Keep the file untouched when only the generation time differs, so reruns do not dirty the tree.
+    stamp = re.compile(r"^> Generated: .*$", re.M)
+    if path.exists() and stamp.sub("", path.read_text(encoding="utf-8")) == stamp.sub("", body):
+        return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(body, encoding="utf-8")
 
