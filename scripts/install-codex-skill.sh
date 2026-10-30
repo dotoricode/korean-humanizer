@@ -14,6 +14,18 @@ source_resolved="$(cd "$SOURCE_ROOT" && pwd -P)"
 ACTIVE_SKILLS_DIR="${CODEX_SKILLS_DIR:-$HOME/.agents/skills}"
 BACKUP_ROOT="$HOME/.local/share/korean-humanizer/backups"
 
+# Reject a source-containing cleanup target before changing any active install.
+for skills_dir in "$ACTIVE_SKILLS_DIR" "$HOME/.agents/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$HOME/.codex/skills"; do
+  candidate="$skills_dir/$SKILL_NAME"
+  if [[ -d "$candidate" && ! -L "$candidate" ]]; then
+    candidate_resolved="$(cd "$candidate" && pwd -P)"
+    if [[ "$source_resolved" != "$candidate_resolved" && "$source_resolved" == "$candidate_resolved/"* ]]; then
+      echo "error: refusing to move source checkout inside $candidate" >&2
+      exit 1
+    fi
+  fi
+done
+
 # Keep backups outside every skills search root, where they cannot become duplicate entries.
 backup_install() {
   local target="$1"

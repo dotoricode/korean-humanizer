@@ -52,10 +52,16 @@ class InstallTests(unittest.TestCase):
             shutil.copyfile(ROOT / 'SKILL.md', source / 'SKILL.md')
             env = {**os.environ, 'HOME': tmp, 'CODEX_HOME': str(home / '.codex')}
             env.pop('CODEX_SKILLS_DIR', None)
+            active = home / '.agents/skills/korean-humanizer'
+            active.mkdir(parents=True)
+            (active / 'SKILL.md').write_text('existing active skill')
             result = subprocess.run(['bash', str(source / 'scripts/install-codex-skill.sh')], env=env, capture_output=True, text=True)
             self.assertNotEqual(result.returncode, 0)
             self.assertIn('refusing to move source checkout', result.stderr)
             self.assertTrue((source / 'SKILL.md').is_file())
+            self.assertFalse(active.is_symlink())
+            self.assertEqual((active / 'SKILL.md').read_text(), 'existing active skill')
+            self.assertFalse((home / '.local/share/korean-humanizer/backups').exists())
 
     def test_single_install_and_backups(self):
         with tempfile.TemporaryDirectory() as tmp:
