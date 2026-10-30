@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SKILL_NAME="${1:-korean-humanizer}"
-REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 case "$SKILL_NAME" in
   korean-humanizer) SOURCE_ROOT="$REPO_ROOT" ;;
   korean-humanizer-deep) SOURCE_ROOT="$REPO_ROOT/skills/$SKILL_NAME" ;;

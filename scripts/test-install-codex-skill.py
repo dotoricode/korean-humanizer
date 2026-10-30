@@ -11,6 +11,24 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class InstallTests(unittest.TestCase):
+    def test_install_through_legacy_link_uses_physical_source(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            source = home / 'checkout'
+            source.mkdir()
+            shutil.copytree(ROOT / 'scripts', source / 'scripts')
+            shutil.copyfile(ROOT / 'SKILL.md', source / 'SKILL.md')
+            legacy = home / '.codex/skills/korean-humanizer'
+            legacy.parent.mkdir(parents=True)
+            legacy.symlink_to(source, target_is_directory=True)
+            env = {**os.environ, 'HOME': tmp, 'CODEX_HOME': str(home / '.codex')}
+            env.pop('CODEX_SKILLS_DIR', None)
+            result = subprocess.run(['bash', str(legacy / 'scripts/install-codex-skill.sh')], env=env, capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertTrue((source / 'SKILL.md').is_file())
+            self.assertEqual((home / '.agents/skills/korean-humanizer').resolve(), source.resolve())
+            self.assertFalse(legacy.exists())
+
     def test_source_inside_legacy_search_root(self):
         with tempfile.TemporaryDirectory() as tmp:
             home = Path(tmp)
