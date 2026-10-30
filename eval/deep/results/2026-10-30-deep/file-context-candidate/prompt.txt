@@ -1,0 +1,2 @@
+Read and apply the skill at /private/tmp/korean-humanizer-deep-eval-20261030-retry/file-context-candidate/korean-humanizer-deep/SKILL.md.
+README.md를 처음 사용하는 사람이 따라 할 수 있게 프로젝트 관례에 맞춰 전체적으로 개선해줘.

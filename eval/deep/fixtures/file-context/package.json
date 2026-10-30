@@ -1,0 +1,5 @@
+{
+  "name": "nimbus-fixture",
+  "private": true,
+  "scripts": {"preview": "node preview.cjs"}
+}

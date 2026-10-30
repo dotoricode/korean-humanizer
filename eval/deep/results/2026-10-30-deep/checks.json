@@ -1,0 +1,200 @@
+[
+  {
+    "run": "file-context-baseline",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "correct_command": true,
+      "preserves_condition": true,
+      "preserves_future_offline": true,
+      "command_actually_run": true,
+      "evidence_table": false
+    },
+    "usage": {
+      "input_tokens": 145905,
+      "cached_input_tokens": 127232,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 877,
+      "reasoning_output_tokens": 0
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc \"pwd; rg --files -g 'README*' -g 'AGENTS.md' -g 'package.json' -g '*lock*' -g 'pyproject.toml' -g 'Makefile' -g 'docs/**'\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat /private/tmp/korean-humanizer-deep-eval-20261030-retry/file-context-baseline/korean-humanizer-deep-before-20261030/SKILL.md; cat ~/.agents/references/writing-defaults.md; cat ~/.agents/references/work-storage.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc \"git status --short; cat AGENTS.md README.md docs/usage.md package.json; rg --files -g '\"'!node_modules/**'\"' -g '\"'!.git/**'\"'\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat preview.cjs notes.md; command -v node; command -v npm'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cp README.md /private/tmp/nimbus-readme-before.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'npm run preview; diff -u /private/tmp/nimbus-readme-before.md README.md; cat README.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "run": "file-context-candidate",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "correct_command": true,
+      "preserves_condition": true,
+      "preserves_future_offline": true,
+      "command_actually_run": true,
+      "evidence_table": true
+    },
+    "usage": {
+      "input_tokens": 181219,
+      "cached_input_tokens": 161536,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1027,
+      "reasoning_output_tokens": 23
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc \"pwd; rg --files -g 'README.md' -g 'AGENTS.md' -g 'package.json' -g 'pyproject.toml' -g 'Makefile'; cat /private/tmp/korean-humanizer-deep-eval-20261030-retry/file-context-candidate/korean-humanizer-deep/SKILL.md; cat ~/.agents/references/writing-defaults.md\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc \"git status --short; cat README.md; cat AGENTS.md; cat package.json; rg --files -g '\"'!node_modules/**'\"' -g '\"'!.git/**'\"'; cat ~/.agents/references/work-storage.md\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat docs/usage.md; cat preview.cjs; cat notes.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'npm run preview; nl -ba package.json; nl -ba preview.cjs; nl -ba docs/usage.md; cat README.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "run": "pasted-blog-baseline",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "limits_and_plan": true,
+      "narrative_preserved": true,
+      "no_unfounded_rhetoric": true,
+      "no_repository_search": true
+    },
+    "usage": {
+      "input_tokens": 54907,
+      "cached_input_tokens": 38400,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 355,
+      "reasoning_output_tokens": 0
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc 'cat /private/tmp/korean-humanizer-deep-eval-20261030-retry/pasted-blog-baseline/korean-humanizer-deep-before-20261030/SKILL.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat <user-home>/.agents/references/writing-defaults.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "run": "pasted-blog-candidate",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "limits_and_plan": true,
+      "narrative_preserved": true,
+      "no_unfounded_rhetoric": true,
+      "no_repository_search": true
+    },
+    "usage": {
+      "input_tokens": 56374,
+      "cached_input_tokens": 24576,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 402,
+      "reasoning_output_tokens": 0
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc 'cat ~/.agents/references/writing-defaults.md'",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat /private/tmp/korean-humanizer-deep-eval-20261030-retry/pasted-blog-candidate/korean-humanizer-deep/SKILL.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "run": "pasted-message-baseline",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "condition_and_wait": true,
+      "warmth_preserved": true,
+      "no_unfounded_rhetoric": true,
+      "no_repository_search": true
+    },
+    "usage": {
+      "input_tokens": 55536,
+      "cached_input_tokens": 38784,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 278,
+      "reasoning_output_tokens": 0
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc \"cat '/private/tmp/korean-humanizer-deep-eval-20261030-retry/pasted-message-baseline/korean-humanizer-deep-before-20261030/SKILL.md'\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc 'cat ~/.agents/references/writing-defaults.md'",
+        "exit_code": 0
+      }
+    ]
+  },
+  {
+    "run": "pasted-message-candidate",
+    "assertions": {
+      "successful_execution": true,
+      "only_requested_files_changed": true,
+      "condition_and_wait": true,
+      "warmth_preserved": true,
+      "no_unfounded_rhetoric": true,
+      "no_repository_search": true
+    },
+    "usage": {
+      "input_tokens": 57478,
+      "cached_input_tokens": 38528,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 297,
+      "reasoning_output_tokens": 0
+    },
+    "commands": [
+      {
+        "command": "/bin/zsh -lc \"cat '/private/tmp/korean-humanizer-deep-eval-20261030-retry/pasted-message-candidate/korean-humanizer-deep/SKILL.md'\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc \"cat '<user-home>/.agents/skills/to-message/SKILL.md'\"",
+        "exit_code": 0
+      },
+      {
+        "command": "/bin/zsh -lc \"cat '<user-home>/.agents/references/writing-defaults.md'\"",
+        "exit_code": 0
+      }
+    ]
+  }
+]

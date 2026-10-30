@@ -1,0 +1,26 @@
+{
+  "eval_id": "file-context",
+  "variant": "baseline",
+  "exit_code": 0,
+  "skill_sha256": "e372e5c1143c2e41280bab541de7b660a4bfa3ed9f6c78c8a90121c2baedc084",
+  "duration_ms": 21974,
+  "changed_files": [
+    "README.md"
+  ],
+  "before": {
+    "README.md": "710903dc22f1c10afa02085b2e34805b2ecf7f230333c176da9633e1343fed7b",
+    "preview.cjs": "0d094182907495feac6c5b189bdbd901106f31a1aab2033b035e530903b524ec",
+    "package.json": "822def1986953809a1fb6142561d1066e5f0a64ea8b41b184104b44b9a593618",
+    "AGENTS.md": "832c12e2063313c84b5c8f10aa7b00ea5fbb827f56f4ac4b1387985752338a31",
+    "notes.md": "eb7c6b4b8b0488ff976609273f566f2d008982de969b517327f3314356604797",
+    "docs/usage.md": "bf7cba56171de717c83ae01a32e5c84f2c04d12964ffa0d2bcf68f31dc053985"
+  },
+  "after": {
+    "README.md": "6f101e4893055f0d08d8487d0d181d6f38b5076dde672b1d6e6153fc9a6a8068",
+    "preview.cjs": "0d094182907495feac6c5b189bdbd901106f31a1aab2033b035e530903b524ec",
+    "package.json": "822def1986953809a1fb6142561d1066e5f0a64ea8b41b184104b44b9a593618",
+    "AGENTS.md": "832c12e2063313c84b5c8f10aa7b00ea5fbb827f56f4ac4b1387985752338a31",
+    "notes.md": "eb7c6b4b8b0488ff976609273f566f2d008982de969b517327f3314356604797",
+    "docs/usage.md": "bf7cba56171de717c83ae01a32e5c84f2c04d12964ffa0d2bcf68f31dc053985"
+  }
+}

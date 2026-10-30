@@ -11,6 +11,8 @@
 The latest release is **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**. It includes meaning-preserving concision rules and the improvements on main since the documented v1.0.1 version. See the [version policy](docs/STABILITY-PROMISE.md) and [change notes](docs/UPGRADE-NOTES.md).
 
 The catalog provides context-dependent editing candidates, not words to replace in every sentence. Preserve facts, tone, uncertainty and conditions; leave already natural text unchanged.
+Use `korean-humanizer` for expression editing that preserves meaning and tone. Use the independent [korean-humanizer-deep](docs/plans/korean-humanizer-deep.md) skill to revise structure and verified facts using project context, or reshape pasted text for its audience. It is not an automatic mode or an editing-intensity setting for the base skill.
+
 
 ---
 

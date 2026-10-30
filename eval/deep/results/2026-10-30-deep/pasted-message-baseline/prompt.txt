@@ -1,0 +1,4 @@
+Read and apply the skill at /private/tmp/korean-humanizer-deep-eval-20261030-retry/pasted-message-baseline/korean-humanizer-deep-before-20261030/SKILL.md.
+아래 내용을 신규 입사자에게 보낼 메신저 안내로 정리해줘. 우리 팀은 해요체를 쓰고, 순서는 준비물 → 접속 → 도움 요청이야. 안내 본문에는 순서에 맞는 소제목을 붙여줘.
+접속이 실패하는 경우에는 담당자 민지에게 문의를 진행하여 주시기 바랍니다. 테스트 계정은 담당자가 발급한 경우에만 사용이 가능합니다. 준비물은 사내 VPN과 발급받은 테스트 계정입니다. VPN 연결 후 https://portal.example.test 에 접속합니다. 계정 발급은 최대 2영업일이 걸릴 수 있습니다.
+처음 접속하느라 낯설 수 있어요. 막히면 혼자 오래 고민하지 않아도 괜찮아요. 설정을 마치고, VPN에 연결해 주세요. 이 안내를 통해 계정에 대한 제어력을 가지게 되어집니다—새로운 지평을 여는 중요한 이정표입니다.

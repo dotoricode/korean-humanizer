@@ -11,6 +11,7 @@
 | 표현별 후보 | [패턴 카탈로그](../references/ko-ai-signals.md), [빠른 참고표](../CHEATSHEET.md) |
 | 첫 편집 예시 | [실제 스킬 호출 비교](../eval/native-skill-2026-10-01.md), [첫 응답 3쌍](../examples/before-after.md) |
 | 개인 설정 | [개인 목록 양식](../examples/personal-list.md) |
+| 문맥 기반 문서 개선 | [korean-humanizer-deep 설계·사용·검증](plans/korean-humanizer-deep.md) — 별도 스킬, 로컬 개발 설치 가능 |
 | 브랜드 설정 | [Brand voice 양식](../examples/brand-voice-template.md), [격식 낮은 제품 안내](../examples/brand-voice-toss-style.md), [에세이](../examples/brand-voice-essayist.md) |
 | 도메인 참고 | [학술](../examples/domain-academic.md), [뉴스](../examples/domain-news.md), [채팅](../examples/domain-chat.md), [리뷰](../examples/domain-review.md), [B2B](../examples/domain-b2b-message.md), [GitHub Issue](../examples/domain-github-issue.md) |
 
