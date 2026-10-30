@@ -1,0 +1,4 @@
+interface:
+  display_name: "Korean Humanizer Deep"
+  short_description: "문맥과 프로젝트 관례를 조사해 한국어 문서의 말투·구성·내용 개선"
+  default_prompt: "Use $korean-humanizer-deep to improve this Korean document using its context and project conventions."

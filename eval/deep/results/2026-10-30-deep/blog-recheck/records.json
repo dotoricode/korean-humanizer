@@ -1,0 +1,22 @@
+[
+  {
+    "eval_id": "pasted-blog",
+    "variant": "candidate",
+    "exit_code": 0,
+    "skill_sha256": "9aa559a6e39917047d7dc8a3127ab8a82ed5cf199de558841c5c6f5446cf6a1f",
+    "duration_ms": 15324,
+    "changed_files": [],
+    "before": {},
+    "after": {}
+  },
+  {
+    "eval_id": "pasted-blog",
+    "variant": "baseline",
+    "exit_code": 0,
+    "skill_sha256": "e372e5c1143c2e41280bab541de7b660a4bfa3ed9f6c78c8a90121c2baedc084",
+    "duration_ms": 9440,
+    "changed_files": [],
+    "before": {},
+    "after": {}
+  }
+]

@@ -1,0 +1,10 @@
+{
+  "eval_id": "pasted-message",
+  "variant": "candidate",
+  "exit_code": 0,
+  "skill_sha256": "b3fbe19d57b6f8e822f4ba750a2474e726fe52cdb577502da3c4f01a5258f3ff",
+  "duration_ms": 9985,
+  "changed_files": [],
+  "before": {},
+  "after": {}
+}

@@ -1,0 +1,86 @@
+{
+  "skill_name": "korean-humanizer-deep",
+  "evals": [
+    {
+      "id": "file-context",
+      "prompt": "README.md를 처음 사용하는 사람이 따라 할 수 있게 프로젝트 관례에 맞춰 전체적으로 개선해줘.",
+      "should_trigger": true,
+      "files": [
+        "fixtures/file-context/README.md",
+        "fixtures/file-context/AGENTS.md",
+        "fixtures/file-context/package.json",
+        "fixtures/file-context/preview.cjs",
+        "fixtures/file-context/docs/usage.md",
+        "fixtures/file-context/notes.md"
+      ],
+      "assertions": [
+        "README만 수정한다",
+        "합니다체에서 해요체로 바꾼다",
+        "npm run start 대신 설정에 있는 npm run preview를 안내한다",
+        "명령 실행 위치인 저장소 루트를 보충한다",
+        "사용자 추가 문구와 조건을 보존한다",
+        "검증 보고가 실제 실행 기록과 일치한다",
+        "사실 변경·보충과 package.json scripts, preview.cjs 근거를 응답 끝의 근거 대조 표에 연결한다"
+      ]
+    },
+    {
+      "id": "pasted-message",
+      "prompt": "아래 내용을 신규 입사자에게 보낼 메신저 안내로 정리해줘. 우리 팀은 해요체를 쓰고, 순서는 준비물 → 접속 → 도움 요청이야. 안내 본문에는 순서에 맞는 소제목을 붙여줘.\n접속이 실패하는 경우에는 담당자 민지에게 문의를 진행하여 주시기 바랍니다. 테스트 계정은 담당자가 발급한 경우에만 사용이 가능합니다. 준비물은 사내 VPN과 발급받은 테스트 계정입니다. VPN 연결 후 https://portal.example.test 에 접속합니다. 계정 발급은 최대 2영업일이 걸릴 수 있습니다.\n처음 접속하느라 낯설 수 있어요. 막히면 혼자 오래 고민하지 않아도 괜찮아요. 설정을 마치고, VPN에 연결해 주세요. 이 안내를 통해 계정에 대한 제어력을 가지게 되어집니다—새로운 지평을 여는 중요한 이정표입니다.",
+      "should_trigger": true,
+      "assertions": [
+        "파일을 만들지 않는다",
+        "해요체와 요청한 순서·소제목을 적용한다",
+        "계정 발급 조건, 최대 2영업일 가능성, 담당자, URL을 보존한다",
+        "본문을 먼저 제시한다",
+        "온보딩의 배려와 도움 요청 어조를 보존한다",
+        "습관적 쉼표, 번역체 줄표, 이중피동, have 직역, 근거 없는 수사를 다듬는다",
+        "주어진 텍스트만으로 처리하고 저장소를 탐색하지 않는다",
+        "표현만 고친 경우 근거 대조 표를 만들지 않는다"
+      ]
+    },
+    {
+      "id": "conflicting-facts",
+      "prompt": "docs/setup.md를 신규 사용자용으로 개선해줘. 주변 문서도 참고해줘.",
+      "should_trigger": true,
+      "files": [
+        "fixtures/conflicting-facts/AGENTS.md",
+        "fixtures/conflicting-facts/docs/setup.md",
+        "fixtures/conflicting-facts/docs/ops-a.md",
+        "fixtures/conflicting-facts/docs/ops-b.md",
+        "fixtures/conflicting-facts/docs/style.md"
+      ],
+      "assertions": [
+        "setup.md만 수정한다",
+        "확인할 수 없는 7일 또는 30일 보관 기간을 확정하지 않는다",
+        "가능한 말투·구성 개선은 수행한다",
+        "미해결 충돌의 두 근거를 보고하거나 질문한다"
+      ]
+    },
+    {
+      "id": "pasted-blog",
+      "prompt": "아래 초안을 팀 기술 블로그 소개글로 다시 써줘. 해요체로 쓰고, 시행착오와 선택 이유가 자연스럽게 이어지게 해줘.\n처음에는 설정을 한 파일에 모았어요. 새 팀원이 값을 어디서 고치는지 찾느라 자주 멈췄기 때문이에요. 그런데 환경별 예외가 늘어나면서 한 파일이 오히려 읽기 어려워졌어요. 그래서 서비스에서의 설정 변경으로의 진입 경로에 대한 제어력을 가지기 위해 파일을 나눴고, 새 팀원이 처음에 수정해야 할 환경별 예외 설정을 모두 모아서 관리하는 복잡한 파일의 위치를 안내문에 적었어요—이 결정은 새로운 지평을 여는 중요한 이정표로 보여집니다. 아직 두 팀에서만 써 봤고, 문의가 줄었는지는 측정하지 않았어요. 다음 달에 사용 경험을 더 모아 보려고 해요.",
+      "should_trigger": true,
+      "assertions": [
+        "최초 문제, 한 파일 시도, 예외 증가, 파일 분리의 이유와 안내 보충, 미측정 한계, 다음 달 계획을 보존한다",
+        "블로그를 결과만 나열하는 요약문으로 줄이지 않는다",
+        "쉼표·줄표·이중피동·have 직역·겹조사·긴 관형절·근거 없는 수사를 문맥에 맞게 다듬는다",
+        "코드나 저장소를 조사하지 않고 본문을 먼저 응답한다"
+      ]
+    },
+    {
+      "id": "near-miss-expression",
+      "prompt": "README의 이 문장 AI 티만 빼줘. 내용과 말투는 그대로 둬.",
+      "should_trigger": false
+    },
+    {
+      "id": "near-miss-typo",
+      "prompt": "안내문의 띄어쓰기만 고쳐줘.",
+      "should_trigger": false
+    },
+    {
+      "id": "near-miss-code",
+      "prompt": "서버 코드가 README 설명과 다르게 동작해. 코드를 수정해줘.",
+      "should_trigger": false
+    }
+  ]
+}

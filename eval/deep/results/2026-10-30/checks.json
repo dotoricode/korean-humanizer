@@ -1,0 +1,26 @@
+[
+  {
+    "eval_id": "file-context",
+    "variant": "candidate",
+    "passed": true,
+    "duration_ms": 28658
+  },
+  {
+    "eval_id": "pasted-message",
+    "variant": "candidate",
+    "passed": true,
+    "duration_ms": 8285
+  },
+  {
+    "eval_id": "conflicting-facts",
+    "variant": "candidate",
+    "passed": true,
+    "duration_ms": 25780
+  },
+  {
+    "eval_id": "file-context",
+    "variant": "baseline",
+    "passed": true,
+    "duration_ms": 35321
+  }
+]

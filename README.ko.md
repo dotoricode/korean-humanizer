@@ -8,6 +8,8 @@
 
 최신 출시 버전은 **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**입니다. 의미를 보존하는 간결화 규칙과 기존 main의 개선 사항을 포함합니다. [버전 정책](docs/STABILITY-PROMISE.md)과 [변경 안내](docs/UPGRADE-NOTES.md)를 확인하세요.
 
+표현만 다듬을 때는 `korean-humanizer`를 사용합니다. 코드·설정과 대조해 README를 현행화하거나 독자에 맞게 구조와 내용을 고칠 때는 별도 스킬 [korean-humanizer-deep](docs/plans/korean-humanizer-deep.md)을 사용합니다. `deep`은 파일의 문맥을 조사하고, 붙여 넣은 글은 요청한 목적에 맞게 재구성합니다.
+
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## 바로 써보기

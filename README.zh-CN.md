@@ -9,6 +9,8 @@
 
 最新正式版本是 **[v1.1.0](https://github.com/dotoricode/korean-humanizer/releases/tag/v1.1.0)**，包含保留原意的精简规则和 main 分支的改进。请参阅[版本政策](docs/STABILITY-PROMISE.md)和[变更说明](docs/UPGRADE-NOTES.md)。
 
+仅润色表达、保留原意和语气时使用 `korean-humanizer`。需要核对代码与配置、更新文档事实或按读者重组草稿时，使用独立技能 [korean-humanizer-deep](docs/plans/korean-humanizer-deep.md)。它不是基础技能的自动模式或润色强度选项。
+
 ![korean-humanizer preview](assets/translation-humanizer-card.svg)
 
 ## 30 秒试用

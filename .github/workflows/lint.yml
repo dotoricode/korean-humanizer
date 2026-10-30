@@ -80,6 +80,9 @@ jobs:
       - name: Check package source provenance
         run: python3 scripts/test-package-skill.py
 
+      - name: Check single development install
+        run: python3 scripts/test-install-codex-skill.py
+
       - name: Run eval harness
         run: bash scripts/eval-harness.sh
 

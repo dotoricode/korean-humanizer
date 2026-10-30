@@ -1,0 +1,23 @@
+{
+  "eval_id": "conflicting-facts",
+  "variant": "candidate",
+  "exit_code": 0,
+  "duration_ms": 25780,
+  "changed_files": [
+    "docs/setup.md"
+  ],
+  "before": {
+    "AGENTS.md": "ffdf9d32e1e5f002a98ec4d40143ba14fe3b60998b880cf5dc3eedf76123e896",
+    "docs/setup.md": "34066294cc30603e38bf010a3c319fb8a4d13a4c38c6398381e528cb35b04ebd",
+    "docs/ops-b.md": "6d2541a0fe24fe2770d78841a504750cd29cc1e6451ee320681851ec67bbc769",
+    "docs/ops-a.md": "537a290ba6872e0abb71fdb222abe9da637e6b5c7f2b1ee43d42360ac126bf21",
+    "docs/style.md": "00738731b48df54f250057ab7ce8c461807c2656d78f561b32ca6a7aa3f34b81"
+  },
+  "after": {
+    "AGENTS.md": "ffdf9d32e1e5f002a98ec4d40143ba14fe3b60998b880cf5dc3eedf76123e896",
+    "docs/setup.md": "2d96e9b93d15c046798172fe1b8479c8e4667097b54ed5b38a4b1b363c3f0b12",
+    "docs/ops-b.md": "6d2541a0fe24fe2770d78841a504750cd29cc1e6451ee320681851ec67bbc769",
+    "docs/ops-a.md": "537a290ba6872e0abb71fdb222abe9da637e6b5c7f2b1ee43d42360ac126bf21",
+    "docs/style.md": "00738731b48df54f250057ab7ce8c461807c2656d78f561b32ca6a7aa3f34b81"
+  }
+}
