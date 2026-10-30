@@ -5,6 +5,7 @@ This repository is the source of truth for the `korean-humanizer` Codex skill.
 - End-user installation uses the Skills CLI command documented in `README.md`.
 - For local development on this machine, use `scripts/install-codex-skill.sh [korean-humanizer|korean-humanizer-deep]` to link the selected source into `$CODEX_SKILLS_DIR` (default `~/.agents/skills`). Keep that link pointing at the repository. The installer backs up duplicate account-specific and legacy installs outside skill search roots so each name appears once.
 - For a repository-linked development install, use `scripts/check-codex-skill.sh` after changing install behavior or `SKILL.md`. For a copied end-user install, compare every installed runtime file with the package manifest; the development checker requires repository links.
+- If the source checkout itself is in a skills search root, preserve it; a link to the same physical source is not another installed copy. If cleanup would move a directory containing the source checkout, stop and report that path instead.
 
 ## Project terminology
 

@@ -83,6 +83,12 @@ jobs:
       - name: Check single development install
         run: python3 scripts/test-install-codex-skill.py
 
+      - name: Install skill metadata validator dependency
+        run: python3 -m pip install PyYAML==6.0.3
+
+      - name: Check deep skill metadata and evaluation inputs
+        run: python3 scripts/test-deep-skill.py
+
       - name: Run eval harness
         run: bash scripts/eval-harness.sh
 

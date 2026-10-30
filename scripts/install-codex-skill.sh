@@ -9,6 +9,7 @@ case "$SKILL_NAME" in
   *) echo "usage: $0 [korean-humanizer|korean-humanizer-deep]" >&2; exit 1 ;;
 esac
 [[ -f "$SOURCE_ROOT/SKILL.md" ]] || { echo "error: SKILL.md not found at $SOURCE_ROOT" >&2; exit 1; }
+source_resolved="$(cd "$SOURCE_ROOT" && pwd -P)"
 
 ACTIVE_SKILLS_DIR="${CODEX_SKILLS_DIR:-$HOME/.agents/skills}"
 BACKUP_ROOT="$HOME/.local/share/korean-humanizer/backups"
@@ -18,6 +19,14 @@ backup_install() {
   local target="$1"
   local backup
   [[ -e "$target" || -L "$target" ]] || return 0
+  if [[ -d "$target" && ! -L "$target" ]]; then
+    local target_resolved
+    target_resolved="$(cd "$target" && pwd -P)"
+    if [[ "$source_resolved" == "$target_resolved" || "$source_resolved" == "$target_resolved/"* ]]; then
+      echo "error: refusing to move source checkout inside $target" >&2
+      return 1
+    fi
+  fi
   mkdir -p "$BACKUP_ROOT"
   backup="$(mktemp -d "$BACKUP_ROOT/$SKILL_NAME.XXXXXXXX")"
   mv "$target" "$backup/$SKILL_NAME"
@@ -40,6 +49,11 @@ for skills_dir in "$HOME/.agents/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$
   [[ -d "$skills_dir" ]] || continue
   skills_dir="$(cd "$skills_dir" && pwd -P)"
   if [[ "$skills_dir" != "$ACTIVE_SKILLS_DIR" ]]; then
+    # An existing source checkout is the same skill, not a disposable installed copy.
+    if [[ -d "$skills_dir/$SKILL_NAME" && ! -L "$skills_dir/$SKILL_NAME" && "$(cd "$skills_dir/$SKILL_NAME" && pwd -P)" == "$source_resolved" ]]; then
+      echo "kept source checkout at $skills_dir/$SKILL_NAME"
+      continue
+    fi
     backup_install "$skills_dir/$SKILL_NAME"
   fi
 done

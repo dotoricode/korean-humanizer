@@ -2,6 +2,7 @@
 """Check development links, duplicate retirement and recoverable backups in a fake home."""
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import tempfile
 import unittest
@@ -10,6 +11,34 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class InstallTests(unittest.TestCase):
+    def test_source_inside_legacy_search_root(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            source = home / '.codex/skills/korean-humanizer'
+            source.mkdir(parents=True)
+            shutil.copytree(ROOT / 'scripts', source / 'scripts')
+            shutil.copyfile(ROOT / 'SKILL.md', source / 'SKILL.md')
+            env = {**os.environ, 'HOME': tmp, 'CODEX_HOME': str(home / '.codex')}
+            env.pop('CODEX_SKILLS_DIR', None)
+            result = subprocess.run(['bash', str(source / 'scripts/install-codex-skill.sh')], env=env, capture_output=True, text=True)
+            self.assertTrue((source / 'SKILL.md').is_file(), result.stdout + result.stderr)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual((home / '.agents/skills/korean-humanizer').resolve(), source.resolve())
+
+    def test_source_nested_inside_cleanup_target_is_not_moved(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            home = Path(tmp)
+            source = home / '.codex/skills/korean-humanizer/checkout'
+            source.mkdir(parents=True)
+            shutil.copytree(ROOT / 'scripts', source / 'scripts')
+            shutil.copyfile(ROOT / 'SKILL.md', source / 'SKILL.md')
+            env = {**os.environ, 'HOME': tmp, 'CODEX_HOME': str(home / '.codex')}
+            env.pop('CODEX_SKILLS_DIR', None)
+            result = subprocess.run(['bash', str(source / 'scripts/install-codex-skill.sh')], env=env, capture_output=True, text=True)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn('refusing to move source checkout', result.stderr)
+            self.assertTrue((source / 'SKILL.md').is_file())
+
     def test_single_install_and_backups(self):
         with tempfile.TemporaryDirectory() as tmp:
             home = Path(tmp)

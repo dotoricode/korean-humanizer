@@ -24,6 +24,9 @@ for skills_dir in "$HOME/.agents/skills" "${CODEX_HOME:-$HOME/.codex}/skills" "$
   skills_dir="$(cd "$skills_dir" && pwd -P)"
   if [[ "$skills_dir" != "$active_resolved" ]]; then
     duplicate="$skills_dir/$SKILL_NAME"
+    if [[ -d "$duplicate" && ! -L "$duplicate" && "$(cd "$duplicate" && pwd -P)" == "$source_resolved" ]]; then
+      continue
+    fi
     [[ ! -e "$duplicate" && ! -L "$duplicate" ]] || fail "duplicate install remains at $duplicate"
   fi
 done
