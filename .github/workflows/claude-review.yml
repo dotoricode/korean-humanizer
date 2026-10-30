@@ -60,10 +60,10 @@ jobs:
             이 PR을 리뷰한다. PR 브랜치는 현재 작업 폴더에 체크아웃되어 있다.
 
             1. `gh pr view`와 `gh pr diff`로 목적과 변경을 확인한다. 저장소의 AGENTS.md, CLAUDE.md, SKILL.md, CONTRIBUTING.md가 있으면 읽고 그 규칙을 기준으로 삼는다.
-            2. 변경된 코드가 닿는 호출 경로와 테스트를 직접 읽고, 실제로 문제가 되는 것만 지적한다. 버그, PR 설명과 다른 동작, 깨지는 호환성, 보안, 빠진 테스트, 문서와 코드의 불일치를 우선한다. 취향 차이와 사소한 문체는 지적하지 않는다.
+            2. 변경된 코드가 닿는 호출 경로와 테스트를 직접 읽고, 실제로 문제가 되는 것만 지적한다. 버그, PR 설명과 다른 동작, 깨지는 호환성, 보안, 빠진 테스트, 문서와 코드의 불일치를 우선한다. 취향 차이와 사소한 문체는 지적하지 않는다. 변경이 스크립트, 지침, 예시, 평가에 닿으면 `.github/workflows/lint.yml`의 검사 명령(허용 도구에 있는 것만)을 실행해 결과를 근거로 쓴다. 실행하지 못한 검사는 확인하지 못한 부분에 적는다.
             3. 특정 줄의 문제는 `mcp__github_inline_comment__create_inline_comment`(`confirmed: true`)로 단다. 각 코멘트에는 문제가 생기는 구체적 상황과 고칠 방향을 적는다.
             4. 마지막에 `gh pr comment`로 요약 코멘트를 하나 남긴다. 변경 요약 3줄 이내, 지적 사항 목록(심각도 순), 확인하지 못한 부분을 적는다. 지적할 것이 없으면 그렇다고 짧게 적는다.
 
             코멘트는 한국어로 쓰고 코드·경로·식별자는 원문 그대로 둔다. GitHub 코멘트로만 답하고, 코드는 수정하지 않는다.
           claude_args: |
-            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*)"
+            --allowedTools "mcp__github_inline_comment__create_inline_comment,Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(python3 scripts/test-regressions.py),Bash(python3 scripts/test-compare-concision.py),Bash(python3 scripts/test-package-skill.py),Bash(bash scripts/lint-patterns.sh),Bash(bash scripts/lint-cross-file.sh),Bash(bash scripts/lint-examples.sh),Bash(bash scripts/eval-harness.sh)"
